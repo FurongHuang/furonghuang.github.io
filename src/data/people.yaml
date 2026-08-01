@@ -23,6 +23,9 @@ current_phd_students:
   - name: Andrew Mendez
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    href: https://www.linkedin.com/in/interactivetech
+    image: /assets/people/andrew-mendez.jpg
+    imagePosition: 50% 32%
   - name: Byeonghyun Pak
     role: Ph.D. advisee · Computer Science
     period: 2026–present
@@ -33,19 +36,32 @@ current_phd_students:
     role: Ph.D. advisee · Computer Science
     period: 2026–present
     href: https://www.linkedin.com/in/drewgjerstad
+    image: /assets/people/drew-gjerstad.jpg
+    imagePosition: 50% 28%
   - name: Feijiang Han
     role: Ph.D. advisee · Computer Science
     period: 2026–present
     href: https://feijianghan.com/
+    image: /assets/people/feijiang-han.jpg
+    imagePosition: 50% 34%
   - name: Jiawei Xu
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    href: https://jimmyxu123.github.io/
+    image: /assets/people/jiawei-xu.jpg
+    imagePosition: 50% 32%
   - name: Lingzhi Yuan
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    href: https://www.linkedin.com/in/lingzhiyuan1
+    image: /assets/people/lingzhi-yuan.jpg
+    imagePosition: 50% 30%
   - name: Minghui Liu
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    href: https://minghui-liu.github.io/
+    image: /assets/people/minghui-liu.jpg
+    imagePosition: 50% 24%
   - name: Seungjae (Jay) Lee
     role: Ph.D. advisee · Computer Science
     period: 2024–present
@@ -61,16 +77,27 @@ current_phd_students:
   - name: Sy-Tuyen Ho
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    href: https://hosytuyen.github.io/
+    image: /assets/people/sy-tuyen-ho.jpg
+    imagePosition: 50% 30%
   - name: Weize Liu
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    href: https://attention-is-all-i-need.github.io/
+    image: /assets/people/weize-liu.jpg
+    imagePosition: 50% 28%
   - name: Yijun Liang
     role: Ph.D. advisee · Computer Science
     period: 2026–present
     href: https://www.cs.umd.edu/people/yliang17
+    image: /assets/people/yijun-liang.jpg
+    imagePosition: 50% 34%
   - name: Yoonkyo Jung
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    href: https://yoonkyojung.com/
+    image: /assets/people/yoonkyo-jung.jpg
+    imagePosition: 50% 30%
 
 alumni:
   - name: Pankayaraj Pathmanathan
@@ -153,6 +180,8 @@ alumni:
     period: "2025"
     destination: Capital One
     href: https://dhyuan99.github.io/
+    image: /assets/people/dehao-yuan.jpg
+    imagePosition: 50% 32%
   - name: Marco Bornstein
     role: Ph.D. · AMSC
     period: "2025"

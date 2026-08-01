@@ -1811,6 +1811,69 @@ main {
   max-width: 920px;
 }
 
+.prospective-composite {
+  isolation: isolate;
+}
+
+.prospective-composite .prospective-cta {
+  z-index: 2;
+}
+
+.prospective-group-photo {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: calc(100% - 3rem);
+  margin: -2rem auto 0;
+  aspect-ratio: 16 / 6.5;
+  border: 1px solid rgba(16, 42, 67, 0.12);
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.prospective-group-photo::before,
+.prospective-group-photo::after {
+  position: absolute;
+  inset-inline: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+}
+
+.prospective-group-photo::before {
+  top: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(10, 108, 120, 0.42), transparent);
+}
+
+.prospective-group-photo::after {
+  bottom: 0;
+  height: 36%;
+  background: linear-gradient(to top, rgba(5, 25, 36, 0.62), transparent);
+}
+
+.prospective-group-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 47%;
+}
+
+.prospective-group-photo figcaption {
+  position: absolute;
+  right: 1.4rem;
+  bottom: 1.1rem;
+  z-index: 2;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .roster {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1984,6 +2047,10 @@ footer > small {
   .publication-controls input { grid-column: 1 / -1; }
   .publication-count { justify-self: start; }
   .cta { padding: 3rem 2rem; }
+  .prospective-group-photo {
+    width: calc(100% - 1.5rem);
+    aspect-ratio: 16 / 8.5;
+  }
   .course-row { grid-template-columns: 1fr; gap: 0.25rem; }
   .course-actions { justify-content: flex-start; }
 }
@@ -2012,6 +2079,16 @@ footer > small {
   .person-card { grid-template-columns: 74px 1fr; }
   .person-photo,
   .person-initials { width: 74px; height: auto; }
+  .prospective-group-photo {
+    width: calc(100% - 1rem);
+    margin-top: -1.25rem;
+    aspect-ratio: 4 / 3;
+  }
+  .prospective-group-photo figcaption {
+    right: 0.9rem;
+    bottom: 0.8rem;
+    font-size: 0.58rem;
+  }
   .pillar-feature-body { padding: 1.7rem; }
   .placement-people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .placement-person { min-height: 215px; }

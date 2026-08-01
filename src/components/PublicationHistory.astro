@@ -1,0 +1,75 @@
+---
+interface Work {
+  year: number | null;
+  category: string;
+}
+
+const { works, asOf } = Astro.props as { works: Work[]; asOf: string };
+const categories = ["conference", "journal", "workshop", "preprint", "other"] as const;
+const labels: Record<string, string> = {
+  conference: "Conference",
+  journal: "Journal",
+  workshop: "Workshop",
+  preprint: "Preprint",
+  other: "Other"
+};
+const colors: Record<string, string> = {
+  conference: "#168c8a",
+  journal: "#d97757",
+  workshop: "#7161b7",
+  preprint: "#77a9c4",
+  other: "#aebbc5"
+};
+const datedWorks = works.filter((work) => work.year);
+const firstYear = Math.min(...datedWorks.map((work) => work.year as number));
+const lastYear = Math.max(...datedWorks.map((work) => work.year as number));
+const years = Array.from({ length: lastYear - firstYear + 1 }, (_, index) => firstYear + index);
+const totals = years.map((year) => ({
+  year,
+  counts: Object.fromEntries(categories.map((category) => [category, datedWorks.filter((work) => work.year === year && work.category === category).length]))
+}));
+const maxTotal = Math.max(...totals.map((item) => Object.values(item.counts).reduce((sum, value) => sum + value, 0)));
+const chartMax = Math.ceil(maxTotal / 10) * 10;
+const width = 1080;
+const height = 410;
+const margin = { top: 28, right: 22, bottom: 58, left: 48 };
+const plotWidth = width - margin.left - margin.right;
+const plotHeight = height - margin.top - margin.bottom;
+const slotWidth = plotWidth / years.length;
+const barWidth = Math.max(12, slotWidth * 0.66);
+const yFor = (value: number) => margin.top + plotHeight - (value / chartMax) * plotHeight;
+const ticks = [0, chartMax / 2, chartMax];
+---
+
+<div class="publication-history">
+  <div class="publication-history-legend" aria-hidden="true">
+    {categories.map((category) => <span><i style={`background:${colors[category]}`}></i>{labels[category]}</span>)}
+  </div>
+  <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby="publication-chart-title publication-chart-desc">
+    <title id="publication-chart-title">Publications by year and type</title>
+    <desc id="publication-chart-desc">A stacked bar chart generated from the normalized publication database, current through {asOf}.</desc>
+    {ticks.map((tick) => (
+      <g>
+        <line x1={margin.left} x2={width - margin.right} y1={yFor(tick)} y2={yFor(tick)} />
+        <text x={margin.left - 10} y={yFor(tick) + 5} text-anchor="end">{tick}</text>
+      </g>
+    ))}
+    {totals.map((item, index) => {
+      let cumulative = 0;
+      const x = margin.left + index * slotWidth + (slotWidth - barWidth) / 2;
+      return (
+        <g>
+          <title>{item.year}: {Object.values(item.counts).reduce((sum, value) => sum + value, 0)} publications</title>
+          {categories.map((category) => {
+            const count = item.counts[category];
+            const segmentHeight = (count / chartMax) * plotHeight;
+            cumulative += count;
+            return count > 0 && <rect x={x} y={yFor(cumulative)} width={barWidth} height={segmentHeight} fill={colors[category]} rx="2" />;
+          })}
+          {(index % 2 === 0 || item.year === lastYear) && <text class="year-label" x={x + barWidth / 2} y={height - 24} text-anchor="middle">{item.year}</text>}
+        </g>
+      );
+    })}
+  </svg>
+  <p>Generated from the same normalized records as the CV · Data current through {asOf}</p>
+</div>

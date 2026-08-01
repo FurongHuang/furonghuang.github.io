@@ -13,20 +13,28 @@ export const postdocs: Person[] = [
     role: "Postdoctoral researcher · UMIACS",
     href: "https://zikuicai.github.io/",
     image: "/assets/people/zikui-cai.jpg"
+  },
+  {
+    name: "Haoran Chen",
+    role: "Postdoctoral associate · Computer Science",
+    period: "2026–present",
+    href: "https://haoranchen.github.io/"
   }
 ];
 
 export const currentPhdStudents: Person[] = [
   { name: "Aakriti Agrawal", role: "Ph.D. advisee · Computer Science", period: "2023–present", image: "/assets/people/aakriti-agrawal.jpg" },
   { name: "Andrew Mendez", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
-  { name: "Sy-Tuyen Ho", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
-  { name: "Yoonkyo Jung", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
-  { name: "Seungjae (Jay) Lee", role: "Ph.D. advisee · Computer Science", period: "2024–present", href: "https://sjlee.cc/", image: "/assets/people/seungjae-lee.jpg" },
+  { name: "Byeonghyun Pak", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://byeonghyunpak.github.io/" },
+  { name: "Feijiang Han", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://feijianghan.com/" },
+  { name: "Jiawei Xu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
   { name: "Lingzhi Yuan", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
   { name: "Minghui Liu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
-  { name: "Weize Liu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Seungjae (Jay) Lee", role: "Ph.D. advisee · Computer Science", period: "2024–present", href: "https://sjlee.cc/", image: "/assets/people/seungjae-lee.jpg" },
   { name: "Shayan Shabihi", role: "Ph.D. advisee · Computer Science", period: "2025–present", href: "https://shayanshabihi.com/", image: "/assets/people/shayan-shabihi.jpg" },
-  { name: "Jiawei Xu", role: "Ph.D. advisee · Computer Science", period: "2025–present" }
+  { name: "Sy-Tuyen Ho", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Weize Liu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Yoonkyo Jung", role: "Ph.D. advisee · Computer Science", period: "2025–present" }
 ];
 
 export const alumni: Person[] = [
@@ -43,8 +51,8 @@ export const alumni: Person[] = [
   { name: "Yuancheng Xu", role: "Ph.D. · AMSC", period: "2025", destination: "Netflix", href: "https://yuancheng-xu.github.io/", image: "/assets/people/yuancheng-xu.png" },
   { name: "Dehao Yuan", role: "Ph.D.", period: "2025", destination: "Capital One", href: "https://dhyuan99.github.io/" },
   { name: "Marco Bornstein", role: "Ph.D. · AMSC", period: "2025", destination: "APQX", href: "https://marcobornstein.github.io/", image: "/assets/people/marco-bornstein.png" },
-  { name: "Tahseen Rabbani", role: "Ph.D. · Computer Science", period: "2024", destination: "Yale · Postdoctoral Researcher", href: "https://twr7bm.github.io/", image: "/assets/people/tahseen-rabbani.png" },
-  { name: "Yanchao Sun", role: "Ph.D. · Computer Science", period: "2023", destination: "Apple", href: "https://ycsun2017.github.io/", image: "/assets/people/yanchao-sun.jpg" },
+  { name: "Tahseen Rabbani", role: "Ph.D. · Computer Science", period: "2024", destination: "Yale · Postdoctoral Researcher with Hyunghoon Cho", href: "https://twr7bm.github.io/", image: "/assets/people/tahseen-rabbani.png" },
+  { name: "Yanchao Sun", role: "Ph.D. · Computer Science", period: "2023", destination: "Apple · New York", href: "https://ycsun2017.github.io/", image: "/assets/people/yanchao-sun.jpg" },
   { name: "Xiyao Wang", role: "Ph.D. · Computer Science", period: "2023", image: "/assets/people/xiyao-wang.jpg" },
-  { name: "Jiahao Su", role: "Ph.D. · Electrical & Computer Engineering", period: "2022", destination: "Amazon", image: "/assets/people/jiahao-su.jpg" }
+  { name: "Jiahao Su", role: "Ph.D. · Electrical & Computer Engineering", period: "2022", destination: "Amazon Rufus · Seattle", image: "/assets/people/jiahao-su.jpg" }
 ];

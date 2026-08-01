@@ -27,7 +27,9 @@ That command copies the latest artifacts into the website:
 
 - `data/publications/publications.json` → `src/data/publications.json`
 - `output/Furong_Huang_CV_Full.pdf` → `public/Furong_Huang_CV.pdf`
-- `data/charts/all-publications.png` → `public/assets/publication-history.png`
+
+The publication-history chart is rendered directly from the synchronized JSON
+during each Astro build; there is no separate image to update.
 
 If the CV and website repositories are not adjacent in the expected layout,
 set `CV_DATA_ROOT` to the CV repository path before running the command.

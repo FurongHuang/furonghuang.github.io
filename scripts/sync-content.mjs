@@ -13,10 +13,6 @@ const copies = [
   [
     resolve(cvRoot, "output/Furong_Huang_CV_Full.pdf"),
     resolve(repositoryRoot, "public/Furong_Huang_CV.pdf")
-  ],
-  [
-    resolve(cvRoot, "data/charts/all-publications.png"),
-    resolve(repositoryRoot, "public/assets/publication-history.png")
   ]
 ];
 

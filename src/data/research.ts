@@ -10,6 +10,7 @@ const trustworthyPattern = /safety|secure|security|attack|adversarial|poison|bac
 const reasoningPattern = /reason|thought|test[- ]time|decod|agent|workflow|planning|\bplan\b|critic|reward model|q[- ]?star|collab|search|compute|reflection|scientist|soundness|inference[- ]time/i;
 
 const publicationPillarByTitle: Record<string, PillarId> = {
+  "μ0: A Scalable 3D Interaction-Trace World Model": "world-models",
   "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos": "world-models",
   "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning": "world-models",
   "Imagine, Verify, Execute: Agentic Exploration with Vision-Language Models": "world-models",
@@ -49,6 +50,7 @@ export function classifyPublication(title: string): PillarId {
 }
 
 export const publicationThumbnailByTitle: Record<string, string> = {
+  "μ0: A Scalable 3D Interaction-Trace World Model": "/assets/projects/mu0.png",
   "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos": "/assets/projects/tracegen.png",
   "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning": "/assets/projects/momagraph.png",
   "Imagine, Verify, Execute: Agentic Exploration with Vision-Language Models": "/assets/projects/imagine-verify-execute.png",

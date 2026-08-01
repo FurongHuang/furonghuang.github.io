@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-07-31",
+  "as_of": "2026-08-01",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [
@@ -15,12 +15,106 @@
     "overrides": "data/publications/publication-overrides.json"
   },
   "stats": {
-    "cv_appearances": 225,
-    "normalized_works": 212,
+    "cv_appearances": 226,
+    "normalized_works": 213,
     "my_ncbi_records": 74,
     "orcid_records": 109
   },
   "works": [
+    {
+      "id": "0-a-scalable-3d-interaction-trace-world-model-c11ff557",
+      "title": "μ0: A Scalable 3D Interaction-Trace World Model",
+      "normalized_title": "0ascalable3dinteractiontraceworldmodel",
+      "authors": [
+        "Seungjae Lee",
+        "Yoonkyo Jung",
+        "Jusuk Lee",
+        "Jonghun Shin",
+        "Amir Hossein Shahidzadeh",
+        "Yao-Chih Lee",
+        "H. Jin Kim",
+        "Jia-Bin Huang",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2606.13769"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.13769"
+        },
+        {
+          "label": "Project page",
+          "url": "https://mu0-wm.github.io/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Yoonkyo/mu0"
+        },
+        {
+          "label": "Models",
+          "url": "https://huggingface.co/collections/furonghuang-lab/mu0"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P3",
+          "title": "μ0: A Scalable 3D Interaction-Trace World Model",
+          "authors_display": "Lee, Seungjae, Yoonkyo Jung, Jusuk Lee, Jonghun Shin, Amir Hossein Shahidzadeh, Yao-Chih Lee, H. Jin Kim, Jia-Bin Huang, and Furong Huang",
+          "authors_inferred": [
+            "Seungjae Lee",
+            "Yoonkyo Jung",
+            "Jusuk Lee",
+            "Jonghun Shin",
+            "Amir Hossein Shahidzadeh",
+            "Yao-Chih Lee",
+            "H. Jin Kim",
+            "Jia-Bin Huang",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2606.13769"
+            },
+            {
+              "label": "Project page",
+              "url": "https://mu0-wm.github.io/"
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/Yoonkyo/mu0"
+            },
+            {
+              "label": "Models",
+              "url": "https://huggingface.co/collections/furonghuang-lab/mu0"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
+      ]
+    },
     {
       "id": "ace-off-policy-actor-critic-with-causality-aware-ent-5eb0da0d",
       "title": "ACE: Off-Policy Actor-Critic with Causality-Aware Entropy Regularization",

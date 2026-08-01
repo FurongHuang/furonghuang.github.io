@@ -70,6 +70,22 @@ export const researchPillars = [
 
 export const projects = [
   {
+    id: "mu0",
+    pillar: "world-models",
+    area: "Embodied AI",
+    title: "μ0",
+    summary:
+      "A scalable world model that predicts semantic 3D interaction traces, learning embodiment-agnostic motion priors from video-only pretraining for downstream robot control.",
+    image: "/assets/projects/mu0.png",
+    year: 2026,
+    links: [
+      { label: "Project", href: "https://mu0-wm.github.io/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2606.13769" },
+      { label: "Code", href: "https://github.com/Yoonkyo/mu0" },
+      { label: "Models", href: "https://huggingface.co/collections/furonghuang-lab/mu0" }
+    ]
+  },
+  {
     id: "tracegen",
     pillar: "world-models",
     area: "Embodied AI",

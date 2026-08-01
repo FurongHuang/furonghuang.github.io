@@ -3,6 +3,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ResearchMap from "../components/ResearchMap.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects, researchPillars } from "../data/site";
+
+const featuredAreas = {
+  "world-models": {
+    title: "Embodied AI",
+    description: "World models become tangible when agents must understand space, bodies, state, and consequences. Explore representative systems, videos, code, and papers.",
+    href: "/research/embodied-ai/"
+  },
+  "reasoning-control": {
+    title: "AI Agents",
+    description: "Agents turn reasoning into purposeful behavior by planning, using tools, verifying progress, and recovering when an initial strategy fails.",
+    href: "/research/ai-agents/"
+  },
+  "self-improvement": {
+    title: "AI Safety",
+    description: "Adaptive attacks, agentic evaluations, and stress tests expose latent failures so models can be corrected before unsafe behavior reaches deployment.",
+    href: "/research/ai-safety/"
+  }
+} as const;
 ---
 
 <BaseLayout title="Research — Furong Lab">
@@ -30,21 +48,12 @@ import { projects, researchPillars } from "../data/site";
             {pillar.topics.map((topic) => <a href={topic.href}>{topic.label}<span>→</span></a>)}
           </div>
         </div>
-        {pillar.id === "world-models" ? (
-          <div class="pillar-feature">
-            <p class="eyebrow">Featured area</p>
-            <h3>Embodied AI</h3>
-            <p>World models become tangible when agents must understand space, bodies, state, and consequences. Explore representative systems, videos, code, and papers.</p>
-            <a class="button" href="/research/embodied-ai/">Explore Embodied AI <span>→</span></a>
-          </div>
-        ) : (
-          <div class="pillar-feature">
-            <p class="eyebrow">Selected evidence</p>
-            <h3>{pillar.id === "reasoning-control" ? "Control at generation, action, and workflow levels." : "A closed loop from failure discovery to recovery."}</h3>
-            <p>{pillar.id === "reasoning-control" ? "Work such as FlowBank, GenARM, Transfer Q-Star, and agentic critical training asks where another unit of compute or verification matters most." : "PropensityBench, ReForm, safety steering, WAVES, and robust learning expose failure modes and turn them into safer future behavior."}</p>
-            <a class="button secondary" href={`/publications/?pillar=${pillar.id}`}>Browse pillar publications <span>→</span></a>
-          </div>
-        )}
+        <div class="pillar-feature">
+          <p class="eyebrow">Featured area</p>
+          <h3>{featuredAreas[pillar.id].title}</h3>
+          <p>{featuredAreas[pillar.id].description}</p>
+          <a class="button" href={featuredAreas[pillar.id].href}>Explore {featuredAreas[pillar.id].title} <span>→</span></a>
+        </div>
       </div>
     </section>
   ))}

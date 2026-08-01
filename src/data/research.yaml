@@ -285,17 +285,23 @@ areas:
         title: DrM
         summary: Dormant-ratio minimization keeps neural capacity active and improves sample efficiency in visual reinforcement learning.
         year: 2024
+        image: /assets/projects/drm.jpg
         visualLabel: DrM
         theme: teal
         relatedTitle: "DrM: Mastering Visual Reinforcement Learning through Dormant Ratio Minimization"
         links:
+          - label: Project
+            href: https://drm-rl.github.io/
           - label: Paper
             href: https://arxiv.org/abs/2310.19668
+          - label: Code
+            href: https://github.com/XuGW-Kevin/DrM
       - id: taco
         area: Sequential decision-making
         title: TACO
         summary: Temporal latent actions and contrastive learning produce action-aware representations from image observations.
         year: 2023
+        image: /assets/projects/taco.png
         visualLabel: TACO
         theme: teal
         relatedTitle: "TACO: Temporal Latent Action-Driven Contrastive Loss for Visual Reinforcement Learning"
@@ -309,12 +315,17 @@ areas:
         title: COPlanner
         summary: A model-based RL planner that rolls out conservatively while directing exploration toward optimistic possibilities.
         year: 2024
+        image: /assets/projects/coplanner.png
         visualLabel: CO
         theme: teal
         relatedTitle: "COPlanner: Plan to Roll Out Conservatively but to Explore Optimistically for Model-Based RL"
         links:
+          - label: Project
+            href: https://si0wang.github.io/projects/COPlanner/
           - label: Paper
             href: https://arxiv.org/abs/2310.07220
+          - label: Code
+            href: https://github.com/si0wang/COPlanner
   - slug: ai-agents
     pillar: reasoning-control
     title: AI Agents
@@ -575,6 +586,7 @@ areas:
         title: AutoDAN
         summary: Interpretable gradient-based adversarial prompts expose instruction-following vulnerabilities in aligned language models.
         year: 2024
+        image: /assets/projects/autodan.png
         visualLabel: AD
         theme: violet
         relatedTitle: "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models"
@@ -642,6 +654,7 @@ areas:
         title: MaxMin-RLHF
         summary: A max-min objective aligns language models without letting majority preferences erase systematically under-served groups.
         year: 2024
+        image: /assets/projects/maxmin-rlhf.jpg
         visualLabel: MM
         theme: violet
         relatedTitle: "MaxMin-RLHF: Alignment with Diverse Human Preferences"
@@ -717,12 +730,17 @@ areas:
         title: Adaptive Robust RL
         summary: Non-dominated policies let a reinforcement-learning agent adapt its defense to attacks beyond a single fixed worst case.
         year: 2024
+        image: /assets/projects/adaptive-robust-rl.png
         visualLabel: RRL
         theme: violet
         relatedTitle: "Beyond Worst-case Attacks: Robust RL with Adaptive Defense via Non-dominated Policies"
         links:
+          - label: Project
+            href: https://protected-beyond-worst-case.github.io/home/m_index.html
           - label: Paper
             href: https://arxiv.org/abs/2402.12673
+          - label: Code
+            href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
   - title: "μ0: A Scalable 3D Interaction-Trace World Model"
     pillar: world-models
@@ -763,6 +781,14 @@ publication_overrides:
     thumbnail: /assets/projects/make-an-agent.gif
   - title: "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
     pillar: world-models
+    thumbnail: /assets/projects/humanego.jpg
+    social_links:
+      - label: Project
+        url: https://humanego-ai.github.io/
+      - label: Code
+        url: https://github.com/TX-Leo/HumanEgo
+      - label: Video
+        url: https://www.youtube.com/watch?v=pdL46diijuY
   - title: "ROVER: Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation"
     pillar: world-models
     thumbnail: /assets/projects/rover.png
@@ -786,10 +812,23 @@ publication_overrides:
     thumbnail: /assets/projects/genflowrl.png
   - title: "DrM: Mastering Visual Reinforcement Learning through Dormant Ratio Minimization"
     pillar: world-models
+    thumbnail: /assets/projects/drm.jpg
+    social_links:
+      - label: Project
+        url: https://drm-rl.github.io/
+      - label: Code
+        url: https://github.com/XuGW-Kevin/DrM
   - title: "TACO: Temporal Latent Action-Driven Contrastive Loss for Visual Reinforcement Learning"
     pillar: world-models
+    thumbnail: /assets/projects/taco.png
   - title: "COPlanner: Plan to Roll Out Conservatively but to Explore Optimistically for Model-Based RL"
     pillar: world-models
+    thumbnail: /assets/projects/coplanner.png
+    social_links:
+      - label: Project
+        url: https://si0wang.github.io/projects/COPlanner/
+      - label: Code
+        url: https://github.com/si0wang/COPlanner
   - title: Agentic Critical Training
     pillar: reasoning-control
     thumbnail: /assets/projects/agentic-critical-training.png
@@ -848,6 +887,7 @@ publication_overrides:
     thumbnail: /assets/projects/advbdgen.png
   - title: "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models"
     pillar: self-improvement
+    thumbnail: /assets/projects/autodan.png
   - title: "WAVES: Benchmarking the Robustness of Image Watermarks"
     pillar: self-improvement
     thumbnail: /assets/projects/waves.jpg
@@ -861,6 +901,7 @@ publication_overrides:
         url: https://x.com/furongh/status/2073710599536591255
   - title: "MaxMin-RLHF: Alignment with Diverse Human Preferences"
     pillar: self-improvement
+    thumbnail: /assets/projects/maxmin-rlhf.jpg
   - title: "SAIL: Self-improving Efficient Online Alignment of Large Language Models"
     pillar: self-improvement
     thumbnail: /assets/projects/sail.png
@@ -869,6 +910,12 @@ publication_overrides:
     thumbnail: /assets/projects/shadowcast.webp
   - title: "Beyond Worst-case Attacks: Robust RL with Adaptive Defense via Non-dominated Policies"
     pillar: self-improvement
+    thumbnail: /assets/projects/adaptive-robust-rl.png
+    social_links:
+      - label: Project
+        url: https://protected-beyond-worst-case.github.io/home/m_index.html
+      - label: Code
+        url: https://github.com/umd-huang-lab/PROTECTED
   - title: "TraceVLA: Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies"
     thumbnail: /assets/projects/tracevla.webp
     social_links:

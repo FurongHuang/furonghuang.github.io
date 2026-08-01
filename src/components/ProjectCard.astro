@@ -6,6 +6,7 @@ interface Project {
   title: string;
   summary: string;
   image?: string;
+  video?: string;
   imageFit?: "cover" | "contain";
   imagePosition?: string;
   visualLabel?: string;
@@ -19,7 +20,17 @@ const { project } = Astro.props as { project: Project };
 
 <article class="project-card" id={project.id}>
   <div class:list={["project-image", `media-${project.imageFit || "contain"}`]} style={`--media-position: ${project.imagePosition || "50% 50%"}`}>
-    {project.image ? (
+    {project.video ? (
+      <video
+        src={project.video}
+        poster={project.image}
+        controls
+        muted
+        playsinline
+        preload="none"
+        aria-label={`Teaser video for ${project.title}`}
+      ></video>
+    ) : project.image ? (
       <img src={project.image} alt={`Representative result from ${project.title}`} loading="lazy" />
     ) : (
       <div class:list={["project-placeholder", `theme-${project.theme || "teal"}`]} aria-hidden="true">

@@ -116,6 +116,26 @@ featured_projects:
         href: https://github.com/jayLEE0301/TraceGen
       - label: LinkedIn
         href: https://www.linkedin.com/posts/furong-huang_embodiedai-robotlearning-worldmodels-activity-7401447812028289025-ifCB
+  - id: dynaflip
+    pillar: world-models
+    area: Embodied AI
+    title: DynaFLIP
+    summary: A dynamics-aware visual backbone for robot manipulation that aligns image transitions, language, and 3D flow to preserve control-relevant information.
+    image: /assets/projects/dynaflip.png
+    imageFit: contain
+    video: https://dynaflip-robotics.github.io/static/videos/project_page_overview_video.mp4
+    year: 2026
+    links:
+      - label: Project
+        href: https://dynaflip-robotics.github.io/
+      - label: Paper
+        href: https://arxiv.org/abs/2605.30350
+      - label: Code
+        href: https://github.com/JU-SUK/DynaFLIP
+      - label: Model
+        href: https://huggingface.co/jlee-larr/dynaflip-base
+      - label: Teaser video
+        href: https://dynaflip-robotics.github.io/static/videos/project_page_overview_video.mp4
   - id: momagraph
     pillar: world-models
     area: Embodied AI
@@ -715,6 +735,18 @@ publication_overrides:
   - title: "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos"
     pillar: world-models
     thumbnail: /assets/projects/tracegen.png
+  - title: "DynaFLIP: Rethinking Robotics Perception via Tri-Modal-Dynamics Guided Representation"
+    pillar: world-models
+    thumbnail: /assets/projects/dynaflip.png
+    social_links:
+      - label: Project
+        url: https://dynaflip-robotics.github.io/
+      - label: Code
+        url: https://github.com/JU-SUK/DynaFLIP
+      - label: Model
+        url: https://huggingface.co/jlee-larr/dynaflip-base
+      - label: Teaser video
+        url: https://dynaflip-robotics.github.io/static/videos/project_page_overview_video.mp4
   - title: "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
     pillar: world-models
     thumbnail: /assets/projects/momagraph.png

@@ -17,6 +17,7 @@ export interface ResearchProject {
   summary: string;
   year: number;
   image?: string;
+  video?: string;
   imageFit?: ImageFit;
   imagePosition?: string;
   visualLabel?: string;
@@ -134,6 +135,7 @@ function projectAt(value: unknown, context: string, featured = false): ResearchP
     summary: stringAt(project, "summary", context),
     year,
     image: optionalStringAt(project, "image", context),
+    video: optionalStringAt(project, "video", context),
     imageFit: imageFitAt(project, "imageFit", context),
     imagePosition: optionalStringAt(project, "imagePosition", context),
     visualLabel: optionalStringAt(project, "visualLabel", context),

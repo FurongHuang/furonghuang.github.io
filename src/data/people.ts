@@ -18,14 +18,15 @@ export const postdocs: Person[] = [
     name: "Haoran Chen",
     role: "Postdoctoral associate · Computer Science",
     period: "2026–present",
-    href: "https://haoranchen.github.io/"
+    href: "https://haoranchen.github.io/",
+    image: "/assets/people/haoran-chen.png"
   }
 ];
 
 export const currentPhdStudents: Person[] = [
   { name: "Aakriti Agrawal", role: "Ph.D. advisee · Computer Science", period: "2023–present", image: "/assets/people/aakriti-agrawal.jpg" },
   { name: "Andrew Mendez", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
-  { name: "Byeonghyun Pak", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://byeonghyunpak.github.io/" },
+  { name: "Byeonghyun Pak", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://byeonghyunpak.github.io/", image: "/assets/people/byeonghyun-pak.png" },
   { name: "Feijiang Han", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://feijianghan.com/" },
   { name: "Jiawei Xu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
   { name: "Lingzhi Yuan", role: "Ph.D. advisee · Computer Science", period: "2025–present" },

@@ -6,7 +6,7 @@ import SocialLinks from "../components/SocialLinks.astro";
 import EmailReveal from "../components/EmailReveal.astro";
 import publicationData from "../data/publications.json";
 import { news, profile, selectedPublicationTitles } from "../data/site";
-import { currentPhdStudents } from "../data/people";
+import { alumni, currentPhdStudents } from "../data/people";
 
 const works = publicationData.works as any[];
 const selectedWorks = selectedPublicationTitles
@@ -17,6 +17,11 @@ const counts = works.reduce((result: Record<string, number>, work) => {
   return result;
 }, {});
 const currentStudents = currentPhdStudents.length;
+const featuredAlumniNames = ["Bang An", "Sicheng Zhu", "Souradip Chakraborty", "Xiaoyu Liu", "Yuhang Zhou", "Yuancheng Xu"];
+const featuredAlumni = featuredAlumniNames
+  .map((name) => alumni.find((person) => person.name === name))
+  .filter(Boolean);
+const placementDestinations = ["OpenAI", "MIT CSAIL", "Google", "Meta", "Apple", "Netflix", "Yale", "Amazon", "Capital One", "APQX"];
 ---
 
 <BaseLayout>
@@ -50,6 +55,32 @@ const currentStudents = currentPhdStudents.length;
     <div class="metric"><strong>{counts.conference || 0}</strong><span>Conference papers</span></div>
     <div class="metric"><strong>{counts.journal || 0}</strong><span>Journal papers</span></div>
     <div class="metric"><strong>{currentStudents}</strong><span>Current PhD advisees</span></div>
+  </section>
+
+  <section class="placement-band">
+    <div class="shell placement-inner">
+      <div class="placement-heading">
+        <div>
+          <p class="eyebrow">Where talent goes</p>
+          <h2>The lab’s strongest record is its people.</h2>
+        </div>
+        <p>
+          Furong Lab alumni carry their research into leading AI organizations, technology companies, and academic institutions. Their trajectories are part of the lab’s impact—not a footnote to it.
+        </p>
+      </div>
+      <div class="destination-cloud" aria-label="Selected alumni destinations">
+        {placementDestinations.map((destination) => <span>{destination}</span>)}
+      </div>
+      <div class="placement-people">
+        {featuredAlumni.map((person) => person && (
+          <a class="placement-person" href={person.href || "/people/"}>
+            {person.image ? <img src={person.image} alt="" loading="lazy" /> : <span class="placement-initials" aria-hidden="true">{person.name.split(" ").map((part) => part[0]).join("").slice(0, 2)}</span>}
+            <span><strong>{person.name}</strong><small>{person.destination}</small></span>
+          </a>
+        ))}
+      </div>
+      <a class="placement-link" href="/people/#alumni">Meet the extended Furong Lab community <span>→</span></a>
+    </div>
   </section>
 
   <section class="shell section">

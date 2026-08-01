@@ -2,6 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PersonCard from "../components/PersonCard.astro";
 import { alumni, currentPhdStudents, postdocs } from "../data/people";
+
+const placementDestinations = Array.from(
+  new Set(alumni.map((person) => person.destination?.split(" · ")[0]).filter(Boolean))
+);
 ---
 
 <BaseLayout title="People — Furong Lab" description="Current researchers and alumni of Furong Lab at the University of Maryland.">
@@ -30,11 +34,14 @@ import { alumni, currentPhdStudents, postdocs } from "../data/people";
     <div class="people-grid">{currentPhdStudents.map((person) => <PersonCard person={person} />)}</div>
   </section>
 
-  <section class="alumni-band">
+  <section class="alumni-band" id="alumni">
     <div class="shell section">
       <div class="section-heading">
-        <div><p class="eyebrow">Alumni</p><h2>The extended Furong Lab community.</h2></div>
-        <p>Graduates and former advisees carrying the work into research organizations, industry, and academia.</p>
+        <div><p class="eyebrow">Alumni outcomes</p><h2>Great researchers, building what comes next.</h2></div>
+        <p>Graduates and former advisees carry Furong Lab’s work into leading research organizations, industry laboratories, and academia.</p>
+      </div>
+      <div class="people-destinations" aria-label="Alumni organizations">
+        {placementDestinations.map((destination) => <span>{destination}</span>)}
       </div>
       <div class="people-grid alumni-grid">{alumni.map((person) => <PersonCard person={person} />)}</div>
     </div>

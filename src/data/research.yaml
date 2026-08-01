@@ -896,6 +896,12 @@ publication_overrides:
     social_links:
       - label: Project
         url: https://hosytuyen.github.io/projects/SoundnessBench
+  - title: Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models
+    pillar: reasoning-control
+    thumbnail: /assets/projects/test-time-scaling-mirage.png
+  - title: "GATES: Self-Distillation under Privileged Context with Consensus Gating"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/gates.png
   - title: "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
     pillar: self-improvement
     thumbnail: /assets/projects/propensitybench.png
@@ -952,6 +958,24 @@ publication_overrides:
   - title: "MIRA: Towards Mitigating Reward Hacking in Inference-Time Alignment of T2I Diffusion Models"
     pillar: self-improvement
     thumbnail: /assets/projects/mira.png
+  - title: "AegisLLM: Scaling Agentic Systems for Self-Reflective Defense in LLM Security"
+    pillar: self-improvement
+    thumbnail: /assets/projects/aegisllm.png
+  - title: Does Reasoning Preserve Alignment? On the Trustworthiness of Large Reasoning Models
+    pillar: self-improvement
+    thumbnail: /assets/projects/reasoning-alignment.png
+  - title: "LLaVA-Critic-R1: Your Critic Model Is Secretly a Strong Policy Model"
+    pillar: self-improvement
+    thumbnail: /assets/projects/llava-critic-r1.png
+  - title: "TrustGen: A Platform of Dynamic Benchmarking on the Trustworthiness of Generative Foundation Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/trustgen.png
+  - title: "ViCrit: A Verifiable Reinforcement Learning Proxy Task for Visual Perception in VLMs"
+    pillar: self-improvement
+    thumbnail: /assets/projects/vicrit.png
+  - title: "MORSE-500: A Programmatically Controllable Video Benchmark to Stress-Test Multimodal Reasoning"
+    pillar: world-models
+    thumbnail: /assets/projects/morse-500.png
   - title: "TraceVLA: Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies"
     thumbnail: /assets/projects/tracevla.webp
     social_links:

@@ -4,7 +4,6 @@ import PaperCard from "../components/PaperCard.astro";
 import PublicationHistory from "../components/PublicationHistory.astro";
 import publicationData from "../data/publications.json";
 import { pillarMeta } from "../data/research";
-import { foundationalPublicationTitles } from "../data/site";
 
 const works = [...(publicationData.works as any[])].sort((a, b) =>
   (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title)
@@ -16,9 +15,6 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
   result[appearance.category] = (result[appearance.category] || 0) + 1;
   return result;
 }, {});
-const foundationalWorks = foundationalPublicationTitles
-  .map((title) => works.find((work) => work.title === title))
-  .filter(Boolean);
 ---
 
 <BaseLayout title="Publications — Furong Huang" description="Search and explore Furong Huang's publications in trustworthy AI, foundation models, agents, robotics, and machine learning.">
@@ -45,18 +41,6 @@ const foundationalWorks = foundationalPublicationTitles
         <p>The figure shows CV publication entries by year and type. A work can appear once as a workshop paper and again as a later conference or journal publication.</p>
       </div>
       <PublicationHistory works={appearances} asOf={publicationData.as_of} />
-    </div>
-  </section>
-
-  <section class="publication-foundations">
-    <div class="shell section">
-      <div class="section-heading">
-        <div><p class="eyebrow">Foundations and enduring contributions</p><h2>The earlier ideas behind today’s research program.</h2></div>
-        <p>Selected work in graphical models, tensor methods, nonconvex optimization, and learning theory shows the intellectual trajectory that now informs foundation-model systems.</p>
-      </div>
-      <div class="paper-grid foundational-paper-grid">
-        {foundationalWorks.map((paper) => <PaperCard paper={paper} />)}
-      </div>
     </div>
   </section>
 

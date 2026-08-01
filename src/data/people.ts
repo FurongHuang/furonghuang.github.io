@@ -27,6 +27,7 @@ export const currentPhdStudents: Person[] = [
   { name: "Aakriti Agrawal", role: "Ph.D. advisee · Computer Science", period: "2023–present", image: "/assets/people/aakriti-agrawal.jpg" },
   { name: "Andrew Mendez", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
   { name: "Byeonghyun Pak", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://byeonghyunpak.github.io/", image: "/assets/people/byeonghyun-pak.png" },
+  { name: "Drew Gjerstad", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://www.linkedin.com/in/drewgjerstad" },
   { name: "Feijiang Han", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://feijianghan.com/" },
   { name: "Jiawei Xu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
   { name: "Lingzhi Yuan", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
@@ -35,6 +36,7 @@ export const currentPhdStudents: Person[] = [
   { name: "Shayan Shabihi", role: "Ph.D. advisee · Computer Science", period: "2025–present", href: "https://shayanshabihi.com/", image: "/assets/people/shayan-shabihi.jpg" },
   { name: "Sy-Tuyen Ho", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
   { name: "Weize Liu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Yijun Liang", role: "Ph.D. advisee · Computer Science", period: "2026–present", href: "https://www.cs.umd.edu/people/yliang17" },
   { name: "Yoonkyo Jung", role: "Ph.D. advisee · Computer Science", period: "2025–present" }
 ];
 
@@ -48,7 +50,7 @@ export const alumni: Person[] = [
   { name: "Bang An", role: "Ph.D. · Computer Science", period: "2025", destination: "OpenAI", href: "https://bangann.github.io/", image: "/assets/people/bang-an.jpg" },
   { name: "Sicheng Zhu", role: "Ph.D. · Computer Science", period: "2025", destination: "OpenAI", href: "https://schzhu.github.io/", image: "/assets/people/sicheng-zhu.jpg" },
   { name: "Xiaoyu Liu", role: "Ph.D. · Computer Science", period: "2025", destination: "Google", image: "/assets/people/xiaoyu-liu.jpg" },
-  { name: "Yuhang Zhou", role: "Ph.D.", period: "2025", destination: "Meta", href: "https://tonyzhou98.github.io/" },
+  { name: "Yuhang Zhou", role: "Ph.D.", period: "2025", destination: "Meta", href: "https://tonyzhou98.github.io/", image: "/assets/people/yuhang-zhou.jpg" },
   { name: "Yuancheng Xu", role: "Ph.D. · AMSC", period: "2025", destination: "Netflix", href: "https://yuancheng-xu.github.io/", image: "/assets/people/yuancheng-xu.png" },
   { name: "Dehao Yuan", role: "Ph.D.", period: "2025", destination: "Capital One", href: "https://dhyuan99.github.io/" },
   { name: "Marco Bornstein", role: "Ph.D. · AMSC", period: "2025", destination: "APQX", href: "https://marcobornstein.github.io/", image: "/assets/people/marco-bornstein.png" },

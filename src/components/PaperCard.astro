@@ -103,16 +103,22 @@ const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
     {venue && venue !== String(paper.year) && <p class="paper-venue">{venue}</p>}
     <div class="paper-links">
       {cleanLinks.map((link) => <a href={link.url}>{link.label}<span>↗</span></a>)}
-      <button type="button" class="bibtex-copy" data-bibtex={bibtex} aria-label={`Copy BibTeX for ${paper.title}`}>
-        <span aria-hidden="true">⧉</span> <span data-copy-label>Copy BibTeX</span>
-      </button>
     </div>
+    <details class="bibtex-disclosure">
+      <summary>BibTeX <span aria-hidden="true">⌄</span></summary>
+      <div class="bibtex-panel">
+        <pre><code>{bibtex}</code></pre>
+        <button type="button" class="bibtex-copy" aria-label={`Copy BibTeX for ${paper.title}`}>
+          <span aria-hidden="true">⧉</span> <span data-copy-label>Copy</span>
+        </button>
+      </div>
+    </details>
   </div>
 </article>
 
 <script>
   const copyBibtex = async (button: HTMLButtonElement) => {
-    const bibtex = button.dataset.bibtex || "";
+    const bibtex = button.closest(".bibtex-panel")?.querySelector("code")?.textContent || "";
     const label = button.querySelector<HTMLElement>("[data-copy-label]");
 
     try {
@@ -120,21 +126,31 @@ const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
     } catch {
       if (label) label.textContent = "Copy failed";
       window.setTimeout(() => {
-        if (label) label.textContent = "Copy BibTeX";
+        if (label) label.textContent = "Copy";
       }, 1800);
       return;
     }
 
-    if (label) label.textContent = "Copied";
+    if (label) label.textContent = "Copied ✓";
     button.classList.add("copied");
     window.setTimeout(() => {
-      if (label) label.textContent = "Copy BibTeX";
+      if (label) label.textContent = "Copy";
       button.classList.remove("copied");
     }, 1800);
   };
 
   document.addEventListener("click", (event) => {
-    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".bibtex-copy");
+    const target = event.target as HTMLElement;
+    const summary = target.closest<HTMLElement>(".bibtex-disclosure > summary");
+    const disclosure = summary?.parentElement as HTMLDetailsElement | undefined;
+
+    if (disclosure && !disclosure.open) {
+      document.querySelectorAll<HTMLDetailsElement>(".bibtex-disclosure[open]").forEach((openDisclosure) => {
+        if (openDisclosure !== disclosure) openDisclosure.open = false;
+      });
+    }
+
+    const button = target.closest<HTMLButtonElement>(".bibtex-copy");
     if (button) void copyBibtex(button);
   });
 </script>

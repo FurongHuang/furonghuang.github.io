@@ -3,6 +3,7 @@ export const profile = {
   labName: "Furong Lab",
   title: "Associate Professor of Computer Science",
   institution: "University of Maryland",
+  location: "Brendan Iribe Center",
   scholar: "https://scholar.google.com/citations?hl=en&user=13yyuCcAAAAJ",
   x: "https://twitter.com/furongh",
   linkedin: "https://www.linkedin.com/in/furong-huang",
@@ -10,6 +11,111 @@ export const profile = {
   github: "https://github.com/FurongHuang",
   huggingface: "https://huggingface.co/furonghuang-lab"
 };
+
+export const affiliations = [
+  { label: "Department of Computer Science", href: "https://www.cs.umd.edu/" },
+  { label: "Center for Machine Learning · UMIACS", href: "https://ml.umd.edu/" },
+  { label: "Maryland Robotics Center", href: "https://robotics.umd.edu/" },
+  { label: "Applied Mathematics, Statistics, and Scientific Computation", href: "https://amsc.umd.edu/" },
+  { label: "Department of Electrical and Computer Engineering", href: "https://ece.umd.edu/" }
+] as const;
+
+export const selectedRecognition = [
+  { year: "2026", title: "NVIDIA Academic Grant", detail: "Support for frontier academic research in artificial intelligence." },
+  { year: "2024", title: "NeurIPS workshop Best Paper Award", detail: "New Frontiers in Adversarial Machine Learning (AdvML Frontier)." },
+  { year: "2024", title: "NSF NAIRR Pilot Award", detail: "Guardians of Integrity in AI: Establishing Trust, Originality, and Ethical Standards." },
+  { year: "2023", title: "Microsoft Accelerate Foundation Models Research Award", detail: "Recognition and support for foundation-model research." },
+  { year: "2022", title: "MIT Technology Review Innovators Under 35", detail: "Asia Pacific honoree for work on trustworthy artificial intelligence." },
+  { year: "2019–2022", title: "Three JP Morgan Faculty Research Awards", detail: "AI security, robust and fair financial models, and learning over financial data streams." }
+] as const;
+
+export const applicationAreas = [
+  { title: "Biology and medicine", detail: "Learning structure in brain-cell populations and human-disease hierarchies, with applications extending to therapeutic discovery." },
+  { title: "Robotics and embodied systems", detail: "World models and transferable policies that help agents understand scenes, predict interaction, and act through physical bodies." },
+  { title: "Resilient infrastructure", detail: "Sequential decision-making and multi-agent learning for systems such as power grids operating under uncertainty and disruption." },
+  { title: "Financial integrity", detail: "Robust, private, and fair learning for financial models exposed to changing data and adversarial behavior." },
+  { title: "Content authenticity", detail: "Benchmarks, attacks, and defenses for hallucination, data poisoning, AI-generated content, and invisible watermarks." },
+  { title: "Efficient adaptation", detail: "Methods for updating, routing, and fine-tuning large industrial models while controlling computation and data requirements." }
+] as const;
+
+export const legacyProjects = [
+  {
+    id: "protected",
+    area: "Robust reinforcement learning",
+    title: "PROTECTED",
+    summary: "Adaptive robust RL moves beyond a single worst-case policy by selecting among non-dominated policies as attack conditions change.",
+    visualLabel: "PR",
+    theme: "violet" as const,
+    year: 2024,
+    links: [
+      { label: "Project", href: "https://protected-beyond-worst-case.github.io/home/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2402.12673" }
+    ]
+  },
+  {
+    id: "phtest",
+    area: "AI safety and usability",
+    title: "PHTest",
+    summary: "A large diagnostic dataset and red-teaming method for measuring when safety-aligned language models incorrectly refuse harmless requests.",
+    visualLabel: "PH",
+    theme: "violet" as const,
+    year: 2024,
+    links: [
+      { label: "Project", href: "https://phtest-frf.github.io/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2409.00598" },
+      { label: "Code", href: "https://github.com/umd-huang-lab/FalseRefusal" }
+    ]
+  },
+  {
+    id: "elbert",
+    area: "Long-term fairness",
+    title: "ELBERT",
+    summary: "A sequential fairness framework that measures equal long-term benefit rates while preserving useful decision-making policies.",
+    visualLabel: "EL",
+    theme: "violet" as const,
+    year: 2024,
+    links: [
+      { label: "Project", href: "https://elbert-long-term-fairness.github.io/home/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2309.03426" },
+      { label: "Code", href: "https://github.com/umd-huang-lab/ELBERT" }
+    ]
+  },
+  {
+    id: "easy2hard",
+    area: "Generalization",
+    title: "Easy2Hard-Bench",
+    summary: "Standardized continuous difficulty labels reveal how language models generalize across mathematics, programming, chess, and reasoning tasks.",
+    visualLabel: "E2H",
+    theme: "teal" as const,
+    year: 2024,
+    links: [
+      { label: "Project", href: "https://easy2hardbench.github.io/home/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2409.18433" },
+      { label: "Code", href: "https://github.com/umd-huang-lab/Easy2Hard-Bench" }
+    ]
+  },
+  {
+    id: "dyart",
+    area: "Adversarial robustness",
+    title: "DyART",
+    summary: "Dynamics-aware robust training tracks how decision boundaries move and prioritizes vulnerable examples with the smallest margins.",
+    visualLabel: "Dy",
+    theme: "teal" as const,
+    year: 2023,
+    links: [
+      { label: "Paper", href: "https://arxiv.org/abs/2302.03015" },
+      { label: "Code", href: "https://github.com/umd-huang-lab/Dynamics-Aware-Robust-Training" }
+    ]
+  }
+] as const;
+
+export const foundationalPublicationTitles = [
+  "High-Dimensional Gaussian Graphical Model Selection: Walk-Summability and Local Separation Criterion",
+  "High-Dimensional Structure Learning of Ising Models: Local Separation Criterion",
+  "Learning High-Dimensional Mixtures of Graphical Models",
+  "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition",
+  "Learning Deep ResNet Blocks Sequentially using Boosting Theory"
+] as const;
 
 export const socialLinks = [
   { id: "scholar", label: "Google Scholar", href: profile.scholar },
@@ -20,141 +126,7 @@ export const socialLinks = [
   { id: "huggingface", label: "Hugging Face", href: profile.huggingface }
 ];
 
-export const researchPillars = [
-  {
-    id: "world-models",
-    number: "01",
-    title: "World models",
-    shortTitle: "World models",
-    subtitle: "Learn what can happen",
-    description:
-      "Represent physical and digital environments so agents can predict consequences, transfer across embodiments, and plan beyond direct experience.",
-    href: "/research/#world-models",
-    topics: [
-      { label: "Embodied AI", href: "/research/embodied-ai/" },
-      { label: "Multimodal learning", href: "/research/multimodal-learning/" },
-      { label: "Sequential decision-making", href: "/research/sequential-decision-making/" }
-    ]
-  },
-  {
-    id: "reasoning-control",
-    number: "02",
-    title: "Reasoning control",
-    shortTitle: "Reasoning control",
-    subtitle: "Decide how to think",
-    description:
-      "Treat inference as a control problem: allocate computation, collaboration, evidence, and verification where they improve decisions most.",
-    href: "/research/#reasoning-control",
-    topics: [
-      { label: "AI agents", href: "/research/ai-agents/" },
-      { label: "Test-time compute", href: "/research/test-time-compute/" },
-      { label: "Agentic workflows", href: "/research/agentic-workflows/" }
-    ]
-  },
-  {
-    id: "self-improvement",
-    number: "03",
-    title: "Trustworthy self-improvement",
-    shortTitle: "Trustworthy AI",
-    subtitle: "Learn from failure",
-    description:
-      "Build closed-loop systems that discover failures, intervene before they unfold, and convert uncertainty and hard examples into safer behavior.",
-    href: "/research/#self-improvement",
-    topics: [
-      { label: "AI safety", href: "/research/ai-safety/" },
-      { label: "Alignment", href: "/research/alignment/" },
-      { label: "Robust learning", href: "/research/robust-learning/" }
-    ]
-  }
-] as const;
-
-export const projects = [
-  {
-    id: "mu0",
-    pillar: "world-models",
-    area: "Embodied AI",
-    title: "μ0",
-    summary:
-      "A scalable world model that predicts semantic 3D interaction traces, learning embodiment-agnostic motion priors from video-only pretraining for downstream robot control.",
-    image: "/assets/projects/mu0.png",
-    year: 2026,
-    links: [
-      { label: "Project", href: "https://mu0-wm.github.io/" },
-      { label: "Paper", href: "https://arxiv.org/abs/2606.13769" },
-      { label: "Code", href: "https://github.com/Yoonkyo/mu0" },
-      { label: "Models", href: "https://huggingface.co/collections/furonghuang-lab/mu0" }
-    ]
-  },
-  {
-    id: "tracegen",
-    pillar: "world-models",
-    area: "Embodied AI",
-    title: "TraceGen",
-    summary:
-      "A 3D interaction-trace world model that learns transferable robot behavior from cross-embodiment human and robot video.",
-    image: "/assets/projects/tracegen.png",
-    year: 2026,
-    links: [
-      { label: "Project", href: "https://tracegen.github.io/" },
-      { label: "Paper", href: "https://arxiv.org/abs/2511.21690" },
-      { label: "Code", href: "https://github.com/jayLEE0301/TraceGen" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/posts/furong-huang_embodiedai-robotlearning-worldmodels-activity-7401447812028289025-ifCB" }
-    ]
-  },
-  {
-    id: "momagraph",
-    pillar: "world-models",
-    area: "Embodied AI",
-    title: "MomaGraph",
-    summary:
-      "A state-aware unified scene graph that combines vision-language reasoning with explicit world state for long-horizon embodied task planning.",
-    image: "/assets/projects/momagraph.png",
-    year: 2026,
-    links: [
-      { label: "Project", href: "https://hybridrobotics.github.io/MomaGraph/" },
-      { label: "Paper", href: "https://arxiv.org/abs/2512.16909" },
-      { label: "Code", href: "https://github.com/HybridRobotics/MomaGraph" }
-    ]
-  },
-  {
-    id: "imagine-verify-execute",
-    pillar: "world-models",
-    area: "Embodied AI",
-    title: "Imagine, Verify, Execute",
-    summary:
-      "An agentic exploration framework in which vision-language models imagine candidate interactions, verify their value, and execute promising actions.",
-    image: "/assets/projects/imagine-verify-execute.png",
-    year: 2025,
-    links: [
-      { label: "Project", href: "https://ive-robot.github.io/" },
-      { label: "Paper", href: "https://arxiv.org/abs/2505.07815" },
-      { label: "Code", href: "https://github.com/jayLEE0301/imagine_verify_execute" }
-    ]
-  },
-  {
-    id: "make-an-agent",
-    pillar: "world-models",
-    area: "Embodied AI",
-    title: "Make-An-Agent",
-    summary:
-      "A behavior-prompted diffusion framework that generates generalizable robot policies for seen and unseen manipulation tasks.",
-    image: "/assets/projects/make-an-agent.gif",
-    year: 2024,
-    links: [
-      { label: "Project", href: "https://cheryyunl.github.io/make-an-agent/" },
-      { label: "Paper", href: "https://arxiv.org/abs/2407.10973" }
-    ]
-  }
-] as const;
-
-export const selectedPublicationTitles = [
-  "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos",
-  "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse",
-  "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach",
-  "Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away",
-  "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos",
-  "Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling"
-];
+export { projects, researchPillars, selectedPublicationTitles } from "./researchContent";
 
 export const news = [
   {
@@ -213,6 +185,75 @@ export const news = [
     type: "Publications",
     title: "Four papers accepted to NeurIPS 2025",
     detail: "Including one spotlight presentation."
+  },
+  {
+    date: "August 2025",
+    type: "Keynote",
+    title: "World-model learning for generalist agents",
+    detail: "Keynote at the RLC workshop on Reinforcement Learning Beyond Rewards.",
+    href: "https://rlbrew2-workshop.github.io/"
+  },
+  {
+    date: "June 2025",
+    type: "Keynote",
+    title: "Computer Vision in the Wild",
+    detail: "Keynote at the fourth CVPR Workshop on Computer Vision in the Wild.",
+    href: "https://computer-vision-in-the-wild.github.io/"
+  },
+  {
+    date: "April 2025",
+    type: "Keynote",
+    title: "Test-Time Thinking for Trust",
+    detail: "Keynote at the second Texas Colloquium on Distributed Learning on enhancing generative AI agents."
+  },
+  {
+    date: "April 2025",
+    type: "Keynote",
+    title: "Erasing the Invisible",
+    detail: "Keynote at the ICLR Generative AI Watermarking Workshop on stress-testing watermark robustness."
+  },
+  {
+    date: "April 2025",
+    type: "Keynote",
+    title: "World models for sequential decision-making",
+    detail: "Keynote at the ICLR World Models Workshop on learning foundation models for action."
+  },
+  {
+    date: "October 2024",
+    type: "Keynote",
+    title: "Towards Generative AI Security",
+    detail: "Keynote at the New York Academy of Sciences Annual Machine Learning Symposium on stress-testing and alignment."
+  },
+  {
+    date: "May 2024",
+    type: "Career",
+    title: "Promotion to associate professor with tenure",
+    detail: "Promotion in the University of Maryland Department of Computer Science, effective July 1, 2024."
+  },
+  {
+    date: "May 2024",
+    type: "Talk",
+    title: "Integrity in AI at the U.S. SEC",
+    detail: "A talk for the SEC AI Community of Practice on multimodal approaches to misinformation and content authenticity."
+  },
+  {
+    date: "May 2024",
+    type: "Public engagement",
+    title: "AskScience AMA on artificial intelligence",
+    detail: "A public Reddit discussion about machine learning, trustworthy AI, and current research questions."
+  },
+  {
+    date: "January 2024",
+    type: "Service",
+    title: "NSF–Amazon Fairness in AI PI Meeting",
+    detail: "Chair and organizer of the Fairness in Artificial Intelligence principal-investigator meeting."
+  },
+  {
+    date: "September 2023",
+    type: "Talk",
+    title: "Trustworthy Machine Learning in an Ever-Changing World",
+    detail: "University of Maryland Department of Computer Science colloquium.",
+    href: "https://youtu.be/jW8GaerC7qQ"
   }
 ];
 

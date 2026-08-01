@@ -2,29 +2,19 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ResearchMap from "../components/ResearchMap.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { projects, researchPillars } from "../data/site";
+import { applicationAreas, legacyProjects, projects, researchPillars } from "../data/site";
+import { researchAreas } from "../data/researchAreas";
 
-const featuredAreas = {
-  "world-models": {
-    title: "Embodied AI",
-    description: "World models become tangible when agents must understand space, bodies, state, and consequences. Explore representative systems, videos, code, and papers.",
-    href: "/research/embodied-ai/"
-  },
-  "reasoning-control": {
-    title: "AI Agents",
-    description: "Agents turn reasoning into purposeful behavior by planning, using tools, verifying progress, and recovering when an initial strategy fails.",
-    href: "/research/ai-agents/"
-  },
-  "self-improvement": {
-    title: "AI Safety",
-    description: "Adaptive attacks, agentic evaluations, and stress tests expose latent failures so models can be corrected before unsafe behavior reaches deployment.",
-    href: "/research/ai-safety/"
-  }
-} as const;
+const allProjects = [...projects, ...researchAreas.flatMap((area) => area.projects)];
+const representativeProjects = researchPillars.map((pillar) => {
+  const project = allProjects.find((candidate) => candidate.id === pillar.featuredArea.featuredProjectId);
+  if (!project) throw new Error(`Missing representative project ${pillar.featuredArea.featuredProjectId}`);
+  return project;
+});
 ---
 
 <BaseLayout title="Research — Furong Lab">
-  <section class="shell page-hero">
+  <section class="shell page-hero research-hero">
     <p class="eyebrow">Research program</p>
     <h1>Foundation models as decision-making systems.</h1>
     <p>
@@ -49,10 +39,19 @@ const featuredAreas = {
           </div>
         </div>
         <div class="pillar-feature">
-          <p class="eyebrow">Featured area</p>
-          <h3>{featuredAreas[pillar.id].title}</h3>
-          <p>{featuredAreas[pillar.id].description}</p>
-          <a class="button" href={featuredAreas[pillar.id].href}>Explore {featuredAreas[pillar.id].title} <span>→</span></a>
+          <div class="pillar-feature-visual">
+            <img src={pillar.featuredArea.image} alt={pillar.featuredArea.imageAlt} loading="lazy" />
+            <span>Pillar {pillar.number} flagship</span>
+          </div>
+          <div class="pillar-feature-body">
+            <p class="eyebrow">Featured area</p>
+            <h3>{pillar.featuredArea.title}</h3>
+            <p>{pillar.featuredArea.description}</p>
+            <div class="button-row pillar-actions">
+              <a class="button" href={pillar.featuredArea.href}>Explore {pillar.featuredArea.title} <span>→</span></a>
+              <a class="button secondary" href={`/publications/?pillar=${pillar.id}`}>View all {pillar.shortTitle} papers <span>→</span></a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -60,11 +59,38 @@ const featuredAreas = {
 
   <section class="shell section">
     <div class="section-heading">
+      <div><p class="eyebrow">Research in the world</p><h2>Methods become meaningful through where they are used.</h2></div>
+      <p>The lab’s theoretical and systems work has reached problems in science, infrastructure, finance, content integrity, and embodied intelligence.</p>
+    </div>
+    <div class="content-grid application-grid">
+      {applicationAreas.map((application) => (
+        <article class="content-card">
+          <h3>{application.title}</h3>
+          <p>{application.detail}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
       <div><p class="eyebrow">Representative projects</p><h2>Ideas you can inspect and use.</h2></div>
       <p>Project pages bring together papers, code, demonstrations, and the visual evidence behind the research.</p>
     </div>
-    <div class="project-grid">
-      {projects.slice(0, 2).map((project) => <ProjectCard project={project} />)}
+    <div class="project-grid featured-project-grid">
+      {representativeProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="research-foundations">
+    <div class="shell section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Research foundations</p><h2>Earlier projects that shaped the current program.</h2></div>
+        <p>Long-term fairness, robust reinforcement learning, model usability, difficulty-aware generalization, and adversarial robustness remain part of the lab’s intellectual foundation.</p>
+      </div>
+      <div class="project-grid legacy-project-grid">
+        {legacyProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
     </div>
   </section>
 </BaseLayout>

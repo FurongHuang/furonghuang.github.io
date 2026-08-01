@@ -6,7 +6,7 @@ import SocialLinks from "../components/SocialLinks.astro";
 import EmailReveal from "../components/EmailReveal.astro";
 import publicationData from "../data/publications.json";
 import { news, profile, selectedPublicationTitles } from "../data/site";
-import { alumni } from "../data/people";
+import { alumni, currentPhdStudents } from "../data/people";
 
 const works = publicationData.works as any[];
 const selectedWorks = selectedPublicationTitles
@@ -17,6 +17,7 @@ const featuredAlumni = featuredAlumniNames
   .map((name) => alumni.find((person) => person.name === name))
   .filter(Boolean);
 const placementDestinations = ["OpenAI", "MIT CSAIL", "Google", "Meta", "Apple", "Netflix", "Yale", "Amazon", "Capital One", "APQX"];
+const alumniDestinationCount = new Set(alumni.map((person) => person.destination?.split(" · ")[0]).filter(Boolean)).size;
 ---
 
 <BaseLayout>
@@ -43,6 +44,13 @@ const placementDestinations = ["OpenAI", "MIT CSAIL", "Google", "Meta", "Apple",
         <strong>Trust should be designed as a closed loop.</strong>
       </div>
     </div>
+  </section>
+
+  <section class="shell metrics-strip homepage-metrics" aria-label="Furong Lab at a glance">
+    <div class="metric"><strong>{publicationData.stats.normalized_works}</strong><span>Scholarly works</span></div>
+    <div class="metric"><strong>{currentPhdStudents.length}</strong><span>Current Ph.D. students</span></div>
+    <div class="metric"><strong>{alumni.length}</strong><span>Doctoral alumni</span></div>
+    <div class="metric"><strong>{alumniDestinationCount}</strong><span>Alumni destinations</span></div>
   </section>
 
   <section class="placement-band">

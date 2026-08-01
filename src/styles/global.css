@@ -502,6 +502,10 @@ main {
   text-transform: uppercase;
 }
 
+.homepage-metrics {
+  margin-bottom: 2.5rem;
+}
+
 .publication-overview {
   display: grid;
   gap: 2rem;

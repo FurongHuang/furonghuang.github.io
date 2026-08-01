@@ -14,6 +14,10 @@ interface Paper {
   category: string;
   venue: string;
   links: Link[];
+  identifiers?: {
+    arxiv?: string;
+    doi?: string;
+  };
   flags?: string[];
 }
 
@@ -46,6 +50,42 @@ const pillarInfo = pillarMeta[pillar];
 const thumbnail = publicationThumbnailByTitle[paper.title];
 const accent = pillarInfo.color;
 const venue = paper.venue?.trim().replace(/^,\s*/, "") || "";
+const bibtexVenue = venue !== String(paper.year) ? venue : "";
+
+const bibtexEscape = (value: string) => value
+  .replace(/\\/g, "")
+  .replace(/&/g, "\\&")
+  .replace(/%/g, "\\%")
+  .replace(/#/g, "\\#");
+const surname = (paper.authors?.[0]?.split(/\s+/).at(-1) || "huang")
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "")
+  .slice(0, 18) || "huang";
+const titleWord = paper.title.match(/[A-Za-z0-9]{4,}/)?.[0]?.toLowerCase() || "work";
+const citationKey = `${surname}${paper.year || "nd"}${titleWord}${paper.id.slice(-4)}`;
+const entryType = paper.category === "journal"
+  ? "article"
+  : ["conference", "workshop"].includes(paper.category)
+    ? "inproceedings"
+    : "misc";
+const primaryUrl = paper.identifiers?.doi
+  ? `https://doi.org/${paper.identifiers.doi}`
+  : cleanLinks.find((link) => /arxiv\.org|openreview\.net/i.test(link.url))?.url || cleanLinks[0]?.url;
+const bibtexFields: Array<[string, string | number | undefined]> = [
+  ["title", paper.title],
+  ["author", (paper.authors || []).join(" and ")],
+  [entryType === "article" ? "journal" : entryType === "inproceedings" ? "booktitle" : "howpublished", bibtexVenue],
+  ["year", paper.year || undefined],
+  ["doi", paper.identifiers?.doi],
+  ["eprint", paper.identifiers?.arxiv],
+  ["archivePrefix", paper.identifiers?.arxiv ? "arXiv" : undefined],
+  ["url", primaryUrl]
+];
+const bibtexBody = bibtexFields
+  .filter(([, value]) => value !== undefined && value !== "")
+  .map(([field, value]) => `  ${field} = {${bibtexEscape(String(value))}},`)
+  .join("\n");
+const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
 ---
 
 <article class:list={["paper-card", `accent-${accent}`, { compact }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-pillar={pillar} data-search={`${paper.title} ${authorText} ${paper.venue} ${pillarInfo.label}`.toLowerCase()}>
@@ -61,10 +101,40 @@ const venue = paper.venue?.trim().replace(/^,\s*/, "") || "";
     <h3>{paper.title}</h3>
     <p class="paper-authors">{authorText}</p>
     {venue && venue !== String(paper.year) && <p class="paper-venue">{venue}</p>}
-    {cleanLinks.length > 0 && (
-      <div class="paper-links">
-        {cleanLinks.map((link) => <a href={link.url}>{link.label}<span>↗</span></a>)}
-      </div>
-    )}
+    <div class="paper-links">
+      {cleanLinks.map((link) => <a href={link.url}>{link.label}<span>↗</span></a>)}
+      <button type="button" class="bibtex-copy" data-bibtex={bibtex} aria-label={`Copy BibTeX for ${paper.title}`}>
+        <span aria-hidden="true">⧉</span> <span data-copy-label>Copy BibTeX</span>
+      </button>
+    </div>
   </div>
 </article>
+
+<script>
+  const copyBibtex = async (button: HTMLButtonElement) => {
+    const bibtex = button.dataset.bibtex || "";
+    const label = button.querySelector<HTMLElement>("[data-copy-label]");
+
+    try {
+      await navigator.clipboard.writeText(bibtex);
+    } catch {
+      if (label) label.textContent = "Copy failed";
+      window.setTimeout(() => {
+        if (label) label.textContent = "Copy BibTeX";
+      }, 1800);
+      return;
+    }
+
+    if (label) label.textContent = "Copied";
+    button.classList.add("copied");
+    window.setTimeout(() => {
+      if (label) label.textContent = "Copy BibTeX";
+      button.classList.remove("copied");
+    }, 1800);
+  };
+
+  document.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".bibtex-copy");
+    if (button) void copyBibtex(button);
+  });
+</script>

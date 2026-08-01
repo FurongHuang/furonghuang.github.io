@@ -829,6 +829,27 @@ publication_overrides:
         url: https://si0wang.github.io/projects/COPlanner/
       - label: Code
         url: https://github.com/si0wang/COPlanner
+  - title: "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
+    pillar: world-models
+    thumbnail: /assets/projects/egoscale.png
+    social_links:
+      - label: Project
+        url: https://research.nvidia.com/labs/gear/egoscale/
+  - title: "Guava: An Effective and Universal Harness for Embodied Manipulation"
+    pillar: world-models
+    thumbnail: /assets/projects/guava.png
+    social_links:
+      - label: Project
+        url: https://guava-harness.github.io/
+  - title: "FLARE: Robot Learning with Implicit World Modeling"
+    pillar: world-models
+    thumbnail: /assets/projects/flare.png
+    social_links:
+      - label: Project
+        url: https://research.nvidia.com/labs/gear/flare/
+  - title: "LEMON: A Unified and Scalable 3D Multimodal Model for Universal Spatial Understanding"
+    pillar: world-models
+    thumbnail: /assets/projects/lemon.png
   - title: Agentic Critical Training
     pillar: reasoning-control
     thumbnail: /assets/projects/agentic-critical-training.png
@@ -866,6 +887,15 @@ publication_overrides:
     social_links:
       - label: LinkedIn vision
         url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+  - title: "Parallel-Probe: Towards Efficient Parallel Thinking via 2D Probing"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/parallel-probe.png
+  - title: "SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/soundnessbench.png
+    social_links:
+      - label: Project
+        url: https://hosytuyen.github.io/projects/SoundnessBench
   - title: "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
     pillar: self-improvement
     thumbnail: /assets/projects/propensitybench.png
@@ -916,6 +946,12 @@ publication_overrides:
         url: https://protected-beyond-worst-case.github.io/home/m_index.html
       - label: Code
         url: https://github.com/umd-huang-lab/PROTECTED
+  - title: "The Hidden Bias of Process Reward Models: PRISM for Rewarding the Right Reasoning"
+    pillar: self-improvement
+    thumbnail: /assets/projects/prism.png
+  - title: "MIRA: Towards Mitigating Reward Hacking in Inference-Time Alignment of T2I Diffusion Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/mira.png
   - title: "TraceVLA: Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies"
     thumbnail: /assets/projects/tracevla.webp
     social_links:

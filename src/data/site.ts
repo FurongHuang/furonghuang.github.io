@@ -6,6 +6,7 @@ export const profile = {
   scholar: "https://scholar.google.com/citations?hl=en&user=13yyuCcAAAAJ",
   x: "https://twitter.com/furongh",
   linkedin: "https://www.linkedin.com/in/furong-huang",
+  youtube: "https://www.youtube.com/@furongh",
   github: "https://github.com/FurongHuang",
   huggingface: "https://huggingface.co/furonghuang-lab"
 };
@@ -14,6 +15,7 @@ export const socialLinks = [
   { id: "scholar", label: "Google Scholar", href: profile.scholar },
   { id: "x", label: "X / Twitter", href: profile.x },
   { id: "linkedin", label: "LinkedIn", href: profile.linkedin },
+  { id: "youtube", label: "YouTube", href: profile.youtube },
   { id: "github", label: "GitHub", href: profile.github },
   { id: "huggingface", label: "Hugging Face", href: profile.huggingface }
 ];

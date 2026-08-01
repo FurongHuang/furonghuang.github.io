@@ -159,8 +159,8 @@ alumni:
     period: "2025"
     destination: Google
     image: /assets/people/xiaoyu-liu.jpg
-    imagePosition: 46% 30%
-    imageScale: 1.75
+    imagePosition: 33% 44%
+    imageScale: 1.35
   - name: Yuhang Zhou
     role: Ph.D.
     period: "2025"

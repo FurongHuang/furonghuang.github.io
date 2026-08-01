@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PaperCard from "../components/PaperCard.astro";
 import ResearchMap from "../components/ResearchMap.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { applicationAreas, legacyProjects, projects, researchPillars } from "../data/site";
+import publicationData from "../data/publications.json";
+import { applicationAreas, foundationalPublicationTitles, legacyProjects, projects, researchPillars } from "../data/site";
 import { researchAreas } from "../data/researchAreas";
 
 const allProjects = [...projects, ...researchAreas.flatMap((area) => area.projects)];
@@ -11,6 +13,14 @@ const representativeProjects = researchPillars.map((pillar) => {
   if (!project) throw new Error(`Missing representative project ${pillar.featuredArea.featuredProjectId}`);
   return project;
 });
+const works = publicationData.works as any[];
+const foundationalTitles = [
+  "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition",
+  ...foundationalPublicationTitles.filter((title) => title !== "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition")
+];
+const foundationalWorks = foundationalTitles
+  .map((title) => works.find((work) => work.title === title))
+  .filter(Boolean);
 ---
 
 <BaseLayout title="Research — Furong Lab">
@@ -85,11 +95,18 @@ const representativeProjects = researchPillars.map((pillar) => {
   <section class="research-foundations">
     <div class="shell section">
       <div class="section-heading">
-        <div><p class="eyebrow">Research foundations</p><h2>Earlier projects that shaped the current program.</h2></div>
-        <p>Long-term fairness, robust reinforcement learning, model usability, difficulty-aware generalization, and adversarial robustness remain part of the lab’s intellectual foundation.</p>
+        <div><p class="eyebrow">Research foundations</p><h2>Earlier work that shaped the current program.</h2></div>
+        <p>Optimization, latent-structure learning, graphical models, learning theory, fairness, and robustness established ideas that continue through the lab’s current work on foundation models.</p>
       </div>
       <div class="project-grid legacy-project-grid">
         {legacyProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <div class="section-heading foundation-paper-heading" style="margin-top: 5rem">
+        <div><p class="eyebrow">Foundational papers</p><h2>Methods beneath the modern systems.</h2></div>
+        <p>Selected early contributions include escaping saddle points in nonconvex optimization, recovering latent structure, and learning high-dimensional graphical models.</p>
+      </div>
+      <div class="paper-grid foundational-paper-grid">
+        {foundationalWorks.map((paper) => <PaperCard paper={paper} />)}
       </div>
     </div>
   </section>

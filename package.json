@@ -1,0 +1,20 @@
+{
+  "name": "furonghuang.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "sync": "node scripts/sync-content.mjs",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "typescript": "^6.0.0",
+    "yaml": "^2.9.0"
+  }
+}

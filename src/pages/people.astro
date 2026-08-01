@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PersonCard from "../components/PersonCard.astro";
+import { alumni, currentPhdStudents, postdocs } from "../data/people";
+
+const placementDestinations = Array.from(
+  new Set(alumni.map((person) => person.destination?.split(" · ")[0]).filter(Boolean))
+);
+---
+
+<BaseLayout title="People — Furong Lab" description="Current researchers and alumni of Furong Lab at the University of Maryland.">
+  <section class="shell page-hero people-hero">
+    <div>
+      <p class="eyebrow">Furong Lab · University of Maryland</p>
+      <h1>People building trustworthy AI.</h1>
+      <p>A research community spanning foundation models, reasoning, robotics, safety, fairness, and learning theory.</p>
+    </div>
+    <img src="/assets/headshot.jpg" alt="Furong Huang" />
+  </section>
+
+  <section class="shell section prospective-section" style="padding-top: 1rem">
+    <div class="prospective-composite">
+      <div class="cta prospective-cta">
+        <p class="eyebrow" style="color: white">Prospective students</p>
+        <h2>Interested in building trustworthy foundation-model systems?</h2>
+        <p>
+          Start by exploring the lab’s research pillars and recent projects. Strong applicants usually demonstrate depth through research, substantial technical projects, or careful engagement with problems in agents, robotics, reasoning, safety, multimodal learning, or learning theory.
+        </p>
+        <p>
+          Ph.D. admission is handled through the University of Maryland Department of Computer Science. Please use the official admissions process rather than sending application materials by email.
+        </p>
+        <div class="button-row">
+          <a class="button" href="https://www.cs.umd.edu/grad">UMD graduate admissions <span>↗</span></a>
+          <a class="button secondary" href="/research/">Explore Furong Lab research</a>
+        </div>
+      </div>
+      <figure class="prospective-group-photo">
+        <img
+          src="/assets/people/furong-lab-group.jpg"
+          alt="Furong Huang with members of Furong Lab outside a University of Maryland building"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Furong Lab at the University of Maryland</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="shell section" style="padding-top: 1rem">
+    <div class="section-heading">
+      <div><p class="eyebrow">Current group</p><h2>Postdoctoral researcher.</h2></div>
+      <p>Working across robotics, multimodal learning, world models, and trustworthy foundation models.</p>
+    </div>
+    <div class="people-grid compact-people">{postdocs.map((person) => <PersonCard person={person} />)}</div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Current group</p><h2>Doctoral advisees.</h2></div>
+      <p>Names link to personal research profiles where one is available. Portraits will continue to be added as new group members join.</p>
+    </div>
+    <div class="people-grid">{currentPhdStudents.map((person) => <PersonCard person={person} />)}</div>
+  </section>
+
+  <section class="alumni-band" id="alumni">
+    <div class="shell section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Alumni outcomes</p><h2>Great researchers, building what comes next.</h2></div>
+        <p>Graduates and former advisees carry Furong Lab’s work into leading research organizations, industry laboratories, and academia.</p>
+      </div>
+      <div class="people-destinations" aria-label="Alumni organizations">
+        {placementDestinations.map((destination) => <span>{destination}</span>)}
+      </div>
+      <div class="people-grid alumni-grid">{alumni.map((person) => <PersonCard person={person} />)}</div>
+    </div>
+  </section>
+</BaseLayout>

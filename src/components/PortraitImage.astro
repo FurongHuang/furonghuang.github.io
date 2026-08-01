@@ -1,0 +1,24 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  position?: string;
+  scale?: number;
+  className?: string;
+}
+
+const {
+  src,
+  alt,
+  position = "50% 25%",
+  scale = 1,
+  className
+} = Astro.props as Props;
+---
+
+<span
+  class:list={["portrait-media", className]}
+  style={`--media-position: ${position}; --media-scale: ${scale}`}
+>
+  <img src={src} alt={alt} loading="lazy" />
+</span>

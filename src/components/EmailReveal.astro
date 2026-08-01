@@ -1,0 +1,52 @@
+---
+const { inverted = false } = Astro.props as { inverted?: boolean };
+---
+
+<div class:list={["email-challenge", { inverted }]} data-email-challenge>
+  <button class="email-start" type="button" aria-expanded="false">Contact Furong</button>
+  <div class="email-question" hidden>
+    <span>Quick human check: how many research pillars does Furong Lab have?</span>
+    <div role="group" aria-label="Choose the number of research pillars">
+      {[2, 3, 4].map((number) => <button type="button" data-answer={number}>{number}</button>)}
+    </div>
+    <small aria-live="polite"></small>
+  </div>
+</div>
+
+<script>
+  const glyphs = [102, 117, 114, 111, 110, 103, 104, 64, 99, 115, 46, 117, 109, 100, 46, 101, 100, 117];
+  const address = () => String.fromCharCode(...glyphs);
+
+  for (const challenge of document.querySelectorAll<HTMLElement>("[data-email-challenge]")) {
+    const start = challenge.querySelector<HTMLButtonElement>(".email-start");
+    const question = challenge.querySelector<HTMLElement>(".email-question");
+    const status = challenge.querySelector<HTMLElement>("small");
+
+    start?.addEventListener("click", () => {
+      if (!question) return;
+      question.hidden = false;
+      start.setAttribute("aria-expanded", "true");
+      start.hidden = true;
+      question.querySelector<HTMLButtonElement>("button")?.focus();
+    });
+
+    for (const answer of challenge.querySelectorAll<HTMLButtonElement>("[data-answer]")) {
+      answer.addEventListener("click", () => {
+        if (answer.dataset.answer !== "3") {
+          if (status) status.textContent = "Not quite—look at the research map above.";
+          return;
+        }
+        const email = address();
+        if (question) {
+          question.innerHTML = "";
+          const link = document.createElement("a");
+          link.href = `mailto:${email}`;
+          link.textContent = email;
+          link.className = "revealed-email";
+          question.append(link);
+          link.focus();
+        }
+      });
+    }
+  }
+</script>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Reasoning as Control — Furong Huang" description="A vision for self-improving agentic systems across thinking control, action control, and workflow control.">
+  <article class="shell blog-post">
+    <header>
+      <a class="eyebrow" href="/blog/">Blog · Agentic AI</a>
+      <h1>Reasoning as Control</h1>
+      <p class="post-deck">Toward self-improving agentic systems across thinking, action, and workflow—not only larger or more capable base models.</p>
+      <time>July 30, 2026</time>
+    </header>
+
+    <div class="post-body">
+      <p>Self-improving AI is often framed as a model capability: a model improves its reasoning, learns from its own outputs, or acquires new skills. I think the model is only one layer.</p>
+      <p>The infrastructure around the model—and the way the system is deployed—can also be designed for self-improvement. An agentic system can improve how it allocates computation, evaluates and revises actions, and composes or reconfigures workflows for different tasks.</p>
+
+      <blockquote>A self-improving system should learn not only better answers, but better ways to think, act, and organize its own computation.</blockquote>
+
+      <h2>Thinking control</h2>
+      <p>The first level governs what happens inside inference. Rather than treating decoding as passive sampling, we can allocate search, evaluate partial trajectories, and steer generation toward desired behavior.</p>
+      <p><a href="/publications/?q=GenARM">GenARM</a> uses an autoregressive reward model to guide generation token by token. <a href="/publications/?q=Transfer%20Q-star">Transfer Q★</a> treats decoding as value-guided control under distribution shift. <a href="/publications/?q=Collab">Collab</a> and <a href="/publications/?q=FusionRoute">FusionRoute</a> extend control across multiple models, deciding how their complementary capabilities should contribute during generation.</p>
+      <p>The central question is not simply whether more test-time compute improves accuracy. It is how to spend computation where it changes the answer, while keeping the resulting policy coherent and auditable.</p>
+
+      <h2>Action control</h2>
+      <p>An agent must do more than produce a plausible chain of thought. It must choose actions, observe their consequences, identify failure, and recover. Self-improvement therefore needs an explicit feedback loop between reasoning and behavior.</p>
+      <p><a href="/publications/?q=Agentic%20Critical%20Training">Agentic Critical Training</a> turns critique and revision into a learning signal for multi-stage agents. Instead of treating self-critique as decorative prose, it makes proposal, inspection, and correction part of a controlled training process.</p>
+      <p>This view also changes evaluation. We should ask whether an agent can recognize that a plan is failing, localize the failure, and adapt its actions—not merely whether its final response resembles a reference answer.</p>
+
+      <h2>Workflow control</h2>
+      <p>The third level operates above any single reasoning trace. Complex agents rely on tools, critics, retrievers, simulators, and specialized models. A fixed pipeline cannot be ideal for every task.</p>
+      <p><a href="/publications/?q=FlowBank">FlowBank</a> explores a reusable portfolio of workflow components that can be precomputed, selected, and recomposed. The system improves not only by changing model parameters, but by learning which organization of computation works best for each query.</p>
+      <p>This suggests a broader research program: agentic infrastructure should behave less like a static software stack and more like an adaptive policy. It should evaluate its own organization, preserve useful workflow fragments, and change how capabilities are invoked in deployment.</p>
+
+      <h2>Beyond the model layer</h2>
+      <p>More capable base models will certainly matter. But self-improving AI will also require systems that can examine how those capabilities are being used. The important boundary is no longer simply training versus inference. It is between systems that execute a fixed procedure and systems that can evaluate, adapt, and improve the procedure itself.</p>
+
+      <div class="post-links"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/">Original LinkedIn post <span>↗</span></a><a href="/research/agentic-workflows/">Explore agentic workflows <span>→</span></a></div>
+    </div>
+  </article>
+</BaseLayout>

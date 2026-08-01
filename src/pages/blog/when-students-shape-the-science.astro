@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="When Students Shape the Science — Furong Huang" description="How six graduating researchers shaped Furong Lab’s evolving vision for data-aware, governable, adaptive, and physically grounded AI.">
+  <article class="shell blog-post">
+    <header>
+      <a class="eyebrow" href="/blog/">Blog · Mentorship and lab vision</a>
+      <h1>When Students Shape the Science</h1>
+      <p class="post-deck">Six graduating researchers, six intellectual arcs, and one evolving vision for data-aware, governable, steerable, adaptive, fair, robust, and physically grounded AI.</p>
+      <time>May 22, 2026</time>
+    </header>
+
+    <div class="post-body">
+      <p>Graduation season is always emotional. It celebrates students, but it also creates a moment to look back and recognize how deeply students shape the intellectual direction of a lab.</p>
+      <p>From Fall 2025 through Spring 2026, six extraordinary researchers graduated from our group: Souradip Chakraborty, Chenghao Deng, Mucong Ding, Michael-Andrei Panaitescu-Liess, Xiyao Wang, and Ruijie Zheng. Their work did not simply populate a publication list. Each person changed how I think about an important part of modern AI.</p>
+
+      <blockquote>Students do not simply work in a lab. They change its questions, sharpen its taste, and make its vision more ambitious.</blockquote>
+
+      <h2>Mucong Ding: data is part of the algorithm</h2>
+      <p>For a long time, machine learning treated data as something static: a dataset to train on, a benchmark to evaluate on, or a preprocessing step before the “real” algorithm began. Mucong’s research advances a different view. In modern AI, data is itself a design space.</p>
+      <p><a href="/publications/?q=Easy2Hard">Easy2Hard-Bench</a> builds standardized difficulty labels for profiling generalization. <a href="/publications/?q=SAFLEX">SAFLEX</a> treats data augmentation as an adaptive learning problem. <a href="/publications/?q=WAVES">WAVES</a> turns content provenance into a rigorous stress-testing problem. <a href="/publications/?q=SAIL">SAIL</a> and EnsemW2S study how data, feedback, weak supervision, and self-improvement can become engines for stronger models.</p>
+      <p>The common message is simple: AI will not advance merely by throwing more data at bigger models. Progress depends on understanding data’s structure, difficulty, quality, provenance, representation, and feedback loops.</p>
+
+      <h2>Michael-Andrei Panaitescu-Liess: governance is an adaptive game</h2>
+      <p>Michael’s work asks what happens after data enters a generative-AI system: how can we govern ownership, provenance, and misuse when every defense changes the attacker’s incentives?</p>
+      <p>His award-winning work on whether language-model watermarking can prevent copyrighted-text generation showed that a mechanism helping one part of governance can complicate another. Watermarking may reduce verbatim generation while making membership-inference auditing more difficult. <a href="/publications/?q=PoisonedParrot">PoisonedParrot</a> then demonstrated how copyrighted material can be fragmented, disguised, and introduced through subtle poisoning.</p>
+      <p>Together, these projects show why copyright governance is not a one-shot watermarking or detection problem. It is an adaptive game involving memorization, attribution, evasion, poisoning, and auditing. Trustworthy AI requires stress-testing the whole pipeline.</p>
+
+      <h2>Souradip Chakraborty: test-time compute needs governance</h2>
+      <p>Souradip led many of our efforts on controlled generation, test-time alignment, and the limits of AI-generated-content detection. His work asks a foundational question: what should control inference-time AI?</p>
+      <p><a href="/publications/?q=Transfer%20Q-star">Transfer Q★</a> treats decoding as value-guided control under distribution shift: how can we steer a model toward a target reward without pushing it into brittle, off-policy behavior? <a href="/publications/?q=Collab">Collab</a> extends the same perspective from one model to a mixture of agents, turning alignment into token-level policy selection.</p>
+      <p>The frontier is not test-time compute as a slogan. It is test-time governance: principled, auditable ways to control generation while preserving coherence, utility, and alignment. Souradip’s work on the possibilities and impossibilities of AI-text detection adds a necessary policy lesson: some governance problems require understanding what is fundamentally detectable, not simply building a larger detector.</p>
+
+      <h2>Chenghao Deng: trustworthy AI must adapt over time</h2>
+      <p>Chenghao’s work sits at the heart of trustworthy sequential decision-making. <a href="/publications/?q=Adapting%20Static%20Fairness">Adapting Static Fairness to Sequential Decision-Making</a> asks what fairness means when every decision changes the future state of a system. Static parity is inadequate when benefits, opportunities, and harms accumulate over time.</p>
+      <p><a href="/publications/?q=Beyond%20Worst-case">Beyond Worst-case Attacks</a> makes a parallel point about robustness. A robust policy should not be trapped by permanent worst-case pessimism; it should discover strong anchor policies and adapt its defense to the adversary it actually faces. More recently, <a href="/publications/?q=FlowBank">FlowBank</a> carries this adaptive principle into agentic infrastructure through reusable workflows that can be selected and recomposed for different queries.</p>
+      <p>The broader lesson is one I care about deeply: trustworthy AI should be adaptive, not merely conservative.</p>
+
+      <h2>Xiyao Wang: the next scaling law is about self-improvement</h2>
+      <p>Xiyao introduced me to model-based reinforcement learning and planted the original seed of world modeling in my thinking. Early projects such as <a href="/publications/?q=Live%20in%20the%20Moment">Live in the Moment</a> and <a href="/publications/?q=COPlanner">COPlanner</a> shaped how I understand dynamics, planning, and policy-aware models.</p>
+      <p>Later, his work moved toward self-improving vision-language models. <a href="/publications/?q=SIMA">SIMA</a>, <a href="/publications/?q=VisVM">VisVM</a>, <a href="/publications/?q=SoTA%20with%20Less">SoTA with Less</a>, and <a href="/publications/?q=ViCrit">ViCrit</a> share a central idea: the future of foundation models will not be determined only by scale. It will depend on how we select data, construct critics, allocate search, and connect training-time with test-time computation.</p>
+      <p>The next scaling law may therefore be less about model or dataset size than about data quality, difficulty, feedback, critics, and structured self-improvement.</p>
+
+      <h2>Ruijie Zheng: world models need the right representation space</h2>
+      <p>Ruijie is one of the main reasons I stepped into robotics and physical AI. From <a href="/publications/?q=TACO">TACO</a> and <a href="/publications/?q=Premier-TACO">Premier-TACO</a> through <a href="/publications/?q=TraceVLA">TraceVLA</a> and <a href="/publications/?q=FLARE">FLARE</a>, he helped us ask a question that is now central to the lab: what is the right representation space for a robot world model?</p>
+      <p>Pixel prediction provides a rich signal but spends enormous capacity on texture, lighting, backgrounds, and camera artifacts. Unconstrained latent models are compact but can collapse, become uninterpretable, and make intervention difficult. We want the best of both: representations compact enough for efficient learning, structured enough for interpretation, and grounded enough for planning and intervention.</p>
+      <p><a href="/publications/?q=TraceGen">TraceGen</a> explores 3D interaction-trace space, while <a href="/publications/?q=MomaGraph">MomaGraph</a> uses state-aware scene graphs containing spatial, functional, state, and affordance information. These are not merely new robot models. They are prototypes of a research agenda in which world models are judged by whether agents can reason, plan, intervene, and act in their representation space.</p>
+
+      <h2>The vision they leave with the lab</h2>
+      <p>Looking across these six researchers, I see the evolving arc of Furong Lab:</p>
+      <p>Data is not only fuel; it is part of the algorithm. Governance is an adaptive game, so we need rigorous stress tests rather than isolated tools. Alignment cannot end at training time. Detection has limits that policy must respect. Fairness and robustness unfold over long horizons. Self-improvement depends on better data, critics, search, and feedback—not scale alone. Physical AI needs world models in representations designed for action.</p>
+      <p>I am proud of Souradip, Chenghao, Mucong, Michael, Xiyao, and Ruijie not only for their papers and awards, but for the intellectual courage, persistence, and ambition they brought to our group. They made me revise my view of what is possible. The future of AI is in very good hands.</p>
+
+      <div class="post-links"><a href="https://www.linkedin.com/pulse/when-students-shape-science-reflections-data-ai-governance-huang-uo5ye/">Original LinkedIn article <span>↗</span></a><a href="/people/">Meet the people of Furong Lab <span>→</span></a></div>
+    </div>
+  </article>
+</BaseLayout>

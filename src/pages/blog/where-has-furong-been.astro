@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Behind the Scenes of Our NeurIPS Competition — Furong Huang">
+  <article class="shell blog-post">
+    <header>
+      <a class="eyebrow" href="/blog/">Blog · Academic service</a>
+      <h1>Where Has Furong Been? Behind the Scenes of Our NeurIPS Competition</h1>
+      <p class="post-deck">A candid account of turning a research concern about invisible watermarks into a community stress test—and discovering how much unseen work serious academic service requires.</p>
+      <time>September 24, 2024</time>
+    </header>
+
+    <div class="post-body">
+      <p>The project began during a conversation with Nicholas Carlini, Bo Li, and Tom Goldstein at a PI meeting in San Jose. We were discussing a deceptively simple question: if an image carries an invisible watermark, how much confidence should that signal really earn?</p>
+      <p>Laboratory evaluations can make a watermark look dependable, yet the real world is not a clean benchmark. Images are resized, cropped, compressed, edited, and passed between platforms. False positives can wrongly label authentic work as synthetic, while open detection interfaces can help an attacker reverse-engineer the very signal they are meant to protect.</p>
+
+      <h2>From research question to competition</h2>
+      <p>We wanted a test that resembled the black-box conditions a deployed watermark would face. That led to <a href="https://erasinginvisible.github.io/">Erasing the Invisible</a>, a NeurIPS competition asking participants to remove watermarks while preserving image quality and meaning.</p>
+      <p>Getting the scientific design accepted was only the beginning. Students were balancing internships, paper deadlines, and the job market. We recruited additional help, built a starter kit and submission process, and began negotiating the practical details of running a public competition.</p>
+
+      <h2>Choosing a platform under pressure</h2>
+      <p>Kaggle offered reach and a mature competition environment, but the research track brought fundraising and legal requirements that did not fit our timeline. A community track reduced some barriers, yet technical support constraints remained. Near launch, we pivoted to Codabench so we could control the evaluation pipeline and keep the challenge on schedule.</p>
+      <p>The move required the team to divide front-end, back-end, evaluation, and resource work while the ICLR cycle was already underway. It was exhausting, but it also made the competition a genuine systems project rather than a static benchmark release.</p>
+
+      <blockquote>Academic service creates the platforms on which ideas can be tested, challenged, and exchanged.</blockquote>
+
+      <h2>What stayed with me</h2>
+      <p>The experience changed how I value service. We readily celebrate papers and intellectual breakthroughs, but well-run workshops, benchmarks, and competitions demand their own rigor, judgment, and sustained coordination. That labor is often invisible precisely when the final event works.</p>
+      <p>I am grateful to the full organizing team, especially Mucong Ding, Tahseen Rabbani, Bang An, Chenghao Deng, and Tom Goldstein. Their persistence turned an informal discussion into a community resource for evaluating whether image watermarks survive outside idealized settings.</p>
+
+      <div class="post-links"><a href="https://erasinginvisible.github.io/">Competition website <span>↗</span></a><a href="https://huggingface.co/spaces/umd-huang-lab/WAVES">Watermark demo <span>↗</span></a></div>
+    </div>
+  </article>
+</BaseLayout>

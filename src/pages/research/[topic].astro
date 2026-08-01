@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import PaperCard from "../../components/PaperCard.astro";
+import publicationData from "../../data/publications.json";
+import { pillarMeta } from "../../data/research";
+import { researchAreas, type ResearchArea } from "../../data/researchAreas";
+
+export function getStaticPaths() {
+  return researchAreas.map((area) => ({ params: { topic: area.slug }, props: { area } }));
+}
+
+const { area } = Astro.props as { area: ResearchArea };
+const works = publicationData.works as any[];
+const relatedTitles = area.projects.map((project) => project.relatedTitle).filter(Boolean);
+const relatedWorks = relatedTitles
+  .map((title) => works.find((work) => work.title === title))
+  .filter(Boolean);
+const pillar = pillarMeta[area.pillar];
+---
+
+<BaseLayout title={`${area.title} — Furong Lab`} description={`${area.title} research from Furong Lab: ${area.intro}`}>
+  <section class="shell page-hero project-page-hero">
+    <p class="eyebrow"><a href={`/research/#${area.pillar}`}>{pillar.label}</a></p>
+    <h1>{area.title}</h1>
+    <p>{area.kicker}. {area.intro}</p>
+    <div class="topic-links">
+      <a href="#projects">Projects <span>↓</span></a>
+      <a href="#papers">Related papers <span>↓</span></a>
+    </div>
+  </section>
+
+  <section class="embodied-statement">
+    <div class="shell">
+      <p class="eyebrow">Research question</p>
+      <h2>{area.question}</h2>
+      <p>{area.intro}</p>
+      <ul class="method-list" aria-label="Research methods">
+        {area.methods.map((method) => <li>{method}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="shell section" id="projects">
+    <div class="section-heading">
+      <div><p class="eyebrow">Representative projects</p><h2>{area.kicker}.</h2></div>
+      <p>Official project pages, papers, code, datasets, and social explanations are linked wherever available.</p>
+    </div>
+    <div class="project-grid">{area.projects.map((project) => <ProjectCard project={project} />)}</div>
+  </section>
+
+  <section class="shell section" id="papers">
+    <div class="section-heading">
+      <div><p class="eyebrow">Selected publications</p><h2>The papers behind the projects.</h2></div>
+      <p>Browse the full publication database for the broader body of work in {pillar.shortLabel.toLowerCase()}.</p>
+    </div>
+    <div class="paper-grid">{relatedWorks.map((paper) => <PaperCard paper={paper} />)}</div>
+    <div class="button-row" style="margin-top: 2rem">
+      <a class="button secondary" href={`/publications/?pillar=${area.pillar}`}>All {pillar.shortLabel.toLowerCase()} papers <span>→</span></a>
+    </div>
+  </section>
+</BaseLayout>

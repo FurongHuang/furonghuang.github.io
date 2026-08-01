@@ -1,0 +1,201 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ResearchMap from "../components/ResearchMap.astro";
+import PaperCard from "../components/PaperCard.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import EmailReveal from "../components/EmailReveal.astro";
+import PortraitImage from "../components/PortraitImage.astro";
+import publicationData from "../data/publications.json";
+import { affiliations, news, profile, selectedPublicationTitles, selectedRecognition } from "../data/site";
+import { alumni, currentPhdStudents } from "../data/people";
+
+const works = publicationData.works as any[];
+const selectedWorks = selectedPublicationTitles
+  .map((title) => works.find((work) => work.title === title))
+  .filter(Boolean);
+const featuredAlumniNames = ["Bang An", "Sicheng Zhu", "Souradip Chakraborty", "Xiaoyu Liu", "Yuhang Zhou", "Yuancheng Xu"];
+const featuredAlumni = featuredAlumniNames
+  .map((name) => alumni.find((person) => person.name === name))
+  .filter(Boolean);
+const placementDestinations = ["OpenAI", "MIT CSAIL", "Google", "Meta", "Apple", "Netflix", "Yale", "Amazon", "Capital One", "APQX"];
+const alumniDestinationCount = new Set(alumni.map((person) => person.destination?.split(" · ")[0]).filter(Boolean)).size;
+---
+
+<BaseLayout>
+  <section class="shell hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Trustworthy foundation models · University of Maryland</p>
+      <h1>AI systems that <em>reason, act, recover,</em> and improve.</h1>
+      <p class="hero-intro">
+        Furong Huang's lab studies foundation models as decision-making systems—models that understand physical and digital worlds, reason under uncertainty, act through tools or bodies, and learn from failure.
+      </p>
+      <p class="hero-identity">{profile.title} · {profile.institution}</p>
+      <SocialLinks />
+      <div class="button-row">
+        <a class="button" href="/research/">Explore the research <span>→</span></a>
+        <a class="button secondary" href="/publications/">Browse publications</a>
+      </div>
+    </div>
+    <div class="portrait-stage">
+      <div class="portrait-frame">
+        <img src="/assets/bodyshot.JPG" alt="Furong Huang" />
+      </div>
+      <div class="portrait-caption">
+        <span>Research vision</span>
+        <strong>Trust should be designed as a closed loop.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell metrics-strip homepage-metrics" aria-label="Furong Lab at a glance">
+    <div class="metric"><strong>{publicationData.stats.normalized_works}</strong><span>Scholarly works</span></div>
+    <div class="metric"><strong>{currentPhdStudents.length}</strong><span>Current Ph.D. students</span></div>
+    <div class="metric"><strong>{alumni.length}</strong><span>Doctoral alumni</span></div>
+    <div class="metric"><strong>{alumniDestinationCount}</strong><span>Alumni destinations</span></div>
+  </section>
+
+  <section class="shell section homepage-about">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">About Furong</p>
+        <h2>Research leadership across machine learning, robotics, and trustworthy AI.</h2>
+      </div>
+      <p>
+        Furong Huang is a tenured associate professor of computer science at the University of Maryland, building learning systems that connect mathematical foundations with consequential real-world behavior.
+      </p>
+    </div>
+    <div class="content-grid">
+      <article class="content-card">
+        <p class="eyebrow">UMD affiliations</p>
+        <h3>A deliberately interdisciplinary home.</h3>
+        <div class="profile-link-list">
+          {affiliations.map((affiliation) => <a href={affiliation.href}>{affiliation.label} <span>↗</span></a>)}
+        </div>
+      </article>
+      <article class="content-card">
+        <p class="eyebrow">Academic path</p>
+        <h3>From learning theory to foundation-model systems.</h3>
+        <p>Before joining UMD in 2017, Furong was a postdoctoral researcher at Microsoft Research New York City, mentored by John Langford and Robert Schapire.</p>
+        <p>She earned her Ph.D. at UC Irvine with Anima Anandkumar, working on high-dimensional learning and tensor methods.</p>
+      </article>
+      <article class="content-card">
+        <p class="eyebrow">Research support</p>
+        <h3>Public and industrial partners.</h3>
+        <p>Research has been supported by NSF, DARPA, ONR, AFOSR, Good Ventures through Open Philanthropy, NVIDIA, Microsoft, Adobe, JP Morgan, Capital One, Amazon, and Peraton.</p>
+        <a class="text-link" href="/cv/">See the complete record <span>→</span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="placement-band">
+    <div class="shell placement-inner">
+      <div class="placement-heading">
+        <div>
+          <p class="eyebrow">Where talent goes</p>
+          <h2>The lab’s strongest record is its people.</h2>
+        </div>
+        <p>
+          Furong Lab alumni carry their research into leading AI organizations, technology companies, and academic institutions. Their trajectories are part of the lab’s impact—not a footnote to it.
+        </p>
+      </div>
+      <div class="destination-cloud" aria-label="Selected alumni destinations">
+        {placementDestinations.map((destination) => <span>{destination}</span>)}
+      </div>
+      <div class="placement-people">
+        {featuredAlumni.map((person) => person && (
+          <a class="placement-person" href={person.href || "/people/"}>
+            {person.image ? <PortraitImage src={person.image} alt={`Portrait of ${person.name}`} position={person.imagePosition} scale={person.imageScale} className="placement-photo" /> : <span class="placement-initials" aria-hidden="true">{person.name.split(" ").map((part) => part[0]).join("").slice(0, 2)}</span>}
+            <span><strong>{person.name}</strong><small>{person.destination}</small></span>
+          </a>
+        ))}
+      </div>
+      <a class="placement-link" href="/people/#alumni">Meet the extended Furong Lab community <span>→</span></a>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Research architecture</p>
+        <h2>Three connected loops for capable and trustworthy AI.</h2>
+      </div>
+      <p>
+        The lab connects models of the world, policies for allocating reasoning, and mechanisms that turn failures into safer future behavior.
+      </p>
+    </div>
+    <ResearchMap />
+  </section>
+
+  <section class="recognition-band">
+    <div class="shell section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Selected recognition</p>
+          <h2>Recognition for research that connects rigor with impact.</h2>
+        </div>
+        <p>A concise selection from the complete awards and grants record maintained in the CV.</p>
+      </div>
+      <div class="content-grid recognition-grid">
+        {selectedRecognition.map((item) => (
+          <article class="content-card recognition-card">
+            <span>{item.year}</span>
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Selected work · 2026</p>
+        <h2>Research designed to be explored, not merely listed.</h2>
+      </div>
+      <p>
+        This visual layer highlights the ideas behind selected papers. The complete, searchable scholarly record remains one click away.
+      </p>
+    </div>
+    <div class="paper-grid">
+      {selectedWorks.map((paper) => <PaperCard paper={paper} />)}
+    </div>
+    <div class="button-row" style="margin-top: 2rem">
+      <a class="button secondary" href="/publications/">View all {publicationData.stats.normalized_works} records <span>→</span></a>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Latest signals</p>
+        <h2>News from the lab.</h2>
+      </div>
+      <p>Talks, new research, student milestones, and recognitions—kept concise and connected to the underlying work.</p>
+    </div>
+    <div class="news-grid">
+      {news.slice(0, 3).map((item) => (
+        <article class="news-card">
+          <time>{item.date}</time>
+          <span class="news-type">{item.type}</span>
+          <h3>{item.title}</h3>
+          <p>{item.detail}</p>
+          {item.href && <a href={item.href}>Read more <span>↗</span></a>}
+        </article>
+      ))}
+    </div>
+    <div class="button-row" style="margin-top: 2rem"><a class="button secondary" href="/news/">See all news <span>→</span></a></div>
+  </section>
+
+  <section class="shell section">
+    <div class="cta">
+      <p class="eyebrow" style="color: white">Research with us</p>
+      <h2>Build foundation models that can earn trust through their behavior.</h2>
+      <p>Explore current work, meet the research group, or get in touch about collaboration and student opportunities.</p>
+      <div class="button-row">
+        <a class="button" href="/people/">Meet the group</a>
+        <EmailReveal inverted />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

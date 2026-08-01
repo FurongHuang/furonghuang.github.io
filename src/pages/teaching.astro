@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const recentCourses = [
+  ["Summer 2026", "Generative AI Agents", "DeepLearn 2026", ""],
+  ["Spring 2026", "Introduction to Machine Learning", "CMSC 422", "https://umd-huang-lab.github.io/cmsc422-spring2026/"],
+  ["Fall 2025", "Generative AI Agents", "CMSC 848N", "https://umd-huang-lab.github.io/cmsc848n-fall2025/"],
+  ["Spring 2024", "Introduction to Machine Learning", "CMSC 422", "http://www.cs.umd.edu/class/spring2024/cmsc422-0201/"],
+  ["Fall 2023", "Algorithms in Machine Learning", "CMSC 742", "https://www.cs.umd.edu/class/fall2023/cmsc742/"],
+  ["Spring 2023", "Algorithms in Machine Learning", "CMSC 742", "https://www.cs.umd.edu/class/spring2023/cmsc742/"],
+  ["Fall 2022", "Introduction to Machine Learning", "CMSC 422", "http://www.cs.umd.edu/class/fall2022/cmsc422-0201/"],
+  ["Spring 2022", "Introduction to Machine Learning", "CMSC 422", "https://www.cs.umd.edu/class/spring2022/cmsc422-0101/"]
+];
+
+const earlierCourses = [
+  ["Fall 2020", "Algorithms in Machine Learning: Guarantees and Analyses", "CMSC 828U", "http://www.cs.umd.edu/class/fall2020/cmsc828u/", "https://www.youtube.com/playlist?list=PLM0SC1uXFSPo5TO_UN7fia1luj73yuHEC"],
+  ["Spring 2019", "Algorithms in Machine Learning: Guarantees and Analyses", "CMSC 828U", "http://www.cs.umd.edu/class/spring2019/cmsc828u/", ""],
+  ["Fall 2018", "Advanced Topics in Machine Learning", "CMSC 498V", "https://www.cs.umd.edu/class/fall2018/cmsc498V/", ""],
+  ["Spring 2018", "Introduction to Machine Learning", "CMSC 422", "http://www.cs.umd.edu/class/spring2018/cmsc422-0101/", ""],
+  ["Fall 2017", "Machine Learning: Spectral Methods and Reinforcement Learning", "CMSC 828R", "http://www.cs.umd.edu/class/fall2017/cmsc828R/", ""]
+];
+---
+
+<BaseLayout title="Teaching — Furong Huang">
+  <section class="shell page-hero">
+    <p class="eyebrow">Teaching and curriculum</p>
+    <h1>From machine learning foundations to generative AI agents.</h1>
+    <p>Courses connect theoretical guarantees with hands-on systems for reasoning, planning, tool use, memory, and evaluation.</p>
+  </section>
+
+  <section class="shell section" style="padding-top: 1rem">
+    <div class="course-list">
+      {recentCourses.map(([term, title, code, url]) => (
+        <div class="course-row">
+          <span>{term}</span>
+          <strong>{title} · {code}</strong>
+          {url ? <a href={url}>Course site ↗</a> : <span>International school</span>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section teaching-archive">
+    <div class="section-heading">
+      <div><p class="eyebrow">Earlier teaching</p><h2>Course archive, 2017–2020.</h2></div>
+      <p>Earlier graduate and undergraduate courses preserve the theoretical foundations behind the lab’s current curriculum.</p>
+    </div>
+    <div class="course-list">
+      {earlierCourses.map(([term, title, code, url, videos]) => (
+        <div class="course-row">
+          <span>{term}</span>
+          <strong>{title} · {code}</strong>
+          <span class="course-actions">
+            <a href={url}>Course site ↗</a>
+            {videos ? <a href={videos}>Lectures ↗</a> : null}
+          </span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="content-grid">
+      <article class="content-card"><p class="eyebrow">New curriculum</p><h2>Generative AI Agents</h2><p>Graduate lectures and projects on LLM reasoning, planning, tools, memory, robust agent design, and evaluation.</p></article>
+      <article class="content-card"><p class="eyebrow">Graduate theory</p><h2>Algorithms in Machine Learning</h2><p>Methods with theoretical performance guarantees and applications across networks, biology, and language.</p></article>
+      <article class="content-card"><p class="eyebrow">Undergraduate foundations</p><h2>Introduction to Machine Learning</h2><p>Learning theory, latent-variable models, and principled approaches to deep learning.</p></article>
+    </div>
+  </section>
+</BaseLayout>

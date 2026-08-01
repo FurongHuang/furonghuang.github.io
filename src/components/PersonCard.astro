@@ -1,0 +1,33 @@
+---
+import type { Person } from "../data/people";
+import PortraitImage from "./PortraitImage.astro";
+
+const { person } = Astro.props as { person: Person };
+const initials = person.name
+  .replace(/\([^)]*\)/g, "")
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part) => part[0])
+  .join("");
+---
+
+<article class="person-card">
+  {person.image ? (
+    <PortraitImage
+      src={person.image}
+      alt={`Portrait of ${person.name}`}
+      position={person.imagePosition}
+      scale={person.imageScale}
+      className="person-photo"
+    />
+  ) : (
+    <div class="person-initials" aria-hidden="true">{initials}</div>
+  )}
+  <div>
+    <h3>{person.href ? <a href={person.href} target="_blank" rel="noopener">{person.name}<span>↗</span></a> : person.name}</h3>
+    <p>{person.role}</p>
+    {person.period && <span class="person-period">{person.period}</span>}
+    {person.destination && <strong>{person.destination}</strong>}
+  </div>
+</article>

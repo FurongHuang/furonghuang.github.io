@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { news } from "../data/site";
+---
+
+<BaseLayout title="News — Furong Lab" description="Research, talks, awards, publications, and people news from Furong Lab at UMD.">
+  <section class="shell page-hero">
+    <p class="eyebrow">Lab notebook</p>
+    <h1>News</h1>
+    <p>Research releases, talks, student milestones, awards, and other signals from Furong Lab.</p>
+  </section>
+  <section class="shell section" style="padding-top: 0">
+    <div class="news-list">
+      {news.map((item) => (
+        <article>
+          <time>{item.date}</time>
+          <span class="news-type">{item.type}</span>
+          <div><h2>{item.title}</h2><p>{item.detail}</p></div>
+          {item.href ? <a href={item.href}>Open <span>↗</span></a> : <span></span>}
+        </article>
+      ))}
+    </div>
+    <p class="archive-note">This curated archive emphasizes consequential releases, invited talks, recognition, career milestones, public engagement, and academic service.</p>
+  </section>
+</BaseLayout>

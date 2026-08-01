@@ -1,0 +1,158 @@
+---
+import { classifyPublication, pillarMeta, publicationSocialLinksByTitle, publicationThumbnailByTitle } from "../data/research";
+
+interface Link {
+  label?: string;
+  url?: string;
+}
+
+interface Paper {
+  id: string;
+  title: string;
+  authors: string[];
+  year: number | null;
+  category: string;
+  venue: string;
+  links: Link[];
+  identifiers?: {
+    arxiv?: string;
+    doi?: string;
+  };
+  flags?: string[];
+}
+
+const { paper, compact = false } = Astro.props as { paper: Paper; compact?: boolean };
+const inferLabel = (label: string | undefined, url: string) => {
+  const cleanLabel = label?.trim();
+  if (cleanLabel) return cleanLabel;
+  if (/arxiv\.org/i.test(url)) return "arXiv";
+  if (/openreview\.net/i.test(url)) return "OpenReview";
+  if (/github\.com/i.test(url)) return "Code";
+  if (/doi\.org/i.test(url)) return "DOI";
+  if (/youtu\.be|youtube\.com/i.test(url)) return "Video";
+  if (/\.pdf(?:$|\?)/i.test(url)) return "PDF";
+  return "Project";
+};
+
+const socialLinks = publicationSocialLinksByTitle[paper.title] || [];
+const sourceLinks = [...(paper.links || []), ...socialLinks];
+const cleanLinks = Array.from(
+  new Map(
+    sourceLinks
+      .map((link) => link.url?.trim().replace(/[\"']+$/, "") || "")
+      .map((url, index) => ({ label: inferLabel(sourceLinks[index]?.label, url), url }))
+      .filter((link) => /^https?:\/\//.test(link.url))
+      .map((link) => [link.url, link])
+  ).values()
+).slice(0, 6);
+
+const authorText = (paper.authors || []).join(", ");
+const pillar = classifyPublication(paper.title);
+const pillarInfo = pillarMeta[pillar];
+const thumbnail = publicationThumbnailByTitle[paper.title];
+const accent = pillarInfo.color;
+const venue = paper.venue?.trim().replace(/^,\s*/, "") || "";
+const bibtexVenue = venue !== String(paper.year) ? venue : "";
+
+const bibtexEscape = (value: string) => value
+  .replace(/\\/g, "")
+  .replace(/&/g, "\\&")
+  .replace(/%/g, "\\%")
+  .replace(/#/g, "\\#");
+const surname = (paper.authors?.[0]?.split(/\s+/).at(-1) || "huang")
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "")
+  .slice(0, 18) || "huang";
+const titleWord = paper.title.match(/[A-Za-z0-9]{4,}/)?.[0]?.toLowerCase() || "work";
+const citationKey = `${surname}${paper.year || "nd"}${titleWord}${paper.id.slice(-4)}`;
+const entryType = paper.category === "journal"
+  ? "article"
+  : ["conference", "workshop"].includes(paper.category)
+    ? "inproceedings"
+    : "misc";
+const primaryUrl = paper.identifiers?.doi
+  ? `https://doi.org/${paper.identifiers.doi}`
+  : cleanLinks.find((link) => /arxiv\.org|openreview\.net/i.test(link.url))?.url || cleanLinks[0]?.url;
+const bibtexFields: Array<[string, string | number | undefined]> = [
+  ["title", paper.title],
+  ["author", (paper.authors || []).join(" and ")],
+  [entryType === "article" ? "journal" : entryType === "inproceedings" ? "booktitle" : "howpublished", bibtexVenue],
+  ["year", paper.year || undefined],
+  ["doi", paper.identifiers?.doi],
+  ["eprint", paper.identifiers?.arxiv],
+  ["archivePrefix", paper.identifiers?.arxiv ? "arXiv" : undefined],
+  ["url", primaryUrl]
+];
+const bibtexBody = bibtexFields
+  .filter(([, value]) => value !== undefined && value !== "")
+  .map(([field, value]) => `  ${field} = {${bibtexEscape(String(value))}},`)
+  .join("\n");
+const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
+---
+
+<article class:list={["paper-card", `accent-${accent}`, { compact, "has-thumbnail": Boolean(thumbnail) }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-pillar={pillar} data-search={`${paper.title} ${authorText} ${paper.venue} ${pillarInfo.label}`.toLowerCase()}>
+  <div class:list={["paper-visual", { "has-image": Boolean(thumbnail) }]} aria-hidden="true">
+    {thumbnail ? <img src={thumbnail} alt="" loading="lazy" /> : <><span>{String(paper.year || "—").slice(-2)}</span><i></i><i></i><i></i></>}
+  </div>
+  <div class="paper-body">
+    <div class="paper-meta">
+      <span class={`pillar-label pillar-${pillar}`}>{pillarInfo.shortLabel}</span>
+      <span>{paper.category || "publication"}</span>
+      <span>{paper.year || "Forthcoming"}</span>
+    </div>
+    <h3>{paper.title}</h3>
+    <p class="paper-authors">{authorText}</p>
+    {venue && venue !== String(paper.year) && <p class="paper-venue">{venue}</p>}
+    <div class="paper-links">
+      {cleanLinks.map((link) => <a href={link.url}>{link.label}<span>↗</span></a>)}
+    </div>
+    <details class="bibtex-disclosure">
+      <summary>BibTeX <span aria-hidden="true">⌄</span></summary>
+      <div class="bibtex-panel">
+        <pre><code>{bibtex}</code></pre>
+        <button type="button" class="bibtex-copy" aria-label={`Copy BibTeX for ${paper.title}`}>
+          <span aria-hidden="true">⧉</span> <span data-copy-label>Copy</span>
+        </button>
+      </div>
+    </details>
+  </div>
+</article>
+
+<script>
+  const copyBibtex = async (button: HTMLButtonElement) => {
+    const bibtex = button.closest(".bibtex-panel")?.querySelector("code")?.textContent || "";
+    const label = button.querySelector<HTMLElement>("[data-copy-label]");
+
+    try {
+      await navigator.clipboard.writeText(bibtex);
+    } catch {
+      if (label) label.textContent = "Copy failed";
+      window.setTimeout(() => {
+        if (label) label.textContent = "Copy";
+      }, 1800);
+      return;
+    }
+
+    if (label) label.textContent = "Copied ✓";
+    button.classList.add("copied");
+    window.setTimeout(() => {
+      if (label) label.textContent = "Copy";
+      button.classList.remove("copied");
+    }, 1800);
+  };
+
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    const summary = target.closest<HTMLElement>(".bibtex-disclosure > summary");
+    const disclosure = summary?.parentElement as HTMLDetailsElement | undefined;
+
+    if (disclosure && !disclosure.open) {
+      document.querySelectorAll<HTMLDetailsElement>(".bibtex-disclosure[open]").forEach((openDisclosure) => {
+        if (openDisclosure !== disclosure) openDisclosure.open = false;
+      });
+    }
+
+    const button = target.closest<HTMLButtonElement>(".bibtex-copy");
+    if (button) void copyBibtex(button);
+  });
+</script>

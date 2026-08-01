@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PaperCard from "../components/PaperCard.astro";
+import ResearchMap from "../components/ResearchMap.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import publicationData from "../data/publications.json";
+import { applicationAreas, foundationalPublicationTitles, legacyProjects, projects, researchPillars } from "../data/site";
+import { researchAreas } from "../data/researchAreas";
+
+const allProjects = [...projects, ...researchAreas.flatMap((area) => area.projects)];
+const representativeProjects = researchPillars.map((pillar) => {
+  const project = allProjects.find((candidate) => candidate.id === pillar.featuredArea.featuredProjectId);
+  if (!project) throw new Error(`Missing representative project ${pillar.featuredArea.featuredProjectId}`);
+  return project;
+});
+const works = publicationData.works as any[];
+const foundationalTitles = [
+  "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition",
+  ...foundationalPublicationTitles.filter((title) => title !== "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition")
+];
+const foundationalWorks = foundationalTitles
+  .map((title) => works.find((work) => work.title === title))
+  .filter(Boolean);
+---
+
+<BaseLayout title="Research — Furong Lab">
+  <section class="shell page-hero research-hero">
+    <p class="eyebrow">Research program</p>
+    <h1>Foundation models as decision-making systems.</h1>
+    <p>
+      Furong Lab studies models that allocate computation, choose tools and collaborators, act in physical environments, and revise behavior after failure. Select any pillar or topic to follow the work from research question to project and paper.
+    </p>
+  </section>
+
+  <section class="shell section" style="padding-top: 1rem">
+    <ResearchMap />
+  </section>
+
+  {researchPillars.map((pillar) => (
+    <section class={`pillar-section pillar-section-${pillar.id}`} id={pillar.id}>
+      <div class="shell pillar-section-inner">
+        <div class="pillar-intro">
+          <p class="eyebrow">Pillar {pillar.number}</p>
+          <h2>{pillar.title}</h2>
+          <strong>{pillar.subtitle}</strong>
+          <p>{pillar.description}</p>
+          <div class="topic-links">
+            {pillar.topics.map((topic) => <a href={topic.href}>{topic.label}<span>→</span></a>)}
+          </div>
+        </div>
+        <div class="pillar-feature">
+          <div class:list={["pillar-feature-visual", `media-${pillar.featuredArea.imageFit || "contain"}`]} style={`--media-position: ${pillar.featuredArea.imagePosition || "50% 50%"}`}>
+            <img src={pillar.featuredArea.image} alt={pillar.featuredArea.imageAlt} loading="lazy" />
+            <span>Pillar {pillar.number} flagship</span>
+          </div>
+          <div class="pillar-feature-body">
+            <p class="eyebrow">Featured area</p>
+            <h3>{pillar.featuredArea.title}</h3>
+            <p>{pillar.featuredArea.description}</p>
+            <div class="button-row pillar-actions">
+              <a class="button" href={pillar.featuredArea.href}>Explore {pillar.featuredArea.title} <span>→</span></a>
+              <a class="button secondary" href={`/publications/?pillar=${pillar.id}`}>View all {pillar.shortTitle} papers <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Research in the world</p><h2>Methods become meaningful through where they are used.</h2></div>
+      <p>The lab’s theoretical and systems work has reached problems in science, infrastructure, finance, content integrity, and embodied intelligence.</p>
+    </div>
+    <div class="content-grid application-grid">
+      {applicationAreas.map((application) => (
+        <article class="content-card">
+          <h3>{application.title}</h3>
+          <p>{application.detail}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Representative projects</p><h2>Ideas you can inspect and use.</h2></div>
+      <p>Project pages bring together papers, code, demonstrations, and the visual evidence behind the research.</p>
+    </div>
+    <div class="project-grid featured-project-grid">
+      {representativeProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="research-foundations">
+    <div class="shell section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Research foundations</p><h2>Earlier work that shaped the current program.</h2></div>
+        <p>Optimization, latent-structure learning, graphical models, learning theory, fairness, and robustness established ideas that continue through the lab’s current work on foundation models.</p>
+      </div>
+      <div class="project-grid legacy-project-grid">
+        {legacyProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <div class="section-heading foundation-paper-heading" style="margin-top: 5rem">
+        <div><p class="eyebrow">Foundational papers</p><h2>Methods beneath the modern systems.</h2></div>
+        <p>Selected early contributions include escaping saddle points in nonconvex optimization, recovering latent structure, and learning high-dimensional graphical models.</p>
+      </div>
+      <div class="paper-grid foundational-paper-grid">
+        {foundationalWorks.map((paper) => <PaperCard paper={paper} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

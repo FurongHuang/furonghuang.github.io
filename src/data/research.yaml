@@ -1,0 +1,1001 @@
+# Source of truth for the website's research navigation and project presentation.
+# Edit this file to update pillars, topic pages, featured projects, thumbnails,
+# social links, or the curated publication list. The site validates it at build time.
+# Project and featured-area images default to imageFit: contain so technical figures
+# remain uncropped. Use imageFit: cover and imagePosition: "50% 30%" for photographs.
+
+pillar_meta:
+  world-models:
+    label: Pillar 1 · World models
+    shortLabel: World models
+    color: teal
+  reasoning-control:
+    label: Pillar 2 · Reasoning control
+    shortLabel: Reasoning control
+    color: coral
+  self-improvement:
+    label: Pillar 3 · Trustworthy self-improvement
+    shortLabel: Trustworthy AI
+    color: violet
+pillars:
+  - id: world-models
+    number: "01"
+    title: World models
+    shortTitle: World models
+    subtitle: Learn what can happen
+    description: Represent physical and digital environments so agents can predict consequences, transfer across embodiments, and plan beyond direct experience.
+    href: /research/#world-models
+    topics:
+      - label: Embodied AI
+        href: /research/embodied-ai/
+      - label: Multimodal learning
+        href: /research/multimodal-learning/
+      - label: Sequential decision-making
+        href: /research/sequential-decision-making/
+    featuredArea:
+      title: Embodied AI
+      description: World models become tangible when agents must understand space, bodies, state, and consequences. Explore representative systems, videos, code, and papers.
+      href: /research/embodied-ai/
+      image: /assets/projects/mu0.png
+      imageAlt: A semantic 3D interaction trace from the μ0 world model
+      featuredProjectId: mu0
+  - id: reasoning-control
+    number: "02"
+    title: Reasoning control
+    shortTitle: Reasoning control
+    subtitle: Decide how to think
+    description: "Treat inference as a control problem: allocate computation, collaboration, evidence, and verification where they improve decisions most."
+    href: /research/#reasoning-control
+    topics:
+      - label: AI Agents
+        href: /research/ai-agents/
+      - label: Test-time compute
+        href: /research/test-time-compute/
+      - label: Agentic workflows
+        href: /research/agentic-workflows/
+    featuredArea:
+      title: AI Agents
+      description: Agents turn reasoning into purposeful behavior by planning, using tools, verifying progress, and recovering when an initial strategy fails.
+      href: /research/ai-agents/
+      image: /assets/projects/agentic-critical-training.png
+      imageAlt: Agentic Critical Training system overview
+      featuredProjectId: agentic-critical-training
+  - id: self-improvement
+    number: "03"
+    title: Trustworthy self-improvement
+    shortTitle: Trustworthy AI
+    subtitle: Learn from failure
+    description: Build closed-loop systems that discover failures, intervene before they unfold, and convert uncertainty and hard examples into safer behavior.
+    href: /research/#self-improvement
+    topics:
+      - label: AI Safety
+        href: /research/ai-safety/
+      - label: Alignment
+        href: /research/alignment/
+      - label: Robust learning
+        href: /research/robust-learning/
+    featuredArea:
+      title: AI Safety
+      description: Adaptive attacks, agentic evaluations, and stress tests expose latent failures so models can be corrected before unsafe behavior reaches deployment.
+      href: /research/ai-safety/
+      image: /assets/projects/propensitybench.png
+      imageAlt: PropensityBench agentic safety evaluation overview
+      featuredProjectId: propensitybench-safety
+featured_projects:
+  - id: mu0
+    pillar: world-models
+    area: Embodied AI
+    title: μ0
+    summary: A scalable world model that predicts semantic 3D interaction traces, learning embodiment-agnostic motion priors from video-only pretraining for downstream robot control.
+    image: /assets/projects/mu0.png
+    year: 2026
+    links:
+      - label: Project
+        href: https://mu0-wm.github.io/
+      - label: Paper
+        href: https://arxiv.org/abs/2606.13769
+      - label: Code
+        href: https://github.com/Yoonkyo/mu0
+      - label: Models
+        href: https://huggingface.co/collections/furonghuang-lab/mu0
+      - label: LinkedIn post
+        href: https://www.linkedin.com/feed/update/urn:li:activity:7471976218494537728/
+  - id: tracegen
+    pillar: world-models
+    area: Embodied AI
+    title: TraceGen
+    summary: A 3D interaction-trace world model that learns transferable robot behavior from cross-embodiment human and robot video.
+    image: /assets/projects/tracegen.png
+    year: 2026
+    links:
+      - label: Project
+        href: https://tracegen.github.io/
+      - label: Paper
+        href: https://arxiv.org/abs/2511.21690
+      - label: Code
+        href: https://github.com/jayLEE0301/TraceGen
+      - label: LinkedIn
+        href: https://www.linkedin.com/posts/furong-huang_embodiedai-robotlearning-worldmodels-activity-7401447812028289025-ifCB
+  - id: dynaflip
+    pillar: world-models
+    area: Embodied AI
+    title: DynaFLIP
+    summary: A dynamics-aware visual backbone for robot manipulation that aligns image transitions, language, and 3D flow to preserve control-relevant information.
+    image: /assets/projects/dynaflip.png
+    imageFit: contain
+    video: https://dynaflip-robotics.github.io/static/videos/project_page_overview_video.mp4
+    year: 2026
+    links:
+      - label: Project
+        href: https://dynaflip-robotics.github.io/
+      - label: Paper
+        href: https://arxiv.org/abs/2605.30350
+      - label: Code
+        href: https://github.com/JU-SUK/DynaFLIP
+      - label: Model
+        href: https://huggingface.co/jlee-larr/dynaflip-base
+      - label: Teaser video
+        href: https://dynaflip-robotics.github.io/static/videos/project_page_overview_video.mp4
+  - id: momagraph
+    pillar: world-models
+    area: Embodied AI
+    title: MomaGraph
+    summary: A state-aware unified scene graph that combines vision-language reasoning with explicit world state for long-horizon embodied task planning.
+    image: /assets/projects/momagraph.png
+    year: 2026
+    links:
+      - label: Project
+        href: https://hybridrobotics.github.io/MomaGraph/
+      - label: Paper
+        href: https://arxiv.org/abs/2512.16909
+      - label: Code
+        href: https://github.com/HybridRobotics/MomaGraph
+      - label: LinkedIn
+        href: https://www.linkedin.com/posts/furong-huang_iclr2026-machinelearning-ai-ugcPost-7453165248611577857-xoSO/
+      - label: X post
+        href: https://x.com/furongh/status/2047374487109403030
+  - id: imagine-verify-execute
+    pillar: world-models
+    area: Embodied AI
+    title: Imagine, Verify, Execute
+    summary: An agentic exploration framework in which vision-language models imagine candidate interactions, verify their value, and execute promising actions.
+    image: /assets/projects/imagine-verify-execute.png
+    year: 2025
+    links:
+      - label: Project
+        href: https://ive-robot.github.io/
+      - label: Paper
+        href: https://arxiv.org/abs/2505.07815
+      - label: Code
+        href: https://github.com/jayLEE0301/imagine_verify_execute
+  - id: make-an-agent
+    pillar: world-models
+    area: Embodied AI
+    title: Make-An-Agent
+    summary: A behavior-prompted diffusion framework that generates generalizable robot policies for seen and unseen manipulation tasks.
+    image: /assets/projects/make-an-agent.gif
+    year: 2024
+    links:
+      - label: Project
+        href: https://cheryyunl.github.io/make-an-agent/
+      - label: Paper
+        href: https://arxiv.org/abs/2407.10973
+selected_publication_titles:
+  - "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos"
+  - "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
+  - "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
+  - Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
+  - "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
+  - "Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling"
+areas:
+  - slug: multimodal-learning
+    pillar: world-models
+    title: Multimodal learning
+    kicker: Connect perception, language, and generation
+    question: How can a model reason across modalities instead of merely recognizing each one?
+    intro: We build diagnostic benchmarks, structured datasets, and learning objectives that expose whether multimodal systems truly connect evidence across images, video, language, and generation.
+    methods:
+      - Cross-modal reasoning
+      - Sequential visual understanding
+      - Diagnostic evaluation
+      - Interleaved vision-language data
+    projects:
+      - id: rover
+        area: Multimodal learning
+        title: ROVER
+        summary: A benchmark for reciprocal reasoning between understanding and generation across image, video, audio, and 3D modalities.
+        year: 2025
+        image: /assets/projects/rover.png
+        relatedTitle: "ROVER: Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation"
+        links:
+          - label: Project
+            href: https://roverbench.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2511.01163
+          - label: Code
+            href: https://github.com/cheryyunl/ROVER
+      - id: mementos
+        area: Multimodal learning
+        title: Mementos
+        summary: A comprehensive benchmark that tests whether multimodal language models can reason over coherent sequences of images.
+        year: 2024
+        image: /assets/projects/mementos.png
+        relatedTitle: "Mementos: A Comprehensive Benchmark for Multimodal Large Language Model Reasoning over Image Sequences"
+        links:
+          - label: Project
+            href: https://mementos-bench.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2401.10529
+          - label: Code
+            href: https://github.com/umd-huang-lab/Mementos
+      - id: hallusionbench
+        area: Multimodal learning
+        title: HallusionBench
+        summary: A diagnostic suite for disentangling visual illusion from language hallucination in large vision-language models.
+        year: 2024
+        image: /assets/projects/hallusionbench.png
+        relatedTitle: "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination & Visual Illusion in Large Vision-Language Models"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2310.14566
+          - label: Code
+            href: https://github.com/tianyi-lab/HallusionBench
+          - label: X thread
+            href: https://x.com/furongh/status/1737130538559787351
+      - id: zebra-cot
+        area: Multimodal learning
+        title: Zebra-CoT
+        summary: A dataset for teaching and evaluating interleaved vision-language chains of thought rather than text-only explanations.
+        year: 2025
+        image: /assets/projects/zebra-cot.png
+        relatedTitle: "Zebra-CoT: A Dataset for Interleaved Vision-Language Reasoning"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2507.16746
+          - label: Dataset
+            href: https://huggingface.co/datasets/multimodal-reasoning-lab/Zebra-CoT
+          - label: LinkedIn
+            href: https://www.linkedin.com/posts/furong-huang_iclr2026-machinelearning-ai-activity-7453165249911980032-_6nk
+  - slug: sequential-decision-making
+    pillar: world-models
+    title: Sequential decision-making
+    kicker: Learn representations that improve action
+    question: What should an agent remember, predict, and explore in order to act well over time?
+    intro: We study representation learning, model-based planning, and reward construction for agents that must learn from pixels, sparse feedback, and changing environments.
+    methods:
+      - Visual reinforcement learning
+      - Model-based planning
+      - Object-centric rewards
+      - Representation learning
+    projects:
+      - id: genflowrl
+        area: Sequential decision-making
+        title: GenFlowRL
+        summary: Generative object-centric flow supplies dense, semantically meaningful rewards for visual reinforcement learning.
+        year: 2025
+        image: /assets/projects/genflowrl.png
+        relatedTitle: "GenFlowRL: Shaping Rewards with Generative Object-Centric Flow in Visual Reinforcement Learning"
+        links:
+          - label: Project
+            href: https://colinyu1.github.io/genflowrl/
+          - label: Paper
+            href: https://arxiv.org/abs/2508.11049
+      - id: drm
+        area: Sequential decision-making
+        title: DrM
+        summary: Dormant-ratio minimization keeps neural capacity active and improves sample efficiency in visual reinforcement learning.
+        year: 2024
+        image: /assets/projects/drm.jpg
+        visualLabel: DrM
+        theme: teal
+        relatedTitle: "DrM: Mastering Visual Reinforcement Learning through Dormant Ratio Minimization"
+        links:
+          - label: Project
+            href: https://drm-rl.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2310.19668
+          - label: Code
+            href: https://github.com/XuGW-Kevin/DrM
+      - id: taco
+        area: Sequential decision-making
+        title: TACO
+        summary: Temporal latent actions and contrastive learning produce action-aware representations from image observations.
+        year: 2023
+        image: /assets/projects/taco.png
+        visualLabel: TACO
+        theme: teal
+        relatedTitle: "TACO: Temporal Latent Action-Driven Contrastive Loss for Visual Reinforcement Learning"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2306.13229
+          - label: Code
+            href: https://github.com/FrankZheng2022/TACO
+      - id: coplanner
+        area: Sequential decision-making
+        title: COPlanner
+        summary: A model-based RL planner that rolls out conservatively while directing exploration toward optimistic possibilities.
+        year: 2024
+        image: /assets/projects/coplanner.png
+        visualLabel: CO
+        theme: teal
+        relatedTitle: "COPlanner: Plan to Roll Out Conservatively but to Explore Optimistically for Model-Based RL"
+        links:
+          - label: Project
+            href: https://si0wang.github.io/projects/COPlanner/
+          - label: Paper
+            href: https://arxiv.org/abs/2310.07220
+          - label: Code
+            href: https://github.com/si0wang/COPlanner
+  - slug: ai-agents
+    pillar: reasoning-control
+    title: AI Agents
+    kicker: Turn models into purposeful systems
+    question: How can an agent decide what to do, verify its progress, and recover when the first plan fails?
+    intro: We develop agents that couple reasoning with action, critique, experimentation, and safety evaluation—especially where success requires long-horizon coordination.
+    methods:
+      - Planning and verification
+      - Tool use
+      - Self-critique
+      - Agentic evaluation
+    projects:
+      - id: agentic-critical-training
+        area: AI Agents
+        title: Agentic Critical Training
+        summary: An agent-training framework that converts critique and revision into a learning signal for more reliable multi-step behavior.
+        year: 2026
+        image: /assets/projects/agentic-critical-training.png
+        relatedTitle: Agentic Critical Training
+        links:
+          - label: Project
+            href: https://attention-is-all-i-need.github.io/ACT/
+          - label: Paper
+            href: https://arxiv.org/abs/2603.08706
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+      - id: ive-agents
+        area: AI Agents
+        title: Imagine, Verify, Execute
+        summary: An embodied agent imagines candidate interactions, verifies which ones are informative, and executes a targeted exploration plan.
+        year: 2025
+        image: /assets/projects/imagine-verify-execute.png
+        relatedTitle: "Imagine, Verify, Execute: Agentic Exploration with Vision-Language Models"
+        links:
+          - label: Project
+            href: https://ive-robot.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2505.07815
+          - label: Code
+            href: https://github.com/jayLEE0301/imagine_verify_execute
+      - id: soundnessbench
+        area: AI Agents
+        title: SoundnessBench
+        summary: An evaluation of whether AI scientist agents produce experiments and conclusions that are methodologically sound, not merely plausible.
+        year: 2026
+        image: /assets/projects/soundnessbench.png
+        links:
+          - label: Project
+            href: https://hosytuyen.github.io/projects/SoundnessBench
+          - label: Paper
+            href: https://arxiv.org/abs/2605.30329
+          - label: LinkedIn
+            href: https://www.linkedin.com/posts/furong-huang_the-ai-scientist-can-run-experiments-but-activity-7466545951898492928-fYGg
+      - id: propensitybench-agents
+        area: AI Agents
+        title: PropensityBench
+        summary: Agentic red-teaming reveals latent behavioral propensities that may not appear in single-turn safety tests.
+        year: 2025
+        image: /assets/projects/propensitybench.png
+        relatedTitle: "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
+        links:
+          - label: Project
+            href: https://scale.com/research/propensitybench
+          - label: Paper
+            href: https://arxiv.org/abs/2511.20703
+          - label: Code
+            href: https://github.com/scaleapi/propensity-evaluation
+          - label: LinkedIn
+            href: https://www.linkedin.com/posts/furong-huang-87260525_imagine-raising-a-child-youd-want-to-know-activity-7399254125735206912-CN5Y
+          - label: X thread
+            href: https://x.com/furongh/status/2044463936100036818
+  - slug: test-time-compute
+    pillar: reasoning-control
+    title: Test-time compute
+    kicker: Spend computation where it changes the answer
+    question: How should a model allocate search, steering, and collaboration at inference time?
+    intro: "We treat decoding as a control problem: use rewards, value estimates, lightweight interventions, and multiple models to guide generation without retraining the base model."
+    methods:
+      - Reward-guided decoding
+      - Early-step steering
+      - Value-guided search
+      - Mixture-of-agent decoding
+    projects:
+      - id: genarm
+        area: Test-time compute
+        title: GenARM
+        summary: An autoregressive reward model guides generation token by token, turning alignment into a controllable test-time procedure.
+        year: 2024
+        image: /assets/projects/genarm.png
+        relatedTitle: "GenARM: Reward Guided Generation with Autoregressive Reward Model for Test-Time Alignment"
+        links:
+          - label: Project
+            href: https://genarm.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2410.08193
+          - label: Code
+            href: https://github.com/Yuancheng-Xu/GenARM
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+      - id: safety-recovery
+        area: Test-time compute
+        title: Safety Recovery
+        summary: Small interventions during a few early reasoning steps can redirect unsafe trajectories before they become difficult to recover.
+        year: 2026
+        image: /assets/projects/safety-recovery.webp
+        relatedTitle: Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
+        links:
+          - label: Project
+            href: https://itsvaibhav01.github.io/SafeThink-web/
+          - label: Paper
+            href: https://arxiv.org/abs/2602.11096
+          - label: LinkedIn
+            href: https://www.linkedin.com/posts/furong-huang_icml2026-acl2026-seoul-activity-7479975735516942336-gmzt
+          - label: X thread
+            href: https://x.com/furongh/status/2074215494148845933
+      - id: transfer-q-star
+        area: Test-time compute
+        title: Transfer Q★
+        summary: A principled decoding method transfers value guidance across models to improve aligned generation at inference time.
+        year: 2024
+        image: /assets/projects/transfer-q-star.png
+        relatedTitle: "Transfer Q-star: Principled Decoding for LLM Alignment"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2405.20495
+          - label: Code
+            href: https://github.com/Soumya1612-Rasha/Transfer-Q
+      - id: collab-test-time
+        area: Test-time compute
+        title: Collab
+        summary: Controlled decoding combines a mixture of agents so complementary model strengths can guide a single aligned response.
+        year: 2025
+        image: /assets/projects/collab.png
+        relatedTitle: "Collab: Controlled Decoding using Mixture of Agents for LLM Alignment"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2503.21720
+          - label: X post
+            href: https://x.com/furongh/status/1929970919398588593
+          - label: LinkedIn essay
+            href: https://www.linkedin.com/pulse/when-students-shape-science-reflections-data-ai-governance-huang-uo5ye/
+  - slug: agentic-workflows
+    pillar: reasoning-control
+    title: Agentic workflows
+    kicker: Compose specialized reasoning into systems
+    question: Can an agent assemble the right workflow for each query instead of using one fixed pipeline?
+    intro: We study how agents select, reuse, route, and coordinate reasoning components so complex workflows become adaptive, efficient, and auditable.
+    methods:
+      - Workflow optimization
+      - Precompute and reuse
+      - Model routing
+      - Multi-agent coordination
+    projects:
+      - id: flowbank
+        area: Agentic workflows
+        title: FlowBank
+        summary: A bank of reusable workflow fragments enables query-adaptive optimization without rebuilding every agentic pipeline from scratch.
+        year: 2026
+        image: /assets/projects/flowbank.png
+        relatedTitle: "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
+        links:
+          - label: Project
+            href: https://agentic-flowbank.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2606.11290
+          - label: Code
+            href: https://github.com/lingzhiyxp/FlowBank
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+      - id: act-workflows
+        area: Agentic workflows
+        title: Agentic Critical Training
+        summary: Structured critical cycles teach agents to propose, inspect, and revise multi-stage solutions as a coherent workflow.
+        year: 2026
+        image: /assets/projects/agentic-critical-training.png
+        relatedTitle: Agentic Critical Training
+        links:
+          - label: Project
+            href: https://attention-is-all-i-need.github.io/ACT/
+          - label: Paper
+            href: https://arxiv.org/abs/2603.08706
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+      - id: fusionroute
+        area: Agentic workflows
+        title: FusionRoute
+        summary: Token-level routing lets language models collaborate dynamically rather than assigning an entire query to only one model.
+        year: 2026
+        image: /assets/projects/fusionroute.jpg
+        relatedTitle: Token-Level LLM Collaboration via FusionRoute
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2601.05106
+          - label: Code
+            href: https://github.com/xiongny/FusionRoute
+          - label: LinkedIn
+            href: https://www.linkedin.com/posts/furong-huang_icml2026-acl2026-seoul-activity-7479975735516942336-gmzt
+          - label: X thread
+            href: https://x.com/furongh/status/2074215499718873186
+      - id: collab-workflows
+        area: Agentic workflows
+        title: Collab
+        summary: A controlled mixture-of-agents workflow combines model proposals during decoding to improve alignment and capability.
+        year: 2025
+        image: /assets/projects/collab.png
+        relatedTitle: "Collab: Controlled Decoding using Mixture of Agents for LLM Alignment"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2503.21720
+          - label: X post
+            href: https://x.com/furongh/status/1929970919398588593
+  - slug: ai-safety
+    pillar: self-improvement
+    title: AI Safety
+    kicker: Find dangerous behavior before deployment
+    question: How can we expose latent risks that ordinary evaluations and static red-teaming miss?
+    intro: We build adaptive attacks, agentic evaluations, and stress tests that reveal hidden failure modes across language models, generative systems, and deployed content safeguards.
+    methods:
+      - Agentic red-teaming
+      - Adaptive attacks
+      - Backdoor evaluation
+      - Safety benchmarking
+    projects:
+      - id: propensitybench-safety
+        area: AI Safety
+        title: PropensityBench
+        summary: An agentic evaluation framework probes models across multi-turn environments to surface latent safety-relevant propensities.
+        year: 2025
+        image: /assets/projects/propensitybench.png
+        relatedTitle: "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
+        links:
+          - label: Project
+            href: https://scale.com/research/propensitybench
+          - label: Paper
+            href: https://arxiv.org/abs/2511.20703
+          - label: Code
+            href: https://github.com/scaleapi/propensity-evaluation
+          - label: LinkedIn
+            href: https://www.linkedin.com/posts/furong-huang-87260525_imagine-raising-a-child-youd-want-to-know-activity-7399254125735206912-CN5Y
+          - label: X thread
+            href: https://x.com/furongh/status/2044463936100036818
+      - id: advbdgen
+        area: AI Safety
+        title: AdvBDGen
+        summary: A robust framework for generating adaptive, stealthy backdoors that stress-test the resilience of LLM alignment defenses.
+        year: 2026
+        image: /assets/projects/advbdgen.png
+        relatedTitle: "AdvBDGen: A Robust Framework for Generating Adaptive and Stealthy Backdoors in LLM Alignment Attacks"
+        links:
+          - label: Project
+            href: https://pankayaraj.github.io/AdvBDGen/index.html
+          - label: Paper
+            href: https://arxiv.org/abs/2410.11283
+          - label: Code
+            href: https://github.com/pankayaraj/AAAI_2026_AdvBDGen
+      - id: autodan
+        area: AI Safety
+        title: AutoDAN
+        summary: Interpretable gradient-based adversarial prompts expose instruction-following vulnerabilities in aligned language models.
+        year: 2024
+        image: /assets/projects/autodan.png
+        visualLabel: AD
+        theme: violet
+        relatedTitle: "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2310.15140
+      - id: waves-safety
+        area: AI Safety
+        title: WAVES
+        summary: A benchmark and red-team framework for measuring how image-watermark methods hold up under diverse attacks.
+        year: 2024
+        image: /assets/projects/waves.jpg
+        relatedTitle: "WAVES: Benchmarking the Robustness of Image Watermarks"
+        links:
+          - label: Project
+            href: https://wavesbench.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2401.08573
+  - slug: alignment
+    pillar: self-improvement
+    title: Alignment
+    kicker: Turn feedback into reliable behavior
+    question: How can models improve from diverse preferences and their own discovered failures?
+    intro: We design reward models, online learning procedures, and decoding algorithms that make alignment more robust, equitable, and efficient.
+    methods:
+      - Reward-model self-correction
+      - Online alignment
+      - Preference diversity
+      - Reward-guided generation
+    projects:
+      - id: reform
+        area: Alignment
+        title: ReForm
+        summary: Reward-guided adversarial failure discovery teaches a reward model to identify and correct weaknesses in its own judgments.
+        year: 2026
+        image: /assets/projects/reform.png
+        relatedTitle: "Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2507.06419
+          - label: Code
+            href: https://github.com/pankayaraj/ACL_2026_REFORM
+          - label: LinkedIn
+            href: https://www.linkedin.com/posts/furong-huang_reward-models-can-improve-themselves-reward-guided-activity-7461963169092083712-zfrZ
+          - label: X thread
+            href: https://x.com/furongh/status/2073710599536591255
+      - id: genarm-alignment
+        area: Alignment
+        title: GenARM
+        summary: Autoregressive rewards steer generation directly at test time, providing fine-grained control without retraining the generator.
+        year: 2024
+        image: /assets/projects/genarm.png
+        relatedTitle: "GenARM: Reward Guided Generation with Autoregressive Reward Model for Test-Time Alignment"
+        links:
+          - label: Project
+            href: https://genarm.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2410.08193
+          - label: Code
+            href: https://github.com/Yuancheng-Xu/GenARM
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+      - id: maxmin-rlhf
+        area: Alignment
+        title: MaxMin-RLHF
+        summary: A max-min objective aligns language models without letting majority preferences erase systematically under-served groups.
+        year: 2024
+        image: /assets/projects/maxmin-rlhf.jpg
+        visualLabel: MM
+        theme: violet
+        relatedTitle: "MaxMin-RLHF: Alignment with Diverse Human Preferences"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2402.08925
+      - id: sail
+        area: Alignment
+        title: SAIL
+        summary: A self-improving online alignment loop learns efficiently from model-generated responses and continually updated feedback.
+        year: 2024
+        image: /assets/projects/sail.png
+        relatedTitle: "SAIL: Self-improving Efficient Online Alignment of Large Language Models"
+        links:
+          - label: Paper
+            href: https://arxiv.org/abs/2406.15567
+          - label: OpenReview
+            href: https://openreview.net/forum?id=9m8dF6oAsd
+  - slug: robust-learning
+    pillar: self-improvement
+    title: Robust learning
+    kicker: Learn reliably under attack and shift
+    question: How can a learning system adapt when its data, environment, or adversary changes?
+    intro: We study robust objectives and adaptive defenses across reinforcement learning, vision-language models, generative content, and adversarially corrupted training data.
+    methods:
+      - Adaptive defense
+      - Data-poisoning resilience
+      - Robust reinforcement learning
+      - Watermark robustness
+    projects:
+      - id: waves-robust
+        area: Robust learning
+        title: WAVES
+        summary: A standardized evaluation exposes where image watermarks remain detectable—and where adaptive attacks break them.
+        year: 2024
+        image: /assets/projects/waves.jpg
+        relatedTitle: "WAVES: Benchmarking the Robustness of Image Watermarks"
+        links:
+          - label: Project
+            href: https://wavesbench.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2401.08573
+      - id: advbdgen-robust
+        area: Robust learning
+        title: AdvBDGen
+        summary: Adaptive backdoor generation provides a stronger adversary for testing and improving the robustness of alignment defenses.
+        year: 2026
+        image: /assets/projects/advbdgen.png
+        relatedTitle: "AdvBDGen: A Robust Framework for Generating Adaptive and Stealthy Backdoors in LLM Alignment Attacks"
+        links:
+          - label: Project
+            href: https://pankayaraj.github.io/AdvBDGen/index.html
+          - label: Paper
+            href: https://arxiv.org/abs/2410.11283
+          - label: Code
+            href: https://github.com/pankayaraj/AAAI_2026_AdvBDGen
+      - id: shadowcast
+        area: Robust learning
+        title: Shadowcast
+        summary: A stealthy data-poisoning attack reveals how small, targeted corruptions can alter the behavior of vision-language models.
+        year: 2024
+        image: /assets/projects/shadowcast.webp
+        relatedTitle: "Shadowcast: Stealthy Data Poisoning Attacks Against Vision-Language Models"
+        links:
+          - label: Project
+            href: https://vlm-poison.github.io/
+          - label: Paper
+            href: https://arxiv.org/abs/2402.06659
+          - label: Code
+            href: https://github.com/umd-huang-lab/VLM-Poisoning
+      - id: non-dominated-defense
+        area: Robust learning
+        title: Adaptive Robust RL
+        summary: Non-dominated policies let a reinforcement-learning agent adapt its defense to attacks beyond a single fixed worst case.
+        year: 2024
+        image: /assets/projects/adaptive-robust-rl.png
+        visualLabel: RRL
+        theme: violet
+        relatedTitle: "Beyond Worst-case Attacks: Robust RL with Adaptive Defense via Non-dominated Policies"
+        links:
+          - label: Project
+            href: https://protected-beyond-worst-case.github.io/home/m_index.html
+          - label: Paper
+            href: https://arxiv.org/abs/2402.12673
+          - label: Code
+            href: https://github.com/umd-huang-lab/PROTECTED
+publication_overrides:
+  - title: "μ0: A Scalable 3D Interaction-Trace World Model"
+    pillar: world-models
+    thumbnail: /assets/projects/mu0.png
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/pulse/pixels-black-box-latents-why-%CE%BC-uses-trace-space-physical-furong-huang-dp9xc
+      - label: LinkedIn post
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7471976218494537728/
+  - title: "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos"
+    pillar: world-models
+    thumbnail: /assets/projects/tracegen.png
+  - title: "DynaFLIP: Rethinking Robotics Perception via Tri-Modal-Dynamics Guided Representation"
+    pillar: world-models
+    thumbnail: /assets/projects/dynaflip.png
+    social_links:
+      - label: Project
+        url: https://dynaflip-robotics.github.io/
+      - label: Code
+        url: https://github.com/JU-SUK/DynaFLIP
+      - label: Model
+        url: https://huggingface.co/jlee-larr/dynaflip-base
+      - label: Teaser video
+        url: https://dynaflip-robotics.github.io/static/videos/project_page_overview_video.mp4
+  - title: "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
+    pillar: world-models
+    thumbnail: /assets/projects/momagraph.png
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_iclr2026-machinelearning-ai-ugcPost-7453165248611577857-xoSO/
+      - label: X post
+        url: https://x.com/furongh/status/2047374487109403030
+  - title: "Imagine, Verify, Execute: Agentic Exploration with Vision-Language Models"
+    pillar: world-models
+    thumbnail: /assets/projects/imagine-verify-execute.png
+  - title: "Make-An-Agent: A Generalizable Policy Network Generator with Behavior-Prompted Diffusion"
+    pillar: world-models
+    thumbnail: /assets/projects/make-an-agent.gif
+  - title: "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
+    pillar: world-models
+    thumbnail: /assets/projects/humanego.jpg
+    social_links:
+      - label: Project
+        url: https://humanego-ai.github.io/
+      - label: Code
+        url: https://github.com/TX-Leo/HumanEgo
+      - label: Video
+        url: https://www.youtube.com/watch?v=pdL46diijuY
+  - title: "ROVER: Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation"
+    pillar: world-models
+    thumbnail: /assets/projects/rover.png
+  - title: "Mementos: A Comprehensive Benchmark for Multimodal Large Language Model Reasoning over Image Sequences"
+    pillar: world-models
+    thumbnail: /assets/projects/mementos.png
+  - title: "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination & Visual Illusion in Large Vision-Language Models"
+    pillar: world-models
+    thumbnail: /assets/projects/hallusionbench.png
+    social_links:
+      - label: X thread
+        url: https://x.com/furongh/status/1737130538559787351
+  - title: "Zebra-CoT: A Dataset for Interleaved Vision-Language Reasoning"
+    pillar: world-models
+    thumbnail: /assets/projects/zebra-cot.png
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_iclr2026-machinelearning-ai-activity-7453165249911980032-_6nk
+  - title: "GenFlowRL: Shaping Rewards with Generative Object-Centric Flow in Visual Reinforcement Learning"
+    pillar: world-models
+    thumbnail: /assets/projects/genflowrl.png
+  - title: "DrM: Mastering Visual Reinforcement Learning through Dormant Ratio Minimization"
+    pillar: world-models
+    thumbnail: /assets/projects/drm.jpg
+    social_links:
+      - label: Project
+        url: https://drm-rl.github.io/
+      - label: Code
+        url: https://github.com/XuGW-Kevin/DrM
+  - title: "TACO: Temporal Latent Action-Driven Contrastive Loss for Visual Reinforcement Learning"
+    pillar: world-models
+    thumbnail: /assets/projects/taco.png
+  - title: "COPlanner: Plan to Roll Out Conservatively but to Explore Optimistically for Model-Based RL"
+    pillar: world-models
+    thumbnail: /assets/projects/coplanner.png
+    social_links:
+      - label: Project
+        url: https://si0wang.github.io/projects/COPlanner/
+      - label: Code
+        url: https://github.com/si0wang/COPlanner
+  - title: "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
+    pillar: world-models
+    thumbnail: /assets/projects/egoscale.png
+    social_links:
+      - label: Project
+        url: https://research.nvidia.com/labs/gear/egoscale/
+  - title: "Guava: An Effective and Universal Harness for Embodied Manipulation"
+    pillar: world-models
+    thumbnail: /assets/projects/guava.png
+    social_links:
+      - label: Project
+        url: https://guava-harness.github.io/
+  - title: "FLARE: Robot Learning with Implicit World Modeling"
+    pillar: world-models
+    thumbnail: /assets/projects/flare.png
+    social_links:
+      - label: Project
+        url: https://research.nvidia.com/labs/gear/flare/
+  - title: "LEMON: A Unified and Scalable 3D Multimodal Model for Universal Spatial Understanding"
+    pillar: world-models
+    thumbnail: /assets/projects/lemon.png
+  - title: Agentic Critical Training
+    pillar: reasoning-control
+    thumbnail: /assets/projects/agentic-critical-training.png
+    social_links:
+      - label: LinkedIn vision
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+  - title: "Transfer Q-star: Principled Decoding for LLM Alignment"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/transfer-q-star.png
+  - title: "Collab: Controlled Decoding using Mixture of Agents for LLM Alignment"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/collab.png
+    social_links:
+      - label: LinkedIn essay
+        url: https://www.linkedin.com/pulse/when-students-shape-science-reflections-data-ai-governance-huang-uo5ye/
+      - label: X post
+        url: https://x.com/furongh/status/1929970919398588593
+  - title: "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/flowbank.png
+    social_links:
+      - label: LinkedIn vision
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+  - title: Token-Level LLM Collaboration via FusionRoute
+    pillar: reasoning-control
+    thumbnail: /assets/projects/fusionroute.jpg
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_icml2026-acl2026-seoul-activity-7479975735516942336-gmzt
+      - label: X thread
+        url: https://x.com/furongh/status/2074215499718873186
+  - title: "GenARM: Reward Guided Generation with Autoregressive Reward Model for Test-Time Alignment"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/genarm.png
+    social_links:
+      - label: LinkedIn vision
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+  - title: "Parallel-Probe: Towards Efficient Parallel Thinking via 2D Probing"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/parallel-probe.png
+  - title: "SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/soundnessbench.png
+    social_links:
+      - label: Project
+        url: https://hosytuyen.github.io/projects/SoundnessBench
+  - title: Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models
+    pillar: reasoning-control
+    thumbnail: /assets/projects/test-time-scaling-mirage.png
+  - title: "GATES: Self-Distillation under Privileged Context with Consensus Gating"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/gates.png
+  - title: "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
+    pillar: self-improvement
+    thumbnail: /assets/projects/propensitybench.png
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang-87260525_imagine-raising-a-child-youd-want-to-know-activity-7399254125735206912-CN5Y
+      - label: X thread
+        url: https://x.com/furongh/status/2044463936100036818
+  - title: Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
+    pillar: self-improvement
+    thumbnail: /assets/projects/safety-recovery.webp
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_icml2026-acl2026-seoul-activity-7479975735516942336-gmzt
+      - label: X thread
+        url: https://x.com/furongh/status/2074215494148845933
+  - title: "AdvBDGen: A Robust Framework for Generating Adaptive and Stealthy Backdoors in LLM Alignment Attacks"
+    pillar: self-improvement
+    thumbnail: /assets/projects/advbdgen.png
+  - title: "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/autodan.png
+  - title: "WAVES: Benchmarking the Robustness of Image Watermarks"
+    pillar: self-improvement
+    thumbnail: /assets/projects/waves.jpg
+  - title: "Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling"
+    pillar: self-improvement
+    thumbnail: /assets/projects/reform.png
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_reward-models-can-improve-themselves-reward-guided-activity-7461963169092083712-zfrZ
+      - label: X thread
+        url: https://x.com/furongh/status/2073710599536591255
+  - title: "MaxMin-RLHF: Alignment with Diverse Human Preferences"
+    pillar: self-improvement
+    thumbnail: /assets/projects/maxmin-rlhf.jpg
+  - title: "SAIL: Self-improving Efficient Online Alignment of Large Language Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/sail.png
+  - title: "Shadowcast: Stealthy Data Poisoning Attacks Against Vision-Language Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/shadowcast.webp
+  - title: "Beyond Worst-case Attacks: Robust RL with Adaptive Defense via Non-dominated Policies"
+    pillar: self-improvement
+    thumbnail: /assets/projects/adaptive-robust-rl.png
+    social_links:
+      - label: Project
+        url: https://protected-beyond-worst-case.github.io/home/m_index.html
+      - label: Code
+        url: https://github.com/umd-huang-lab/PROTECTED
+  - title: "The Hidden Bias of Process Reward Models: PRISM for Rewarding the Right Reasoning"
+    pillar: self-improvement
+    thumbnail: /assets/projects/prism.png
+  - title: "MIRA: Towards Mitigating Reward Hacking in Inference-Time Alignment of T2I Diffusion Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/mira.png
+  - title: "AegisLLM: Scaling Agentic Systems for Self-Reflective Defense in LLM Security"
+    pillar: self-improvement
+    thumbnail: /assets/projects/aegisllm.png
+  - title: Does Reasoning Preserve Alignment? On the Trustworthiness of Large Reasoning Models
+    pillar: self-improvement
+    thumbnail: /assets/projects/reasoning-alignment.png
+  - title: "LLaVA-Critic-R1: Your Critic Model Is Secretly a Strong Policy Model"
+    pillar: self-improvement
+    thumbnail: /assets/projects/llava-critic-r1.png
+  - title: "TrustGen: A Platform of Dynamic Benchmarking on the Trustworthiness of Generative Foundation Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/trustgen.png
+  - title: "ViCrit: A Verifiable Reinforcement Learning Proxy Task for Visual Perception in VLMs"
+    pillar: self-improvement
+    thumbnail: /assets/projects/vicrit.png
+  - title: "MORSE-500: A Programmatically Controllable Video Benchmark to Stress-Test Multimodal Reasoning"
+    pillar: world-models
+    thumbnail: /assets/projects/morse-500.png
+  - title: "TraceVLA: Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies"
+    thumbnail: /assets/projects/tracevla.webp
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_iclr2025-naacl2025-aialignment-activity-7320520941799653377-BEN8
+      - label: X post
+        url: https://x.com/furongh/status/1915256719091130469
+  - title: "VisVM: Scaling Inference-time Search with Vision Value Model for Improved Visual Comprehension"
+    thumbnail: /assets/projects/visvm.webp
+  - title: "TSRBench: A Comprehensive Multi-task Multi-modal Time Series Reasoning Benchmark for Generalist Models"
+    thumbnail: /assets/projects/tsrbench.webp
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_icml2026-acl2026-seoul-activity-7479975735516942336-gmzt
+      - label: X thread
+        url: https://x.com/furongh/status/2074215492391453166
+  - title: "SciPredict: Can LLMs Predict the Outcomes of Scientific Experiments in Natural Sciences?"
+    thumbnail: /assets/projects/scipredict.png
+    social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_icml2026-acl2026-seoul-activity-7479975735516942336-gmzt
+      - label: X thread
+        url: https://x.com/furongh/status/2074215497701474629

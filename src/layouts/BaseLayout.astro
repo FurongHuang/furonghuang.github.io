@@ -1,0 +1,81 @@
+---
+import "../styles/global.css";
+import { profile } from "../data/site";
+import SocialLinks from "../components/SocialLinks.astro";
+import EmailReveal from "../components/EmailReveal.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Furong Huang — Trustworthy Foundation Models",
+  description = "Furong Huang leads research on world models, reasoning control, and trustworthy self-improvement for foundation models."
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const links = [
+  ["/", "Home"],
+  ["/research/", "Research"],
+  ["/publications/", "Publications"],
+  ["/people/", "People"],
+  ["/news/", "News"],
+  ["/blog/", "Blog"],
+  ["/teaching/", "Teaching"],
+  ["/cv/", "CV"]
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#102a43" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Furong Lab home">
+        <span class="wordmark-mark">FH</span>
+        <span>
+          <strong>{profile.name}</strong>
+          <small>Furong Lab · UMD</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        {links.map(([href, label]) => (
+          <a class:list={{ active: href === "/" ? pathname === href : pathname.startsWith(href) }} href={href}>
+            {label}
+          </a>
+        ))}
+      </nav>
+      <a class="header-action" href="/Furong_Huang_CV.pdf">Download CV <span>↗</span></a>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer>
+      <div>
+        <strong>{profile.labName}</strong>
+        <p>Building foundation models that reason, act, recover, and improve.</p>
+        <p>{profile.location} · {profile.institution}</p>
+      </div>
+      <div class="footer-links">
+        <SocialLinks compact />
+        <EmailReveal />
+      </div>
+      <small>© {new Date().getFullYear()} Furong Lab · University of Maryland</small>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const currentPhdStudents = [
+  ["Jiawei Xu", "2025–present"], ["Andrew Mendez", "2025–present"],
+  ["Minghui Liu", "2025–present"], ["Sy-Tuyen Ho", "2025–present"],
+  ["Weize Liu", "2025–present"], ["Lingzhi Yuan", "2025–present"],
+  ["Yoonkyo Jung", "2025–present"], ["Shayan Shabihi", "2025–present"],
+  ["Seungjae (Jay) Lee", "2024–present"], ["Michael-Andrei Panaitescu-Liess", "2024–present"],
+  ["Cheryl Yongyuan Liang", "2024–present"], ["Aakriti Agrawal", "2023–present"],
+  ["Souradip Chakraborty", "2022–present"], ["Pankayaraj Pathmanathan", "2022–present"],
+  ["Chenghao Deng", "2021–present"], ["Mucong Ding", "2021–present"],
+  ["Frank Ruijie Zheng", "2022–present"]
+];
+
+const placements = [
+  ["Bang An", "OpenAI"], ["Sicheng Zhu", "OpenAI"], ["Xiaoyu Liu", "Google"],
+  ["Yuhang Zhou", "Meta"], ["Yuancheng Xu", "Netflix"], ["Dehao Yuan", "Capital One"],
+  ["Marco Bornstein", "APQX"]
+];
+---
+
+<BaseLayout title="People — Huang Lab">
+  <section class="shell page-hero">
+    <p class="eyebrow">Huang Lab · University of Maryland</p>
+    <h1>People building trustworthy AI.</h1>
+    <p>A research community spanning foundation models, reasoning, robotics, safety, fairness, and learning theory.</p>
+  </section>
+
+  <section class="shell section" style="padding-top: 1rem">
+    <div class="section-heading">
+      <div><p class="eyebrow">Current group</p><h2>Doctoral advisees.</h2></div>
+      <p>This initial migration is generated from the current CV. Personal profiles, research interests, and portraits will be added in the next design pass.</p>
+    </div>
+    <ul class="roster">
+      {currentPhdStudents.map(([name, period]) => <li><strong>{name}</strong><span>PhD advisee · {period}</span></li>)}
+    </ul>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Recent placements</p><h2>Students carrying the work forward.</h2></div>
+      <p>Spring and summer 2025 graduates joined leading research and technology organizations.</p>
+    </div>
+    <div class="content-grid">
+      {placements.map(([name, destination]) => <article class="content-card"><h3>{name}</h3><p>{destination}</p></article>)}
+    </div>
+  </section>
+</BaseLayout>

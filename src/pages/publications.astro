@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PaperCard from "../components/PaperCard.astro";
+import publicationData from "../data/publications.json";
+
+const works = [...(publicationData.works as any[])].sort((a, b) =>
+  (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title)
+);
+const years = Array.from(new Set(works.map((work) => work.year).filter(Boolean))).sort((a, b) => b - a);
+const categories = Array.from(new Set(works.map((work) => work.category).filter(Boolean))).sort();
+---
+
+<BaseLayout title="Publications — Furong Huang" description="Search and explore Furong Huang's publications in trustworthy AI, foundation models, agents, robotics, and machine learning.">
+  <section class="shell page-hero">
+    <p class="eyebrow">Complete scholarly record</p>
+    <h1>Publications</h1>
+    <p>
+      Search {works.length} normalized records across conferences, journals, workshops, and preprints. Furong Huang is highlighted in each author list.
+    </p>
+  </section>
+
+  <section class="shell section" style="padding-top: 0">
+    <div class="publication-controls" aria-label="Publication filters">
+      <input id="publication-search" type="search" placeholder="Search title, author, venue…" aria-label="Search publications" />
+      <select id="publication-category" aria-label="Filter by publication category">
+        <option value="">All publication types</option>
+        {categories.map((category) => <option value={category}>{category[0].toUpperCase() + category.slice(1)}</option>)}
+      </select>
+      <select id="publication-year" aria-label="Filter by year">
+        <option value="">All years</option>
+        {years.map((year) => <option value={year}>{year}</option>)}
+      </select>
+      <span class="publication-count" id="publication-count">{works.length} records</span>
+    </div>
+
+    <div class="publication-list" id="publication-list">
+      {works.map((paper) => <PaperCard paper={paper} compact />)}
+    </div>
+    <div class="empty-state" id="publication-empty">
+      <h2>No matching publications</h2>
+      <p>Try a broader keyword or clear one of the filters.</p>
+    </div>
+  </section>
+
+  <script>
+    const search = document.querySelector<HTMLInputElement>("#publication-search");
+    const category = document.querySelector<HTMLSelectElement>("#publication-category");
+    const year = document.querySelector<HTMLSelectElement>("#publication-year");
+    const count = document.querySelector<HTMLElement>("#publication-count");
+    const empty = document.querySelector<HTMLElement>("#publication-empty");
+    const papers = Array.from(document.querySelectorAll<HTMLElement>("[data-paper]"));
+
+    const filterPublications = () => {
+      const query = search?.value.trim().toLowerCase() || "";
+      const selectedCategory = category?.value || "";
+      const selectedYear = year?.value || "";
+      let visible = 0;
+
+      for (const paper of papers) {
+        const matchesQuery = !query || (paper.dataset.search || "").includes(query);
+        const matchesCategory = !selectedCategory || paper.dataset.category === selectedCategory;
+        const matchesYear = !selectedYear || paper.dataset.year === selectedYear;
+        const matches = matchesQuery && matchesCategory && matchesYear;
+        paper.hidden = !matches;
+        if (matches) visible += 1;
+      }
+
+      if (count) count.textContent = `${visible} ${visible === 1 ? "record" : "records"}`;
+      if (empty) empty.style.display = visible === 0 ? "block" : "none";
+    };
+
+    search?.addEventListener("input", filterPublications);
+    category?.addEventListener("change", filterPublications);
+    year?.addEventListener("change", filterPublications);
+  </script>
+</BaseLayout>

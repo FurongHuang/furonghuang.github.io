@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ResearchMap from "../components/ResearchMap.astro";
+import PaperCard from "../components/PaperCard.astro";
+import publicationData from "../data/publications.json";
+import { news, profile, selectedPublicationTitles } from "../data/site";
+
+const works = publicationData.works as any[];
+const selectedWorks = selectedPublicationTitles
+  .map((title) => works.find((work) => work.title === title))
+  .filter(Boolean);
+const counts = works.reduce((result: Record<string, number>, work) => {
+  result[work.category] = (result[work.category] || 0) + 1;
+  return result;
+}, {});
+const currentStudents = 17;
+---
+
+<BaseLayout>
+  <section class="shell hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Trustworthy foundation models · University of Maryland</p>
+      <h1>AI systems that <em>reason, act, recover,</em> and improve.</h1>
+      <p class="hero-intro">
+        Furong Huang's lab studies foundation models as decision-making systems—models that understand physical and digital worlds, reason under uncertainty, act through tools or bodies, and learn from failure.
+      </p>
+      <p class="hero-identity">{profile.title} · {profile.institution}</p>
+      <div class="button-row">
+        <a class="button" href="/research/">Explore the research <span>→</span></a>
+        <a class="button secondary" href="/publications/">Browse publications</a>
+      </div>
+    </div>
+    <div class="portrait-stage">
+      <div class="portrait-frame">
+        <img src="/assets/furong-huang.jpg" alt="Furong Huang" />
+      </div>
+      <div class="portrait-caption">
+        <span>Research vision</span>
+        <strong>Trust should be designed as a closed loop.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell metrics-strip" aria-label="Research at a glance">
+    <div class="metric"><strong>{publicationData.stats.normalized_works}</strong><span>Publication records</span></div>
+    <div class="metric"><strong>{counts.conference || 0}</strong><span>Conference papers</span></div>
+    <div class="metric"><strong>{counts.journal || 0}</strong><span>Journal papers</span></div>
+    <div class="metric"><strong>{currentStudents}</strong><span>Current PhD advisees</span></div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Research architecture</p>
+        <h2>Three connected loops for capable and trustworthy AI.</h2>
+      </div>
+      <p>
+        The lab connects models of the world, policies for allocating reasoning, and mechanisms that turn failures into safer future behavior.
+      </p>
+    </div>
+    <ResearchMap />
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Selected work · 2026</p>
+        <h2>Research designed to be explored, not merely listed.</h2>
+      </div>
+      <p>
+        This visual layer highlights the ideas behind selected papers. The complete, searchable scholarly record remains one click away.
+      </p>
+    </div>
+    <div class="paper-grid">
+      {selectedWorks.map((paper) => <PaperCard paper={paper} />)}
+    </div>
+    <div class="button-row" style="margin-top: 2rem">
+      <a class="button secondary" href="/publications/">View all {publicationData.stats.normalized_works} records <span>→</span></a>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="chart-panel">
+      <div>
+        <p class="eyebrow" style="color: #7ee0d8">Research trajectory</p>
+        <h2>A growing body of work across theory and systems.</h2>
+        <p>Publication counts are generated from the same normalized data that powers the complete CV and the website.</p>
+      </div>
+      <img src="/assets/publication-history.png" alt="Publication history by year and type" />
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Latest signals</p>
+        <h2>News from the lab.</h2>
+      </div>
+      <p>Talks, new research, student milestones, and recognitions—kept concise and connected to the underlying work.</p>
+    </div>
+    <div class="news-grid">
+      {news.map((item) => (
+        <article class="news-card">
+          <time>{item.date}</time>
+          <span class="news-type">{item.type}</span>
+          <h3>{item.title}</h3>
+          <p>{item.detail}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="cta">
+      <p class="eyebrow" style="color: white">Research with us</p>
+      <h2>Build foundation models that can earn trust through their behavior.</h2>
+      <p>Explore current work, meet the research group, or get in touch about collaboration and student opportunities.</p>
+      <div class="button-row">
+        <a class="button" href="/people/">Meet the group</a>
+        <a class="button" href={`mailto:${profile.email}`}>Contact Furong</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

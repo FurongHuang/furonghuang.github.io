@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const courses = [
+  ["Summer 2026", "Generative AI Agents", "DeepLearn 2026", ""],
+  ["Spring 2026", "Introduction to Machine Learning", "CMSC 422", "https://umd-huang-lab.github.io/cmsc422-spring2026/"],
+  ["Fall 2025", "Generative AI Agents", "CMSC 848N", "https://umd-huang-lab.github.io/cmsc848n-fall2025/"],
+  ["Spring 2024", "Introduction to Machine Learning", "CMSC 422", "http://www.cs.umd.edu/class/spring2024/cmsc422-0201/"],
+  ["Fall 2023", "Algorithms in Machine Learning", "CMSC 742", "https://www.cs.umd.edu/class/fall2023/cmsc742/"],
+  ["Spring 2023", "Algorithms in Machine Learning", "CMSC 742", "https://www.cs.umd.edu/class/spring2023/cmsc742/"],
+  ["Fall 2022", "Introduction to Machine Learning", "CMSC 422", "http://www.cs.umd.edu/class/fall2022/cmsc422-0201/"],
+  ["Spring 2022", "Introduction to Machine Learning", "CMSC 422", "https://www.cs.umd.edu/class/spring2022/cmsc422-0101/"]
+];
+---
+
+<BaseLayout title="Teaching — Furong Huang">
+  <section class="shell page-hero">
+    <p class="eyebrow">Teaching and curriculum</p>
+    <h1>From machine learning foundations to generative AI agents.</h1>
+    <p>Courses connect theoretical guarantees with hands-on systems for reasoning, planning, tool use, memory, and evaluation.</p>
+  </section>
+
+  <section class="shell section" style="padding-top: 1rem">
+    <div class="course-list">
+      {courses.map(([term, title, code, url]) => (
+        <div class="course-row">
+          <span>{term}</span>
+          <strong>{title} · {code}</strong>
+          {url ? <a href={url}>Course site ↗</a> : <span>International school</span>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="content-grid">
+      <article class="content-card"><p class="eyebrow">New curriculum</p><h2>Generative AI Agents</h2><p>Graduate lectures and projects on LLM reasoning, planning, tools, memory, robust agent design, and evaluation.</p></article>
+      <article class="content-card"><p class="eyebrow">Graduate theory</p><h2>Algorithms in Machine Learning</h2><p>Methods with theoretical performance guarantees and applications across networks, biology, and language.</p></article>
+      <article class="content-card"><p class="eyebrow">Undergraduate foundations</p><h2>Introduction to Machine Learning</h2><p>Learning theory, latent-variable models, and principled approaches to deep learning.</p></article>
+    </div>
+  </section>
+</BaseLayout>

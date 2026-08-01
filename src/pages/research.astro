@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ResearchMap from "../components/ResearchMap.astro";
+import { researchPillars } from "../data/site";
+---
+
+<BaseLayout title="Research — Furong Huang">
+  <section class="shell page-hero">
+    <p class="eyebrow">Research program</p>
+    <h1>Foundation models as decision-making systems.</h1>
+    <p>
+      The lab asks what changes when models become runtime decision-makers: allocating computation, choosing tools and collaborators, acting in physical environments, and revising behavior after failure.
+    </p>
+  </section>
+
+  <section class="shell section" style="padding-top: 1rem">
+    <ResearchMap />
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Questions that connect the work</p><h2>From prediction to controlled agency.</h2></div>
+      <p>Each pillar produces its own algorithms and evaluations, but the strongest systems connect all three.</p>
+    </div>
+    <div class="content-grid">
+      {researchPillars.map((pillar) => (
+        <article class="content-card">
+          <p class="eyebrow">{pillar.number}</p>
+          <h2>{pillar.title}</h2>
+          <p>{pillar.description}</p>
+          <ul>
+            {pillar.topics.map((topic) => <li>{topic}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="cta">
+      <p class="eyebrow" style="color: white">See the evidence</p>
+      <h2>Explore the papers behind each research direction.</h2>
+      <div class="button-row"><a class="button" href="/publications/">Browse publications</a></div>
+    </div>
+  </section>
+</BaseLayout>

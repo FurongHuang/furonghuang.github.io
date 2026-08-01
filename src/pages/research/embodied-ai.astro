@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import PaperCard from "../../components/PaperCard.astro";
+import publicationData from "../../data/publications.json";
+import { projects } from "../../data/site";
+
+const works = publicationData.works as any[];
+const embodiedProjects = projects.filter((project) => project.area === "Embodied AI");
+const relatedTitles = [
+  "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos",
+  "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning",
+  "Imagine, Verify, Execute: Agentic Exploration with Vision-Language Models",
+  "Make-An-Agent: A Generalizable Policy Network Generator with Behavior-Prompted Diffusion",
+  "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
+];
+const relatedWorks = relatedTitles.map((title) => works.find((work) => work.title === title)).filter(Boolean);
+---
+
+<BaseLayout title="Embodied AI — Furong Lab" description="Embodied AI projects from Furong Lab: world models, robot learning, scene understanding, and agentic exploration.">
+  <section class="shell page-hero project-page-hero">
+    <p class="eyebrow"><a href="/research/">Pillar 1 · World models</a></p>
+    <h1>Embodied AI</h1>
+    <p>We build agents that learn the structure of interaction—not only pixels or text—so knowledge can transfer across tasks, scenes, cameras, and bodies.</p>
+    <div class="topic-links"><a href="#projects">Projects <span>↓</span></a><a href="#papers">Related papers <span>↓</span></a></div>
+  </section>
+
+  <section class="embodied-statement">
+    <div class="shell">
+      <p class="eyebrow">Research question</p>
+      <h2>How can an agent learn a world model that is useful for action?</h2>
+      <p>Our approach combines reusable physical representations, explicit state, multimodal reasoning, and active verification. The goal is not merely to generate plausible futures, but to support reliable decisions in the real world.</p>
+    </div>
+  </section>
+
+  <section class="shell section" id="projects">
+    <div class="section-heading">
+      <div><p class="eyebrow">Representative projects</p><h2>From video to interaction.</h2></div>
+      <p>Each card links to the official project page and, where available, the paper, code, and social explanation.</p>
+    </div>
+    <div class="project-grid">{embodiedProjects.map((project) => <ProjectCard project={project} />)}</div>
+  </section>
+
+  <section class="shell section" id="papers">
+    <div class="section-heading">
+      <div><p class="eyebrow">Selected publications</p><h2>The papers behind the projects.</h2></div>
+      <p>Continue into the complete database to browse all work labeled under world models.</p>
+    </div>
+    <div class="paper-grid">{relatedWorks.map((paper) => <PaperCard paper={paper} />)}</div>
+    <div class="button-row" style="margin-top: 2rem"><a class="button secondary" href="/publications/?pillar=world-models">All world-model papers <span>→</span></a></div>
+  </section>
+</BaseLayout>

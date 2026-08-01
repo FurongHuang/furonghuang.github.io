@@ -1,4 +1,6 @@
 ---
+import { classifyPublication, pillarMeta, publicationThumbnailByTitle } from "../data/research";
+
 interface Link {
   label?: string;
   url?: string;
@@ -39,23 +41,25 @@ const cleanLinks = Array.from(
 ).slice(0, 4);
 
 const authorText = (paper.authors || []).join(", ");
-const authorMarkup = authorText.replace(/Furong Huang/g, "<strong>Furong Huang</strong>");
-const accent = paper.category === "journal" ? "coral" : paper.category === "workshop" ? "violet" : "teal";
+const pillar = classifyPublication(paper.title);
+const pillarInfo = pillarMeta[pillar];
+const thumbnail = publicationThumbnailByTitle[paper.title];
+const accent = pillarInfo.color;
 const venue = paper.venue?.trim().replace(/^,\s*/, "") || "";
 ---
 
-<article class:list={["paper-card", `accent-${accent}`, { compact }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-search={`${paper.title} ${authorText} ${paper.venue}`.toLowerCase()}>
-  <div class="paper-visual" aria-hidden="true">
-    <span>{String(paper.year || "—").slice(-2)}</span>
-    <i></i><i></i><i></i>
+<article class:list={["paper-card", `accent-${accent}`, { compact }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-pillar={pillar} data-search={`${paper.title} ${authorText} ${paper.venue} ${pillarInfo.label}`.toLowerCase()}>
+  <div class:list={["paper-visual", { "has-image": Boolean(thumbnail) }]} aria-hidden="true">
+    {thumbnail ? <img src={thumbnail} alt="" loading="lazy" /> : <><span>{String(paper.year || "—").slice(-2)}</span><i></i><i></i><i></i></>}
   </div>
   <div class="paper-body">
     <div class="paper-meta">
+      <span class={`pillar-label pillar-${pillar}`}>{pillarInfo.shortLabel}</span>
       <span>{paper.category || "publication"}</span>
       <span>{paper.year || "Forthcoming"}</span>
     </div>
     <h3>{paper.title}</h3>
-    <p class="paper-authors" set:html={authorMarkup}></p>
+    <p class="paper-authors">{authorText}</p>
     {venue && venue !== String(paper.year) && <p class="paper-venue">{venue}</p>}
     {cleanLinks.length > 0 && (
       <div class="paper-links">

@@ -1,0 +1,50 @@
+export interface Person {
+  name: string;
+  role: string;
+  period?: string;
+  destination?: string;
+  href?: string;
+  image?: string;
+}
+
+export const postdocs: Person[] = [
+  {
+    name: "Zikui Cai",
+    role: "Postdoctoral researcher · UMIACS",
+    href: "https://zikuicai.github.io/",
+    image: "/assets/people/zikui-cai.jpg"
+  }
+];
+
+export const currentPhdStudents: Person[] = [
+  { name: "Aakriti Agrawal", role: "Ph.D. advisee · Computer Science", period: "2023–present", image: "/assets/people/aakriti-agrawal.jpg" },
+  { name: "Andrew Mendez", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Sy-Tuyen Ho", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Yoonkyo Jung", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Seungjae (Jay) Lee", role: "Ph.D. advisee · Computer Science", period: "2024–present", href: "https://sjlee.cc/", image: "/assets/people/seungjae-lee.jpg" },
+  { name: "Lingzhi Yuan", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Minghui Liu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Weize Liu", role: "Ph.D. advisee · Computer Science", period: "2025–present" },
+  { name: "Shayan Shabihi", role: "Ph.D. advisee · Computer Science", period: "2025–present", href: "https://shayanshabihi.com/", image: "/assets/people/shayan-shabihi.jpg" },
+  { name: "Jiawei Xu", role: "Ph.D. advisee · Computer Science", period: "2025–present" }
+];
+
+export const alumni: Person[] = [
+  { name: "Pankayaraj Pathmanathan", role: "Ph.D. · Computer Science", period: "2026", href: "https://pankayaraj.github.io/", image: "/assets/people/pankayaraj-pathmanathan.jpg" },
+  { name: "Souradip Chakraborty", role: "Ph.D. · Computer Science", period: "2026", destination: "MIT CSAIL · Postdoctoral Researcher", href: "https://souradip-chakraborty.github.io/", image: "/assets/people/souradip-chakraborty.jpg" },
+  { name: "Michael-Andrei Panaitescu-Liess", role: "Ph.D. advisee", period: "2026", href: "https://scholar.google.com/citations?user=MOP6lhkAAAAJ&hl=ro", image: "/assets/people/michael-panaitescu-liess.jpg" },
+  { name: "Frank Ruijie Zheng", role: "Ph.D. advisee", period: "2026", href: "https://ruijiezheng.com/", image: "/assets/people/ruijie-zheng.jpg" },
+  { name: "Chenghao Deng", role: "Ph.D. · Electrical & Computer Engineering", period: "2026", href: "https://www.linkedin.com/in/chenghao-deng-326444182", image: "/assets/people/chenghao-deng.jpg" },
+  { name: "Mucong Ding", role: "Ph.D. · Computer Science", period: "2025", href: "https://www.mucongding.com/", image: "/assets/people/mucong-ding.jpg" },
+  { name: "Bang An", role: "Ph.D. · Computer Science", period: "2025", destination: "OpenAI", href: "https://bangann.github.io/", image: "/assets/people/bang-an.jpg" },
+  { name: "Sicheng Zhu", role: "Ph.D. · Computer Science", period: "2025", destination: "OpenAI", href: "https://schzhu.github.io/", image: "/assets/people/sicheng-zhu.jpg" },
+  { name: "Xiaoyu Liu", role: "Ph.D. · Computer Science", period: "2025", destination: "Google", image: "/assets/people/xiaoyu-liu.jpg" },
+  { name: "Yuhang Zhou", role: "Ph.D.", period: "2025", destination: "Meta", href: "https://tonyzhou98.github.io/" },
+  { name: "Yuancheng Xu", role: "Ph.D. · AMSC", period: "2025", destination: "Netflix", href: "https://yuancheng-xu.github.io/", image: "/assets/people/yuancheng-xu.png" },
+  { name: "Dehao Yuan", role: "Ph.D.", period: "2025", destination: "Capital One", href: "https://dhyuan99.github.io/" },
+  { name: "Marco Bornstein", role: "Ph.D. · AMSC", period: "2025", destination: "APQX", href: "https://marcobornstein.github.io/", image: "/assets/people/marco-bornstein.png" },
+  { name: "Tahseen Rabbani", role: "Ph.D. · Computer Science", period: "2024", destination: "Yale · Postdoctoral Researcher", href: "https://twr7bm.github.io/", image: "/assets/people/tahseen-rabbani.png" },
+  { name: "Yanchao Sun", role: "Ph.D. · Computer Science", period: "2023", destination: "Apple", href: "https://ycsun2017.github.io/", image: "/assets/people/yanchao-sun.jpg" },
+  { name: "Xiyao Wang", role: "Ph.D. · Computer Science", period: "2023", image: "/assets/people/xiyao-wang.jpg" },
+  { name: "Jiahao Su", role: "Ph.D. · Electrical & Computer Engineering", period: "2022", destination: "Amazon", image: "/assets/people/jiahao-su.jpg" }
+];

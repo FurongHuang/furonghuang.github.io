@@ -1,15 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ResearchMap from "../components/ResearchMap.astro";
-import { researchPillars } from "../data/site";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects, researchPillars } from "../data/site";
 ---
 
-<BaseLayout title="Research — Furong Huang">
+<BaseLayout title="Research — Furong Lab">
   <section class="shell page-hero">
     <p class="eyebrow">Research program</p>
     <h1>Foundation models as decision-making systems.</h1>
     <p>
-      The lab asks what changes when models become runtime decision-makers: allocating computation, choosing tools and collaborators, acting in physical environments, and revising behavior after failure.
+      Furong Lab studies models that allocate computation, choose tools and collaborators, act in physical environments, and revise behavior after failure. Select any pillar or topic to follow the work from research question to project and paper.
     </p>
   </section>
 
@@ -17,30 +18,44 @@ import { researchPillars } from "../data/site";
     <ResearchMap />
   </section>
 
-  <section class="shell section">
-    <div class="section-heading">
-      <div><p class="eyebrow">Questions that connect the work</p><h2>From prediction to controlled agency.</h2></div>
-      <p>Each pillar produces its own algorithms and evaluations, but the strongest systems connect all three.</p>
-    </div>
-    <div class="content-grid">
-      {researchPillars.map((pillar) => (
-        <article class="content-card">
-          <p class="eyebrow">{pillar.number}</p>
+  {researchPillars.map((pillar) => (
+    <section class={`pillar-section pillar-section-${pillar.id}`} id={pillar.id}>
+      <div class="shell pillar-section-inner">
+        <div class="pillar-intro">
+          <p class="eyebrow">Pillar {pillar.number}</p>
           <h2>{pillar.title}</h2>
+          <strong>{pillar.subtitle}</strong>
           <p>{pillar.description}</p>
-          <ul>
-            {pillar.topics.map((topic) => <li>{topic}</li>)}
-          </ul>
-        </article>
-      ))}
-    </div>
-  </section>
+          <div class="topic-links">
+            {pillar.topics.map((topic) => <a href={topic.href}>{topic.label}<span>→</span></a>)}
+          </div>
+        </div>
+        {pillar.id === "world-models" ? (
+          <div class="pillar-feature">
+            <p class="eyebrow">Featured area</p>
+            <h3>Embodied AI</h3>
+            <p>World models become tangible when agents must understand space, bodies, state, and consequences. Explore representative systems, videos, code, and papers.</p>
+            <a class="button" href="/research/embodied-ai/">Explore Embodied AI <span>→</span></a>
+          </div>
+        ) : (
+          <div class="pillar-feature">
+            <p class="eyebrow">Selected evidence</p>
+            <h3>{pillar.id === "reasoning-control" ? "Control at generation, action, and workflow levels." : "A closed loop from failure discovery to recovery."}</h3>
+            <p>{pillar.id === "reasoning-control" ? "Work such as FlowBank, GenARM, Transfer Q-Star, and agentic critical training asks where another unit of compute or verification matters most." : "PropensityBench, ReForm, safety steering, WAVES, and robust learning expose failure modes and turn them into safer future behavior."}</p>
+            <a class="button secondary" href={`/publications/?pillar=${pillar.id}`}>Browse pillar publications <span>→</span></a>
+          </div>
+        )}
+      </div>
+    </section>
+  ))}
 
   <section class="shell section">
-    <div class="cta">
-      <p class="eyebrow" style="color: white">See the evidence</p>
-      <h2>Explore the papers behind each research direction.</h2>
-      <div class="button-row"><a class="button" href="/publications/">Browse publications</a></div>
+    <div class="section-heading">
+      <div><p class="eyebrow">Representative projects</p><h2>Ideas you can inspect and use.</h2></div>
+      <p>Project pages bring together papers, code, demonstrations, and the visual evidence behind the research.</p>
+    </div>
+    <div class="project-grid">
+      {projects.slice(0, 2).map((project) => <ProjectCard project={project} />)}
     </div>
   </section>
 </BaseLayout>

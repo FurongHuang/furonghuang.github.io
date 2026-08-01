@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { blogPosts } from "../../data/site";
+---
+
+<BaseLayout title="Blog — Furong Lab" description="Essays and lab notes from Furong Huang and Furong Lab at UMD.">
+  <section class="shell page-hero">
+    <p class="eyebrow">Notes from the work</p>
+    <h1>Blog</h1>
+    <p>Research stories, lessons from building the academic community, and context that does not fit inside a paper abstract.</p>
+  </section>
+  <section class="shell section" style="padding-top: 0">
+    <div class="blog-grid">
+      {blogPosts.map((post, index) => (
+        <article class:list={["blog-card", { featured: index === 0 }]}>
+          <time>{post.date}</time>
+          <h2><a href={`/blog/${post.slug}/`}>{post.title}</a></h2>
+          <p>{post.excerpt}</p>
+          <div class="blog-tags">{post.tags.map((tag) => <span>{tag}</span>)}</div>
+          <a class="text-link" href={`/blog/${post.slug}/`}>Read the story <span>→</span></a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

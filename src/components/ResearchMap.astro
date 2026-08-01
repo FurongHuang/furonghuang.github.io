@@ -18,12 +18,13 @@ import { researchPillars } from "../data/site";
     <article class={`research-node node-${index + 1}`}>
       <div class="node-orbit" aria-hidden="true"><span></span></div>
       <p class="eyebrow">Pillar {pillar.number}</p>
-      <h3>{pillar.title}</h3>
+      <h3><a href={pillar.href}>{pillar.title}<span aria-hidden="true">↗</span></a></h3>
       <strong>{pillar.subtitle}</strong>
       <p>{pillar.description}</p>
       <ul>
-        {pillar.topics.map((topic) => <li>{topic}</li>)}
+        {pillar.topics.map((topic) => <li><a href={topic.href}>{topic.label}</a></li>)}
       </ul>
+      <a class="node-link" href={pillar.href}>Explore this pillar <span>→</span></a>
     </article>
   ))}
 </div>

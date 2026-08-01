@@ -2,8 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ResearchMap from "../components/ResearchMap.astro";
 import PaperCard from "../components/PaperCard.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import EmailReveal from "../components/EmailReveal.astro";
 import publicationData from "../data/publications.json";
 import { news, profile, selectedPublicationTitles } from "../data/site";
+import { currentPhdStudents } from "../data/people";
 
 const works = publicationData.works as any[];
 const selectedWorks = selectedPublicationTitles
@@ -13,7 +16,7 @@ const counts = works.reduce((result: Record<string, number>, work) => {
   result[work.category] = (result[work.category] || 0) + 1;
   return result;
 }, {});
-const currentStudents = 17;
+const currentStudents = currentPhdStudents.length;
 ---
 
 <BaseLayout>
@@ -25,6 +28,7 @@ const currentStudents = 17;
         Furong Huang's lab studies foundation models as decision-making systems—models that understand physical and digital worlds, reason under uncertainty, act through tools or bodies, and learn from failure.
       </p>
       <p class="hero-identity">{profile.title} · {profile.institution}</p>
+      <SocialLinks />
       <div class="button-row">
         <a class="button" href="/research/">Explore the research <span>→</span></a>
         <a class="button secondary" href="/publications/">Browse publications</a>
@@ -32,7 +36,7 @@ const currentStudents = 17;
     </div>
     <div class="portrait-stage">
       <div class="portrait-frame">
-        <img src="/assets/furong-huang.jpg" alt="Furong Huang" />
+        <img src="/assets/bodyshot.JPG" alt="Furong Huang" />
       </div>
       <div class="portrait-caption">
         <span>Research vision</span>
@@ -99,15 +103,17 @@ const currentStudents = 17;
       <p>Talks, new research, student milestones, and recognitions—kept concise and connected to the underlying work.</p>
     </div>
     <div class="news-grid">
-      {news.map((item) => (
+      {news.slice(0, 3).map((item) => (
         <article class="news-card">
           <time>{item.date}</time>
           <span class="news-type">{item.type}</span>
           <h3>{item.title}</h3>
           <p>{item.detail}</p>
+          {item.href && <a href={item.href}>Read more <span>↗</span></a>}
         </article>
       ))}
     </div>
+    <div class="button-row" style="margin-top: 2rem"><a class="button secondary" href="/news/">See all news <span>→</span></a></div>
   </section>
 
   <section class="shell section">
@@ -117,7 +123,7 @@ const currentStudents = 17;
       <p>Explore current work, meet the research group, or get in touch about collaboration and student opportunities.</p>
       <div class="button-row">
         <a class="button" href="/people/">Meet the group</a>
-        <a class="button" href={`mailto:${profile.email}`}>Contact Furong</a>
+        <EmailReveal inverted />
       </div>
     </div>
   </section>

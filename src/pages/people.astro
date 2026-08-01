@@ -1,49 +1,42 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const currentPhdStudents = [
-  ["Jiawei Xu", "2025–present"], ["Andrew Mendez", "2025–present"],
-  ["Minghui Liu", "2025–present"], ["Sy-Tuyen Ho", "2025–present"],
-  ["Weize Liu", "2025–present"], ["Lingzhi Yuan", "2025–present"],
-  ["Yoonkyo Jung", "2025–present"], ["Shayan Shabihi", "2025–present"],
-  ["Seungjae (Jay) Lee", "2024–present"], ["Michael-Andrei Panaitescu-Liess", "2024–present"],
-  ["Cheryl Yongyuan Liang", "2024–present"], ["Aakriti Agrawal", "2023–present"],
-  ["Souradip Chakraborty", "2022–present"], ["Pankayaraj Pathmanathan", "2022–present"],
-  ["Chenghao Deng", "2021–present"], ["Mucong Ding", "2021–present"],
-  ["Frank Ruijie Zheng", "2022–present"]
-];
-
-const placements = [
-  ["Bang An", "OpenAI"], ["Sicheng Zhu", "OpenAI"], ["Xiaoyu Liu", "Google"],
-  ["Yuhang Zhou", "Meta"], ["Yuancheng Xu", "Netflix"], ["Dehao Yuan", "Capital One"],
-  ["Marco Bornstein", "APQX"]
-];
+import PersonCard from "../components/PersonCard.astro";
+import { alumni, currentPhdStudents, postdocs } from "../data/people";
 ---
 
-<BaseLayout title="People — Huang Lab">
-  <section class="shell page-hero">
-    <p class="eyebrow">Huang Lab · University of Maryland</p>
-    <h1>People building trustworthy AI.</h1>
-    <p>A research community spanning foundation models, reasoning, robotics, safety, fairness, and learning theory.</p>
+<BaseLayout title="People — Furong Lab" description="Current researchers and alumni of Furong Lab at the University of Maryland.">
+  <section class="shell page-hero people-hero">
+    <div>
+      <p class="eyebrow">Furong Lab · University of Maryland</p>
+      <h1>People building trustworthy AI.</h1>
+      <p>A research community spanning foundation models, reasoning, robotics, safety, fairness, and learning theory.</p>
+    </div>
+    <img src="/assets/headshot.jpg" alt="Furong Huang" />
   </section>
 
   <section class="shell section" style="padding-top: 1rem">
     <div class="section-heading">
-      <div><p class="eyebrow">Current group</p><h2>Doctoral advisees.</h2></div>
-      <p>This initial migration is generated from the current CV. Personal profiles, research interests, and portraits will be added in the next design pass.</p>
+      <div><p class="eyebrow">Current group</p><h2>Postdoctoral researcher.</h2></div>
+      <p>Working across robotics, multimodal learning, world models, and trustworthy foundation models.</p>
     </div>
-    <ul class="roster">
-      {currentPhdStudents.map(([name, period]) => <li><strong>{name}</strong><span>PhD advisee · {period}</span></li>)}
-    </ul>
+    <div class="people-grid compact-people">{postdocs.map((person) => <PersonCard person={person} />)}</div>
   </section>
 
   <section class="shell section">
     <div class="section-heading">
-      <div><p class="eyebrow">Recent placements</p><h2>Students carrying the work forward.</h2></div>
-      <p>Spring and summer 2025 graduates joined leading research and technology organizations.</p>
+      <div><p class="eyebrow">Current group</p><h2>Doctoral advisees.</h2></div>
+      <p>Names link to personal research profiles where one is available. Portraits will continue to be added as new group members join.</p>
     </div>
-    <div class="content-grid">
-      {placements.map(([name, destination]) => <article class="content-card"><h3>{name}</h3><p>{destination}</p></article>)}
+    <div class="people-grid">{currentPhdStudents.map((person) => <PersonCard person={person} />)}</div>
+  </section>
+
+  <section class="alumni-band">
+    <div class="shell section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Alumni</p><h2>The extended Furong Lab community.</h2></div>
+        <p>Graduates and former advisees carrying the work into research organizations, industry, and academia.</p>
+      </div>
+      <div class="people-grid alumni-grid">{alumni.map((person) => <PersonCard person={person} />)}</div>
     </div>
   </section>
 </BaseLayout>

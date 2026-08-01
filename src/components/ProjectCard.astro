@@ -1,0 +1,37 @@
+---
+interface ProjectLink { label: string; href: string }
+interface Project {
+  id: string;
+  area: string;
+  title: string;
+  summary: string;
+  image?: string;
+  visualLabel?: string;
+  theme?: "teal" | "coral" | "violet";
+  year: number;
+  links: readonly ProjectLink[];
+}
+
+const { project } = Astro.props as { project: Project };
+---
+
+<article class="project-card" id={project.id}>
+  <div class="project-image">
+    {project.image ? (
+      <img src={project.image} alt={`Representative result from ${project.title}`} loading="lazy" />
+    ) : (
+      <div class:list={["project-placeholder", `theme-${project.theme || "teal"}`]} aria-hidden="true">
+        <span>{project.visualLabel || project.title.slice(0, 2)}</span>
+        <i></i><i></i><i></i>
+      </div>
+    )}
+  </div>
+  <div class="project-body">
+    <div class="project-meta"><span>{project.area}</span><span>{project.year}</span></div>
+    <h3>{project.title}</h3>
+    <p>{project.summary}</p>
+    <div class="project-links">
+      {project.links.map((link) => <a href={link.href} target="_blank" rel="noopener">{link.label}<span>↗</span></a>)}
+    </div>
+  </div>
+</article>

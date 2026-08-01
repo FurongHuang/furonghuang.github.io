@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PaperCard from "../components/PaperCard.astro";
 import publicationData from "../data/publications.json";
+import { pillarMeta } from "../data/research";
 
 const works = [...(publicationData.works as any[])].sort((a, b) =>
   (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title)
@@ -15,7 +16,7 @@ const categories = Array.from(new Set(works.map((work) => work.category).filter(
     <p class="eyebrow">Complete scholarly record</p>
     <h1>Publications</h1>
     <p>
-      Search {works.length} normalized records across conferences, journals, workshops, and preprints. Furong Huang is highlighted in each author list.
+      Search {works.length} normalized records across conferences, journals, workshops, and preprints. Research-pillar labels connect each paper to the lab's broader program.
     </p>
   </section>
 
@@ -25,6 +26,10 @@ const categories = Array.from(new Set(works.map((work) => work.category).filter(
       <select id="publication-category" aria-label="Filter by publication category">
         <option value="">All publication types</option>
         {categories.map((category) => <option value={category}>{category[0].toUpperCase() + category.slice(1)}</option>)}
+      </select>
+      <select id="publication-pillar" aria-label="Filter by research pillar">
+        <option value="">All research pillars</option>
+        {Object.entries(pillarMeta).map(([id, pillar]) => <option value={id}>{pillar.shortLabel}</option>)}
       </select>
       <select id="publication-year" aria-label="Filter by year">
         <option value="">All years</option>
@@ -46,6 +51,7 @@ const categories = Array.from(new Set(works.map((work) => work.category).filter(
     const search = document.querySelector<HTMLInputElement>("#publication-search");
     const category = document.querySelector<HTMLSelectElement>("#publication-category");
     const year = document.querySelector<HTMLSelectElement>("#publication-year");
+    const pillar = document.querySelector<HTMLSelectElement>("#publication-pillar");
     const count = document.querySelector<HTMLElement>("#publication-count");
     const empty = document.querySelector<HTMLElement>("#publication-empty");
     const papers = Array.from(document.querySelectorAll<HTMLElement>("[data-paper]"));
@@ -54,13 +60,15 @@ const categories = Array.from(new Set(works.map((work) => work.category).filter(
       const query = search?.value.trim().toLowerCase() || "";
       const selectedCategory = category?.value || "";
       const selectedYear = year?.value || "";
+      const selectedPillar = pillar?.value || "";
       let visible = 0;
 
       for (const paper of papers) {
         const matchesQuery = !query || (paper.dataset.search || "").includes(query);
         const matchesCategory = !selectedCategory || paper.dataset.category === selectedCategory;
         const matchesYear = !selectedYear || paper.dataset.year === selectedYear;
-        const matches = matchesQuery && matchesCategory && matchesYear;
+        const matchesPillar = !selectedPillar || paper.dataset.pillar === selectedPillar;
+        const matches = matchesQuery && matchesCategory && matchesYear && matchesPillar;
         paper.hidden = !matches;
         if (matches) visible += 1;
       }
@@ -72,5 +80,13 @@ const categories = Array.from(new Set(works.map((work) => work.category).filter(
     search?.addEventListener("input", filterPublications);
     category?.addEventListener("change", filterPublications);
     year?.addEventListener("change", filterPublications);
+    pillar?.addEventListener("change", filterPublications);
+
+    const params = new URLSearchParams(window.location.search);
+    if (search && params.has("q")) search.value = params.get("q") || "";
+    if (category && params.has("category")) category.value = params.get("category") || "";
+    if (year && params.has("year")) year.value = params.get("year") || "";
+    if (pillar && params.has("pillar")) pillar.value = params.get("pillar") || "";
+    filterPublications();
   </script>
 </BaseLayout>

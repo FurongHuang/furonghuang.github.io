@@ -2,11 +2,6 @@
 # to keep each face centered without modifying the source image. imageScale can
 # gently zoom a distant subject and is validated between 1 and 3.
 postdocs:
-  - name: Zikui Cai
-    role: Postdoctoral researcher · UMIACS
-    href: https://zikuicai.github.io/
-    image: /assets/people/zikui-cai.jpg
-    imagePosition: 50% 18%
   - name: Haoran Chen
     role: Postdoctoral associate · Computer Science
     period: 2026–present
@@ -100,6 +95,13 @@ current_phd_students:
     imagePosition: 50% 30%
 
 alumni:
+  - name: Zikui Cai
+    role: Postdoctoral alumnus · UMIACS
+    period: "2026"
+    destination: Amazon FAR
+    href: https://zikuicai.github.io/
+    image: /assets/people/zikui-cai.jpg
+    imagePosition: 50% 18%
   - name: Pankayaraj Pathmanathan
     role: Ph.D. · Computer Science
     period: "2026"
@@ -206,7 +208,8 @@ alumni:
     imagePosition: 50% 22%
   - name: Xiyao Wang
     role: Ph.D. · Computer Science
-    period: "2023"
+    period: "2026"
+    destination: Tencent Hunyuan · North America
     image: /assets/people/xiyao-wang.jpg
     imagePosition: 32% 22%
     imageScale: 1.4

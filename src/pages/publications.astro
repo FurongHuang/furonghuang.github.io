@@ -10,8 +10,9 @@ const works = [...(publicationData.works as any[])].sort((a, b) =>
 );
 const years = Array.from(new Set(works.map((work) => work.year).filter(Boolean))).sort((a, b) => b - a);
 const categories = Array.from(new Set(works.map((work) => work.category).filter(Boolean))).sort();
-const counts = works.reduce((result: Record<string, number>, work) => {
-  result[work.category] = (result[work.category] || 0) + 1;
+const appearances = works.flatMap((work) => work.appearances || []);
+const appearanceCounts = appearances.reduce((result: Record<string, number>, appearance) => {
+  result[appearance.category] = (result[appearance.category] || 0) + 1;
   return result;
 }, {});
 ---
@@ -26,19 +27,20 @@ const counts = works.reduce((result: Record<string, number>, work) => {
   </section>
 
   <section class="shell publication-overview" aria-label="Publication overview">
-    <div class="metrics-strip compact-metrics">
-      <div class="metric"><strong>{publicationData.stats.normalized_works}</strong><span>Normalized records</span></div>
-      <div class="metric"><strong>{counts.conference || 0}</strong><span>Conference papers</span></div>
-      <div class="metric"><strong>{counts.journal || 0}</strong><span>Journal papers</span></div>
-      <div class="metric"><strong>{counts.workshop || 0}</strong><span>Workshop papers</span></div>
+    <div class="metrics-strip compact-metrics publication-metrics">
+      <div class="metric"><strong>{appearances.length}</strong><span>CV publication entries</span></div>
+      <div class="metric"><strong>{appearanceCounts.conference || 0}</strong><span>Conference entries</span></div>
+      <div class="metric"><strong>{appearanceCounts.workshop || 0}</strong><span>Workshop entries</span></div>
+      <div class="metric"><strong>{appearanceCounts.journal || 0}</strong><span>Journal entries</span></div>
+      <div class="metric"><strong>{appearanceCounts.preprint || 0}</strong><span>Preprints</span></div>
     </div>
     <div class="publication-trajectory">
       <div class="publication-trajectory-copy">
         <p class="eyebrow">Research trajectory</p>
         <h2>A long-running program across theory and systems.</h2>
-        <p>The figure is generated during every site build from the normalized CV publication database, so it cannot drift away from the searchable records below.</p>
+        <p>The figure shows CV publication entries by year and type. A work can appear once as a workshop paper and again as a later conference or journal publication.</p>
       </div>
-      <PublicationHistory works={works} asOf={publicationData.as_of} />
+      <PublicationHistory works={appearances} asOf={publicationData.as_of} />
     </div>
   </section>
 

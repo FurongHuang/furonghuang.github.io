@@ -47,7 +47,7 @@ const ticks = [0, chartMax / 2, chartMax];
   </div>
   <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby="publication-chart-title publication-chart-desc">
     <title id="publication-chart-title">Publications by year and type</title>
-    <desc id="publication-chart-desc">A stacked bar chart generated from the normalized publication database, current through {asOf}.</desc>
+    <desc id="publication-chart-desc">A stacked bar chart generated from CV publication appearances, current through {asOf}.</desc>
     {ticks.map((tick) => (
       <g>
         <line x1={margin.left} x2={width - margin.right} y1={yFor(tick)} y2={yFor(tick)} />
@@ -71,5 +71,5 @@ const ticks = [0, chartMax / 2, chartMax];
       );
     })}
   </svg>
-  <p>Generated from the same normalized records as the CV · Data current through {asOf}</p>
+  <p>Generated from CV publication appearances · Data current through {asOf}</p>
 </div>

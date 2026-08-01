@@ -49,7 +49,7 @@ const foundationalWorks = foundationalTitles
           </div>
         </div>
         <div class="pillar-feature">
-          <div class="pillar-feature-visual">
+          <div class:list={["pillar-feature-visual", `media-${pillar.featuredArea.imageFit || "contain"}`]} style={`--media-position: ${pillar.featuredArea.imagePosition || "50% 50%"}`}>
             <img src={pillar.featuredArea.image} alt={pillar.featuredArea.imageAlt} loading="lazy" />
             <span>Pillar {pillar.number} flagship</span>
           </div>

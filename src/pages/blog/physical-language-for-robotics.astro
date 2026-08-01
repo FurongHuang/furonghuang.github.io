@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Robotics Needs a Better Physical Language — Furong Huang" description="A research vision for structured world-model representations that connect video, geometry, interaction, and robot action.">
+  <article class="shell blog-post">
+    <header>
+      <a class="eyebrow" href="/blog/">Blog · Physical AI</a>
+      <h1>Robotics Needs a Better Physical Language</h1>
+      <p class="post-deck">The next generation of robot world models may depend less on bigger pixel predictors and more on compact, structured representations of interaction.</p>
+      <time>June 14, 2026</time>
+    </header>
+
+    <div class="post-body">
+      <p>In language, words give large models a shared token space: a way to compress, exchange, and reuse knowledge across people, books, domains, and time. What is the equivalent for robotics?</p>
+      <p>Robotics is radically heterogeneous. Bodies, cameras, sensors, action spaces, tools, tasks, and environments all differ. A useful physical representation must preserve what transfers across those differences.</p>
+
+      <blockquote>The value of a robot world model may lie less in generating realistic videos than in discovering a reusable language of physical interaction.</blockquote>
+
+      <h2>The limits of pixels and black-box latents</h2>
+      <p>Pixel prediction offers dense supervision, but it spends capacity on texture, lighting, background motion, viewpoint, and camera artifacts. Robots often care about something else: geometry, contact, object state, and how motion changes what can happen next.</p>
+      <p>Unconstrained latent spaces solve the compression problem but introduce another one. They can collapse, resist interpretation, and make intervention or correction difficult. A compact representation is not enough if neither a person nor an agent can understand what it believes about the world.</p>
+
+      <h2>A structured third path</h2>
+      <p>Our research increasingly explores a third path: representations that are learned but structured, compact but interpretable, and abstract while remaining grounded in physical evidence.</p>
+      <p><a href="/publications/?q=%CE%BC0">μ0</a> predicts semantic 3D interaction traces—the motion of object parts, tools, hands, and contact regions. These traces provide a shared space for learning motion priors from heterogeneous video without requiring action labels during world-model pretraining.</p>
+      <p><a href="/publications/?q=TraceGen">TraceGen</a> develops the same representation-space idea for cross-embodiment learning. Rather than reproduce every visible detail, it models geometric and temporal structure that can transfer between human and robot video.</p>
+      <p><a href="/publications/?q=MomaGraph">MomaGraph</a> uses state-aware scene graphs containing spatial relations, functional relations, object states, and part-level affordances. Its world representation is designed for planning and intervention rather than passive scene description.</p>
+      <p><a href="/publications/?q=TraceVLA">TraceVLA</a> brings structured spatial-temporal traces into vision-language-action policies, while earlier projects such as <a href="/publications/?q=TACO">TACO</a> and Premier-TACO studied compact temporal representations for few-shot robot learning.</p>
+
+      <h2>What should a physical language provide?</h2>
+      <p>A useful physical language should abstract away appearance that does not affect action, preserve geometry and contact, express state changes, support intervention, and remain reusable across bodies and tasks. It should also connect with foundation models rather than force every robot to relearn the world from scratch.</p>
+      <p>This changes how we should evaluate world models. Visual realism is not the final objective. The stronger test is whether the representation gives an agent a space in which it can reason, plan, intervene, and act.</p>
+
+      <div class="post-links"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7471976218494537728/">Original LinkedIn post <span>↗</span></a><a href="/research/embodied-ai/">Explore embodied-AI projects <span>→</span></a></div>
+    </div>
+  </article>
+</BaseLayout>

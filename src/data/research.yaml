@@ -1,6 +1,8 @@
 # Source of truth for the website's research navigation and project presentation.
 # Edit this file to update pillars, topic pages, featured projects, thumbnails,
 # social links, or the curated publication list. The site validates it at build time.
+# Project and featured-area images default to imageFit: contain so technical figures
+# remain uncropped. Use imageFit: cover and imagePosition: "50% 30%" for photographs.
 
 pillar_meta:
   world-models:
@@ -96,6 +98,8 @@ featured_projects:
         href: https://github.com/Yoonkyo/mu0
       - label: Models
         href: https://huggingface.co/collections/furonghuang-lab/mu0
+      - label: LinkedIn post
+        href: https://www.linkedin.com/feed/update/urn:li:activity:7471976218494537728/
   - id: tracegen
     pillar: world-models
     area: Embodied AI
@@ -126,6 +130,8 @@ featured_projects:
         href: https://arxiv.org/abs/2512.16909
       - label: Code
         href: https://github.com/HybridRobotics/MomaGraph
+      - label: LinkedIn
+        href: https://www.linkedin.com/posts/furong-huang_iclr2026-machinelearning-ai-ugcPost-7453165248611577857-xoSO/
       - label: X post
         href: https://x.com/furongh/status/2047374487109403030
   - id: imagine-verify-execute
@@ -313,6 +319,8 @@ areas:
             href: https://attention-is-all-i-need.github.io/ACT/
           - label: Paper
             href: https://arxiv.org/abs/2603.08706
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
       - id: ive-agents
         area: AI Agents
         title: Imagine, Verify, Execute
@@ -384,6 +392,8 @@ areas:
             href: https://arxiv.org/abs/2410.08193
           - label: Code
             href: https://github.com/Yuancheng-Xu/GenARM
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
       - id: safety-recovery
         area: Test-time compute
         title: Safety Recovery
@@ -424,6 +434,8 @@ areas:
             href: https://arxiv.org/abs/2503.21720
           - label: X post
             href: https://x.com/furongh/status/1929970919398588593
+          - label: LinkedIn essay
+            href: https://www.linkedin.com/pulse/when-students-shape-science-reflections-data-ai-governance-huang-uo5ye/
   - slug: agentic-workflows
     pillar: reasoning-control
     title: Agentic workflows
@@ -450,6 +462,8 @@ areas:
             href: https://arxiv.org/abs/2606.11290
           - label: Code
             href: https://github.com/lingzhiyxp/FlowBank
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
       - id: act-workflows
         area: Agentic workflows
         title: Agentic Critical Training
@@ -462,6 +476,8 @@ areas:
             href: https://attention-is-all-i-need.github.io/ACT/
           - label: Paper
             href: https://arxiv.org/abs/2603.08706
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
       - id: fusionroute
         area: Agentic workflows
         title: FusionRoute
@@ -599,6 +615,8 @@ areas:
             href: https://arxiv.org/abs/2410.08193
           - label: Code
             href: https://github.com/Yuancheng-Xu/GenARM
+          - label: LinkedIn vision
+            href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
       - id: maxmin-rlhf
         area: Alignment
         title: MaxMin-RLHF
@@ -692,6 +710,8 @@ publication_overrides:
     social_links:
       - label: LinkedIn
         url: https://www.linkedin.com/pulse/pixels-black-box-latents-why-%CE%BC-uses-trace-space-physical-furong-huang-dp9xc
+      - label: LinkedIn post
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7471976218494537728/
   - title: "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos"
     pillar: world-models
     thumbnail: /assets/projects/tracegen.png
@@ -699,6 +719,8 @@ publication_overrides:
     pillar: world-models
     thumbnail: /assets/projects/momagraph.png
     social_links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/posts/furong-huang_iclr2026-machinelearning-ai-ugcPost-7453165248611577857-xoSO/
       - label: X post
         url: https://x.com/furongh/status/2047374487109403030
   - title: "Imagine, Verify, Execute: Agentic Exploration with Vision-Language Models"
@@ -739,6 +761,9 @@ publication_overrides:
   - title: Agentic Critical Training
     pillar: reasoning-control
     thumbnail: /assets/projects/agentic-critical-training.png
+    social_links:
+      - label: LinkedIn vision
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
   - title: "Transfer Q-star: Principled Decoding for LLM Alignment"
     pillar: reasoning-control
     thumbnail: /assets/projects/transfer-q-star.png
@@ -746,11 +771,16 @@ publication_overrides:
     pillar: reasoning-control
     thumbnail: /assets/projects/collab.png
     social_links:
+      - label: LinkedIn essay
+        url: https://www.linkedin.com/pulse/when-students-shape-science-reflections-data-ai-governance-huang-uo5ye/
       - label: X post
         url: https://x.com/furongh/status/1929970919398588593
   - title: "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
     pillar: reasoning-control
     thumbnail: /assets/projects/flowbank.png
+    social_links:
+      - label: LinkedIn vision
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
   - title: Token-Level LLM Collaboration via FusionRoute
     pillar: reasoning-control
     thumbnail: /assets/projects/fusionroute.jpg
@@ -762,6 +792,9 @@ publication_overrides:
   - title: "GenARM: Reward Guided Generation with Autoregressive Reward Model for Test-Time Alignment"
     pillar: reasoning-control
     thumbnail: /assets/projects/genarm.png
+    social_links:
+      - label: LinkedIn vision
+        url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
   - title: "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
     pillar: self-improvement
     thumbnail: /assets/projects/propensitybench.png

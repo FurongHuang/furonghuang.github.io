@@ -441,7 +441,7 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: 50% 18%;
 }
 
 .portrait-caption {
@@ -1226,10 +1226,18 @@ main {
 }
 
 .pillar-feature-visual img {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  padding: 0.85rem;
+  object-fit: contain;
+  object-position: var(--media-position, 50% 50%);
   transition: transform 300ms ease;
+}
+
+.pillar-feature-visual.media-cover img {
+  padding: 0;
+  object-fit: cover;
 }
 
 .pillar-feature:hover .pillar-feature-visual img {
@@ -1304,10 +1312,18 @@ main {
 }
 
 .project-image img {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  padding: 0.75rem;
+  object-fit: contain;
+  object-position: var(--media-position, 50% 50%);
   transition: transform 300ms ease;
+}
+
+.project-image.media-cover img {
+  padding: 0;
+  object-fit: cover;
 }
 
 .project-placeholder {
@@ -1473,13 +1489,26 @@ main {
 
 .placement-person:hover { transform: translateY(-4px); border-color: rgba(126, 224, 216, 0.65); }
 
-.placement-person img,
+.placement-photo,
 .placement-initials {
   width: 100%;
-  height: 145px;
+  height: auto;
+  aspect-ratio: 4 / 5;
 }
 
-.placement-person img { object-fit: cover; object-position: center top; }
+.portrait-media {
+  display: block;
+  overflow: hidden;
+}
+
+.portrait-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--media-position, 50% 25%);
+  transform: scale(var(--media-scale, 1));
+  transform-origin: var(--media-position, 50% 25%);
+}
 
 .placement-initials {
   display: grid;
@@ -1529,6 +1558,7 @@ main {
   width: 210px;
   aspect-ratio: 1;
   object-fit: cover;
+  object-position: 50% 22%;
   border: 8px solid var(--white);
   border-radius: 50%;
   box-shadow: var(--shadow);
@@ -1547,21 +1577,20 @@ main {
   grid-template-columns: 86px 1fr;
   gap: 1rem;
   align-items: center;
-  min-height: 126px;
+  min-height: 140px;
   padding: 1rem;
   border: 1px solid rgba(16, 42, 67, 0.1);
   border-radius: 20px;
   background: var(--white);
 }
 
-.person-card img,
+.person-photo,
 .person-initials {
   width: 86px;
-  height: 96px;
+  height: auto;
+  aspect-ratio: 4 / 5;
   border-radius: 14px;
 }
-
-.person-card img { object-fit: cover; object-position: center top; }
 
 .person-initials {
   display: grid;
@@ -1973,13 +2002,11 @@ footer > small {
   .news-list article > a,
   .news-list article > span:last-child { grid-column: 1 / -1; }
   .person-card { grid-template-columns: 74px 1fr; }
-  .person-card img,
-  .person-initials { width: 74px; height: 84px; }
+  .person-photo,
+  .person-initials { width: 74px; height: auto; }
   .pillar-feature-body { padding: 1.7rem; }
   .placement-people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .placement-person { min-height: 215px; }
-  .placement-person img,
-  .placement-initials { height: 125px; }
   .blog-post h1 { font-size: clamp(3.2rem, 16vw, 5rem); }
   .post-body { font-size: 1.12rem; }
 }

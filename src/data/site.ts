@@ -259,6 +259,30 @@ export const news = [
 
 export const blogPosts = [
   {
+    slug: "when-students-shape-the-science",
+    date: "May 22, 2026",
+    title: "When Students Shape the Science",
+    excerpt:
+      "Six graduating researchers, six intellectual arcs, and one evolving lab vision spanning data, governance, alignment, fairness, self-improvement, and physical AI.",
+    tags: ["Mentorship", "Lab vision", "Research journey"]
+  },
+  {
+    slug: "reasoning-as-control",
+    date: "July 30, 2026",
+    title: "Reasoning as Control: Toward Self-Improving Agentic Systems",
+    excerpt:
+      "Self-improvement belongs not only inside the model, but also in the infrastructure that controls thinking, action, evaluation, and workflow composition.",
+    tags: ["Agentic AI", "Test-time control", "Self-improvement"]
+  },
+  {
+    slug: "physical-language-for-robotics",
+    date: "June 14, 2026",
+    title: "Robotics Needs a Better Physical Language",
+    excerpt:
+      "Why the next generation of robot world models may depend less on bigger pixel predictors and more on compact, structured representations of interaction.",
+    tags: ["Physical AI", "World models", "Robot learning"]
+  },
+  {
     slug: "where-has-furong-been",
     date: "September 24, 2024",
     title: "Where Has Furong Been? Behind the Scenes of Our NeurIPS Competition",

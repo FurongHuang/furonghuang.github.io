@@ -1,5 +1,6 @@
 ---
 import type { Person } from "../data/people";
+import PortraitImage from "./PortraitImage.astro";
 
 const { person } = Astro.props as { person: Person };
 const initials = person.name
@@ -13,7 +14,13 @@ const initials = person.name
 
 <article class="person-card">
   {person.image ? (
-    <img src={person.image} alt={`Portrait of ${person.name}`} loading="lazy" />
+    <PortraitImage
+      src={person.image}
+      alt={`Portrait of ${person.name}`}
+      position={person.imagePosition}
+      scale={person.imageScale}
+      className="person-photo"
+    />
   ) : (
     <div class="person-initials" aria-hidden="true">{initials}</div>
   )}

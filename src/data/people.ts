@@ -8,9 +8,11 @@ export interface Person {
   destination?: string;
   href?: string;
   image?: string;
+  imagePosition?: string;
+  imageScale?: number;
 }
 
-const optionalFields = ["period", "destination", "href", "image"] as const;
+const optionalFields = ["period", "destination", "href", "image", "imagePosition"] as const;
 
 function validateGroup(value: unknown, group: string): Person[] {
   if (!Array.isArray(value)) throw new Error(`people.yaml: ${group} must be a list`);
@@ -28,6 +30,9 @@ function validateGroup(value: unknown, group: string): Person[] {
       if (person[field] !== undefined && typeof person[field] !== "string") {
         throw new Error(`people.yaml: ${group}[${index}].${field} must be a string`);
       }
+    }
+    if (person.imageScale !== undefined && (typeof person.imageScale !== "number" || person.imageScale < 1 || person.imageScale > 3)) {
+      throw new Error(`people.yaml: ${group}[${index}].imageScale must be a number from 1 to 3`);
     }
     return person as unknown as Person;
   });

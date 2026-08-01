@@ -3,6 +3,7 @@ import researchYaml from "./research.yaml?raw";
 
 export type PillarId = "world-models" | "reasoning-control" | "self-improvement";
 export type ProjectTheme = "teal" | "coral" | "violet";
+export type ImageFit = "cover" | "contain";
 
 export interface ProjectLink {
   label: string;
@@ -16,6 +17,8 @@ export interface ResearchProject {
   summary: string;
   year: number;
   image?: string;
+  imageFit?: ImageFit;
+  imagePosition?: string;
   visualLabel?: string;
   theme?: ProjectTheme;
   relatedTitle?: string;
@@ -52,6 +55,8 @@ export interface ResearchPillar {
     href: string;
     image: string;
     imageAlt: string;
+    imageFit?: ImageFit;
+    imagePosition?: string;
     featuredProjectId: string;
   };
 }
@@ -63,6 +68,7 @@ export interface PublicationSocialLink {
 
 const pillarIds = new Set<PillarId>(["world-models", "reasoning-control", "self-improvement"]);
 const themes = new Set<ProjectTheme>(["teal", "coral", "violet"]);
+const imageFits = new Set<ImageFit>(["cover", "contain"]);
 
 function objectAt(value: unknown, context: string): Record<string, unknown> {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -96,6 +102,12 @@ function pillarAt(record: Record<string, unknown>, field: string, context: strin
   return value;
 }
 
+function imageFitAt(record: Record<string, unknown>, field: string, context: string): ImageFit | undefined {
+  const value = optionalStringAt(record, field, context) as ImageFit | undefined;
+  if (value && !imageFits.has(value)) throw new Error(`research.yaml: ${context}.${field} must be cover or contain`);
+  return value;
+}
+
 function linksAt(value: unknown, context: string): ProjectLink[] {
   return listAt(value, context).map((item, index) => {
     const link = objectAt(item, `${context}[${index}]`);
@@ -122,6 +134,8 @@ function projectAt(value: unknown, context: string, featured = false): ResearchP
     summary: stringAt(project, "summary", context),
     year,
     image: optionalStringAt(project, "image", context),
+    imageFit: imageFitAt(project, "imageFit", context),
+    imagePosition: optionalStringAt(project, "imagePosition", context),
     visualLabel: optionalStringAt(project, "visualLabel", context),
     theme,
     relatedTitle: optionalStringAt(project, "relatedTitle", context),
@@ -163,6 +177,8 @@ export const researchPillars = listAt(raw.pillars, "pillars").map((value, index)
       href: stringAt(featuredArea, "href", `pillars[${index}].featuredArea`),
       image: stringAt(featuredArea, "image", `pillars[${index}].featuredArea`),
       imageAlt: stringAt(featuredArea, "imageAlt", `pillars[${index}].featuredArea`),
+      imageFit: imageFitAt(featuredArea, "imageFit", `pillars[${index}].featuredArea`),
+      imagePosition: optionalStringAt(featuredArea, "imagePosition", `pillars[${index}].featuredArea`),
       featuredProjectId: stringAt(featuredArea, "featuredProjectId", `pillars[${index}].featuredArea`)
     }
   };

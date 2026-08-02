@@ -757,7 +757,7 @@ publication_overrides:
         url: https://www.offconvex.org/2017/07/19/saddle-efficiency/
   - title: "Position: On the Possibilities of AI-Generated Text Detection"
     pillar: self-improvement
-    thumbnail: /assets/projects/ai-text-detection.webp
+    thumbnail: /assets/projects/ai-text-detection-figure.webp
   - title: "Compositional Adversarial Training for Robust Visual Watermarking"
     pillar: self-improvement
     thumbnail: /assets/projects/robust-visual-watermarking.webp

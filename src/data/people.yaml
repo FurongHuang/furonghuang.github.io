@@ -118,14 +118,14 @@ alumni:
     image: /assets/people/souradip-chakraborty.jpg
     imagePosition: 50% 25%
   - name: Michael-Andrei Panaitescu-Liess
-    role: Ph.D. advisee
+    role: Ph.D. · Computer Science
     period: "2026"
     destination: Amazon
     href: https://scholar.google.com/citations?user=MOP6lhkAAAAJ&hl=ro
     image: /assets/people/michael-panaitescu-liess.jpg
     imagePosition: 50% 25%
   - name: Frank Ruijie Zheng
-    role: Ph.D. advisee
+    role: Ph.D. · Computer Science
     period: "2026"
     destination: NVIDIA GEAR Lab
     href: https://ruijiezheng.com/

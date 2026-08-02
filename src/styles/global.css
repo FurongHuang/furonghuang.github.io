@@ -755,6 +755,28 @@ main {
   gap: 1.35rem;
 }
 
+.featured-paper-grid .paper-card.has-thumbnail {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.featured-paper-grid .paper-card.has-thumbnail .paper-visual {
+  min-height: 0;
+  aspect-ratio: 16 / 7;
+  border-bottom: 1px solid var(--line);
+  background: #f4f7f6;
+}
+
+.featured-paper-grid .paper-card.has-thumbnail .paper-visual::after {
+  display: none;
+}
+
+.featured-paper-grid .paper-card.has-thumbnail .paper-visual img {
+  box-sizing: border-box;
+  padding: 1rem;
+  object-fit: contain;
+}
+
 .paper-card {
   display: grid;
   grid-template-columns: 130px 1fr;

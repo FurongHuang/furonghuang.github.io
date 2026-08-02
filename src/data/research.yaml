@@ -181,12 +181,14 @@ featured_projects:
       - label: Paper
         href: https://arxiv.org/abs/2407.10973
 selected_publication_titles:
+  - "μ0: A Scalable 3D Interaction-Trace World Model"
   - "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos"
+  - "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
+  - "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
   - "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
+  - Agentic Critical Training
   - "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
   - Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
-  - "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
-  - "Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling"
 areas:
   - slug: multimodal-learning
     pillar: world-models

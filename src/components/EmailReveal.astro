@@ -14,7 +14,7 @@ const { inverted = false } = Astro.props as { inverted?: boolean };
 </div>
 
 <script>
-  const glyphs = [102, 117, 114, 111, 110, 103, 104, 64, 99, 115, 46, 117, 109, 100, 46, 101, 100, 117];
+  const glyphs = [102, 117, 114, 111, 110, 103, 104, 64, 117, 109, 100, 46, 101, 100, 117];
   const address = () => String.fromCharCode(...glyphs);
 
   for (const challenge of document.querySelectorAll<HTMLElement>("[data-email-challenge]")) {

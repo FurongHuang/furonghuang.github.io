@@ -357,8 +357,7 @@ main {
 }
 
 .email-start,
-.email-question button,
-.revealed-email {
+.email-question button {
   border: 1px solid var(--ink);
   border-radius: 999px;
   color: var(--ink);
@@ -368,8 +367,7 @@ main {
   cursor: pointer;
 }
 
-.email-start,
-.revealed-email { padding: 0.58rem 0.9rem; }
+.email-start { padding: 0.58rem 0.9rem; }
 
 .email-start:hover,
 .email-question button:hover {
@@ -402,6 +400,20 @@ main {
 }
 
 .email-question small { color: var(--coral); }
+
+.email-image {
+  display: block;
+  max-width: 100%;
+  margin-top: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  user-select: none;
+}
+
+.email-question .email-instruction {
+  margin-top: 0.45rem;
+  color: var(--muted);
+}
 
 .email-challenge.inverted .email-start {
   min-height: 3rem;

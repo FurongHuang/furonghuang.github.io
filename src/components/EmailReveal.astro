@@ -14,8 +14,53 @@ const { inverted = false } = Astro.props as { inverted?: boolean };
 </div>
 
 <script>
-  const glyphs = [102, 117, 114, 111, 110, 103, 104, 64, 117, 109, 100, 46, 101, 100, 117];
-  const address = () => String.fromCharCode(...glyphs);
+  const encoded = [113, 107, 87, 67, 93, 93, 41, 8, 58, 59, 57, 74, 14, 22, 12];
+  const address = () => String.fromCharCode(...encoded.map((value, index) => value ^ (23 + index * 7)));
+
+  const renderAddress = (email: string) => {
+    const width = 246;
+    const height = 54;
+    const scale = Math.min(window.devicePixelRatio || 1, 2);
+    const canvas = document.createElement("canvas");
+    canvas.className = "email-image";
+    canvas.width = width * scale;
+    canvas.height = height * scale;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    canvas.setAttribute("role", "img");
+    canvas.setAttribute("aria-label", "Email address shown as an image to discourage automated harvesting");
+
+    const context = canvas.getContext("2d");
+    if (!context) return canvas;
+    context.scale(scale, scale);
+    context.fillStyle = "#fffdf8";
+    context.fillRect(0, 0, width, height);
+
+    context.strokeStyle = "rgba(19, 37, 53, 0.09)";
+    context.lineWidth = 1;
+    for (let line = 0; line < 7; line += 1) {
+      context.beginPath();
+      context.moveTo(Math.random() * width, Math.random() * height);
+      context.lineTo(Math.random() * width, Math.random() * height);
+      context.stroke();
+    }
+
+    context.fillStyle = "#132535";
+    context.font = "600 18px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    context.textBaseline = "middle";
+    const characterWidth = 13.4;
+    const startX = (width - email.length * characterWidth) / 2;
+    [...email].forEach((character, index) => {
+      context.save();
+      context.translate(startX + index * characterWidth, height / 2 + (Math.random() - 0.5) * 2.5);
+      context.rotate((Math.random() - 0.5) * 0.045);
+      context.fillText(character, 0, 0);
+      context.restore();
+    });
+
+    canvas.addEventListener("contextmenu", (event) => event.preventDefault());
+    return canvas;
+  };
 
   for (const challenge of document.querySelectorAll<HTMLElement>("[data-email-challenge]")) {
     const start = challenge.querySelector<HTMLButtonElement>(".email-start");
@@ -39,12 +84,13 @@ const { inverted = false } = Astro.props as { inverted?: boolean };
         const email = address();
         if (question) {
           question.innerHTML = "";
-          const link = document.createElement("a");
-          link.href = `mailto:${email}`;
-          link.textContent = email;
-          link.className = "revealed-email";
-          question.append(link);
-          link.focus();
+          const heading = document.createElement("span");
+          heading.textContent = "Furong's email address";
+          const image = renderAddress(email);
+          const note = document.createElement("small");
+          note.className = "email-instruction";
+          note.textContent = "Please type this address into your email app.";
+          question.append(heading, image, note);
         }
       });
     }

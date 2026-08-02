@@ -38,7 +38,7 @@ const relatedWorks = relatedTitles.map((title) => works.find((work) => work.titl
   <section class="shell section" id="projects">
     <div class="section-heading">
       <div><p class="eyebrow">Representative projects</p><h2>From video to interaction.</h2></div>
-      <p>Each card links to the official project page and, where available, the paper, code, and social explanation.</p>
+      <p>Each project connects its central idea with the paper, code, demonstrations, and public explanations.</p>
     </div>
     <div class="project-grid">{embodiedProjects.map((project) => <ProjectCard project={project} />)}</div>
   </section>
@@ -46,7 +46,7 @@ const relatedWorks = relatedTitles.map((title) => works.find((work) => work.titl
   <section class="shell section" id="papers">
     <div class="section-heading">
       <div><p class="eyebrow">Selected publications</p><h2>The papers behind the projects.</h2></div>
-      <p>Continue into the complete database to browse all work labeled under world models.</p>
+      <p>The publications database presents the broader body of work on world models and embodied intelligence.</p>
     </div>
     <div class="paper-grid">{relatedWorks.map((paper) => <PaperCard paper={paper} />)}</div>
     <div class="button-row" style="margin-top: 2rem"><a class="button secondary" href="/publications/?pillar=world-models">All world-model papers <span>→</span></a></div>

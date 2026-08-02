@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-01",
+  "as_of": "2026-08-02",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [
@@ -146,14 +146,6 @@
         {
           "label": "Project page",
           "url": "https://ace-rl.github.io/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2402.14528\""
-        },
-        {
-          "label": "",
-          "url": "https://ace-rl.github.io/\""
         }
       ],
       "appearances": [
@@ -332,10 +324,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2309.03426"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2309.03426\""
         }
       ],
       "appearances": [
@@ -434,10 +422,6 @@
         },
         {
           "label": "",
-          "url": "https://arxiv.org/abs/2410.01871\""
-        },
-        {
-          "label": "",
           "url": "http://dx.doi.org/10.1145/3805689.3812397"
         }
       ],
@@ -505,18 +489,6 @@
         {
           "label": "Project page",
           "url": "https://pankayaraj.github.io/AdvBDGen/index.html"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2410.11283\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/pankayaraj/AAAI_2026_AdvBDGen\""
-        },
-        {
-          "label": "",
-          "url": "https://pankayaraj.github.io/AdvBDGen/index.html\""
         }
       ],
       "appearances": [
@@ -643,14 +615,6 @@
         {
           "label": "Code",
           "url": "https://github.com/kai-wen-yang/LPA3"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2211.00824\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/kai-wen-yang/LPA3\""
         }
       ],
       "appearances": [
@@ -793,14 +757,6 @@
         {
           "label": "",
           "url": "https://github.com/zikuicai/aegisllm"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2504.20965\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/zikuicai/aegisllm\""
         }
       ],
       "appearances": [
@@ -929,10 +885,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/1805.10341"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1805.10341\""
         }
       ],
       "appearances": [
@@ -991,10 +943,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2010.12989"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2010.12989\""
         }
       ],
       "appearances": [
@@ -1057,10 +1005,6 @@
         {
           "label": "arXiv:1411.1132 [cs.SI]",
           "url": "http://arxiv.org/abs/1411.1132"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1411.1132\""
         }
       ],
       "appearances": [
@@ -1122,10 +1066,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2002.11609"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2002.11609\""
         }
       ],
       "appearances": [
@@ -1282,10 +1222,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2310.15264"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2310.15264\""
         }
       ],
       "appearances": [
@@ -1370,14 +1306,6 @@
         {
           "label": "Project page",
           "url": "https://erasinginvisible.github.io"
-        },
-        {
-          "label": "",
-          "url": "https://openreview.net/pdf?id=BeFjjyzWOJ\""
-        },
-        {
-          "label": "",
-          "url": "https://erasinginvisible.github.io\""
         }
       ],
       "appearances": [
@@ -1467,10 +1395,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2310.15140"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2310.15140\""
         }
       ],
       "appearances": [
@@ -1568,14 +1492,6 @@
         {
           "label": "Code",
           "url": "https://github.com/wuxiyang1996/AutoHallusion"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2406.10900\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/wuxiyang1996/AutoHallusion\""
         }
       ],
       "appearances": [
@@ -1652,14 +1568,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/FalseRefusal"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2409.00598\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/FalseRefusal\""
         }
       ],
       "appearances": [
@@ -1782,10 +1690,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2409.13235"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2409.13235\""
         }
       ],
       "appearances": [
@@ -1887,14 +1791,6 @@
         {
           "label": "Project page",
           "url": "https://furong-huang.com/publications/benchmarking-vision-language-model-unlearning-via-fictitious-facial-identity-dataset/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2411.03554\""
-        },
-        {
-          "label": "",
-          "url": "https://furong-huang.com/publications/benchmarking-vision-language-model-unlearning-via-fictitious-facial-identity-dataset/\""
         }
       ],
       "appearances": [
@@ -1965,10 +1861,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2402.12673"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2402.12673\""
         }
       ],
       "appearances": [
@@ -2047,10 +1939,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2410.02581"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2410.02581\""
         }
       ],
       "appearances": [
@@ -2176,10 +2064,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/1912.10329"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1912.10329\""
         }
       ],
       "appearances": [
@@ -2244,14 +2128,6 @@
         {
           "label": "Code",
           "url": "https://github.com/michael-panaitescu/watermark_copyright_aaai25"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2407.17417\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/michael-panaitescu/watermark_copyright_aaai25\""
         }
       ],
       "appearances": [
@@ -2366,10 +2242,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2106.04537"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2106.04537\""
         }
       ],
       "appearances": [
@@ -2432,10 +2304,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2310.17325"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2310.17325\""
         }
       ],
       "appearances": [
@@ -2536,10 +2404,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2206.10158"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2206.10158\""
         }
       ],
       "appearances": [
@@ -2750,14 +2614,6 @@
         {
           "label": "Code",
           "url": "https://github.com/arpitbansal297/Cold-Diffusion-Models"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2208.09392\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/arpitbansal297/Cold-Diffusion-Models\""
         }
       ],
       "appearances": [
@@ -2834,14 +2690,6 @@
         {
           "label": "Project page",
           "url": "https://furong-huang.com/publications/collab-controlled-decoding-using-mixture-of-agents-for-llm-alignment/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2503.21720\""
-        },
-        {
-          "label": "",
-          "url": "https://furong-huang.com/publications/collab-controlled-decoding-using-mixture-of-agents-for-llm-alignment/\""
         }
       ],
       "appearances": [
@@ -3014,8 +2862,15 @@
       "year": 2026,
       "category": "workshop",
       "venue": "2nd Workshop on Compositional Learning: Safety, Interpretability, and Agents, ICML 2026",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "2605.16720"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2605.16720"
+        }
+      ],
       "appearances": [
         {
           "category": "workshop",
@@ -3034,7 +2889,12 @@
           "venue": "2nd Workshop on Compositional Learning: Safety, Interpretability, and Agents, ICML 2026",
           "year": 2026,
           "first_or_last_author": true,
-          "links": [],
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2605.16720"
+            }
+          ],
           "source_file": "sections/publications-ws.tex"
         }
       ],
@@ -3046,8 +2906,7 @@
       },
       "flags": [
         "missing-from-my-ncbi",
-        "missing-from-orcid",
-        "missing-persistent-link"
+        "missing-from-orcid"
       ]
     },
     {
@@ -3117,10 +2976,6 @@
         {
           "label": "arXiv:1506.03509 [cs.LG]",
           "url": "http://arxiv.org/abs/1506.03509"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1506.03509\""
         }
       ],
       "appearances": [
@@ -3230,10 +3085,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2002.09131"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2002.09131\""
         }
       ],
       "appearances": [
@@ -3296,10 +3147,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2310.07220"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2310.07220\""
         }
       ],
       "appearances": [
@@ -3384,10 +3231,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2409.05872"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2409.05872\""
         },
         {
           "label": "",
@@ -3567,10 +3410,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2311.00187"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2311.00187\""
         }
       ],
       "appearances": [
@@ -3615,12 +3454,19 @@
         "Pankayaraj Pathmanathan",
         "Furong Huang"
       ],
-      "authors_source": "inferred-from-tex",
+      "authors_source": "bibtex",
       "year": 2026,
       "category": "workshop",
       "venue": "Actionable Interpretability Workshop (AIW), COLM 2026",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "2604.09665"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2604.09665"
+        }
+      ],
       "appearances": [
         {
           "category": "workshop",
@@ -3634,22 +3480,24 @@
           "venue": "Actionable Interpretability Workshop (AIW), COLM 2026",
           "year": 2026,
           "first_or_last_author": true,
-          "links": [],
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2604.09665"
+            }
+          ],
           "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
         "full_cv": 1,
-        "wordpress_bibtex": 0,
+        "wordpress_bibtex": 1,
         "my_ncbi": 0,
         "orcid": 0
       },
       "flags": [
-        "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
-        "missing-from-orcid",
-        "authors-inferred-from-tex",
-        "missing-persistent-link"
+        "missing-from-orcid"
       ]
     },
     {
@@ -3683,14 +3531,6 @@
         {
           "label": "Code",
           "url": "https://github.com/Tonyzhou98/disco_grpo"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2505.15074\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/Tonyzhou98/disco_grpo\""
         }
       ],
       "appearances": [
@@ -3941,10 +3781,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2506.04210"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2506.04210\""
         }
       ],
       "appearances": [
@@ -4116,10 +3952,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2310.19668"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2310.19668\""
         }
       ],
       "appearances": [
@@ -4269,14 +4101,6 @@
         {
           "label": "Project page",
           "url": "https://easy2hardbench.github.io/home/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2409.18433\""
-        },
-        {
-          "label": "",
-          "url": "https://easy2hardbench.github.io/home/\""
         }
       ],
       "appearances": [
@@ -4350,14 +4174,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/WocaR-RL"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2210.05927\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/WocaR-RL\""
         }
       ],
       "appearances": [
@@ -4599,10 +4415,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2202.05826"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2202.05826\""
         }
       ],
       "appearances": [
@@ -4722,10 +4534,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2410.04571"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2410.04571\""
         }
       ],
       "appearances": [
@@ -4933,10 +4741,6 @@
         {
           "label": "arXiv:1503.02101 [cs.LG]",
           "url": "http://arxiv.org/abs/1503.02101"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1503.02101\""
         }
       ],
       "appearances": [
@@ -5081,10 +4885,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2311.08648"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2311.08648\""
         }
       ],
       "appearances": [
@@ -5147,14 +4947,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/Dynamics-Aware-Robust-Training"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2302.03015\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/Dynamics-Aware-Robust-Training\""
         }
       ],
       "appearances": [
@@ -5215,10 +5007,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2405.13879"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2405.13879\""
         }
       ],
       "appearances": [
@@ -5380,10 +5168,6 @@
         {
           "label": "Paper",
           "url": "https://link.springer.com/chapter/10.1007/978-3-030-55180-3_35"
-        },
-        {
-          "label": "",
-          "url": "https://link.springer.com/chapter/10.1007/978-3-030-55180-3_35\""
         }
       ],
       "appearances": [
@@ -5440,10 +5224,6 @@
         {
           "label": "pdf",
           "url": "http://newport.eecs.uci.edu/anandkumar/pubs/HuangAnandkumar11.pdf"
-        },
-        {
-          "label": "",
-          "url": "https://ieeexplore.ieee.org/document/6566989\""
         }
       ],
       "appearances": [
@@ -5558,10 +5338,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2505.15659"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2505.15659\""
         }
       ],
       "appearances": [
@@ -5770,10 +5546,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2307.12062"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2307.12062\""
         }
       ],
       "appearances": [
@@ -5904,18 +5676,6 @@
         {
           "label": "Code",
           "url": "https://github.com/Yuancheng-Xu/GenARM"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2410.08193\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/Yuancheng-Xu/GenARM\""
-        },
-        {
-          "label": "",
-          "url": "https://genarm.github.io\""
         }
       ],
       "appearances": [
@@ -5991,14 +5751,6 @@
         {
           "label": "Project page",
           "url": "https://colinyu1.github.io/genflowrl"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2508.11049\""
-        },
-        {
-          "label": "",
-          "url": "https://colinyu1.github.io/genflowrl\""
         }
       ],
       "appearances": [
@@ -6090,14 +5842,6 @@
         {
           "label": "Code",
           "url": "https://github.com/paihengxu/GFairHint"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2305.15622\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/paihengxu/GFairHint\""
         },
         {
           "label": "",
@@ -6220,10 +5964,6 @@
         {
           "label": "arXiv:1406.4566 [cs.LG]",
           "url": "http://arxiv.org/abs/1406.4566"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1406.4566\""
         }
       ],
       "appearances": [
@@ -6460,14 +6200,6 @@
         {
           "label": "Code",
           "url": "https://github.com/tianyi-lab/HallusionBench"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2310.14566\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/tianyi-lab/HallusionBench\""
         }
       ],
       "appearances": [
@@ -6613,10 +6345,6 @@
         {
           "label": "pdf",
           "url": "http://newport.eecs.uci.edu/anandkumar/pubs/AnandkumarTan-Gaussian11.pdf"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1107.1270\""
         }
       ],
       "appearances": [
@@ -6739,10 +6467,6 @@
         {
           "label": "pdf",
           "url": "http://newport.eecs.uci.edu/anandkumar/pubs/AnandkumarTan-Ising11.pdf"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1107.1736\""
         }
       ],
       "appearances": [
@@ -6969,18 +6693,6 @@
         {
           "label": "Project page",
           "url": "https://ive-robot.github.io"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2505.07815\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/jayLEE0301/imagine_verify_execute\""
-        },
-        {
-          "label": "",
-          "url": "https://ive-robot.github.io\""
         }
       ],
       "appearances": [
@@ -7053,10 +6765,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2411.18688"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2411.18688\""
         }
       ],
       "appearances": [
@@ -7190,10 +6898,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2404.01568"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2404.01568\""
         }
       ],
       "appearances": [
@@ -7423,10 +7127,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2302.01244"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2302.01244\""
         }
       ],
       "appearances": [
@@ -7506,14 +7206,6 @@
         {
           "label": "Code",
           "url": "https://github.com/pankayaraj/AAAI_2025_RLHFPoisoning"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2406.12091\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/pankayaraj/AAAI_2025_RLHFPoisoning\""
         }
       ],
       "appearances": [
@@ -7597,10 +7289,6 @@
         {
           "label": "paper",
           "url": "https://aclanthology.org/2026.eacl-long.360.pdf"
-        },
-        {
-          "label": "",
-          "url": "https://aclanthology.org/2026.eacl-long.360.pdf\""
         }
       ],
       "appearances": [
@@ -7662,10 +7350,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/1910.11585"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1910.11585\""
         }
       ],
       "appearances": [
@@ -7734,10 +7418,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2403.09606"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2403.09606\""
         }
       ],
       "appearances": [
@@ -7807,10 +7487,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2306.02563"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2306.02563\""
         }
       ],
       "appearances": [
@@ -7871,10 +7547,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/1706.04964"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1706.04964\""
         }
       ],
       "appearances": [
@@ -7936,10 +7608,6 @@
         {
           "label": "pdf",
           "url": "http://newport.eecs.uci.edu/anandkumar/pubs/AnandkumarEtal_graphicalmixtures12.pdf"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1203.0697\""
         }
       ],
       "appearances": [
@@ -8032,10 +7700,6 @@
         {
           "label": "Openreview",
           "url": "https://openreview.net/forum?id=CPQW3uXIa6"
-        },
-        {
-          "label": "",
-          "url": "https://openreview.net/forum?id=CPQW3uXIa6\""
         }
       ],
       "appearances": [
@@ -8112,10 +7776,6 @@
         {
           "label": "",
           "url": "https://arxiv.org/abs/2512.12822"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2512.12822\""
         }
       ],
       "appearances": [
@@ -8171,10 +7831,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2504.02142"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2504.02142\""
         }
       ],
       "appearances": [
@@ -8233,10 +7889,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2207.12141"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2207.12141\""
         }
       ],
       "appearances": [
@@ -8430,10 +8082,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2502.18534"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2502.18534\""
         }
       ],
       "appearances": [
@@ -8501,14 +8149,6 @@
         {
           "label": "Project page",
           "url": "https://cheryyunl.github.io/make-an-agent/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2407.10973\""
-        },
-        {
-          "label": "",
-          "url": "https://cheryyunl.github.io/make-an-agent/\""
         }
       ],
       "appearances": [
@@ -8597,10 +8237,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2402.08925"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2402.08925\""
         }
       ],
       "appearances": [
@@ -8719,10 +8355,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2006.11918"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2006.11918\""
         }
       ],
       "appearances": [
@@ -8795,14 +8427,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/Mementos"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2401.10529\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/Mementos\""
         }
       ],
       "appearances": [
@@ -8930,14 +8554,6 @@
         {
           "label": "Project page",
           "url": "https://furong-huang.com/publications/mergeme-model-merging-techniques-for-homogeneous-and-heterogeneous-moes/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2502.00997\""
-        },
-        {
-          "label": "",
-          "url": "https://furong-huang.com/publications/mergeme-model-merging-techniques-for-homogeneous-and-heterogeneous-moes/\""
         }
       ],
       "appearances": [
@@ -9189,10 +8805,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2502.05209"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2502.05209\""
         }
       ],
       "appearances": [
@@ -9275,18 +8887,6 @@
         {
           "label": "Code",
           "url": "https://github.com/HybridRobotics/MomaGraph"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2512.16909\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/HybridRobotics/MomaGraph\""
-        },
-        {
-          "label": "",
-          "url": "https://hybridrobotics.github.io/MomaGraph/\""
         }
       ],
       "appearances": [
@@ -9394,14 +8994,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/perceptionCLIP"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2308.01313\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/perceptionCLIP\""
         }
       ],
       "appearances": [
@@ -9546,10 +9138,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2406.13114"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2406.13114\""
         }
       ],
       "appearances": [
@@ -9776,10 +9364,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2602.03845"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2602.03845\""
         }
       ],
       "appearances": [
@@ -9848,10 +9432,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2308.02585"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2308.02585\""
         }
       ],
       "appearances": [
@@ -9909,10 +9489,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2503.15615"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2503.15615\""
         }
       ],
       "appearances": [
@@ -10092,10 +9668,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2503.07697"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2503.07697\""
         }
       ],
       "appearances": [
@@ -10327,10 +9899,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2304.04736"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2304.04736\""
         }
       ],
       "appearances": [
@@ -10455,10 +10023,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2401.05561"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2401.05561\""
         }
       ],
       "appearances": [
@@ -10587,10 +10151,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2206.01162"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2206.01162\""
         }
       ],
       "appearances": [
@@ -10675,10 +10235,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2108.09264"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2108.09264\""
         }
       ],
       "appearances": [
@@ -10874,18 +10430,6 @@
         {
           "label": "Code",
           "url": "https://github.com/PremierTACO/premier-taco"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2402.06187\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/PremierTACO/premier-taco\""
-        },
-        {
-          "label": "",
-          "url": "https://premiertaco.github.io/\""
         }
       ],
       "appearances": [
@@ -11058,14 +10602,6 @@
         {
           "label": "Code",
           "url": "https://github.com/FrankZheng2022/PRISE"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2402.10450\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/FrankZheng2022/PRISE\""
         }
       ],
       "appearances": [
@@ -11221,14 +10757,6 @@
         {
           "label": "Code",
           "url": "https://github.com/scaleapi/propensity-evaluation"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2511.20703\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/scaleapi/propensity-evaluation\""
         }
       ],
       "appearances": [
@@ -11521,10 +11049,6 @@
         {
           "label": "Openreview",
           "url": "https://openreview.net/forum?id=PLDOnFoVm4"
-        },
-        {
-          "label": "",
-          "url": "https://openreview.net/forum?id=PLDOnFoVm4\""
         }
       ],
       "appearances": [
@@ -11583,10 +11107,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2305.17342"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2305.17342\""
         }
       ],
       "appearances": [
@@ -11764,18 +11284,6 @@
         {
           "label": "Code",
           "url": "https://github.com/cheryyunl/ROVER"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2511.01163\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/cheryyunl/ROVER\""
-        },
-        {
-          "label": "",
-          "url": "https://roverbench.github.io/\""
         }
       ],
       "appearances": [
@@ -11854,14 +11362,6 @@
         {
           "label": "Project page",
           "url": "https://furong-huang.com/publications/safety-guaranteed-robust-multi-agent-reinforcement-learning-with-hierarchical-control-for-connected-and-automated-vehicles/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2309.11057\""
-        },
-        {
-          "label": "",
-          "url": "https://furong-huang.com/publications/safety-guaranteed-robust-multi-agent-reinforcement-learning-with-hierarchical-control-for-connected-and-automated-vehicles/\""
         }
       ],
       "appearances": [
@@ -11926,10 +11426,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2602.11096"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2602.11096\""
         }
       ],
       "appearances": [
@@ -11990,10 +11486,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2410.02512"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2410.02512\""
         }
       ],
       "appearances": [
@@ -12106,10 +11598,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/1912.02992"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/1912.02992\""
         }
       ],
       "appearances": [
@@ -12182,10 +11670,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2106.09121"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2106.09121\""
         }
       ],
       "appearances": [
@@ -12243,10 +11727,6 @@
         {
           "label": "openreview",
           "url": "https://openreview.net/forum?id=j4UhHaxCpq"
-        },
-        {
-          "label": "",
-          "url": "https://openreview.net/forum?id=j4UhHaxCpq\""
         }
       ],
       "appearances": [
@@ -12322,14 +11802,6 @@
         {
           "label": "Code",
           "url": "https://github.com/scaleapi/scipredict"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2604.10718\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/scaleapi/scipredict\""
         }
       ],
       "appearances": [
@@ -12416,18 +11888,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/VLM-Poisoning"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2402.06659\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/VLM-Poisoning\""
-        },
-        {
-          "label": "",
-          "url": "https://vlm-poison.github.io/\""
         }
       ],
       "appearances": [
@@ -12600,14 +12060,6 @@
         {
           "label": "Code",
           "url": "https://github.com/si0wang/SIMA"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2405.15973\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/si0wang/SIMA\""
         }
       ],
       "appearances": [
@@ -12678,10 +12130,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2406.15575"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2406.15575\""
         }
       ],
       "appearances": [
@@ -12795,14 +12243,6 @@
         {
           "label": "Code",
           "url": "https://github.com/microsoft/smart"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2301.09816\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/microsoft/smart\""
         }
       ],
       "appearances": [
@@ -12895,14 +12335,6 @@
         {
           "label": "Code",
           "url": "https://github.com/si0wang/ThinkLite-VL"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2504.07934\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/si0wang/ThinkLite-VL\""
         }
       ],
       "appearances": [
@@ -13039,14 +12471,6 @@
         {
           "label": "Project page",
           "url": "https://furong-huang.com/publications/statistical-guarantees-for-lifelong-reinforcement-learning-using-pac-bayesian-theory/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2411.00401\""
-        },
-        {
-          "label": "",
-          "url": "https://furong-huang.com/publications/statistical-guarantees-for-lifelong-reinforcement-learning-using-pac-bayesian-theory/\""
         }
       ],
       "appearances": [
@@ -13116,10 +12540,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2301.12038"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2301.12038\""
         }
       ],
       "appearances": [
@@ -13229,10 +12649,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2210.14026"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2210.14026\""
         }
       ],
       "appearances": [
@@ -13318,14 +12734,6 @@
         {
           "label": "Code",
           "url": "https://github.com/FrankZheng2022/TACO"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2306.13229\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/FrankZheng2022/TACO\""
         }
       ],
       "appearances": [
@@ -13393,14 +12801,6 @@
         {
           "label": "Code",
           "url": "https://github.com/pankayaraj/ACL_2026_REFORM"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2507.06419\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/pankayaraj/ACL_2026_REFORM\""
         }
       ],
       "appearances": [
@@ -13459,10 +12859,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2002.06659"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2002.06659\""
         }
       ],
       "appearances": [
@@ -13786,10 +13182,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2601.05106"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2601.05106\""
         }
       ],
       "appearances": [
@@ -13856,10 +13248,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2511.05017"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2511.05017\""
         }
       ],
       "appearances": [
@@ -13938,18 +13326,6 @@
         {
           "label": "Code",
           "url": "https://github.com/jayLEE0301/TraceGen"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2511.21690\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/jayLEE0301/TraceGen\""
-        },
-        {
-          "label": "",
-          "url": "https://tracegen.github.io/\""
         }
       ],
       "appearances": [
@@ -14034,18 +13410,6 @@
         {
           "label": "Project page",
           "url": "https://furong-huang.com/publications/tracevla-visual-trace-prompting-enhances-spatial-temporal-awareness-for-generalist-robotic-policies/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2412.10345\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/tracevla\""
-        },
-        {
-          "label": "",
-          "url": "https://furong-huang.com/publications/tracevla-visual-trace-prompting-enhances-spatial-temporal-awareness-for-generalist-robotic-policies/\""
         }
       ],
       "appearances": [
@@ -14191,14 +13555,6 @@
         {
           "label": "Code",
           "url": "https://github.com/Soumya1612-Rasha/Transfer-Q"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2405.20495\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/Soumya1612-Rasha/Transfer-Q\""
         }
       ],
       "appearances": [
@@ -14289,14 +13645,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/transfer-fairness"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2206.12796\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/transfer-fairness\""
         }
       ],
       "appearances": [
@@ -14359,10 +13707,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2201.00248"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2201.00248\""
         }
       ],
       "appearances": [
@@ -14479,10 +13823,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2502.14296"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2502.14296\""
         }
       ],
       "appearances": [
@@ -14609,14 +13949,6 @@
         {
           "label": "Project page",
           "url": "https://tsrbench.github.io/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2601.18744\""
-        },
-        {
-          "label": "",
-          "url": "https://tsrbench.github.io/\""
         }
       ],
       "appearances": [
@@ -14684,14 +14016,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/tuformer"
-        },
-        {
-          "label": "",
-          "url": "https://openreview.net/pdf?id=V0A5g83gdQ_\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/tuformer\""
         }
       ],
       "appearances": [
@@ -14754,10 +14078,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2510.02377"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2510.02377\""
         }
       ],
       "appearances": [
@@ -14818,10 +14138,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2001.05070"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2001.05070\""
         }
       ],
       "appearances": [
@@ -14931,10 +14247,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2111.05529"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2111.05529\""
         }
       ],
       "appearances": [
@@ -15124,14 +14436,6 @@
         {
           "label": "Code",
           "url": "https://github.com/si0wang/ViCrit"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2506.10128\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/si0wang/ViCrit\""
         }
       ],
       "appearances": [
@@ -15215,18 +14519,6 @@
         {
           "label": "Project page",
           "url": "https://si0wang.github.io/projects/VisVM/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2412.03704\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/si0wang/VisVM\""
-        },
-        {
-          "label": "",
-          "url": "https://si0wang.github.io/projects/VisVM/\""
         }
       ],
       "appearances": [
@@ -15367,10 +14659,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2110.14363"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2110.14363\""
         }
       ],
       "appearances": [
@@ -15430,10 +14718,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2009.00774"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2009.00774\""
         }
       ],
       "appearances": [
@@ -15501,14 +14785,6 @@
         {
           "label": "Project page",
           "url": "https://wavesbench.github.io/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2401.08573\""
-        },
-        {
-          "label": "",
-          "url": "https://wavesbench.github.io/\""
         }
       ],
       "appearances": [
@@ -15677,10 +14953,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2108.01335"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2108.01335\""
         }
       ],
       "appearances": [
@@ -15744,14 +15016,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/paad_adv_rl"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2106.05087\""
-        },
-        {
-          "label": "",
-          "url": "https://github.com/umd-huang-lab/paad_adv_rl\""
         }
       ],
       "appearances": [
@@ -15835,14 +15099,6 @@
         {
           "label": "",
           "url": "https://vulnerable-ai-agents.github.io"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2502.20383\""
-        },
-        {
-          "label": "",
-          "url": "https://vulnerable-ai-agents.github.io\""
         }
       ],
       "appearances": [
@@ -15905,14 +15161,6 @@
         {
           "label": "Project page",
           "url": "https://furong-huang.com/publications/world-models-with-hints-of-large-language-models-for-goal-achieving/"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2406.07381\""
-        },
-        {
-          "label": "",
-          "url": "https://furong-huang.com/publications/world-models-with-hints-of-large-language-models-for-goal-achieving/\""
         }
       ],
       "appearances": [
@@ -15981,10 +15229,6 @@
         {
           "label": "",
           "url": "https://openreview.net/forum?id=syvdPYbdTI"
-        },
-        {
-          "label": "",
-          "url": "https://openreview.net/forum?id=syvdPYbdTI\""
         }
       ],
       "appearances": [
@@ -16052,14 +15296,6 @@
         {
           "label": "Dataset",
           "url": "https://huggingface.co/datasets/multimodal-reasoning-lab/Zebra-CoT"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2507.16746\""
-        },
-        {
-          "label": "",
-          "url": "https://huggingface.co/datasets/multimodal-reasoning-lab/Zebra-CoT\""
         }
       ],
       "appearances": [
@@ -16134,10 +15370,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2505.22664"
-        },
-        {
-          "label": "",
-          "url": "https://arxiv.org/abs/2505.22664\""
         }
       ],
       "appearances": [

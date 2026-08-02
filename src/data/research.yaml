@@ -189,7 +189,7 @@ impact_publication_titles:
   - "Position: On the Possibilities of AI-Generated Text Detection"
   - "WAVES: Benchmarking the Robustness of Image Watermarks"
 frontier_publication_titles:
-  - "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
+  - "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
   - "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
   - "μ0: A Scalable 3D Interaction-Trace World Model"
   - Agentic Critical Training
@@ -751,7 +751,10 @@ areas:
             href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
   - title: "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition"
-    thumbnail: /assets/projects/escaping-saddle-points.svg
+    thumbnail: /assets/projects/escaping-saddle-points-offconvex.png
+    social_links:
+      - label: Visual explainer
+        url: https://www.offconvex.org/2017/07/19/saddle-efficiency/
   - title: "Position: On the Possibilities of AI-Generated Text Detection"
     pillar: self-improvement
     thumbnail: /assets/projects/ai-text-detection.webp

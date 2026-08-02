@@ -67,44 +67,49 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
     <div class="metric"><strong>{alumniDestinationCount}</strong><span>Alumni destinations</span></div>
   </section>
 
-  <section class="shell section homepage-about">
+  <section class="shell section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">About Furong</p>
-        <h2>Research leadership across machine learning, robotics, and trustworthy AI.</h2>
+        <p class="eyebrow">Research architecture</p>
+        <h2>Three connected loops for capable and trustworthy AI.</h2>
       </div>
       <p>
-        Furong Huang is a tenured associate professor of computer science at the University of Maryland, building learning systems that connect mathematical foundations with consequential real-world behavior.
+        The lab connects models of the world, policies for allocating reasoning, and mechanisms that turn failures into safer future behavior.
       </p>
     </div>
-    <div class="content-grid">
-      <article class="content-card">
-        <p class="eyebrow">UMD affiliations</p>
-        <h3>A deliberately interdisciplinary home.</h3>
-        <div class="profile-link-list">
-          {affiliations.map((affiliation) => <a href={affiliation.href}>{affiliation.label} <span>↗</span></a>)}
-        </div>
-      </article>
-      <article class="content-card">
-        <p class="eyebrow">Academic path</p>
-        <h3>From learning theory to foundation-model systems.</h3>
-        <p>
-          Before joining UMD in 2017, Furong was a postdoctoral researcher at{" "}
-          <a class="inline-link" href="https://www.microsoft.com/en-us/research/lab/microsoft-research-new-york/labs/">Microsoft Research New York City</a>,
-          mentored by <a class="inline-link" href="https://www.microsoft.com/en-us/research/people/jcl/">John Langford</a> and{" "}
-          <a class="inline-link" href="https://www.microsoft.com/en-us/research/people/schapire/">Robert Schapire</a>.
-        </p>
-        <p>
-          She earned her Ph.D. with{" "}
-          <a class="inline-link" href="https://www.cms.caltech.edu/people/anima">Anima Anandkumar</a>, working on high-dimensional learning and tensor methods.
-        </p>
-      </article>
-      <article class="content-card">
-        <p class="eyebrow">Research support</p>
-        <h3>Public and industrial partners.</h3>
-        <p>Research has been supported by NSF, DARPA, ONR, AFOSR, Good Ventures through Open Philanthropy, NVIDIA, Microsoft, Adobe, Apple, JP Morgan, Capital One, Amazon, and Peraton.</p>
-        <a class="text-link" href="/cv/">See the complete record <span>→</span></a>
-      </article>
+    <ResearchMap />
+  </section>
+
+  <section class="shell section" id="selected-work">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2>A portfolio spanning foundational ideas, influential systems, and the current research frontier.</h2>
+      </div>
+      <p>
+        Selected for a blend of scholarly influence, recency, research leadership, topical importance, and connection to the lab’s three-part vision—not as a citation ranking.
+      </p>
+    </div>
+    <div class="featured-work-group">
+      <div class="featured-work-heading">
+        <div><p class="eyebrow">Signature contributions</p><h3>Ideas and systems with lasting reach.</h3></div>
+        <p>Foundational results, widely used benchmarks, and representative systems across optimization, multimodal intelligence, AI safety, robotics, and content provenance.</p>
+      </div>
+      <div class="paper-grid featured-paper-grid">
+        {impactWorks.map((paper) => <PaperCard paper={paper} />)}
+      </div>
+    </div>
+    <div class="featured-work-group">
+      <div class="featured-work-heading">
+        <div><p class="eyebrow">Current research program</p><h3>Recent work that makes the lab’s vision concrete.</h3></div>
+        <p>A leadership-weighted selection spanning 3D world models, embodied planning, efficient visual reasoning, agentic workflows, and latent safety.</p>
+      </div>
+      <div class="paper-grid featured-paper-grid">
+        {frontierWorks.map((paper) => <PaperCard paper={paper} />)}
+      </div>
+    </div>
+    <div class="button-row" style="margin-top: 2rem">
+      <a class="button secondary" href="/publications/">View all {publicationData.stats.normalized_works} records <span>→</span></a>
     </div>
   </section>
 
@@ -134,19 +139,6 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
     </div>
   </section>
 
-  <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Research architecture</p>
-        <h2>Three connected loops for capable and trustworthy AI.</h2>
-      </div>
-      <p>
-        The lab connects models of the world, policies for allocating reasoning, and mechanisms that turn failures into safer future behavior.
-      </p>
-    </div>
-    <ResearchMap />
-  </section>
-
   <section class="recognition-band">
     <div class="shell section">
       <div class="section-heading">
@@ -155,9 +147,8 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
           <h2>Recognition for research that connects rigor with impact.</h2>
         </div>
         <p>
-          A concise selection from the{" "}
-          <a class="inline-link" href="/Furong_Huang_CV.pdf">complete awards and grants record</a>{" "}
-          maintained in the CV.
+          Selected awards and grants from the{" "}
+          <a class="inline-link" href="/Furong_Huang_CV.pdf">complete CV</a>.
         </p>
       </div>
       <div class="content-grid recognition-grid">
@@ -172,36 +163,44 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
     </div>
   </section>
 
-  <section class="shell section" id="selected-work">
+  <section class="shell section homepage-about">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Selected work</p>
-        <h2>A small, deliberate portfolio of signature and emerging work.</h2>
+        <p class="eyebrow">About Furong</p>
+        <h2>Research leadership across machine learning, robotics, and trustworthy AI.</h2>
       </div>
       <p>
-        Twelve papers show the arc from foundational contributions and widely used benchmarks to the lab’s current frontier. This is an editorial selection, not a second publication list.
+        Furong Huang is a tenured associate professor of computer science at the University of Maryland, building learning systems that connect mathematical foundations with consequential real-world behavior.
       </p>
     </div>
-    <div class="featured-work-group">
-      <div class="featured-work-heading">
-        <div><p class="eyebrow">Established impact</p><h3>Ideas that shaped subsequent research.</h3></div>
-        <p>Selected for sustained scholarly influence, community use, and leadership across optimization, multimodal evaluation, AI safety, robotics, and content provenance.</p>
-      </div>
-      <div class="paper-grid featured-paper-grid">
-        {impactWorks.map((paper) => <PaperCard paper={paper} />)}
-      </div>
-    </div>
-    <div class="featured-work-group">
-      <div class="featured-work-heading">
-        <div><p class="eyebrow">Current frontier</p><h3>New directions with early momentum.</h3></div>
-        <p>Recent work on physical intelligence, efficient reasoning, agentic systems, and latent safety—including EgoScale and SoTA with Less.</p>
-      </div>
-      <div class="paper-grid featured-paper-grid">
-        {frontierWorks.map((paper) => <PaperCard paper={paper} />)}
-      </div>
-    </div>
-    <div class="button-row" style="margin-top: 2rem">
-      <a class="button secondary" href="/publications/">View all {publicationData.stats.normalized_works} records <span>→</span></a>
+    <div class="content-grid">
+      <article class="content-card">
+        <p class="eyebrow">UMD affiliations</p>
+        <h3>An interdisciplinary academic home.</h3>
+        <div class="profile-link-list">
+          {affiliations.map((affiliation) => <a href={affiliation.href}>{affiliation.label} <span>↗</span></a>)}
+        </div>
+      </article>
+      <article class="content-card">
+        <p class="eyebrow">Academic path</p>
+        <h3>From learning theory to foundation-model systems.</h3>
+        <p>
+          Before joining UMD in 2017, Furong was a postdoctoral researcher at{" "}
+          <a class="inline-link" href="https://www.microsoft.com/en-us/research/lab/microsoft-research-new-york/labs/">Microsoft Research New York City</a>,
+          mentored by <a class="inline-link" href="https://www.microsoft.com/en-us/research/people/jcl/">John Langford</a> and{" "}
+          <a class="inline-link" href="https://www.microsoft.com/en-us/research/people/schapire/">Robert Schapire</a>.
+        </p>
+        <p>
+          She earned her Ph.D. with{" "}
+          <a class="inline-link" href="https://www.cms.caltech.edu/people/anima">Anima Anandkumar</a>, working on high-dimensional learning and tensor methods.
+        </p>
+      </article>
+      <article class="content-card">
+        <p class="eyebrow">Research support</p>
+        <h3>Public and industrial partners.</h3>
+        <p>Research has been supported by NSF, DARPA, ONR, AFOSR, Good Ventures through Open Philanthropy, NVIDIA, Microsoft, Adobe, Apple, JP Morgan, Capital One, Amazon, and Peraton.</p>
+        <a class="text-link" href="/cv/">See the complete record <span>→</span></a>
+      </article>
     </div>
   </section>
 
@@ -211,7 +210,7 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
         <p class="eyebrow">Latest signals</p>
         <h2>News from the lab.</h2>
       </div>
-      <p>Talks, new research, student milestones, and recognitions—kept concise and connected to the underlying work.</p>
+      <p>Recent talks, publications, student milestones, and recognition from across Furong Lab.</p>
     </div>
     <div class="news-grid">
       {news.slice(0, 3).map((item) => (

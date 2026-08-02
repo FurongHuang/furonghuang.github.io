@@ -6,13 +6,26 @@ import SocialLinks from "../components/SocialLinks.astro";
 import EmailReveal from "../components/EmailReveal.astro";
 import PortraitImage from "../components/PortraitImage.astro";
 import publicationData from "../data/publications.json";
-import { affiliations, news, profile, selectedPublicationTitles, selectedRecognition } from "../data/site";
+import {
+  affiliations,
+  frontierPublicationTitles,
+  impactPublicationTitles,
+  news,
+  profile,
+  selectedRecognition
+} from "../data/site";
 import { alumni, currentPhdStudents } from "../data/people";
 
 const works = publicationData.works as any[];
-const selectedWorks = selectedPublicationTitles
-  .map((title) => works.find((work) => work.title === title))
+const worksFor = (titles: readonly string[]) => titles
+  .map((title) => {
+    const work = works.find((candidate) => candidate.title === title);
+    if (!work) throw new Error(`Homepage selection not found in publications.json: ${title}`);
+    return work;
+  })
   .filter(Boolean);
+const impactWorks = worksFor(impactPublicationTitles);
+const frontierWorks = worksFor(frontierPublicationTitles);
 const featuredAlumniNames = ["Bang An", "Sicheng Zhu", "Souradip Chakraborty", "Xiaoyu Liu", "Yuhang Zhou", "Yuancheng Xu"];
 const featuredAlumni = featuredAlumniNames
   .map((name) => alumni.find((person) => person.name === name))
@@ -159,18 +172,33 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
     </div>
   </section>
 
-  <section class="shell section">
+  <section class="shell section" id="selected-work">
     <div class="section-heading">
       <div>
         <p class="eyebrow">Selected work</p>
-        <h2>Research designed to be explored, not merely listed.</h2>
+        <h2>A small, deliberate portfolio of signature and emerging work.</h2>
       </div>
       <p>
-        This visual layer highlights the ideas behind selected papers. The complete, searchable scholarly record remains one click away.
+        Twelve papers show the arc from foundational contributions and widely used benchmarks to the lab’s current frontier. This is an editorial selection, not a second publication list.
       </p>
     </div>
-    <div class="paper-grid featured-paper-grid">
-      {selectedWorks.map((paper) => <PaperCard paper={paper} />)}
+    <div class="featured-work-group">
+      <div class="featured-work-heading">
+        <div><p class="eyebrow">Established impact</p><h3>Ideas that shaped subsequent research.</h3></div>
+        <p>Selected for sustained scholarly influence, community use, and leadership across optimization, multimodal evaluation, AI safety, robotics, and content provenance.</p>
+      </div>
+      <div class="paper-grid featured-paper-grid">
+        {impactWorks.map((paper) => <PaperCard paper={paper} />)}
+      </div>
+    </div>
+    <div class="featured-work-group">
+      <div class="featured-work-heading">
+        <div><p class="eyebrow">Current frontier</p><h3>New directions with early momentum.</h3></div>
+        <p>Recent work on physical intelligence, efficient reasoning, agentic systems, and latent safety—including EgoScale and SoTA with Less.</p>
+      </div>
+      <div class="paper-grid featured-paper-grid">
+        {frontierWorks.map((paper) => <PaperCard paper={paper} />)}
+      </div>
     </div>
     <div class="button-row" style="margin-top: 2rem">
       <a class="button secondary" href="/publications/">View all {publicationData.stats.normalized_works} records <span>→</span></a>

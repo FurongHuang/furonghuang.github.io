@@ -180,15 +180,20 @@ featured_projects:
         href: https://cheryyunl.github.io/make-an-agent/
       - label: Paper
         href: https://arxiv.org/abs/2407.10973
-selected_publication_titles:
+impact_publication_titles:
+  - "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition"
+  - "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination & Visual Illusion in Large Vision-Language Models"
+  - "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models"
+  - "TraceVLA: Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies"
+  - "Position: On the Possibilities of AI-Generated Text Detection"
+  - "WAVES: Benchmarking the Robustness of Image Watermarks"
+frontier_publication_titles:
+  - "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
+  - "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
   - "μ0: A Scalable 3D Interaction-Trace World Model"
-  - "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos"
-  - "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
-  - "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
-  - "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
   - Agentic Critical Training
+  - "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
   - "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
-  - Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
 areas:
   - slug: multimodal-learning
     pillar: world-models
@@ -837,6 +842,14 @@ publication_overrides:
     social_links:
       - label: Project
         url: https://research.nvidia.com/labs/gear/egoscale/
+  - title: "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/sota-with-less.png
+    social_links:
+      - label: OpenReview
+        url: https://openreview.net/forum?id=PHu9xJeAum
+      - label: Model
+        url: https://huggingface.co/furonghuang-lab/ThinkLite-VL-7B
   - title: "Guava: An Effective and Universal Harness for Embodied Manipulation"
     pillar: world-models
     thumbnail: /assets/projects/guava.png

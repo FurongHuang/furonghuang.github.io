@@ -126,7 +126,13 @@ export const socialLinks = [
   { id: "huggingface", label: "Hugging Face", href: profile.huggingface }
 ];
 
-export { projects, researchPillars, selectedPublicationTitles } from "./researchContent";
+export {
+  frontierPublicationTitles,
+  impactPublicationTitles,
+  projects,
+  researchPillars,
+  selectedPublicationTitles
+} from "./researchContent";
 
 export const news = [
   {

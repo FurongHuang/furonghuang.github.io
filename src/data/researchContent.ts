@@ -189,11 +189,16 @@ export const researchPillars = listAt(raw.pillars, "pillars").map((value, index)
 export const projects = listAt(raw.featured_projects, "featured_projects")
   .map((value, index) => projectAt(value, `featured_projects[${index}]`, true) as FeaturedProject);
 
-export const selectedPublicationTitles = listAt(raw.selected_publication_titles, "selected_publication_titles")
-  .map((value, index) => {
-    if (typeof value !== "string") throw new Error(`research.yaml: selected_publication_titles[${index}] must be a string`);
+function publicationTitlesAt(field: string): string[] {
+  return listAt(raw[field], field).map((value, index) => {
+    if (typeof value !== "string") throw new Error(`research.yaml: ${field}[${index}] must be a string`);
     return value;
   });
+}
+
+export const impactPublicationTitles = publicationTitlesAt("impact_publication_titles");
+export const frontierPublicationTitles = publicationTitlesAt("frontier_publication_titles");
+export const selectedPublicationTitles = [...impactPublicationTitles, ...frontierPublicationTitles];
 
 export const researchAreas = listAt(raw.areas, "areas").map((value, index): ResearchArea => {
   const area = objectAt(value, `areas[${index}]`);

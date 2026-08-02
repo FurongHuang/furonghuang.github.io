@@ -36,8 +36,8 @@ pillars:
       title: Embodied AI
       description: World models become tangible when agents must understand space, bodies, state, and consequences. Explore representative systems, videos, code, and papers.
       href: /research/embodied-ai/
-      image: /assets/projects/mu0.png
-      imageAlt: A semantic 3D interaction trace from the μ0 world model
+      image: /assets/projects/mu0-teaser-still.png
+      imageAlt: Human and robot interaction traces modeled by μ0
       featuredProjectId: mu0
   - id: reasoning-control
     number: "02"
@@ -87,7 +87,8 @@ featured_projects:
     area: Embodied AI
     title: μ0
     summary: A scalable world model that predicts semantic 3D interaction traces, learning embodiment-agnostic motion priors from video-only pretraining for downstream robot control.
-    image: /assets/projects/mu0.png
+    image: /assets/projects/mu0-teaser-still.png
+    video: https://mu0-wm.github.io/teaser.mp4
     year: 2026
     links:
       - label: Project
@@ -751,8 +752,10 @@ areas:
 publication_overrides:
   - title: "μ0: A Scalable 3D Interaction-Trace World Model"
     pillar: world-models
-    thumbnail: /assets/projects/mu0.png
+    thumbnail: /assets/projects/mu0-teaser-still.png
     social_links:
+      - label: Teaser video
+        url: https://mu0-wm.github.io/teaser.mp4
       - label: LinkedIn
         url: https://www.linkedin.com/pulse/pixels-black-box-latents-why-%CE%BC-uses-trace-space-physical-furong-huang-dp9xc
       - label: LinkedIn post

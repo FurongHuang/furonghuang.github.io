@@ -227,7 +227,7 @@ areas:
         title: Mementos
         summary: A comprehensive benchmark that tests whether multimodal language models can reason over coherent sequences of images.
         year: 2024
-        image: /assets/projects/mementos.png
+        image: /assets/projects/mementos-sequences.webp
         relatedTitle: "Mementos: A Comprehensive Benchmark for Multimodal Large Language Model Reasoning over Image Sequences"
         links:
           - label: Project
@@ -750,6 +750,11 @@ areas:
           - label: Code
             href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
+  - title: "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition"
+    thumbnail: /assets/projects/escaping-saddle-points.svg
+  - title: "Position: On the Possibilities of AI-Generated Text Detection"
+    pillar: self-improvement
+    thumbnail: /assets/projects/ai-text-detection.webp
   - title: "μ0: A Scalable 3D Interaction-Trace World Model"
     pillar: world-models
     thumbnail: /assets/projects/mu0-teaser-still.png
@@ -804,7 +809,7 @@ publication_overrides:
     thumbnail: /assets/projects/rover.png
   - title: "Mementos: A Comprehensive Benchmark for Multimodal Large Language Model Reasoning over Image Sequences"
     pillar: world-models
-    thumbnail: /assets/projects/mementos.png
+    thumbnail: /assets/projects/mementos-sequences.webp
   - title: "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination & Visual Illusion in Large Vision-Language Models"
     pillar: world-models
     thumbnail: /assets/projects/hallusionbench.png
@@ -847,7 +852,7 @@ publication_overrides:
         url: https://research.nvidia.com/labs/gear/egoscale/
   - title: "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
     pillar: reasoning-control
-    thumbnail: /assets/projects/sota-with-less.png
+    thumbnail: /assets/projects/sota-with-less-results.webp
     social_links:
       - label: OpenReview
         url: https://openreview.net/forum?id=PHu9xJeAum

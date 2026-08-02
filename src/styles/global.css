@@ -1744,6 +1744,19 @@ main {
 .blog-card.featured .blog-tags span { background: rgba(126, 224, 216, 0.12); }
 .text-link { font-size: 0.75rem; font-weight: 700; }
 
+.inline-link {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(22, 140, 138, 0.35);
+  text-underline-offset: 0.16em;
+}
+
+.inline-link:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
 .blog-post { padding-block: 6rem; }
 .blog-post header { max-width: 970px; margin-bottom: 4.5rem; }
 .blog-post h1 { margin: 0 0 1.5rem; font-family: "Newsreader", serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.94; letter-spacing: -0.05em; }

@@ -758,6 +758,107 @@ publication_overrides:
   - title: "Position: On the Possibilities of AI-Generated Text Detection"
     pillar: self-improvement
     thumbnail: /assets/projects/ai-text-detection.webp
+  - title: "Compositional Adversarial Training for Robust Visual Watermarking"
+    pillar: self-improvement
+    thumbnail: /assets/projects/robust-visual-watermarking.webp
+  - title: "Deliberative Alignment is Deep, but Uncertainty Remains: Inference time safety improvement in reasoning via attribution of unsafe behavior to base model"
+    pillar: self-improvement
+    thumbnail: /assets/projects/deliberative-alignment.webp
+  - title: "Advancing Regulation in Artificial Intelligence: An Auction-Based Approach"
+    pillar: self-improvement
+    thumbnail: /assets/projects/ai-regulation-auction.webp
+  - title: "EnsemW2S: Enhancing Weak-to-Strong Generalization with Large Language Model Ensembles"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/ensemw2s.webp
+  - title: "Interaction-Centric Tokens: A Representation for Cross-Embodiment Manipulation"
+    pillar: world-models
+    thumbnail: /assets/projects/interaction-centric-tokens.webp
+  - title: "Jailbreaks as Inference-Time Alignment: A Framework for Understanding Safety Failures in LLMs"
+    pillar: self-improvement
+    thumbnail: /assets/projects/jailbreak-inference-alignment.webp
+  - title: "MAFE: Enabling Equitable Algorithm Design in Multi-Agent Multi-Stage Decision-Making Systems"
+    pillar: self-improvement
+    thumbnail: /assets/projects/mafe.webp
+  - title: "PersonaLedger: Generating Realistic Financial Transactions with Persona Conditioned LLMs and Rule Grounded Feedback"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/personaledger.webp
+  - title: "Practical Memorization Tests for Detecting Copyrighted Data in Large Language Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/practical-memorization.webp
+  - title: "Scheduling Thoughts: Learning the Order of Thought in Diffusion Language Models"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/scheduling-thoughts.webp
+    social_links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2606.23567
+      - label: Project
+        url: https://jimmyxu123.github.io/SAS/
+  - title: "Towards Mitigating Hallucinations in Large Vision-Language Models by Refining Textual Embeddings"
+    pillar: world-models
+    thumbnail: /assets/projects/vlm-hallucination-text-embeddings.webp
+  - title: "VeriGate: Verifier-Gated Step-Level Supervision for GRPO"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/verigate.webp
+  - title: "When Detection Tools Collide: On the Impact of Watermarking on AI-Generated Text Detectors"
+    pillar: self-improvement
+    thumbnail: /assets/projects/detection-tools-collide.webp
+  - title: "Adversarial Prompt and Fine-Tuning Attacks Threaten Medical Large Language Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/medical-llm-attacks.webp
+  - title: 'A Technical Report on "Erasing the Invisible": The 2024 NeurIPS Competition on Stress Testing Image Watermarks'
+    pillar: self-improvement
+    thumbnail: /assets/projects/erasing-invisible-report.webp
+  - title: "Balancing Fairness and Accuracy in Data-Restricted Binary Classification"
+    pillar: self-improvement
+    thumbnail: /assets/projects/fairness-data-restricted.webp
+    social_links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2403.07724
+  - title: "Benchmarking Vision Language Model Unlearning via Fictitious Facial Identity Dataset"
+    pillar: self-improvement
+    thumbnail: /assets/projects/vlm-unlearning.webp
+  - title: "Can Watermarking Large Language Models Prevent Copyrighted Text Generation and Hide Training Data?"
+    pillar: self-improvement
+    thumbnail: /assets/projects/copyright-watermarking.webp
+  - title: "CSRec: Rethinking Sequential Recommendation from A Causal Perspective"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/csrec.webp
+  - title: "DISCO Balances the Scales: Adaptive Domain- and Difficulty-Aware Reinforcement Learning on Imbalanced Data"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/disco.webp
+  - title: "GFairHint: Improving Individual Fairness for Graph Neural Networks via Fairness Hint"
+    pillar: self-improvement
+    thumbnail: /assets/projects/gfairhint.webp
+  - title: "Hold Onto That Thought: Assessing KV Cache Compression on Reasoning"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/kv-cache-reasoning.webp
+  - title: "Immune: Improving Safety Against Jailbreaks in Multi-modal LLMs via Inference-Time Alignment"
+    pillar: self-improvement
+    thumbnail: /assets/projects/immune.webp
+  - title: "Is poisoning a real threat to DPO? Maybe more so than you think"
+    pillar: self-improvement
+    thumbnail: /assets/projects/dpo-poisoning.webp
+  - title: "Large Language Models and Causal Inference in Collaboration: A Comprehensive Survey"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/llm-causal-survey.webp
+  - title: "MergeME: Model Merging Techniques for Homogeneous and Heterogeneous MoEs"
+    pillar: self-improvement
+    thumbnail: /assets/projects/mergeme.webp
+  - title: "Model Tampering Attacks Enable More Rigorous Evaluations of LLM Capabilities"
+    pillar: self-improvement
+    thumbnail: /assets/projects/model-tampering.webp
+  - title: "On the Role of Feedback in Test-Time Scaling of Agentic AI Workflows"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/agentic-feedback.webp
+  - title: "PoisonedParrot: Subtle Data Poisoning Attacks to Elicit Copyright-Infringing Content from Large Language Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/poisonedparrot.webp
+  - title: "RAGPart & RAGMask: Retrieval-Stage Defenses Against Corpus Poisoning in Retrieval-Augmented Generation"
+    pillar: self-improvement
+    thumbnail: /assets/projects/ragpart-ragmask.webp
+  - title: "SIMA: Enhancing Visual-Language Modality Alignment in Large Vision Language Models via Self-Improvement"
+    pillar: world-models
+    thumbnail: /assets/projects/sima.webp
   - title: "μ0: A Scalable 3D Interaction-Trace World Model"
     pillar: world-models
     thumbnail: /assets/projects/mu0-teaser-still.png

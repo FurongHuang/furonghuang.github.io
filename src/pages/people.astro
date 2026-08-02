@@ -6,6 +6,8 @@ import { alumni, currentPhdStudents, postdocs } from "../data/people";
 const placementDestinations = Array.from(
   new Set(alumni.map((person) => person.destination?.split(" · ")[0]).filter(Boolean))
 );
+const onMarket = alumni.filter((person) => person.onMarket);
+const placedAlumni = alumni.filter((person) => !person.onMarket);
 ---
 
 <BaseLayout title="People — Furong Lab" description="Current researchers and alumni of Furong Lab at the University of Maryland.">
@@ -71,7 +73,15 @@ const placementDestinations = Array.from(
       <div class="people-destinations" aria-label="Alumni organizations">
         {placementDestinations.map((destination) => <span>{destination}</span>)}
       </div>
-      <div class="people-grid alumni-grid">{alumni.map((person) => <PersonCard person={person} />)}</div>
+      <div class="market-roster">
+        <div>
+          <p class="eyebrow">On the market</p>
+          <h3>Researchers ready for their next chapter.</h3>
+          <p>Meet recent Furong Lab graduates currently exploring research and industry opportunities.</p>
+        </div>
+        <div class="people-grid market-grid">{onMarket.map((person) => <PersonCard person={person} />)}</div>
+      </div>
+      <div class="people-grid alumni-grid">{placedAlumni.map((person) => <PersonCard person={person} />)}</div>
     </div>
   </section>
 </BaseLayout>

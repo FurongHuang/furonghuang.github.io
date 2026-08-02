@@ -10,6 +10,7 @@ export interface Person {
   image?: string;
   imagePosition?: string;
   imageScale?: number;
+  onMarket?: boolean;
 }
 
 const optionalFields = ["period", "destination", "href", "image", "imagePosition"] as const;
@@ -33,6 +34,9 @@ function validateGroup(value: unknown, group: string): Person[] {
     }
     if (person.imageScale !== undefined && (typeof person.imageScale !== "number" || person.imageScale < 1 || person.imageScale > 3)) {
       throw new Error(`people.yaml: ${group}[${index}].imageScale must be a number from 1 to 3`);
+    }
+    if (person.onMarket !== undefined && typeof person.onMarket !== "boolean") {
+      throw new Error(`people.yaml: ${group}[${index}].onMarket must be a boolean`);
     }
     return person as unknown as Person;
   });

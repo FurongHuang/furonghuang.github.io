@@ -10,11 +10,6 @@ postdocs:
     imagePosition: 50% 24%
 
 current_phd_students:
-  - name: Aakriti Agrawal
-    role: Ph.D. advisee · Computer Science
-    period: 2023–present
-    image: /assets/people/aakriti-agrawal.jpg
-    imagePosition: 50% 26%
   - name: Andrew Mendez
     role: Ph.D. advisee · Computer Science
     period: 2025–present
@@ -95,6 +90,12 @@ current_phd_students:
     imagePosition: 50% 30%
 
 alumni:
+  - name: Aakriti Agrawal
+    role: Ph.D. · Computer Science
+    period: "2026"
+    onMarket: true
+    image: /assets/people/aakriti-agrawal.jpg
+    imagePosition: 50% 26%
   - name: Zikui Cai
     role: Postdoctoral alumnus · UMIACS
     period: "2026"
@@ -105,6 +106,7 @@ alumni:
   - name: Pankayaraj Pathmanathan
     role: Ph.D. · Computer Science
     period: "2026"
+    onMarket: true
     href: https://pankayaraj.github.io/
     image: /assets/people/pankayaraj-pathmanathan.jpg
     imagePosition: 50% 25%

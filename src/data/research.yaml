@@ -863,6 +863,8 @@ publication_overrides:
     pillar: world-models
     thumbnail: /assets/projects/mu0-teaser-still.png
     social_links:
+      - label: X post
+        url: https://x.com/furongh/status/2066203382117962182?s=46&t=iqTO3UQ6d96jwD4sbq_dcA
       - label: Teaser video
         url: https://mu0-wm.github.io/teaser.mp4
       - label: LinkedIn

@@ -8,7 +8,8 @@
     "dev": "astro dev",
     "sync": "node scripts/sync-content.mjs",
     "check": "astro check",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-rendered-spacing.mjs",
+    "check:spacing": "node scripts/check-rendered-spacing.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

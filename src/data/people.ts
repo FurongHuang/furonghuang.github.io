@@ -40,6 +40,14 @@ function validateGroup(value: unknown, group: string): Person[] {
 
 const people = parse(peopleYaml) as Record<string, unknown>;
 
+function graduationYear(person: Person): number {
+  const years = person.period?.match(/\b(?:19|20)\d{2}\b/g) ?? [];
+  return years.length ? Math.max(...years.map(Number)) : 0;
+}
+
 export const postdocs = validateGroup(people.postdocs, "postdocs");
 export const currentPhdStudents = validateGroup(people.current_phd_students, "current_phd_students");
-export const alumni = validateGroup(people.alumni, "alumni");
+export const alumni = validateGroup(people.alumni, "alumni").sort((left, right) => {
+  const yearDifference = graduationYear(right) - graduationYear(left);
+  return yearDifference || left.name.localeCompare(right.name, "en", { sensitivity: "base" });
+});

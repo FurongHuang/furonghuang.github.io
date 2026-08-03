@@ -761,12 +761,18 @@ publication_overrides:
   - title: "Compositional Adversarial Training for Robust Visual Watermarking"
     pillar: self-improvement
     thumbnail: /assets/projects/robust-visual-watermarking.webp
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/2058281918039523466?s=20
   - title: "Deliberative Alignment is Deep, but Uncertainty Remains: Inference time safety improvement in reasoning via attribution of unsafe behavior to base model"
     pillar: self-improvement
     thumbnail: /assets/projects/deliberative-alignment.webp
   - title: "Advancing Regulation in Artificial Intelligence: An Auction-Based Approach"
     pillar: self-improvement
     thumbnail: /assets/projects/ai-regulation-auction.webp
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1892057989391003765?s=20
   - title: "EnsemW2S: Enhancing Weak-to-Strong Generalization with Large Language Model Ensembles"
     pillar: reasoning-control
     thumbnail: /assets/projects/ensemw2s.webp
@@ -789,6 +795,8 @@ publication_overrides:
     pillar: reasoning-control
     thumbnail: /assets/projects/scheduling-thoughts.webp
     social_links:
+      - label: X post
+        url: https://x.com/furongh/status/2074147786124312806?s=20
       - label: arXiv
         url: https://arxiv.org/abs/2606.23567
       - label: Project
@@ -838,6 +846,9 @@ publication_overrides:
   - title: "Is poisoning a real threat to DPO? Maybe more so than you think"
     pillar: self-improvement
     thumbnail: /assets/projects/dpo-poisoning.webp
+    social_links:
+      - label: X overview
+        url: https://x.com/furongh/status/1806151592783093776?s=20
   - title: "Large Language Models and Causal Inference in Collaboration: A Comprehensive Survey"
     pillar: reasoning-control
     thumbnail: /assets/projects/llm-causal-survey.webp
@@ -859,6 +870,9 @@ publication_overrides:
   - title: "SIMA: Enhancing Visual-Language Modality Alignment in Large Vision Language Models via Self-Improvement"
     pillar: world-models
     thumbnail: /assets/projects/sima.webp
+    social_links:
+      - label: X overview
+        url: https://x.com/furongh/status/1806151592783093776?s=20
   - title: "μ0: A Scalable 3D Interaction-Trace World Model"
     pillar: world-models
     thumbnail: /assets/projects/mu0-teaser-still.png
@@ -874,6 +888,9 @@ publication_overrides:
   - title: "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos"
     pillar: world-models
     thumbnail: /assets/projects/tracegen.png
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1994866571978969136
   - title: "DynaFLIP: Rethinking Robotics Perception via Tri-Modal-Dynamics Guided Representation"
     pillar: world-models
     thumbnail: /assets/projects/dynaflip.png
@@ -913,6 +930,9 @@ publication_overrides:
   - title: "ROVER: Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation"
     pillar: world-models
     thumbnail: /assets/projects/rover.png
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1985875855768273233?s=20
   - title: "Mementos: A Comprehensive Benchmark for Multimodal Large Language Model Reasoning over Image Sequences"
     pillar: world-models
     thumbnail: /assets/projects/mementos-sequences.webp
@@ -960,6 +980,8 @@ publication_overrides:
     pillar: reasoning-control
     thumbnail: /assets/projects/sota-with-less-results.webp
     social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1914031598086791301?s=20
       - label: OpenReview
         url: https://openreview.net/forum?id=PHu9xJeAum
       - label: Model
@@ -988,6 +1010,11 @@ publication_overrides:
   - title: "Transfer Q-star: Principled Decoding for LLM Alignment"
     pillar: reasoning-control
     thumbnail: /assets/projects/transfer-q-star.png
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1798003663228510675
+      - label: X overview
+        url: https://x.com/furongh/status/1806151592783093776?s=20
   - title: "Collab: Controlled Decoding using Mixture of Agents for LLM Alignment"
     pillar: reasoning-control
     thumbnail: /assets/projects/collab.png
@@ -1014,6 +1041,8 @@ publication_overrides:
     pillar: reasoning-control
     thumbnail: /assets/projects/genarm.png
     social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1887611951766700311?s=20
       - label: LinkedIn vision
         url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
   - title: "Parallel-Probe: Towards Efficient Parallel Thinking via 2D Probing"
@@ -1023,6 +1052,8 @@ publication_overrides:
     pillar: reasoning-control
     thumbnail: /assets/projects/soundnessbench.png
     social_links:
+      - label: X post
+        url: https://x.com/furongh/status/2060534983618404555?s=20
       - label: Project
         url: https://hosytuyen.github.io/projects/SoundnessBench
   - title: Does Thinking More Always Help? Mirage of Test-Time Scaling in Reasoning Models
@@ -1063,13 +1094,29 @@ publication_overrides:
       - label: LinkedIn
         url: https://www.linkedin.com/posts/furong-huang_reward-models-can-improve-themselves-reward-guided-activity-7461963169092083712-zfrZ
       - label: X thread
-        url: https://x.com/furongh/status/2073710599536591255
+        url: https://x.com/furongh/status/2073710599536591255?s=20
   - title: "MaxMin-RLHF: Alignment with Diverse Human Preferences"
     pillar: self-improvement
     thumbnail: /assets/projects/maxmin-rlhf.jpg
+    social_links:
+      - label: X overview
+        url: https://x.com/furongh/status/1806151592783093776?s=20
   - title: "SAIL: Self-improving Efficient Online Alignment of Large Language Models"
     pillar: self-improvement
     thumbnail: /assets/projects/sail.png
+    social_links:
+      - label: X overview
+        url: https://x.com/furongh/status/1806151592783093776?s=20
+  - title: "PARL: A Unified Framework for Policy Alignment in Reinforcement Learning"
+    pillar: reasoning-control
+    social_links:
+      - label: X overview
+        url: https://x.com/furongh/status/1806151592783093776?s=20
+  - title: "Premier-TACO is a Few-Shot Policy Learner: Pretraining Multitask Representation via Temporal Action-Driven Contrastive Loss"
+    pillar: world-models
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1757393309637423450?s=20
   - title: "Shadowcast: Stealthy Data Poisoning Attacks Against Vision-Language Models"
     pillar: self-improvement
     thumbnail: /assets/projects/shadowcast.webp

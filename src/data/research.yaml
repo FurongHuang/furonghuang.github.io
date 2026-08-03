@@ -763,6 +763,15 @@ publication_overrides:
     thumbnail: /assets/projects/mixtures-graph.webp
   - title: "Learning Deep ResNet Blocks Sequentially using Boosting Theory"
     thumbnail: /assets/projects/resnet-architecture.webp
+  - title: "Are Adversarial Examples Created Equal? A Learnable Weighted Minimax Risk for Robustness under Non-Uniform Attacks"
+    pillar: self-improvement
+    thumbnail: /assets/projects/nonuniform-adversarial-risk.webp
+  - title: "Efficient Adversarial Training without Attacking: Worst-Case-Aware Robust Reinforcement Learning"
+    pillar: self-improvement
+    thumbnail: /assets/projects/wocar-rl.webp
+  - title: "Rethinking Adversarial Policies: A Generalized Attack Formulation and Provable Defense in RL"
+    pillar: self-improvement
+    thumbnail: /assets/projects/rethinking-adversarial-policies.webp
   - title: "Position: On the Possibilities of AI-Generated Text Detection"
     pillar: self-improvement
     thumbnail: /assets/projects/ai-text-detection-figure.webp

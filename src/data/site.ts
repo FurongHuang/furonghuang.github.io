@@ -136,6 +136,13 @@ export {
 
 export const news = [
   {
+    date: "August 2026",
+    type: "Talk",
+    title: "Reasoning as Control: Toward Self-Improving Agentic Systems",
+    detail: "Featured talk at the Agentic AI Summit 2026 at UC Berkeley, spanning control across thinking, actions, and workflow.",
+    href: "https://rdi.berkeley.edu/events/agentic-ai-summit-2026"
+  },
+  {
     date: "July 2026",
     type: "Teaching",
     title: "Generative AI Agents at DeepLearn 2026",

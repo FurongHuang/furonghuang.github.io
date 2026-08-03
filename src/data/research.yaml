@@ -1098,6 +1098,9 @@ publication_overrides:
   - title: "AdvBDGen: A Robust Framework for Generating Adaptive and Stealthy Backdoors in LLM Alignment Attacks"
     pillar: self-improvement
     thumbnail: /assets/projects/advbdgen.png
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/1846999541641297960?s=20
   - title: "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models"
     pillar: self-improvement
     thumbnail: /assets/projects/autodan.png

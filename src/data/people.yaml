@@ -79,7 +79,9 @@ current_phd_students:
   - name: Yijun Liang
     role: Ph.D. advisee · Computer Science
     period: 2026–present
-    href: https://www.cs.umd.edu/people/yliang17
+    href: https://www.linkedin.com/in/joanna-yijunliang/
+    image: /assets/people/yijun-liang.jpg
+    imagePosition: 50% 42%
   - name: Yoonkyo Jung
     role: Ph.D. advisee · Computer Science
     period: 2025–present

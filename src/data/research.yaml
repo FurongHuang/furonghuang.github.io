@@ -755,6 +755,14 @@ publication_overrides:
     social_links:
       - label: Visual explainer
         url: https://www.offconvex.org/2017/07/19/saddle-efficiency/
+  - title: "High-Dimensional Gaussian Graphical Model Selection: Walk-Summability and Local Separation Criterion"
+    thumbnail: /assets/projects/gaussian-graph.webp
+  - title: "High-Dimensional Structure Learning of Ising Models: Local Separation Criterion"
+    thumbnail: /assets/projects/ising-results.webp
+  - title: "Learning High-Dimensional Mixtures of Graphical Models"
+    thumbnail: /assets/projects/mixtures-graph.webp
+  - title: "Learning Deep ResNet Blocks Sequentially using Boosting Theory"
+    thumbnail: /assets/projects/resnet-architecture.webp
   - title: "Position: On the Possibilities of AI-Generated Text Detection"
     pillar: self-improvement
     thumbnail: /assets/projects/ai-text-detection-figure.webp

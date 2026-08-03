@@ -48,7 +48,7 @@ const relatedWorks = relatedTitles.map((title) => works.find((work) => work.titl
       <div><p class="eyebrow">Selected publications</p><h2>The papers behind the projects.</h2></div>
       <p>The publications database presents the broader body of work on world models and embodied intelligence.</p>
     </div>
-    <div class="paper-grid">{relatedWorks.map((paper) => <PaperCard paper={paper} />)}</div>
+    <div class="paper-grid">{relatedWorks.map((paper) => <PaperCard paper={paper} eagerImage thumbnailFit="contain" />)}</div>
     <div class="button-row" style="margin-top: 2rem"><a class="button secondary" href="/publications/?pillar=world-models">All world-model papers <span>→</span></a></div>
   </section>
 </BaseLayout>

@@ -31,7 +31,7 @@ const { project } = Astro.props as { project: Project };
         aria-label={`Teaser video for ${project.title}`}
       ></video>
     ) : project.image ? (
-      <img src={project.image} alt={`Representative result from ${project.title}`} loading="lazy" />
+      <img src={project.image} alt={`Representative result from ${project.title}`} loading="eager" decoding="async" />
     ) : (
       <div class:list={["project-placeholder", `theme-${project.theme || "teal"}`]} aria-hidden="true">
         <span>{project.visualLabel || project.title.slice(0, 2)}</span>

@@ -850,6 +850,20 @@ main {
   object-fit: cover;
 }
 
+.paper-visual.has-image.fit-contain {
+  background: #f4f7f6;
+}
+
+.paper-visual.has-image.fit-contain::after {
+  display: none;
+}
+
+.paper-visual.has-image.fit-contain img {
+  box-sizing: border-box;
+  padding: 0.65rem;
+  object-fit: contain;
+}
+
 .paper-visual span {
   position: absolute;
   top: 1.2rem;

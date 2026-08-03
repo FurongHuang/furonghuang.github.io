@@ -54,7 +54,7 @@ const pillar = pillarMeta[area.pillar];
       <div><p class="eyebrow">Selected publications</p><h2>The papers behind the projects.</h2></div>
       <p>Browse the full publication database for the broader body of work in {pillar.shortLabel.toLowerCase()}.</p>
     </div>
-    <div class="paper-grid">{relatedWorks.map((paper) => <PaperCard paper={paper} />)}</div>
+    <div class="paper-grid">{relatedWorks.map((paper) => <PaperCard paper={paper} eagerImage thumbnailFit="contain" />)}</div>
     <div class="button-row" style="margin-top: 2rem">
       <a class="button secondary" href={`/publications/?pillar=${area.pillar}`}>All {pillar.shortLabel.toLowerCase()} papers <span>→</span></a>
     </div>

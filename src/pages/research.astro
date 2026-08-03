@@ -50,7 +50,7 @@ const foundationalWorks = foundationalTitles
         </div>
         <div class="pillar-feature">
           <div class:list={["pillar-feature-visual", `media-${pillar.featuredArea.imageFit || "contain"}`]} style={`--media-position: ${pillar.featuredArea.imagePosition || "50% 50%"}`}>
-            <img src={pillar.featuredArea.image} alt={pillar.featuredArea.imageAlt} loading="lazy" />
+            <img src={pillar.featuredArea.image} alt={pillar.featuredArea.imageAlt} loading="eager" decoding="async" />
             <span>Pillar {pillar.number} flagship</span>
           </div>
           <div class="pillar-feature-body">
@@ -106,7 +106,7 @@ const foundationalWorks = foundationalTitles
         <p>Selected early contributions include escaping saddle points in nonconvex optimization, recovering latent structure, and learning high-dimensional graphical models.</p>
       </div>
       <div class="paper-grid foundational-paper-grid">
-        {foundationalWorks.map((paper) => <PaperCard paper={paper} />)}
+        {foundationalWorks.map((paper) => <PaperCard paper={paper} eagerImage thumbnailFit="contain" />)}
       </div>
     </div>
   </section>

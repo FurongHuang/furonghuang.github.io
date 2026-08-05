@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-04",
+  "as_of": "2026-08-05",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [

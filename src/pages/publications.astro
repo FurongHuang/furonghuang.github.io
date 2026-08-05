@@ -5,8 +5,16 @@ import PublicationHistory from "../components/PublicationHistory.astro";
 import publicationData from "../data/publications.json";
 import { pillarMeta } from "../data/research";
 
+const arxivRecency = (work: any) => {
+  const identifier = String(work.identifiers?.arxiv || "").match(/^(\d{2})(\d{2})\.(\d+)/);
+  if (!identifier) return 0;
+  return Number(`${identifier[1]}${identifier[2]}${identifier[3].padStart(5, "0")}`);
+};
+
 const works = [...(publicationData.works as any[])].sort((a, b) =>
-  (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title)
+  (b.year || 0) - (a.year || 0) ||
+  arxivRecency(b) - arxivRecency(a) ||
+  a.title.localeCompare(b.title)
 );
 const years = Array.from(new Set(works.map((work) => work.year).filter(Boolean))).sort((a, b) => b - a);
 const categories = Array.from(new Set(works.map((work) => work.category).filter(Boolean))).sort();

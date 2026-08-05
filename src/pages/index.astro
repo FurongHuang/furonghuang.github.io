@@ -37,23 +37,16 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
 <BaseLayout>
   <section class="shell hero">
     <div class="hero-copy">
-      <p class="eyebrow hero-lab-label"><span aria-hidden="true"></span> Furong Lab · University of Maryland</p>
-      <h1>We build foundation models that <em>reason, act, and recover.</em></h1>
+      <p class="eyebrow">Trustworthy foundation models · University of Maryland</p>
+      <h1>AI systems that <em>reason, act, recover,</em> and improve.</h1>
       <p class="hero-intro">
-        Our group builds AI that learns the world, allocates computation, acts through tools or bodies, and turns failure into safer future behavior.
+        Furong Huang's lab studies foundation models as decision-making systems—models that understand physical and digital worlds, reason under uncertainty, act through tools or bodies, and learn from failure.
       </p>
-      <nav class="hero-focuses" aria-label="Research focus areas">
-        <a href="/research/#world-models"><span>01</span><strong>World models</strong></a>
-        <a href="/research/#reasoning-control"><span>02</span><strong>Reasoning control</strong></a>
-        <a href="/research/#self-improvement"><span>03</span><strong>Trustworthy self-improvement</strong></a>
-      </nav>
+      <p class="hero-identity">{profile.title} · {profile.institution}</p>
+      <SocialLinks />
       <div class="button-row">
         <a class="button" href="/research/">Explore the research <span>→</span></a>
         <a class="button secondary" href="/publications/">Browse publications</a>
-      </div>
-      <div class="hero-identity-row">
-        <p class="hero-identity">Led by Furong Huang · {profile.title}</p>
-        <SocialLinks compact />
       </div>
     </div>
     <div class="portrait-stage">
@@ -61,18 +54,8 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
         <img src="/assets/bodyshot.JPG" alt="Furong Huang" />
       </div>
       <div class="portrait-caption">
-        <span>Research program</span>
-        <strong>Models that learn, decide, act, and improve.</strong>
-      </div>
-      <div class="hero-project-strip" aria-label="Research in action">
-        <a href="/research/embodied-ai/">
-          <img src="/assets/projects/mu0-teaser-still.png" alt="" />
-          <span><small>Embodied AI</small><strong>3D worlds in action</strong></span>
-        </a>
-        <a href="/research/#reasoning-control">
-          <img src="/assets/projects/sota-with-less-results.webp" alt="" />
-          <span><small>Reasoning systems</small><strong>Think better with less</strong></span>
-        </a>
+        <span>Research vision</span>
+        <strong>Trust should be designed as a closed loop.</strong>
       </div>
     </div>
   </section>

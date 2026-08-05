@@ -24,7 +24,7 @@ import urllib.request
 from pathlib import Path
 
 import yaml
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,12 +89,69 @@ def render_figure(source: Path, destination: Path) -> None:
             figure = figure.convert("RGB")
             if figure.width < 180 or figure.height < 100:
                 raise ValueError(f"figure is too small ({figure.width}x{figure.height})")
-            contained = ImageOps.contain(figure, (900, 540), method=Image.Resampling.LANCZOS)
-            thumbnail = Image.new("RGB", CARD_SIZE, (247, 248, 246))
-            x = (CARD_SIZE[0] - contained.width) // 2
-            y = (CARD_SIZE[1] - contained.height) // 2
-            thumbnail.paste(contained, (x, y))
+            # Preserve the figure's natural aspect ratio. The card layout owns
+            # any necessary letterboxing; baking the figure into a fixed canvas
+            # would make wide diagrams unnecessarily small.
+            contained = ImageOps.contain(figure, (1200, 800), method=Image.Resampling.LANCZOS)
+            border = 16
+            thumbnail = Image.new(
+                "RGB",
+                (contained.width + border * 2, contained.height + border * 2),
+                (247, 248, 246),
+            )
+            thumbnail.paste(contained, (border, border))
             thumbnail.save(destination, "WEBP", quality=90, method=6)
+
+
+def normalize_existing_thumbnail(path: Path) -> bool:
+    """Remove only a demonstrably uniform oversized margin from an asset."""
+    with Image.open(path) as source:
+        image = source.convert("RGB")
+    width, height = image.size
+    if width < 200 or height < 120:
+        return False
+
+    corners = [
+        image.getpixel((0, 0)),
+        image.getpixel((width - 1, 0)),
+        image.getpixel((0, height - 1)),
+        image.getpixel((width - 1, height - 1)),
+    ]
+    # Do not trim photographs or full-bleed illustrations whose corners do not
+    # agree on a background color.
+    spread = max(
+        max(abs(a[channel] - b[channel]) for channel in range(3))
+        for a in corners
+        for b in corners
+    )
+    if spread > 24:
+        return False
+
+    background = tuple(
+        sorted(corner[channel] for corner in corners)[len(corners) // 2]
+        for channel in range(3)
+    )
+    difference = ImageChops.difference(image, Image.new("RGB", image.size, background))
+    mask = difference.convert("L").point(lambda value: 255 if value > 20 else 0)
+    bbox = mask.getbbox()
+    if not bbox:
+        return False
+    left, top, right, bottom = bbox
+    content_width = right - left
+    content_height = bottom - top
+    occupancy = content_width * content_height / (width * height)
+    if occupancy >= 0.78 and content_width / width >= 0.86 and content_height / height >= 0.72:
+        return False
+
+    padding = max(10, round(min(content_width, content_height) * 0.035))
+    left = max(0, left - padding)
+    top = max(0, top - padding)
+    right = min(width, right + padding)
+    bottom = min(height, bottom + padding)
+    cropped = image.crop((left, top, right, bottom))
+    save_options = {"quality": 90, "method": 6} if path.suffix.lower() == ".webp" else {}
+    cropped.save(path, **save_options)
+    return True
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -269,6 +326,11 @@ def main() -> int:
         action="store_true",
         help="replace existing generated arXiv thumbnails with selected paper figures",
     )
+    parser.add_argument(
+        "--normalize-existing",
+        action="store_true",
+        help="conservatively remove uniform oversized margins from assigned thumbnails",
+    )
     args = parser.parse_args()
 
     publications = json.loads(PUBLICATIONS_PATH.read_text(encoding="utf-8"))
@@ -296,6 +358,22 @@ def main() -> int:
         for title, path in broken_curated:
             print(f"Broken curated thumbnail: {path} - {title}")
         return 1
+
+    if args.normalize_existing:
+        assigned_paths = {
+            ROOT / "public" / path.lstrip("/")
+            for path in [
+                *(item.get("thumbnail", "") for item in research.get("publication_overrides", [])),
+                *generated.values(),
+            ]
+            if path
+        }
+        normalized = 0
+        for path in sorted(assigned_paths):
+            if path.is_file() and normalize_existing_thumbnail(path):
+                normalized += 1
+                print(f"Normalized thumbnail margins: {path.relative_to(ROOT)}")
+        print(f"Normalized {normalized} assigned thumbnail(s).")
 
     generated = {
         title: path

@@ -1884,7 +1884,9 @@ main {
 
 .publication-list {
   display: grid;
-  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+  align-items: start;
 }
 
 .publication-list .paper-card {
@@ -1893,10 +1895,15 @@ main {
 }
 
 .publication-list .paper-card.has-thumbnail {
-  grid-template-columns: clamp(190px, 20vw, 240px) minmax(0, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100%;
 }
 
 .publication-list .paper-card.has-thumbnail .paper-visual.has-image {
+  min-height: 0;
+  aspect-ratio: 16 / 8;
+  border-bottom: 1px solid var(--line);
   background: #f4f7f6;
 }
 
@@ -1906,7 +1913,7 @@ main {
 
 .publication-list .paper-card.has-thumbnail .paper-visual.has-image img {
   box-sizing: border-box;
-  padding: 0.75rem;
+  padding: 0.4rem;
   object-fit: contain;
 }
 
@@ -2170,6 +2177,17 @@ footer > small {
   .research-node { padding: 1.4rem; }
   .people-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .placement-people { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .publication-list { grid-template-columns: 1fr; }
+  .publication-list .paper-card.has-thumbnail {
+    grid-template-columns: clamp(280px, 36vw, 360px) minmax(0, 1fr);
+    grid-template-rows: 1fr;
+  }
+  .publication-list .paper-card.has-thumbnail .paper-visual.has-image {
+    min-height: 100%;
+    aspect-ratio: auto;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
   .publication-controls { grid-template-columns: minmax(220px, 1fr) 150px 165px; }
   .publication-controls .publication-count { grid-column: 3; }
   .publication-trajectory { grid-template-columns: 1fr; }
@@ -2287,8 +2305,17 @@ footer > small {
   .paper-card,
   .publication-list .paper-card { grid-template-columns: 1fr; }
   .paper-visual { min-height: 90px; }
-  .publication-list .paper-card.has-thumbnail { grid-template-columns: 1fr; }
-  .publication-list .paper-card.has-thumbnail .paper-visual { height: 180px; }
+  .publication-list .paper-card.has-thumbnail {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .publication-list .paper-card.has-thumbnail .paper-visual {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
   .paper-visual i:nth-of-type(1) { bottom: -80px; }
   .publication-controls { grid-template-columns: 1fr; }
   .publication-controls .publication-count { grid-column: auto; }

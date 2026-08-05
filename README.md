@@ -35,7 +35,10 @@ title card; paper title pages are never used as thumbnails.
 Run `npm run sync:thumbnails` to perform the thumbnail step directly. Editorial
 thumbnail choices in `src/data/research.yaml` always override generated ones.
 The required selection criteria, review checklist, and override procedure are
-documented in [`THUMBNAIL_WORKFLOW.md`](THUMBNAIL_WORKFLOW.md).
+documented in [`THUMBNAIL_WORKFLOW.md`](THUMBNAIL_WORKFLOW.md). That workflow is
+a release requirement: extraction, margin normalization, contact-sheet review,
+responsive browser QA, and validation must all pass before thumbnail changes
+are pushed.
 
 The publication-history chart is rendered directly from the synchronized JSON
 during each Astro build; there is no separate image to update.

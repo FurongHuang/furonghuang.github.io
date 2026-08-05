@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
-"""Create stable fallback thumbnails for newly added arXiv publications.
+"""Create stable figure thumbnails for newly added arXiv publications.
 
-Curated entries in research.yaml always win. For recent publications without a
-curated visual, this script downloads the arXiv PDF and creates a readable
-first-page preview. Generated mappings are kept separate from editorial data so
-a better teaser can replace a fallback without changing the workflow.
+Curated entries in research.yaml always win. For publications without a curated
+visual, this script inspects the arXiv source and favors an overview, teaser, or
+early paper figure. A designed title card is the final fallback; paper title
+pages are intentionally never used as thumbnails.
 """
 
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
+import io
 import json
 import re
 import shutil
 import subprocess
+import tarfile
 import tempfile
 import textwrap
 import urllib.request
@@ -52,42 +55,46 @@ def sorted_works(works: list[dict]) -> list[dict]:
     )
 
 
-def render_fallback(pdf_path: Path, destination: Path) -> None:
+FIGURE_EXTENSIONS = (".pdf", ".png", ".jpg", ".jpeg", ".webp", ".eps")
+
+
+def render_figure(source: Path, destination: Path) -> None:
+    """Normalize a paper figure into the site's 16:10 thumbnail canvas."""
     magick = shutil.which("magick")
     if not magick:
         raise RuntimeError("ImageMagick's 'magick' command is required")
 
     with tempfile.TemporaryDirectory(prefix="publication-thumbnail-") as temp_dir:
-        page_path = Path(temp_dir) / "page.png"
+        figure_path = Path(temp_dir) / "figure.png"
+        source_spec = f"{source}[0]" if source.suffix.lower() in {".pdf", ".eps"} else str(source)
         subprocess.run(
             [
                 magick,
                 "-density",
-                "130",
-                f"{pdf_path}[0]",
+                "180",
+                source_spec,
                 "-background",
                 "white",
                 "-alpha",
                 "remove",
-                str(page_path),
+                "-trim",
+                "+repage",
+                str(figure_path),
             ],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        with Image.open(page_path) as page:
-            page = page.convert("RGB")
-            width, height = page.size
-            # Favor the title, abstract, and any first-page teaser while
-            # producing the same 16:10 card ratio as curated project images.
-            upper_page = page.crop((0, 0, width, int(height * 0.68)))
-            thumbnail = ImageOps.fit(
-                upper_page,
-                CARD_SIZE,
-                method=Image.Resampling.LANCZOS,
-                centering=(0.5, 0.38),
-            )
-            thumbnail.save(destination, "WEBP", quality=88, method=6)
+        with Image.open(figure_path) as figure:
+            figure = figure.convert("RGB")
+            if figure.width < 180 or figure.height < 100:
+                raise ValueError(f"figure is too small ({figure.width}x{figure.height})")
+            contained = ImageOps.contain(figure, (900, 540), method=Image.Resampling.LANCZOS)
+            thumbnail = Image.new("RGB", CARD_SIZE, (247, 248, 246))
+            x = (CARD_SIZE[0] - contained.width) // 2
+            y = (CARD_SIZE[1] - contained.height) // 2
+            thumbnail.paste(contained, (x, y))
+            thumbnail.save(destination, "WEBP", quality=90, method=6)
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -135,13 +142,119 @@ def render_title_card(work: dict, destination: Path) -> None:
     image.save(destination, "WEBP", quality=88, method=6)
 
 
-def download_pdf(arxiv_id: str, destination: Path) -> None:
+def download_arxiv_source(arxiv_id: str, destination: Path) -> None:
     request = urllib.request.Request(
-        f"https://arxiv.org/pdf/{arxiv_id}",
+        f"https://export.arxiv.org/e-print/{arxiv_id}",
         headers={"User-Agent": "Furong-Lab-publication-thumbnail-sync/1.0"},
     )
     with urllib.request.urlopen(request, timeout=45) as response:
         destination.write_bytes(response.read())
+
+
+def unpack_arxiv_source(archive_path: Path, destination: Path) -> None:
+    """Unpack an arXiv source bundle without allowing path traversal."""
+    raw = archive_path.read_bytes()
+    destination.mkdir(parents=True, exist_ok=True)
+    try:
+        with tarfile.open(fileobj=io.BytesIO(raw), mode="r:*") as archive:
+            for member in archive.getmembers():
+                if not member.isfile():
+                    continue
+                target = (destination / member.name).resolve()
+                if destination.resolve() not in target.parents:
+                    continue
+                target.parent.mkdir(parents=True, exist_ok=True)
+                extracted = archive.extractfile(member)
+                if extracted:
+                    target.write_bytes(extracted.read())
+            return
+    except tarfile.TarError:
+        pass
+
+    try:
+        raw = gzip.decompress(raw)
+    except gzip.BadGzipFile:
+        pass
+    (destination / "main.tex").write_bytes(raw)
+
+
+def strip_tex_comments(text: str) -> str:
+    return re.sub(r"(?<!\\)%.*", "", text)
+
+
+def resolve_figure_path(tex_path: Path, raw_path: str, source_root: Path) -> Path | None:
+    cleaned = raw_path.strip().replace("\\detokenize{", "").rstrip("}")
+    if any(token in cleaned for token in ("#", "\\", "{")):
+        return None
+    candidates = [tex_path.parent / cleaned, source_root / cleaned]
+    for base in candidates:
+        if base.suffix:
+            if base.is_file() and base.suffix.lower() in FIGURE_EXTENSIONS:
+                return base
+        else:
+            for extension in FIGURE_EXTENSIONS:
+                candidate = base.with_suffix(extension)
+                if candidate.is_file():
+                    return candidate
+    return None
+
+
+def figure_candidates(source_root: Path) -> list[tuple[int, Path]]:
+    """Return visual candidates ranked by paper order and editorial usefulness."""
+    tex_files = list(source_root.rglob("*.tex"))
+    tex_files.sort(
+        key=lambda path: (
+            0 if "\\documentclass" in path.read_text(encoding="utf-8", errors="ignore") else 1,
+            len(path.parts),
+            str(path),
+        )
+    )
+    candidates: list[tuple[int, Path]] = []
+    seen: set[Path] = set()
+    figure_re = re.compile(r"\\begin\{figure\*?\}(.*?)\\end\{figure\*?\}", re.DOTALL)
+    include_re = re.compile(r"\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}")
+    for tex_index, tex_path in enumerate(tex_files):
+        text = strip_tex_comments(tex_path.read_text(encoding="utf-8", errors="ignore"))
+        for figure_index, match in enumerate(figure_re.finditer(text)):
+            block = match.group(1)
+            lowered = block.lower()
+            editorial_bonus = 0
+            if any(word in lowered for word in ("teaser", "overview", "framework", "pipeline", "method")):
+                editorial_bonus += 500
+            if any(word in lowered for word in ("appendix", "ablation", "additional")):
+                editorial_bonus -= 400
+            for include_index, raw_path in enumerate(include_re.findall(block)):
+                resolved = resolve_figure_path(tex_path, raw_path, source_root)
+                if not resolved or resolved in seen:
+                    continue
+                seen.add(resolved)
+                order_penalty = tex_index * 120 + figure_index * 18 + include_index * 2
+                filename = resolved.stem.lower()
+                filename_bonus = 350 if any(
+                    word in filename for word in ("teaser", "overview", "framework", "pipeline", "method", "fig1", "figure1")
+                ) else 0
+                candidates.append((1000 + editorial_bonus + filename_bonus - order_penalty, resolved))
+
+    # Some source bundles define figures through macros that evade the simple
+    # parser. Large standalone visual files are a useful secondary pool.
+    for path in source_root.rglob("*"):
+        if path.is_file() and path.suffix.lower() in FIGURE_EXTENSIONS and path not in seen:
+            filename = path.stem.lower()
+            if any(word in filename for word in ("teaser", "overview", "framework", "pipeline", "method", "fig1", "figure1")):
+                candidates.append((700, path))
+    return sorted(candidates, key=lambda item: item[0], reverse=True)
+
+
+def render_best_source_figure(source_root: Path, destination: Path) -> Path:
+    errors = []
+    for _, candidate in figure_candidates(source_root)[:16]:
+        try:
+            render_figure(candidate, destination)
+            return candidate
+        except Exception as error:
+            errors.append(f"{candidate.name}: {error}")
+    detail = "; ".join(errors[:3]) if errors else "no figure environments found"
+    raise RuntimeError(detail)
 
 
 def main() -> int:
@@ -151,6 +264,11 @@ def main() -> int:
     parser.add_argument("--ids", nargs="*", default=[], help="specific arXiv IDs to inspect")
     parser.add_argument("--check", action="store_true", help="report gaps without downloading")
     parser.add_argument("--strict", action="store_true", help="fail if a thumbnail cannot be generated")
+    parser.add_argument(
+        "--refresh-generated",
+        action="store_true",
+        help="replace existing generated arXiv thumbnails with selected paper figures",
+    )
     args = parser.parse_args()
 
     publications = json.loads(PUBLICATIONS_PATH.read_text(encoding="utf-8"))
@@ -202,7 +320,13 @@ def main() -> int:
         work
         for work in candidates
         if work.get("title") not in curated
-        and work.get("title") not in generated
+        and (
+            work.get("title") not in generated
+            or (
+                args.refresh_generated
+                and work.get("identifiers", {}).get("arxiv")
+            )
+        )
     ]
     if not missing:
         print("Publication thumbnails are current for the inspected works.")
@@ -216,7 +340,7 @@ def main() -> int:
 
     ASSET_DIR.mkdir(parents=True, exist_ok=True)
     failures = []
-    with tempfile.TemporaryDirectory(prefix="arxiv-thumbnails-") as temp_dir:
+    with tempfile.TemporaryDirectory(prefix="arxiv-figures-") as temp_dir:
         temp_root = Path(temp_dir)
         for work in missing:
             arxiv_id = str(work.get("identifiers", {}).get("arxiv", ""))
@@ -228,12 +352,14 @@ def main() -> int:
                 kind = "title card"
                 if arxiv_id:
                     try:
-                        pdf_path = temp_root / f"{safe_id}.pdf"
-                        download_pdf(arxiv_id, pdf_path)
-                        render_fallback(pdf_path, destination)
-                        kind = "arXiv preview"
-                    except Exception as preview_error:
-                        print(f"Preview warning: {arxiv_id} - {preview_error}; using title card")
+                        archive_path = temp_root / f"{safe_id}.source"
+                        source_root = temp_root / f"{safe_id}-source"
+                        download_arxiv_source(arxiv_id, archive_path)
+                        unpack_arxiv_source(archive_path, source_root)
+                        selected = render_best_source_figure(source_root, destination)
+                        kind = f"paper figure ({selected.name})"
+                    except Exception as figure_error:
+                        print(f"Figure warning: {arxiv_id} - {figure_error}; using title card")
                         render_title_card(work, destination)
                 else:
                     render_title_card(work, destination)

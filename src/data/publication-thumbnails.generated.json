@@ -15,7 +15,7 @@
   "Automatic Pseudo-Harmful Prompt Generation for Evaluating False Refusals in Large Language Models": "/assets/projects/auto-arxiv-2409-00598.webp",
   "Balancing Label Imbalance in Federated Environments Using Only Mixup and Artificially-Labeled Noise": "/assets/projects/auto-arxiv-2409-13235.webp",
   "Batch-wise Logit-Similarity: Generalizing Logit-Squeezing and Label-Smoothing": "/assets/projects/auto-batch-wise-logit-similarity-generalizing-logit-squee-39404adf.webp",
-  "Beyond Episodic Evaluation: Memory Architectural Bottlenecks in Sequential Embodied Question Answering": "/assets/projects/beyond-episodic-evaluation.webp",
+  "Beyond Episodic Evaluation: Memory Architectural Bottlenecks in Sequential Embodied Question Answering": "/assets/projects/auto-arxiv-2607-21571.webp",
   "Boosting Sample Efficiency and Generalization in Multi-agent Reinforcement Learning via Equivariance": "/assets/projects/auto-arxiv-2410-02581.webp",
   "Bridging the Divide: End-to-End Sequence-Graph Learning": "/assets/projects/auto-arxiv-2510-25126.webp",
   "C-Disentanglement: Discovering Causally-Independent Generative Factors under an Inductive Bias of Confounder": "/assets/projects/auto-arxiv-2310-17325.webp",
@@ -29,7 +29,7 @@
   "Cold Diffusion: Inverting Arbitrary Image Transforms Without Noise": "/assets/projects/auto-arxiv-2208-09392.webp",
   "Comfetch: Federated Learning of Large Networks on Memory-Constrained Clients via Sketching": "/assets/projects/auto-arxiv-2109-08346.webp",
   "Compact Neural Architecture Designs by Tensor Representations": "/assets/projects/auto-compact-neural-architecture-designs-by-tensor-repres-c2c3aab3.webp",
-  "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters": "/assets/projects/compliance2lora.webp",
+  "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters": "/assets/projects/auto-arxiv-2607-27594.webp",
   "Controllable Attack and Improved Adversarial Training in Multi-Agent Reinforcement Learning": "/assets/projects/auto-controllable-attack-and-improved-adversarial-trainin-46a55b24.webp",
   "Convolutional Dictionary Learning through Tensor Factorization": "/assets/projects/auto-arxiv-1506-03509.webp",
   "Convolutional Sparse Coding": "/assets/projects/auto-convolutional-sparse-coding-5583485f.webp",
@@ -140,7 +140,7 @@
   "Unsupervised learning of word-sequence representations from scratch via convolutional tensor decomposition": "/assets/projects/auto-unsupervised-learning-of-word-sequence-representatio-f499fe7c.webp",
   "Using Wavelets and Spectral Methods to Study Patterns in Image-Classification Datasets": "/assets/projects/auto-arxiv-2006-09879.webp",
   "VQ-GNN: A Universal Framework to Scale up Graph Neural Networks using Vector Quantization": "/assets/projects/auto-arxiv-2110-14363.webp",
-  "Visual Contrastive Self-Distillation": "/assets/projects/visual-contrastive-self-distillation.webp",
+  "Visual Contrastive Self-Distillation": "/assets/projects/auto-arxiv-2607-21556.webp",
   "Vulnerability-Aware Poisoning Mechanism for Online RL with Unknown Dynamics": "/assets/projects/auto-arxiv-2009-00774.webp",
   "Where do Models go Wrong? Parameter-Space Saliency Maps for Explainability": "/assets/projects/auto-arxiv-2108-01335.webp",
   "Who is the Strongest Enemy? Towards Optimal and Efficient Evasion Attacks in Deep RL": "/assets/projects/auto-arxiv-2106-05087.webp",
@@ -148,5 +148,5 @@
   "World Models with Hints of Large Language Models for Goal Achieving": "/assets/projects/auto-arxiv-2406-07381.webp",
   "You Only Train Once: Efficient Tokenizer Selection for Arithmetic in Language Models": "/assets/projects/auto-you-only-train-once-efficient-tokenizer-selection-fo-0e49b70c.webp",
   "Zero-Shot Vision Encoder Grafting via LLM Surrogates": "/assets/projects/auto-arxiv-2505-22664.webp",
-  "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation": "/assets/projects/beta-opsd.webp"
+  "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation": "/assets/projects/auto-arxiv-2607-28582.webp"
 }

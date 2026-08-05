@@ -29,9 +29,13 @@ That command copies the latest artifacts into the website:
 - `output/Furong_Huang_CV_Full.pdf` → `public/Furong_Huang_CV.pdf`
 
 From the parent CV workspace, `make website-sync` also checks the newest arXiv
-works and creates a stable first-page thumbnail when no curated visual exists.
+works and selects an overview, teaser, or early figure from the paper when no
+curated visual exists. If no usable figure is available, it creates a designed
+title card; paper title pages are never used as thumbnails.
 Run `npm run sync:thumbnails` to perform the thumbnail step directly. Editorial
 thumbnail choices in `src/data/research.yaml` always override generated ones.
+The required selection criteria, review checklist, and override procedure are
+documented in [`THUMBNAIL_WORKFLOW.md`](THUMBNAIL_WORKFLOW.md).
 
 The publication-history chart is rendered directly from the synchronized JSON
 during each Astro build; there is no separate image to update.
@@ -50,7 +54,7 @@ The non-publication content is deliberately centralized:
 - `src/data/research.yaml` — publication-to-pillar classification and curated
   publication thumbnails
 - `src/data/publication-thumbnails.generated.json` — automatically maintained
-  fallbacks for newly added arXiv works
+  paper-figure selections and title-card fallbacks
 - `src/pages/blog/` — long-form blog posts
 - `public/assets/people/` and `public/assets/projects/` — local portraits and
   project visuals

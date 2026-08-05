@@ -858,11 +858,24 @@ main {
   background: #f4f7f6;
 }
 
+.paper-visual.has-image.fit-contain::before {
+  position: absolute;
+  inset: -12%;
+  background-image: var(--paper-thumbnail);
+  background-position: center;
+  background-size: cover;
+  filter: blur(18px) saturate(0.72);
+  opacity: 0.16;
+  content: "";
+}
+
 .paper-visual.has-image.fit-contain::after {
   display: none;
 }
 
 .paper-visual.has-image.fit-contain img {
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
   padding: 0.65rem;
   object-fit: contain;
@@ -2278,6 +2291,7 @@ footer > small {
   .publication-list .paper-card.has-thumbnail .paper-visual { height: 180px; }
   .paper-visual i:nth-of-type(1) { bottom: -80px; }
   .publication-controls { grid-template-columns: 1fr; }
+  .publication-controls .publication-count { grid-column: auto; }
   .publication-metrics { grid-template-columns: 1fr; }
   .publication-metrics .metric { border-right: 0; }
   .publication-metrics .metric:not(:last-child) { border-bottom: 1px solid var(--line); }

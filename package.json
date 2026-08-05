@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "sync": "node scripts/sync-content.mjs",
+    "sync:thumbnails": "python3 scripts/sync_publication_thumbnails.py",
     "check": "astro check",
     "build": "astro build && node scripts/check-rendered-spacing.mjs",
     "check:spacing": "node scripts/check-rendered-spacing.mjs",

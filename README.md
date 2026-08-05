@@ -28,6 +28,11 @@ That command copies the latest artifacts into the website:
 - `data/publications/publications.json` → `src/data/publications.json`
 - `output/Furong_Huang_CV_Full.pdf` → `public/Furong_Huang_CV.pdf`
 
+From the parent CV workspace, `make website-sync` also checks the newest arXiv
+works and creates a stable first-page thumbnail when no curated visual exists.
+Run `npm run sync:thumbnails` to perform the thumbnail step directly. Editorial
+thumbnail choices in `src/data/research.yaml` always override generated ones.
+
 The publication-history chart is rendered directly from the synchronized JSON
 during each Astro build; there is no separate image to update.
 
@@ -42,8 +47,10 @@ The non-publication content is deliberately centralized:
   news, and blog index metadata
 - `src/data/people.ts` — current group members, alumni, portraits, placements,
   and profile links
-- `src/data/research.ts` — publication-to-pillar classification and featured
+- `src/data/research.yaml` — publication-to-pillar classification and curated
   publication thumbnails
+- `src/data/publication-thumbnails.generated.json` — automatically maintained
+  fallbacks for newly added arXiv works
 - `src/pages/blog/` — long-form blog posts
 - `public/assets/people/` and `public/assets/projects/` — local portraits and
   project visuals

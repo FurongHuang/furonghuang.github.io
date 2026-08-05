@@ -1,4 +1,5 @@
 import { parse } from "yaml";
+import generatedPublicationThumbnails from "./publication-thumbnails.generated.json";
 import researchYaml from "./research.yaml?raw";
 
 export type PillarId = "world-models" | "reasoning-control" | "self-improvement";
@@ -222,7 +223,9 @@ export const researchAreaBySlug = new Map(researchAreas.map((area) => [area.slug
 
 const publicationOverrides = listAt(raw.publication_overrides, "publication_overrides");
 export const publicationPillarByTitle: Record<string, PillarId> = {};
-export const publicationThumbnailByTitle: Record<string, string> = {};
+export const publicationThumbnailByTitle: Record<string, string> = {
+  ...generatedPublicationThumbnails
+};
 export const publicationSocialLinksByTitle: Record<string, PublicationSocialLink[]> = {};
 
 publicationOverrides.forEach((value, index) => {

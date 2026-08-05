@@ -4,10 +4,27 @@ import PersonCard from "../components/PersonCard.astro";
 import { alumni, currentPhdStudents, postdocs } from "../data/people";
 
 const placementDestinations = Array.from(
-  new Set(alumni.map((person) => person.destination?.split(" · ")[0]).filter(Boolean))
-);
+  new Set(
+    alumni
+      .map((person) => person.destination?.split(" · ")[0])
+      .filter((destination): destination is string => Boolean(destination))
+  )
+).sort((left, right) => left.localeCompare(right, "en", { sensitivity: "base" }));
 const onMarket = alumni.filter((person) => person.onMarket);
 const placedAlumni = alumni.filter((person) => !person.onMarket);
+
+const yearFromPeriod = (period?: string) => period?.match(/\b(?:19|20)\d{2}\b/)?.[0] || "Other";
+const groupByYear = (people: typeof alumni) => {
+  const groups = new Map<string, typeof alumni>();
+  for (const person of people) {
+    const year = yearFromPeriod(person.period);
+    groups.set(year, [...(groups.get(year) || []), person]);
+  }
+  return Array.from(groups, ([year, members]) => ({ year, members }));
+};
+
+const currentCohorts = groupByYear(currentPhdStudents);
+const alumniClasses = groupByYear(placedAlumni);
 ---
 
 <BaseLayout title="People — Furong Lab" description="Current researchers and alumni of Furong Lab at the University of Maryland.">
@@ -59,9 +76,19 @@ const placedAlumni = alumni.filter((person) => !person.onMarket);
   <section class="shell section">
     <div class="section-heading">
       <div><p class="eyebrow">Current group</p><h2>Doctoral advisees.</h2></div>
-      <p>Research profiles introduce each student’s work, interests, and broader scholarly contributions.</p>
+      <p>Students are grouped by starting cohort, with names ordered alphabetically within each cohort.</p>
     </div>
-    <div class="people-grid">{currentPhdStudents.map((person) => <PersonCard person={person} />)}</div>
+    <div class="people-cohort-stack">
+      {currentCohorts.map(({ year, members }) => (
+        <section class="people-cohort" aria-label={`Ph.D. students who started in ${year}`}>
+          <div class="people-cohort-label">
+            <strong>Started {year}</strong>
+            <span>{members.length} {members.length === 1 ? "researcher" : "researchers"}</span>
+          </div>
+          <div class="people-grid">{members.map((person) => <PersonCard person={person} />)}</div>
+        </section>
+      ))}
+    </div>
   </section>
 
   <section class="alumni-band" id="alumni">
@@ -81,7 +108,17 @@ const placedAlumni = alumni.filter((person) => !person.onMarket);
         </div>
         <div class="people-grid market-grid">{onMarket.map((person) => <PersonCard person={person} />)}</div>
       </div>
-      <div class="people-grid alumni-grid">{placedAlumni.map((person) => <PersonCard person={person} />)}</div>
+      <div class="people-cohort-stack alumni-cohort-stack">
+        {alumniClasses.map(({ year, members }) => (
+          <section class="people-cohort" aria-label={`Furong Lab alumni class of ${year}`}>
+            <div class="people-cohort-label">
+              <strong>Class of {year}</strong>
+              <span>{members.length} {members.length === 1 ? "alumnus" : "alumni"}</span>
+            </div>
+            <div class="people-grid alumni-grid">{members.map((person) => <PersonCard person={person} />)}</div>
+          </section>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>

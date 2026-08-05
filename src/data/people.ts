@@ -44,14 +44,39 @@ function validateGroup(value: unknown, group: string): Person[] {
 
 const people = parse(peopleYaml) as Record<string, unknown>;
 
-function graduationYear(person: Person): number {
-  const years = person.period?.match(/\b(?:19|20)\d{2}\b/g) ?? [];
-  return years.length ? Math.max(...years.map(Number)) : 0;
+function yearsFromPeriod(person: Person): number[] {
+  return (person.period?.match(/\b(?:19|20)\d{2}\b/g) ?? []).map(Number);
 }
 
-export const postdocs = validateGroup(people.postdocs, "postdocs");
-export const currentPhdStudents = validateGroup(people.current_phd_students, "current_phd_students");
+function startingYear(person: Person): number {
+  return yearsFromPeriod(person)[0] ?? Number.MAX_SAFE_INTEGER;
+}
+
+function graduationYear(person: Person): number {
+  const years = yearsFromPeriod(person);
+  return years.length ? Math.max(...years) : 0;
+}
+
+function familyName(person: Person): string {
+  const parts = person.name.replace(/\([^)]*\)/g, "").trim().split(/\s+/);
+  return parts.at(-1) ?? person.name;
+}
+
+function compareByFamilyName(left: Person, right: Person): number {
+  const familyDifference = familyName(left).localeCompare(familyName(right), "en", { sensitivity: "base" });
+  return familyDifference || left.name.localeCompare(right.name, "en", { sensitivity: "base" });
+}
+
+function compareByDisplayName(left: Person, right: Person): number {
+  return left.name.localeCompare(right.name, "en", { sensitivity: "base" });
+}
+
+export const postdocs = validateGroup(people.postdocs, "postdocs").sort(compareByFamilyName);
+export const currentPhdStudents = validateGroup(people.current_phd_students, "current_phd_students").sort((left, right) => {
+  const cohortDifference = startingYear(left) - startingYear(right);
+  return cohortDifference || compareByDisplayName(left, right);
+});
 export const alumni = validateGroup(people.alumni, "alumni").sort((left, right) => {
   const yearDifference = graduationYear(right) - graduationYear(left);
-  return yearDifference || left.name.localeCompare(right.name, "en", { sensitivity: "base" });
+  return yearDifference || compareByFamilyName(left, right);
 });

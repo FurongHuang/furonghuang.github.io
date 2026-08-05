@@ -750,6 +750,11 @@ areas:
           - label: Code
             href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
+  - title: "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation"
+    pillar: reasoning-control
+    social_links:
+      - label: X thread
+        url: https://x.com/furongh/status/2084453132180812264?s=20
   - title: "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition"
     thumbnail: /assets/projects/escaping-saddle-points-offconvex.png
     social_links:

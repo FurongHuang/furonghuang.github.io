@@ -15,7 +15,7 @@ const {
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
-const links = [
+const desktopLinks = [
   ["/", "Home"],
   ["/research/", "Research"],
   ["/publications/", "Publications"],
@@ -23,9 +23,38 @@ const links = [
   ["/news/", "News"],
   ["/blog/", "Blog"],
   ["/teaching/", "Teaching"],
-  ["/join/", "Join"],
   ["/cv/", "CV"]
 ];
+const mobileLinks = [...desktopLinks, ["/join/", "Join"]];
+const researchSubnav = [
+  ["/research/", "Overview", "overview"],
+  ["/research/#world-models", "World models", "world-models"],
+  ["/research/#reasoning-control", "Reasoning control", "reasoning-control"],
+  ["/research/#self-improvement", "Trustworthy self-improvement", "self-improvement"],
+  ["/benchmarks/", "Benchmarks & evaluation", "benchmarks"]
+];
+const showResearchSubnav = pathname.startsWith("/research/") || pathname.startsWith("/benchmarks/");
+const researchSectionByPath: Record<string, string> = {
+  "/research/embodied-ai/": "world-models",
+  "/research/multimodal-learning/": "world-models",
+  "/research/sequential-decision-making/": "world-models",
+  "/research/ai-agents/": "reasoning-control",
+  "/research/test-time-compute/": "reasoning-control",
+  "/research/agentic-workflows/": "reasoning-control",
+  "/research/ai-safety/": "self-improvement",
+  "/research/alignment/": "self-improvement",
+  "/research/robust-learning/": "self-improvement"
+};
+const activeResearchSection = pathname.startsWith("/benchmarks/")
+  ? "benchmarks"
+  : pathname === "/research/"
+    ? "overview"
+    : researchSectionByPath[pathname];
+const isPrimaryActive = (href: string) => {
+  if (href === "/") return pathname === href;
+  if (href === "/research/") return pathname.startsWith("/research/") || pathname.startsWith("/benchmarks/");
+  return pathname.startsWith(href);
+};
 ---
 
 <!doctype html>
@@ -46,7 +75,7 @@ const links = [
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
+    <header class:list={["site-header", { "has-research-subnav": showResearchSubnav }]}>
       <a class="wordmark" href="/" aria-label="Furong Lab home">
         <span class="wordmark-mark">FH</span>
         <span>
@@ -55,8 +84,8 @@ const links = [
         </span>
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        {links.map(([href, label]) => (
-          <a class:list={{ active: href === "/" ? pathname === href : pathname.startsWith(href) }} href={href}>
+        {desktopLinks.map(([href, label]) => (
+          <a class:list={{ active: isPrimaryActive(href) }} href={href}>
             {label}
           </a>
         ))}
@@ -64,14 +93,27 @@ const links = [
       <details class="mobile-nav">
         <summary>Menu <span aria-hidden="true">⌄</span></summary>
         <nav aria-label="Primary navigation">
-          {links.map(([href, label]) => (
-            <a class:list={{ active: href === "/" ? pathname === href : pathname.startsWith(href) }} href={href}>
+          {mobileLinks.map(([href, label]) => (
+            <a class:list={{ active: isPrimaryActive(href) }} href={href}>
               {label}
             </a>
           ))}
         </nav>
       </details>
       <a class="header-action" href="/join/">How to join <span>→</span></a>
+      {showResearchSubnav && (
+        <nav class="research-subnav" aria-label="Research navigation" data-research-subnav>
+          {researchSubnav.map(([href, label, section]) => (
+            <a
+              href={href}
+              data-research-target={section}
+              class:list={{ active: section === activeResearchSection }}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
     <main id="main">
       <slot />
@@ -88,5 +130,29 @@ const links = [
       </div>
       <small>© {new Date().getFullYear()} Furong Lab · University of Maryland</small>
     </footer>
+    <script>
+      const researchNav = document.querySelector<HTMLElement>("[data-research-subnav]");
+      const initialResearchLink = researchNav?.querySelector<HTMLElement>("a.active");
+      requestAnimationFrame(() => initialResearchLink?.scrollIntoView({ block: "nearest", inline: "center" }));
+      if (researchNav && window.location.pathname === "/research/") {
+        const links = Array.from(researchNav.querySelectorAll<HTMLAnchorElement>("[data-research-target]"));
+        const sections = ["world-models", "reasoning-control", "self-improvement"]
+          .map((id) => document.getElementById(id))
+          .filter((section): section is HTMLElement => Boolean(section));
+
+        const updateResearchNav = () => {
+          let activeSection = "overview";
+          for (const section of sections) {
+            if (section.getBoundingClientRect().top <= 210) activeSection = section.id;
+          }
+          for (const link of links) {
+            link.classList.toggle("active", link.dataset.researchTarget === activeSection);
+          }
+        };
+
+        updateResearchNav();
+        window.addEventListener("scroll", updateResearchNav, { passive: true });
+      }
+    </script>
   </body>
 </html>

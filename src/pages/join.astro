@@ -2,12 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import EmailReveal from "../components/EmailReveal.astro";
 
-const nextPhdYear = new Date().getFullYear() + 1;
+const recruitingPhdYear = 2027;
 
 const paths = [
   {
     label: "Prospective Ph.D. students",
-    subject: `[PhD ${nextPhdYear}] Name — research direction — current institution`,
+    subject: `[PhD ${recruitingPhdYear}] Name — research direction — current institution`,
     detail:
       "Apply through the UMD Computer Science graduate admissions process. Individual application reviews and admission decisions are not made by email. A concise research-fit message is optional and does not replace the official application.",
     link: "https://www.cs.umd.edu/grad",
@@ -76,6 +76,21 @@ const directions = [
     <p>
       Thank you for your interest in Furong Lab. Because the lab receives more inquiries than it can answer individually, the guidance below is the best way to help us understand your interests, preparation, and potential research fit.
     </p>
+  </section>
+
+  <section class="shell phd-hiring-callout" aria-labelledby="phd-hiring-title">
+    <div class="phd-hiring-year">
+      <span>Recruiting</span>
+      <strong>Fall {recruitingPhdYear}</strong>
+    </div>
+    <div>
+      <p class="eyebrow">Ph.D. opportunities</p>
+      <h2 id="phd-hiring-title">Furong Lab is hiring Ph.D. students.</h2>
+      <p>
+        Prospective students interested in world models, reasoning control, or trustworthy self-improvement are encouraged to apply through the UMD Computer Science graduate admissions process. Please review the guidance below before sending an optional research-fit message.
+      </p>
+    </div>
+    <a href="#right-path">Read the application guidance <span aria-hidden="true">↓</span></a>
   </section>
 
   <section class="shell section join-section" aria-labelledby="right-path">

@@ -158,6 +158,34 @@ select {
   background: var(--ink);
 }
 
+.research-subnav {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin-top: -0.2rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(16, 42, 67, 0.09);
+}
+
+.research-subnav a {
+  flex: 0 0 auto;
+  padding: 0.36rem 0.7rem;
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.research-subnav a:hover,
+.research-subnav a.active {
+  color: var(--teal-dark);
+  background: var(--teal-light);
+}
+
 main {
   min-height: 70vh;
   overflow: hidden;
@@ -2002,6 +2030,81 @@ main {
   max-width: 1080px;
 }
 
+.phd-hiring-callout {
+  display: grid;
+  grid-template-columns: 165px minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  border: 1px solid rgba(126, 224, 216, 0.28);
+  border-radius: 26px;
+  color: white;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(126, 224, 216, 0.22), transparent 30%),
+    var(--ink);
+  box-shadow: 0 20px 52px rgba(16, 42, 67, 0.16);
+}
+
+.phd-hiring-year {
+  display: grid;
+  gap: 0.15rem;
+  align-content: center;
+  min-height: 112px;
+  padding-right: 1.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.phd-hiring-year span,
+.phd-hiring-callout .eyebrow {
+  color: #7ee0d8;
+}
+
+.phd-hiring-year span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.phd-hiring-year strong {
+  font-family: "Newsreader", serif;
+  font-size: 2.1rem;
+  line-height: 1.05;
+}
+
+.phd-hiring-callout h2 {
+  margin: 0.35rem 0 0.55rem;
+  font-family: "Newsreader", serif;
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.phd-hiring-callout p:last-child {
+  max-width: 760px;
+  margin: 0;
+  color: #c7d5df;
+  font-size: 0.84rem;
+}
+
+.phd-hiring-callout > a {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  color: white;
+  font-size: 0.74rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.phd-hiring-callout > a:hover {
+  color: var(--ink);
+  background: #7ee0d8;
+}
+
 .join-section {
   padding-top: 2rem;
 }
@@ -2811,6 +2914,8 @@ footer > small {
     justify-content: center;
   }
 
+  .research-subnav { order: 4; }
+
   .header-action { display: none; }
   .hero { grid-template-columns: 1fr 360px; gap: 2rem; }
   .paper-grid { grid-template-columns: 1fr; }
@@ -2846,6 +2951,17 @@ footer > small {
   }
 
   .desktop-nav { display: none; }
+
+  .research-subnav {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    margin-inline: -1rem;
+    padding: 0.7rem 1rem 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .research-subnav::-webkit-scrollbar { display: none; }
 
   .mobile-nav {
     position: relative;
@@ -2929,6 +3045,8 @@ footer > small {
   .people-grid { grid-template-columns: 1fr; }
   .direction-choice-grid { grid-template-columns: 1fr; }
   .screening-panel { gap: 2rem; padding: 2.5rem; }
+  .phd-hiring-callout { grid-template-columns: 140px minmax(0, 1fr); }
+  .phd-hiring-callout > a { grid-column: 2; justify-self: start; }
   .market-roster { grid-template-columns: 1fr; padding: 1.5rem; }
   .news-list article { grid-template-columns: 100px 100px 1fr; }
   .news-list article > a,
@@ -3016,6 +3134,9 @@ footer > small {
     font-size: 0.58rem;
   }
   .inquiry-grid { grid-template-columns: 1fr; }
+  .phd-hiring-callout { grid-template-columns: 1fr; gap: 1.25rem; }
+  .phd-hiring-year { min-height: 0; padding: 0 0 1rem; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.17); }
+  .phd-hiring-callout > a { grid-column: auto; justify-self: stretch; justify-content: center; white-space: normal; text-align: center; }
   .inquiry-card:last-child { grid-column: auto; }
   .message-requirements li { grid-template-columns: 48px minmax(0, 1fr); gap: 0.8rem; }
   .screening-panel { padding: 2rem 1.4rem; }

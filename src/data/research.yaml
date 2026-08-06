@@ -36,7 +36,7 @@ pillars:
       title: Embodied AI
       description: World models become tangible when agents must understand space, bodies, state, and consequences. Explore representative systems, videos, code, and papers.
       href: /research/embodied-ai/
-      image: /assets/projects/mu0-teaser-still.png
+      image: /assets/projects/mu0-teaser-still.webp
       imageAlt: Human and robot interaction traces modeled by μ0
       featuredProjectId: mu0
   - id: reasoning-control
@@ -87,7 +87,7 @@ featured_projects:
     area: Embodied AI
     title: μ0
     summary: A scalable world model that predicts semantic 3D interaction traces, learning embodiment-agnostic motion priors from video-only pretraining for downstream robot control.
-    image: /assets/projects/mu0-teaser-still.png
+    image: /assets/projects/mu0-teaser-still.webp
     video: https://mu0-wm.github.io/teaser.mp4
     year: 2026
     links:
@@ -142,7 +142,7 @@ featured_projects:
     area: Embodied AI
     title: MomaGraph
     summary: A state-aware unified scene graph that combines vision-language reasoning with explicit world state for long-horizon embodied task planning.
-    image: /assets/projects/momagraph.png
+    image: /assets/projects/momagraph.webp
     year: 2026
     links:
       - label: Project
@@ -362,6 +362,8 @@ areas:
             href: https://arxiv.org/abs/2603.08706
           - label: LinkedIn vision
             href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+          - label: X thread
+            href: https://x.com/furongh/status/2032549425222983688?s=20
       - id: ive-agents
         area: AI Agents
         title: Imagine, Verify, Execute
@@ -519,6 +521,8 @@ areas:
             href: https://arxiv.org/abs/2603.08706
           - label: LinkedIn vision
             href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+          - label: X thread
+            href: https://x.com/furongh/status/2032549425222983688?s=20
       - id: fusionroute
         area: Agentic workflows
         title: FusionRoute
@@ -899,7 +903,7 @@ publication_overrides:
         url: https://x.com/furongh/status/1806151592783093776?s=20
   - title: "μ0: A Scalable 3D Interaction-Trace World Model"
     pillar: world-models
-    thumbnail: /assets/projects/mu0-teaser-still.png
+    thumbnail: /assets/projects/mu0-teaser-still.webp
     social_links:
       - label: X post
         url: https://x.com/furongh/status/2066203382117962182?s=46&t=iqTO3UQ6d96jwD4sbq_dcA
@@ -929,7 +933,7 @@ publication_overrides:
         url: https://dynaflip-robotics.github.io/static/videos/project_page_overview_video.mp4
   - title: "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
     pillar: world-models
-    thumbnail: /assets/projects/momagraph.png
+    thumbnail: /assets/projects/momagraph.webp
     social_links:
       - label: LinkedIn
         url: https://www.linkedin.com/posts/furong-huang_iclr2026-machinelearning-ai-ugcPost-7453165248611577857-xoSO/
@@ -998,7 +1002,7 @@ publication_overrides:
         url: https://github.com/si0wang/COPlanner
   - title: "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
     pillar: world-models
-    thumbnail: /assets/projects/egoscale.png
+    thumbnail: /assets/projects/egoscale.webp
     social_links:
       - label: Project
         url: https://research.nvidia.com/labs/gear/egoscale/
@@ -1026,13 +1030,15 @@ publication_overrides:
         url: https://research.nvidia.com/labs/gear/flare/
   - title: "LEMON: A Unified and Scalable 3D Multimodal Model for Universal Spatial Understanding"
     pillar: world-models
-    thumbnail: /assets/projects/lemon.png
+    thumbnail: /assets/projects/lemon.webp
   - title: Agentic Critical Training
     pillar: reasoning-control
     thumbnail: /assets/projects/agentic-critical-training.png
     social_links:
       - label: LinkedIn vision
         url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
+      - label: X thread
+        url: https://x.com/furongh/status/2032549425222983688?s=20
   - title: "Transfer Q-star: Principled Decoding for LLM Alignment"
     pillar: reasoning-control
     thumbnail: /assets/projects/transfer-q-star.png

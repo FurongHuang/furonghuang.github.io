@@ -67,7 +67,10 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
     </div>
 
     <div class="publication-list" id="publication-list">
-      {works.map((paper) => <PaperCard paper={paper} compact />)}
+      {works.map((paper, index) => <PaperCard paper={paper} compact initiallyHidden={index >= 30} />)}
+    </div>
+    <div class="button-row publication-more-row">
+      <button class="button secondary publication-more" id="publication-more" type="button">Show more publications</button>
     </div>
     <div class="empty-state" id="publication-empty">
       <h2>No matching publications</h2>
@@ -82,39 +85,70 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
     const pillar = document.querySelector<HTMLSelectElement>("#publication-pillar");
     const count = document.querySelector<HTMLElement>("#publication-count");
     const empty = document.querySelector<HTMLElement>("#publication-empty");
+    const more = document.querySelector<HTMLButtonElement>("#publication-more");
     const papers = Array.from(document.querySelectorAll<HTMLElement>("[data-paper]"));
+    const pageSize = 30;
+    let displayLimit = pageSize;
 
-    const filterPublications = () => {
+    const updatePublicationUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const values = {
+        q: search?.value.trim() || "",
+        category: category?.value || "",
+        pillar: pillar?.value || "",
+        year: year?.value || ""
+      };
+
+      for (const [key, value] of Object.entries(values)) {
+        if (value) params.set(key, value);
+        else params.delete(key);
+      }
+
+      const query = params.toString();
+      history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`);
+    };
+
+    const filterPublications = (syncUrl = false) => {
       const query = search?.value.trim().toLowerCase() || "";
       const selectedCategory = category?.value || "";
       const selectedYear = year?.value || "";
       const selectedPillar = pillar?.value || "";
-      let visible = 0;
+      const filtering = Boolean(query || selectedCategory || selectedYear || selectedPillar);
+      let matches = 0;
 
       for (const paper of papers) {
         const matchesQuery = !query || (paper.dataset.search || "").includes(query);
         const matchesCategory = !selectedCategory || paper.dataset.category === selectedCategory;
         const matchesYear = !selectedYear || paper.dataset.year === selectedYear;
         const matchesPillar = !selectedPillar || paper.dataset.pillar === selectedPillar;
-        const matches = matchesQuery && matchesCategory && matchesYear && matchesPillar;
-        paper.hidden = !matches;
-        if (matches) visible += 1;
+        const isMatch = matchesQuery && matchesCategory && matchesYear && matchesPillar;
+        if (isMatch) matches += 1;
+        paper.hidden = !isMatch || (!filtering && matches > displayLimit);
       }
 
-      if (count) count.textContent = `${visible} ${visible === 1 ? "record" : "records"}`;
-      if (empty) empty.style.display = visible === 0 ? "block" : "none";
+      const shown = filtering ? matches : Math.min(matches, displayLimit);
+      if (count) count.textContent = filtering
+        ? `${matches} ${matches === 1 ? "record" : "records"}`
+        : `${shown} of ${matches} records`;
+      if (empty) empty.style.display = matches === 0 ? "block" : "none";
+      if (more) more.hidden = filtering || shown >= matches;
+      if (syncUrl) updatePublicationUrl();
     };
 
-    search?.addEventListener("input", filterPublications);
-    category?.addEventListener("change", filterPublications);
-    year?.addEventListener("change", filterPublications);
-    pillar?.addEventListener("change", filterPublications);
+    search?.addEventListener("input", () => filterPublications(true));
+    category?.addEventListener("change", () => filterPublications(true));
+    year?.addEventListener("change", () => filterPublications(true));
+    pillar?.addEventListener("change", () => filterPublications(true));
+    more?.addEventListener("click", () => {
+      displayLimit += pageSize;
+      filterPublications(false);
+    });
 
     const params = new URLSearchParams(window.location.search);
     if (search && params.has("q")) search.value = params.get("q") || "";
     if (category && params.has("category")) category.value = params.get("category") || "";
     if (year && params.has("year")) year.value = params.get("year") || "";
     if (pillar && params.has("pillar")) pillar.value = params.get("pillar") || "";
-    filterPublications();
+    filterPublications(false);
   </script>
 </BaseLayout>

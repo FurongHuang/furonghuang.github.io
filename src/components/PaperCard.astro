@@ -21,11 +21,12 @@ interface Paper {
   flags?: string[];
 }
 
-const { paper, compact = false, eagerImage = false, thumbnailFit = "contain" } = Astro.props as {
+const { paper, compact = false, eagerImage = false, thumbnailFit = "contain", initiallyHidden = false } = Astro.props as {
   paper: Paper;
   compact?: boolean;
   eagerImage?: boolean;
   thumbnailFit?: "cover" | "contain";
+  initiallyHidden?: boolean;
 };
 const inferLabel = (label: string | undefined, url: string) => {
   const cleanLabel = label?.trim();
@@ -95,13 +96,13 @@ const bibtexBody = bibtexFields
 const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
 ---
 
-<article class:list={["paper-card", `accent-${accent}`, { compact, "has-thumbnail": Boolean(thumbnail) }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-pillar={pillar} data-search={`${paper.title} ${authorText} ${paper.venue} ${pillarInfo.label}`.toLowerCase()}>
+<article class:list={["paper-card", `accent-${accent}`, { compact, "has-thumbnail": Boolean(thumbnail) }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-pillar={pillar} data-search={`${paper.title} ${authorText} ${paper.venue} ${pillarInfo.label}`.toLowerCase()} hidden={initiallyHidden}>
   <div
     class:list={["paper-visual", `fit-${thumbnailFit}`, { "has-image": Boolean(thumbnail) }]}
     style={thumbnail ? `--paper-thumbnail: url('${thumbnail}')` : undefined}
     aria-hidden="true"
   >
-    {thumbnail ? <img src={thumbnail} alt="" loading={eagerImage ? "eager" : "lazy"} decoding="async" /> : <><span>{String(paper.year || "—").slice(-2)}</span><i></i><i></i><i></i></>}
+    {thumbnail ? <img src={thumbnail} alt="" loading={eagerImage ? "eager" : "lazy"} decoding="async" width="1600" height="900" /> : <><span>{String(paper.year || "—").slice(-2)}</span><i></i><i></i><i></i></>}
   </div>
   <div class="paper-body">
     <div class="paper-meta">

@@ -7,14 +7,36 @@ import EmailReveal from "../components/EmailReveal.astro";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  noindex?: boolean;
 }
 
 const {
   title = "Furong Huang — Trustworthy Foundation Models",
-  description = "Furong Huang leads research on world models, reasoning control, and trustworthy self-improvement for foundation models."
+  description = "Furong Huang leads research on world models, reasoning control, and trustworthy self-improvement for foundation models.",
+  image = "/assets/bodyshot.webp",
+  noindex = false
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
+const siteUrl = Astro.site || new URL("https://furong-huang.com");
+const canonicalUrl = new URL(pathname, siteUrl);
+const socialImageUrl = new URL(image, siteUrl);
+const pageType = pathname.startsWith("/blog/") && pathname !== "/blog/" ? "article" : "website";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: new URL("/", siteUrl).href,
+  image: new URL("/assets/bodyshot.webp", siteUrl).href,
+  jobTitle: profile.title,
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: profile.institution,
+    url: "https://www.umd.edu/"
+  },
+  sameAs: [profile.scholar, profile.x, profile.linkedin, profile.youtube, profile.github, profile.huggingface]
+};
 const desktopLinks = [
   ["/", "Home"],
   ["/research/", "Research"],
@@ -63,14 +85,29 @@ const isPrimaryActive = (href: string) => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#102a43" />
+    {!noindex && <link rel="canonical" href={canonicalUrl} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:site_name" content={profile.labName} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content="Furong Huang" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline></script>
     <title>{title}</title>
   </head>
   <body>

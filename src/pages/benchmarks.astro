@@ -126,7 +126,25 @@ const categoryCounts = Object.fromEntries(categoryEntries.map(([id]) => [id, ben
     const empty = document.querySelector<HTMLElement>("#benchmark-empty");
     const resources = Array.from(document.querySelectorAll<HTMLElement>("#benchmark-list [data-benchmark]"));
 
-    const filterResources = () => {
+    const updateBenchmarkUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const values = {
+        q: search?.value.trim() || "",
+        category: category?.value || "",
+        type: type?.value || "",
+        pillar: pillar?.value || ""
+      };
+
+      for (const [key, value] of Object.entries(values)) {
+        if (value) params.set(key, value);
+        else params.delete(key);
+      }
+
+      const query = params.toString();
+      history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`);
+    };
+
+    const filterResources = (syncUrl = false) => {
       const query = search?.value.trim().toLowerCase() || "";
       const selectedCategory = category?.value || "";
       const selectedType = type?.value || "";
@@ -145,17 +163,24 @@ const categoryCounts = Object.fromEntries(categoryEntries.map(([id]) => [id, ben
 
       if (count) count.textContent = `${visible} ${visible === 1 ? "resource" : "resources"}`;
       if (empty) empty.style.display = visible === 0 ? "block" : "none";
+      if (syncUrl) updateBenchmarkUrl();
     };
 
-    [search, category, type, pillar].forEach((control) => {
-      control?.addEventListener(control instanceof HTMLInputElement ? "input" : "change", filterResources);
-    });
+    search?.addEventListener("input", () => filterResources(true));
+    [category, type, pillar].forEach((control) => control?.addEventListener("change", () => filterResources(true)));
 
     document.querySelectorAll<HTMLElement>("[data-category-link]").forEach((link) => {
       link.addEventListener("click", () => {
         if (category) category.value = link.dataset.categoryLink || "";
-        filterResources();
+        filterResources(true);
       });
     });
+
+    const params = new URLSearchParams(window.location.search);
+    if (search && params.has("q")) search.value = params.get("q") || "";
+    if (category && params.has("category")) category.value = params.get("category") || "";
+    if (type && params.has("type")) type.value = params.get("type") || "";
+    if (pillar && params.has("pillar")) pillar.value = params.get("pillar") || "";
+    filterResources(false);
   </script>
 </BaseLayout>

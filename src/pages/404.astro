@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found — Furong Lab"
+  description="The requested page could not be found on the Furong Lab website."
+  noindex
+>
+  <section class="shell page-hero not-found-page">
+    <p class="eyebrow">404 · Page not found</p>
+    <h1>This page has moved—or never existed.</h1>
+    <p>Try the research and publication indexes, or return to the Furong Lab homepage.</p>
+    <div class="button-row">
+      <a class="button" href="/">Return home <span>→</span></a>
+      <a class="button secondary" href="/publications/">Browse publications</a>
+    </div>
+  </section>
+  <script>
+    const legacyRedirects: Record<string, string> = {
+      "/neurips-22-main-conference-papers-from-huang-lab-umd/": "/blog/neurips-2022/",
+      "/publications/benchmarking-vision-language-model-unlearning-via-fictitious-facial-identity-dataset/": "/publications/?q=vision-language+model+unlearning",
+      "/publications/collab-controlled-decoding-using-mixture-of-agents-for-llm-alignment/": "/publications/?q=Collab",
+      "/publications/mergeme-model-merging-techniques-for-homogeneous-and-heterogeneous-moes/": "/publications/?q=MergeME",
+      "/publications/safety-guaranteed-robust-multi-agent-reinforcement-learning-with-hierarchical-control-for-connected-and-automated-vehicles/": "/publications/?q=safety-guaranteed+robust+multi-agent",
+      "/publications/statistical-guarantees-for-lifelong-reinforcement-learning-using-pac-bayesian-theory/": "/publications/?q=statistical+guarantees+for+lifelong",
+      "/publications/tracevla-visual-trace-prompting-enhances-spatial-temporal-awareness-for-generalist-robotic-policies/": "/publications/?q=TraceVLA",
+      "/publications/world-models-with-hints-of-large-language-models-for-goal-achieving/": "/publications/?q=world+models+with+hints",
+      "/wp-content/uploads/2026/06/Building-Self-Improving-Foundation-Models_June_2026.pdf": "/news/",
+      "/wp-content/uploads/2026/06/Test-Time_Thinking_Control_June_2026.pdf": "/news/"
+    };
+    const target = legacyRedirects[window.location.pathname];
+    if (target) window.location.replace(target);
+  </script>
+</BaseLayout>

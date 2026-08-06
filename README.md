@@ -62,7 +62,7 @@ The non-publication content is deliberately centralized:
 - `public/assets/people/` and `public/assets/projects/` — local portraits and
   project visuals
 
-The homepage uses `public/assets/bodyshot.JPG`; the People page uses
+The homepage uses `public/assets/bodyshot.webp`; the People page uses
 `public/assets/headshot.jpg`.
 
 The public HTML intentionally contains no plain-text email address and no

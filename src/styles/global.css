@@ -269,6 +269,13 @@ main {
   background: transparent;
 }
 
+button.button { cursor: pointer; }
+
+.publication-more-row {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .hero {
   position: relative;
   display: grid;

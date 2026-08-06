@@ -52,7 +52,7 @@ export const benchmarkResources: BenchmarkResource[] = [
     modalities: ["Vision", "Robotics", "Scene graphs"],
     summary: "Task-driven spatial-functional scene graphs and a six-capability evaluation suite for embodied planning and scene understanding.",
     scale: "1,050 task-oriented subgraphs; 6,278 multiview images; 350+ household scenes",
-    image: "/assets/projects/momagraph.png",
+    image: "/assets/projects/momagraph.webp",
     featured: true,
     links: [
       { label: "Project", href: "https://hybridrobotics.github.io/MomaGraph/" },
@@ -90,7 +90,7 @@ export const benchmarkResources: BenchmarkResource[] = [
     modalities: ["Vision", "3D traces", "Robotics"],
     summary: "Released evaluation episodes, normalization statistics, and model artifacts for transferable 3D interaction-trace prediction.",
     scale: "Evaluation episodes spanning human and robot embodiments",
-    image: "/assets/projects/mu0-teaser-still.png",
+    image: "/assets/projects/mu0-teaser-still.webp",
     featured: true,
     links: [
       { label: "Project", href: "https://mu0-wm.github.io/" },

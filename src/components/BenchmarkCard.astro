@@ -21,7 +21,7 @@ const searchText = [resource.title, resource.summary, resource.scale, ...resourc
   id={featured ? undefined : resource.id}
 >
   <div class="benchmark-visual">
-    <img src={resource.image} alt={`Representative figure for ${resource.title}`} loading={featured ? "eager" : "lazy"} decoding="async" style={`--benchmark-position: ${resource.imagePosition || "50% 50%"}`} />
+    <img src={resource.image} alt={`Representative figure for ${resource.title}`} loading={featured ? "eager" : "lazy"} decoding="async" width="1600" height="900" style={`--benchmark-position: ${resource.imagePosition || "50% 50%"}`} />
     <span>{resource.year}</span>
   </div>
   <div class="benchmark-body">

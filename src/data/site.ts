@@ -160,15 +160,13 @@ export const news = [
     date: "June 2026",
     type: "Talk",
     title: "Building Self-Improving Foundation Models",
-    detail: "Auditors, actuators, and amplifiers for trustworthy AI.",
-    href: "https://furong-huang.com/wp-content/uploads/2026/06/Building-Self-Improving-Foundation-Models_June_2026.pdf"
+    detail: "Auditors, actuators, and amplifiers for trustworthy AI."
   },
   {
     date: "June 2026",
     type: "Talk",
     title: "Reasoning as Control",
-    detail: "Adaptive test-time compute for planning agents.",
-    href: "https://furong-huang.com/wp-content/uploads/2026/06/Test-Time_Thinking_Control_June_2026.pdf"
+    detail: "Adaptive test-time compute for planning agents."
   },
   {
     date: "April 2026",

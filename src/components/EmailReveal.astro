@@ -78,7 +78,7 @@ const { inverted = false } = Astro.props as { inverted?: boolean };
     for (const answer of challenge.querySelectorAll<HTMLButtonElement>("[data-answer]")) {
       answer.addEventListener("click", () => {
         if (answer.dataset.answer !== "3") {
-          if (status) status.textContent = "Not quite—look at the research map above.";
+          if (status) status.textContent = "Not quite—Furong Lab has three research pillars.";
           return;
         }
         const email = address();

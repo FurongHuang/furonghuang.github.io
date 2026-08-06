@@ -20,7 +20,7 @@ current_phd_students:
     role: Ph.D. advisee · Computer Science
     period: 2026–present
     href: https://byeonghyunpak.github.io/
-    image: /assets/people/byeonghyun-pak.png
+    image: /assets/people/byeonghyun-pak.webp
     imagePosition: 50% 18%
   - name: Drew Gjerstad
     role: Ph.D. advisee · Computer Science
@@ -192,7 +192,7 @@ alumni:
     period: "2025"
     destination: APQX
     href: https://marcobornstein.github.io/
-    image: /assets/people/marco-bornstein.png
+    image: /assets/people/marco-bornstein.webp
     imagePosition: 50% 20%
     imageScale: 1.15
   - name: Tahseen Rabbani

@@ -1787,10 +1787,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2411.03554"
-        },
-        {
-          "label": "Project page",
-          "url": "https://furong-huang.com/publications/benchmarking-vision-language-model-unlearning-via-fictitious-facial-identity-dataset/"
         }
       ],
       "appearances": [
@@ -1820,10 +1816,6 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2411.03554"
-            },
-            {
-              "label": "Project page",
-              "url": "https://furong-huang.com/publications/benchmarking-vision-language-model-unlearning-via-fictitious-facial-identity-dataset/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -2842,10 +2834,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2503.21720"
-        },
-        {
-          "label": "Project page",
-          "url": "https://furong-huang.com/publications/collab-controlled-decoding-using-mixture-of-agents-for-llm-alignment/"
         }
       ],
       "appearances": [
@@ -2873,10 +2861,6 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2503.21720"
-            },
-            {
-              "label": "Project page",
-              "url": "https://furong-huang.com/publications/collab-controlled-decoding-using-mixture-of-agents-for-llm-alignment/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -8762,10 +8746,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2502.00997"
-        },
-        {
-          "label": "Project page",
-          "url": "https://furong-huang.com/publications/mergeme-model-merging-techniques-for-homogeneous-and-heterogeneous-moes/"
         }
       ],
       "appearances": [
@@ -8791,10 +8771,6 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2502.00997"
-            },
-            {
-              "label": "Project page",
-              "url": "https://furong-huang.com/publications/mergeme-model-merging-techniques-for-homogeneous-and-heterogeneous-moes/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -11632,10 +11608,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2309.11057"
-        },
-        {
-          "label": "Project page",
-          "url": "https://furong-huang.com/publications/safety-guaranteed-robust-multi-agent-reinforcement-learning-with-hierarchical-control-for-connected-and-automated-vehicles/"
         }
       ],
       "appearances": [
@@ -11660,10 +11632,6 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2309.11057"
-            },
-            {
-              "label": "Project page",
-              "url": "https://furong-huang.com/publications/safety-guaranteed-robust-multi-agent-reinforcement-learning-with-hierarchical-control-for-connected-and-automated-vehicles/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -12810,10 +12778,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2411.00401"
-        },
-        {
-          "label": "Project page",
-          "url": "https://furong-huang.com/publications/statistical-guarantees-for-lifelong-reinforcement-learning-using-pac-bayesian-theory/"
         }
       ],
       "appearances": [
@@ -12841,10 +12805,6 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2411.00401"
-            },
-            {
-              "label": "Project page",
-              "url": "https://furong-huang.com/publications/statistical-guarantees-for-lifelong-reinforcement-learning-using-pac-bayesian-theory/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -13817,10 +13777,6 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/tracevla"
-        },
-        {
-          "label": "Project page",
-          "url": "https://furong-huang.com/publications/tracevla-visual-trace-prompting-enhances-spatial-temporal-awareness-for-generalist-robotic-policies/"
         }
       ],
       "appearances": [
@@ -13850,10 +13806,6 @@
             {
               "label": "Code",
               "url": "https://github.com/umd-huang-lab/tracevla"
-            },
-            {
-              "label": "Project page",
-              "url": "https://furong-huang.com/publications/tracevla-visual-trace-prompting-enhances-spatial-temporal-awareness-for-generalist-robotic-policies/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -15634,10 +15586,6 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2406.07381"
-        },
-        {
-          "label": "Project page",
-          "url": "https://furong-huang.com/publications/world-models-with-hints-of-large-language-models-for-goal-achieving/"
         }
       ],
       "appearances": [
@@ -15663,10 +15611,6 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2406.07381"
-            },
-            {
-              "label": "Project page",
-              "url": "https://furong-huang.com/publications/world-models-with-hints-of-large-language-models-for-goal-achieving/"
             }
           ],
           "source_file": "sections/publications-conf.tex"

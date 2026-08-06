@@ -1,41 +1,59 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import EmailReveal from "../components/EmailReveal.astro";
 
 const recruitingPhdYear = 2027;
+const inquiryFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfCDcDLdyErXGUtSD10RALfIqLhKwvE9UW-0ug37RbPuQKPVA/viewform";
 
 const paths = [
   {
     label: "Prospective Ph.D. students",
-    subject: `[PhD ${recruitingPhdYear}] Name — research direction — current institution`,
+    status: `Open · Fall ${recruitingPhdYear}`,
+    tone: "open",
+    acceptsInquiry: true,
     detail:
-      "Apply through the UMD Computer Science graduate admissions process. Individual application reviews and admission decisions are not made by email. A concise research-fit message is optional and does not replace the official application.",
+      "Apply through the UMD Computer Science graduate admissions process. The research inquiry form is optional and does not replace the official application or admission review.",
     link: "https://www.cs.umd.edu/grad",
     linkLabel: "UMD graduate admissions"
   },
   {
-    label: "Current UMD students",
-    subject: "[UMD Research] Name — program/year — research direction",
+    label: "Current UMD graduate students",
+    status: "Open inquiries",
+    tone: "open",
+    acceptsInquiry: true,
     detail:
-      "Explain the time you can commit during the semester, the preparation you already have, and the specific Furong Lab project or question you hope to explore. Priority goes to students who can make a sustained research commitment."
+      "Use the form if you are looking for a research advisor, rotation, or sustained collaboration. Include your program, preparation, weekly availability, and one specific lab direction."
+  },
+  {
+    label: "Current UMD undergraduates",
+    status: "Open inquiries",
+    tone: "open",
+    acceptsInquiry: true,
+    detail:
+      "Use the form to request research experience. Priority goes to students who can make a sustained commitment and can point to relevant coursework, code, or a substantial technical project."
   },
   {
     label: "Research internships",
-    subject: "[Internship] Name — proposed dates — research direction",
+    status: "Limited availability",
+    tone: "limited",
+    acceptsInquiry: true,
     detail:
-      "State your exact availability, location or remote constraints, funding status, and the technical contribution you are prepared to make. A specific request gives the lab enough context to assess mutual fit."
+      "In-person and remote requests use the same form. State exact dates, location constraints, funding status, and the concrete technical contribution you are prepared to make."
   },
   {
     label: "Visiting students or scholars",
-    subject: "",
+    status: "Not currently hosting",
+    tone: "closed",
+    acceptsInquiry: false,
     detail:
-      "Thank you for considering Furong Lab. We are not currently able to host visiting students or visiting scholars, including visits that require an invitation, sponsorship, or institutional affiliation."
+      "The lab is not currently able to host visiting students or scholars, including visits that require an invitation, sponsorship, or institutional affiliation."
   },
   {
     label: "High school students",
-    subject: "",
+    status: "Program referral",
+    tone: "referral",
+    acceptsInquiry: false,
     detail:
-      "We encourage eligible high-school students to explore the Maryland Robotics Center’s SPARC program, a structured three-week summer robotics experience. Furong Lab is generally unable to supervise individual high-school projects or informal internships, so please apply through the program.",
+      "The lab is generally unable to supervise individual high-school projects or informal internships. Eligible students should explore the Maryland Robotics Center’s structured SPARC program.",
     link: "https://robotics.umd.edu/education/student-preparation-advance-robotics-college-sparc-certificate-program",
     linkLabel: "Explore the MRC SPARC program"
   }
@@ -67,14 +85,14 @@ const directions = [
 ---
 
 <BaseLayout
-  title="Prospective Students — Furong Lab"
-  description="How prospective Ph.D. students, UMD students, and internship candidates should contact Furong Lab."
+  title="Join Furong Lab — Research Opportunities"
+  description="Research inquiry guidance for prospective Ph.D. students, current UMD students, and internship candidates interested in Furong Lab."
 >
   <section class="shell page-hero join-hero">
-    <p class="eyebrow">Prospective students</p>
-    <h1>How to connect with Furong Lab.</h1>
+    <p class="eyebrow">Join Furong Lab</p>
+    <h1>Start with the right path.</h1>
     <p>
-      Thank you for your interest in Furong Lab. Because the lab receives more inquiries than it can answer individually, the guidance below is the best way to help us understand your interests, preparation, and potential research fit.
+      Thank you for your interest in Furong Lab. This page is the front door for research opportunities: check whether your pathway is open, identify a specific research fit, and submit one structured inquiry.
     </p>
   </section>
 
@@ -87,29 +105,27 @@ const directions = [
       <p class="eyebrow">Ph.D. opportunities</p>
       <h2 id="phd-hiring-title">Furong Lab is hiring Ph.D. students.</h2>
       <p>
-        Prospective students interested in world models, reasoning control, or trustworthy self-improvement are encouraged to apply through the UMD Computer Science graduate admissions process. Please review the guidance below before sending an optional research-fit message.
+        Prospective students interested in world models, reasoning control, or trustworthy self-improvement should apply through UMD Computer Science. An optional research-fit inquiry can help the lab understand your interests, but it does not replace the official application.
       </p>
     </div>
-    <a href="#right-path">Read the application guidance <span aria-hidden="true">↓</span></a>
+    <a href="#right-path">Choose your path <span aria-hidden="true">↓</span></a>
   </section>
 
   <section class="shell section join-section" aria-labelledby="right-path">
     <div class="section-heading">
-      <div><p class="eyebrow">Step 1</p><h2 id="right-path">Choose the right path.</h2></div>
-      <p>Use the subject-line format for your situation. It helps the lab identify and review relevant inquiries efficiently.</p>
+      <div><p class="eyebrow">Step 1</p><h2 id="right-path">Choose your opportunity type.</h2></div>
+      <p>Availability and requirements differ by pathway. Please use the route that describes your current status rather than sending a general email.</p>
     </div>
     <div class="inquiry-grid">
       {paths.map((path) => (
-        <article class="inquiry-card">
+        <article class:list={["inquiry-card", `status-${path.tone}`]}>
+          <span class="inquiry-status">{path.status}</span>
           <h3>{path.label}</h3>
           <p>{path.detail}</p>
-          {path.subject ? (
-            <div class="subject-example">
-              <span>Email subject</span>
-              <code>{path.subject}</code>
-            </div>
-          ) : null}
-          {path.link ? <a href={path.link}>{path.linkLabel} <span aria-hidden="true">↗</span></a> : null}
+          <div class="inquiry-card-actions">
+            {path.acceptsInquiry ? <a href="#inquiry-form">Use the inquiry form <span aria-hidden="true">↓</span></a> : null}
+            {path.link ? <a href={path.link} target="_blank" rel="noreferrer">{path.linkLabel} <span aria-hidden="true">↗</span></a> : null}
+          </div>
         </article>
       ))}
     </div>
@@ -119,7 +135,7 @@ const directions = [
     <div class="shell section">
       <div class="section-heading">
         <div><p class="eyebrow">Step 2</p><h2>Choose one research direction.</h2></div>
-        <p>Broad interests such as “AI” or “machine learning” are difficult to evaluate. Please name one pillar, then identify a specific project, paper, or research question within it.</p>
+        <p>Broad interests such as “AI” or “machine learning” are difficult to evaluate. Name one pillar, then identify a specific project, paper, or research question within it.</p>
       </div>
       <div class="direction-choice-grid">
         {directions.map((direction) => (
@@ -139,35 +155,38 @@ const directions = [
 
   <section class="shell section join-message-section">
     <div class="section-heading">
-      <div><p class="eyebrow">Step 3</p><h2>Write a message that can be evaluated quickly.</h2></div>
-      <p>Keep the message under 200 words. Use links instead of large attachments and include all five items below.</p>
+      <div><p class="eyebrow">Step 3</p><h2>Prepare one concise submission.</h2></div>
+      <p>The form is intentionally structured so inquiries can be reviewed consistently. Use links instead of large attachments and have these five items ready.</p>
     </div>
     <ol class="message-requirements">
-      <li><span>01</span><div><strong>Your request</strong><p>State whether you seek Ph.D. admission, UMD research experience, or a research internship.</p></div></li>
-      <li><span>02</span><div><strong>Your research fit</strong><p>Name one Furong Lab pillar and one specific project or paper that genuinely interests you.</p></div></li>
+      <li><span>01</span><div><strong>Your pathway</strong><p>Select Ph.D., current UMD graduate, current UMD undergraduate, or research internship.</p></div></li>
+      <li><span>02</span><div><strong>Your research fit</strong><p>Name one Furong Lab pillar and one specific project, paper, or question that genuinely interests you.</p></div></li>
       <li><span>03</span><div><strong>Your proposed contribution</strong><p>Describe one concrete question, experiment, system, or technical direction you could pursue.</p></div></li>
-      <li><span>04</span><div><strong>Evidence of preparation</strong><p>Link to your CV, personal page, code, publications, or one substantial technical project. Explain your own contribution.</p></div></li>
-      <li><span>05</span><div><strong>Practical constraints</strong><p>Give your dates, weekly availability, location, and funding status when relevant.</p></div></li>
+      <li><span>04</span><div><strong>Evidence of preparation</strong><p>Link to your CV, code, publications, portfolio, or one substantial technical project and explain your contribution.</p></div></li>
+      <li><span>05</span><div><strong>Practical constraints</strong><p>Give your dates, weekly availability, location or remote constraints, and funding status when relevant.</p></div></li>
     </ol>
   </section>
 
-  <section class="shell section screening-section" aria-labelledby="after-email">
+  <section class="shell section screening-section" id="inquiry-form" aria-labelledby="inquiry-form-title">
     <div class="screening-panel">
       <div>
-        <p class="eyebrow">What happens next</p>
-        <h2 id="after-email">Screen first. Schedule second.</h2>
+        <p class="eyebrow">Structured intake</p>
+        <h2 id="inquiry-form-title">One form. One review queue.</h2>
       </div>
       <div class="screening-copy">
         <p>
-          Messages are reviewed for research fit, preparation, and available mentoring capacity. Although the lab cannot guarantee an individual reply, one brief follow-up after two weeks is welcome if you have not heard back.
+          Submit one form after reviewing the guidance above. Inquiries are reviewed for research fit, preparation, timing, and available mentoring capacity. The lab cannot guarantee an individual reply.
         </p>
         <p>
-          When a candidate’s interests and timing align with current opportunities, the lab may share a private link for a 15-minute conversation. The booking link is reserved for invited candidates and should not be redistributed.
+          When a candidate’s interests and timing align with current opportunities, the lab may share a private link for a short conversation. Please do not send a duplicate email after submitting the form.
         </p>
-        <div class="contact-gate">
-          <strong>Ready to contact Furong?</strong>
-          <p>Confirm that your subject line and message follow all three steps above, then complete the short human check.</p>
-          <EmailReveal inverted />
+        <div class="contact-gate inquiry-form-gate">
+          <strong>Ready to submit?</strong>
+          <p>The form opens in a new tab and does not require a UMD or Google account. Please have your CV or résumé available as a shareable link.</p>
+          <a class="inquiry-form-button" href={inquiryFormUrl} target="_blank" rel="noreferrer">
+            Submit a research inquiry <span aria-hidden="true">↗</span>
+          </a>
+          <small>Form submissions—not direct email—are the review queue for research opportunities.</small>
         </div>
       </div>
     </div>

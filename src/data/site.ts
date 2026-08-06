@@ -115,7 +115,7 @@ export const legacyProjects = [
 ] as const;
 
 export const foundationalPublicationTitles = [
-  "Are Adversarial Examples Created Equal? A Learnable Weighted Minimax Risk for Robustness under Non-Uniform Attacks",
+  "Certifiably Robust Multi-Agent Reinforcement Learning against Adversarial Communication",
   "Efficient Adversarial Training without Attacking: Worst-Case-Aware Robust Reinforcement Learning",
   "Rethinking Adversarial Policies: A Generalized Attack Formulation and Provable Defense in RL",
   "High-Dimensional Gaussian Graphical Model Selection: Walk-Summability and Local Separation Criterion",

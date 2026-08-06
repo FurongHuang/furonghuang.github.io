@@ -5,6 +5,7 @@
   --white: #fffdf9;
   --line: #d9e2ec;
   --teal: #168c8a;
+  --teal-dark: #0a6c78;
   --teal-light: #d8f3ef;
   --coral: #e96f55;
   --coral-light: #fee8df;
@@ -1991,16 +1992,215 @@ main {
   margin-bottom: 0;
 }
 
-.prospective-cta h2 {
-  max-width: 920px;
+.join-hero {
+  padding-bottom: 2.5rem;
 }
 
-.prospective-composite {
-  isolation: isolate;
+.join-hero h1 {
+  max-width: 1080px;
 }
 
-.prospective-composite .prospective-cta {
-  z-index: 2;
+.join-section {
+  padding-top: 2rem;
+}
+
+.inquiry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.inquiry-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(16, 42, 67, 0.05);
+}
+
+.inquiry-card:last-child {
+  grid-column: 1 / -1;
+  min-height: 0;
+  background: rgba(232, 243, 241, 0.75);
+}
+
+.inquiry-card h3,
+.direction-choice h3,
+.screening-panel h2 {
+  margin: 0;
+  font-family: "Newsreader", serif;
+  line-height: 1.05;
+}
+
+.inquiry-card h3 {
+  font-size: 2rem;
+}
+
+.inquiry-card > p {
+  color: var(--ink-soft);
+}
+
+.inquiry-card > a {
+  width: fit-content;
+  margin-top: 1rem;
+  color: var(--teal-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.subject-example {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding: 1rem;
+  border-radius: 15px;
+  background: var(--paper);
+}
+
+.subject-example span {
+  color: var(--teal);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.subject-example code {
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+.join-directions-band {
+  border-block: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(232, 243, 241, 0.78), rgba(247, 244, 239, 0.95));
+}
+
+.direction-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.direction-choice {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  min-height: 250px;
+  padding: 1.7rem;
+  border: 1px solid rgba(16, 42, 67, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 253, 249, 0.92);
+}
+
+.direction-choice:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.direction-choice > span {
+  color: var(--teal);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.direction-choice h3 {
+  font-size: 1.8rem;
+}
+
+.direction-choice strong {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--teal-dark);
+  font-size: 0.82rem;
+}
+
+.direction-choice p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.direction-choice i {
+  font-style: normal;
+}
+
+.message-requirements {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.message-requirements li {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.message-requirements li > span {
+  color: var(--teal);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.message-requirements strong {
+  font-size: 1.08rem;
+}
+
+.message-requirements p {
+  margin: 0.25rem 0 0;
+  color: var(--ink-soft);
+}
+
+.screening-section {
+  padding-top: 1rem;
+}
+
+.screening-panel {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+  gap: 4rem;
+  padding: 4rem;
+  border-radius: var(--radius);
+  color: white;
+  background: linear-gradient(135deg, var(--ink), #174b62);
+  box-shadow: var(--shadow);
+}
+
+.screening-panel h2 {
+  max-width: 460px;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+}
+
+.screening-panel .eyebrow {
+  color: #85ddd4;
+}
+
+.screening-copy > p {
+  color: #d9e8ee;
+}
+
+.contact-gate {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-gate > p {
+  margin: 0.35rem 0 1.2rem;
+  color: #d9e8ee;
+  font-size: 0.88rem;
 }
 
 .prospective-group-photo {
@@ -2014,6 +2214,16 @@ main {
   border-radius: 0 0 var(--radius) var(--radius);
   background: var(--ink);
   box-shadow: var(--shadow);
+}
+
+.people-group-photo-section {
+  padding-bottom: 1rem;
+}
+
+.people-group-photo {
+  width: 100%;
+  margin: 0;
+  border-radius: var(--radius);
 }
 
 .prospective-group-photo::before,
@@ -2275,12 +2485,15 @@ footer > small {
   .pillar-section-inner,
   .people-hero,
   .blog-grid,
-  .placement-heading { grid-template-columns: 1fr; }
+  .placement-heading,
+  .screening-panel { grid-template-columns: 1fr; }
   .placement-heading { gap: 1.25rem; }
   .pillar-section-inner { gap: 2rem; }
   .people-hero img { grid-row: 1; width: 150px; }
   .project-grid,
   .people-grid { grid-template-columns: 1fr; }
+  .direction-choice-grid { grid-template-columns: 1fr; }
+  .screening-panel { gap: 2rem; padding: 2.5rem; }
   .market-roster { grid-template-columns: 1fr; padding: 1.5rem; }
   .news-list article { grid-template-columns: 100px 100px 1fr; }
   .news-list article > a,
@@ -2294,6 +2507,7 @@ footer > small {
     width: calc(100% - 1.5rem);
     aspect-ratio: 16 / 8.5;
   }
+  .people-group-photo { width: 100%; margin: 0; }
   .course-row { grid-template-columns: 1fr; gap: 0.25rem; }
   .course-actions { justify-content: flex-start; }
 }
@@ -2336,11 +2550,16 @@ footer > small {
     margin-top: -1.25rem;
     aspect-ratio: 4 / 3;
   }
+  .people-group-photo { width: 100%; margin: 0; }
   .prospective-group-photo figcaption {
     right: 0.9rem;
     bottom: 0.8rem;
     font-size: 0.58rem;
   }
+  .inquiry-grid { grid-template-columns: 1fr; }
+  .inquiry-card:last-child { grid-column: auto; }
+  .message-requirements li { grid-template-columns: 48px minmax(0, 1fr); gap: 0.8rem; }
+  .screening-panel { padding: 2rem 1.4rem; }
   .pillar-feature-body { padding: 1.7rem; }
   .placement-people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .placement-person { min-height: 215px; }

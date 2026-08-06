@@ -29,9 +29,6 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
   <section class="shell page-hero">
     <p class="eyebrow">Complete scholarly record</p>
     <h1>Publications</h1>
-    <p>
-      Search {works.length} normalized records across conferences, journals, workshops, and preprints. Research-pillar labels connect each paper to the lab's broader program.
-    </p>
   </section>
 
   <section class="shell publication-overview" aria-label="Publication overview">
@@ -46,7 +43,6 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
       <div class="publication-trajectory-copy">
         <p class="eyebrow">Research trajectory</p>
         <h2>A long-running program across theory and systems.</h2>
-        <p>The figure shows CV publication entries by year and type. A work can appear once as a workshop paper and again as a later conference or journal publication.</p>
       </div>
       <PublicationHistory works={appearances} asOf={publicationData.as_of} />
     </div>

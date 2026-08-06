@@ -62,7 +62,7 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
   </section>
 
   <section class="shell metrics-strip homepage-metrics" aria-label="Furong Lab at a glance">
-    <div class="metric"><strong>{publicationData.stats.normalized_works}</strong><span>Scholarly works</span></div>
+    <div class="metric"><strong>{cvPublicationCount}</strong><span>CV publication entries</span></div>
     <div class="metric"><strong>{currentPhdStudents.length}</strong><span>Current Ph.D. students</span></div>
     <div class="metric"><strong>{alumni.length}</strong><span>Doctoral alumni</span></div>
     <div class="metric"><strong>{alumniDestinationCount}</strong><span>Alumni destinations</span></div>
@@ -231,8 +231,9 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
     <div class="cta">
       <p class="eyebrow" style="color: white">Research with us</p>
       <h2>Build foundation models that can earn trust through their behavior.</h2>
-      <p>Explore current work, meet the research group, or get in touch about collaboration and student opportunities.</p>
+      <p>Prospective students should review the Join page for current opportunities, research-fit guidance, and inquiry instructions before contacting Furong.</p>
       <div class="button-row">
+        <a class="button" href="/join/">Read how to join <span>→</span></a>
         <a class="button" href="/people/">Meet the group</a>
         <EmailReveal inverted />
       </div>

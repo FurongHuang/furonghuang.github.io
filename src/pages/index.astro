@@ -92,20 +92,20 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
     </div>
     <div class="featured-work-group">
       <div class="featured-work-heading">
-        <div><p class="eyebrow">Signature contributions</p><h3>Ideas and systems with lasting reach.</h3></div>
-        <p>Foundational results, widely used benchmarks, and representative systems across optimization, multimodal intelligence, AI safety, robotics, and content provenance.</p>
-      </div>
-      <div class="paper-grid featured-paper-grid">
-        {impactWorks.map((paper) => <PaperCard paper={paper} />)}
-      </div>
-    </div>
-    <div class="featured-work-group">
-      <div class="featured-work-heading">
         <div><p class="eyebrow">Current research program</p><h3>Recent work that makes the lab’s vision concrete.</h3></div>
         <p>Recent projects spanning 3D world models, embodied planning, efficient visual reasoning, agentic workflows, and latent safety.</p>
       </div>
       <div class="paper-grid featured-paper-grid">
         {frontierWorks.map((paper) => <PaperCard paper={paper} />)}
+      </div>
+    </div>
+    <div class="featured-work-group">
+      <div class="featured-work-heading">
+        <div><p class="eyebrow">Signature contributions</p><h3>Ideas and systems with lasting reach.</h3></div>
+        <p>Foundational results, widely used benchmarks, and representative systems across optimization, multimodal intelligence, AI safety, robotics, and content provenance.</p>
+      </div>
+      <div class="paper-grid featured-paper-grid">
+        {impactWorks.map((paper) => <PaperCard paper={paper} />)}
       </div>
     </div>
     <div class="button-row" style="margin-top: 2rem">

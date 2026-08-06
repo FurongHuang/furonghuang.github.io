@@ -189,10 +189,11 @@ impact_publication_titles:
   - "Position: On the Possibilities of AI-Generated Text Detection"
   - "WAVES: Benchmarking the Robustness of Image Watermarks"
 frontier_publication_titles:
-  - "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
-  - "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
-  - "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
   - "μ0: A Scalable 3D Interaction-Trace World Model"
+  - "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
+  - "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
+  - "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
+  - "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
   - Agentic Critical Training
   - "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
   - "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
@@ -950,6 +951,8 @@ publication_overrides:
         url: https://github.com/TX-Leo/HumanEgo
       - label: Video
         url: https://www.youtube.com/watch?v=pdL46diijuY
+      - label: X post
+        url: https://x.com/tx_leo_wang/status/2059320921228546220?s=46&t=iqTO3UQ6d96jwD4sbq_dcA
   - title: "ROVER: Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation"
     pillar: world-models
     thumbnail: /assets/projects/rover.png

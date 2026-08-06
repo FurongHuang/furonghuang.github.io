@@ -707,6 +707,7 @@ main {
 }
 
 .research-node > strong {
+  display: block;
   color: var(--ink-soft);
   font-size: 0.85rem;
 }
@@ -745,7 +746,8 @@ main {
 .research-node li:hover { background: var(--teal-light); }
 
 .node-link {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   gap: 0.45rem;
   align-items: center;
   margin-top: 1.2rem;

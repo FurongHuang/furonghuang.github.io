@@ -1,0 +1,43 @@
+---
+import type { BenchmarkResource } from "../data/benchmarks";
+import { benchmarkCategories, benchmarkPillars } from "../data/benchmarks";
+
+interface Props {
+  resource: BenchmarkResource;
+  featured?: boolean;
+}
+
+const { resource, featured = false } = Astro.props;
+const searchText = [resource.title, resource.summary, resource.scale, ...resource.types, ...resource.modalities].filter(Boolean).join(" ").toLowerCase();
+---
+
+<article
+  class:list={["benchmark-card", { featured }]}
+  data-benchmark
+  data-search={searchText}
+  data-category={resource.category}
+  data-pillar={resource.pillar}
+  data-types={resource.types.join("|").toLowerCase()}
+  id={featured ? undefined : resource.id}
+>
+  <div class="benchmark-visual">
+    <img src={resource.image} alt={`Representative figure for ${resource.title}`} loading={featured ? "eager" : "lazy"} decoding="async" style={`--benchmark-position: ${resource.imagePosition || "50% 50%"}`} />
+    <span>{resource.year}</span>
+  </div>
+  <div class="benchmark-body">
+    <div class="benchmark-kicker">
+      <span>{benchmarkCategories[resource.category].shortLabel}</span>
+      <span>{benchmarkPillars[resource.pillar]}</span>
+    </div>
+    <h3>{resource.title}</h3>
+    <div class="benchmark-tags" aria-label="Resource types and modalities">
+      {resource.types.map((type) => <span class="type-tag">{type}</span>)}
+      {resource.modalities.slice(0, featured ? 3 : 2).map((modality) => <span>{modality}</span>)}
+    </div>
+    <p>{resource.summary}</p>
+    {resource.scale && <p class="benchmark-scale"><strong>Scale</strong>{" "}{resource.scale}</p>}
+    <div class="benchmark-links">
+      {resource.links.map((link) => <a href={link.href}>{link.label}<span>↗</span></a>)}
+    </div>
+  </div>
+</article>

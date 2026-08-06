@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BenchmarkCard from "../components/BenchmarkCard.astro";
+import {
+  benchmarkCategories,
+  benchmarkPillars,
+  benchmarkResources,
+  type BenchmarkCategory
+} from "../data/benchmarks";
+
+const featuredResources = benchmarkResources.filter((resource) => resource.featured);
+const sortedResources = [...benchmarkResources].sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+const datasetCount = benchmarkResources.filter((resource) => resource.types.includes("Dataset")).length;
+const benchmarkCount = benchmarkResources.filter((resource) => resource.types.includes("Benchmark")).length;
+const categoryEntries = Object.entries(benchmarkCategories) as Array<[BenchmarkCategory, (typeof benchmarkCategories)[BenchmarkCategory]]>;
+const categoryCounts = Object.fromEntries(categoryEntries.map(([id]) => [id, benchmarkResources.filter((resource) => resource.category === id).length]));
+---
+
+<BaseLayout
+  title="Data, Benchmarks & Evaluation — Furong Lab"
+  description="Datasets, benchmarks, competitions, and evaluation platforms from Furong Lab for embodied intelligence, reasoning, and trustworthy AI."
+>
+  <section class="shell page-hero benchmark-hero">
+    <p class="eyebrow">Research infrastructure</p>
+    <h1>Data, benchmarks <em>& evaluation.</em></h1>
+    <p>
+      Furong Lab builds the evidence layer for intelligent systems: datasets that expose meaningful structure, benchmarks that test consequential capabilities, and evaluation environments that reveal where models fail.
+    </p>
+    <div class="button-row">
+      <a class="button" href="#catalog">Explore the collection <span>↓</span></a>
+      <a class="button secondary" href="/research/">See the research program <span>→</span></a>
+    </div>
+  </section>
+
+  <section class="shell metrics-strip compact-metrics benchmark-metrics" aria-label="Data and evaluation collection at a glance">
+    <div class="metric"><strong>{benchmarkResources.length}</strong><span>Open resources</span></div>
+    <div class="metric"><strong>{datasetCount}</strong><span>Datasets</span></div>
+    <div class="metric"><strong>{benchmarkCount}</strong><span>Benchmarks</span></div>
+    <div class="metric"><strong>{categoryEntries.length}</strong><span>Scientific questions</span></div>
+  </section>
+
+  <section class="shell section benchmark-featured-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Featured releases</p><h2>Evaluation designed around what matters.</h2></div>
+      <p>Selected resources span physical interaction, multimodal reasoning, scientific judgment, latent safety, and content provenance.</p>
+    </div>
+    <div class="benchmark-featured-grid">
+      {featuredResources.map((resource) => <BenchmarkCard resource={resource} featured />)}
+    </div>
+  </section>
+
+  <section class="benchmark-question-band">
+    <div class="shell section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Browse by scientific question</p><h2>What should an intelligent system be able to do?</h2></div>
+        <p>The collection is organized by the capability or failure mode being measured—not merely by paper venue or publication date.</p>
+      </div>
+      <div class="benchmark-question-grid">
+        {categoryEntries.map(([id, category], index) => (
+          <a class={`benchmark-question question-${index + 1}`} href="#catalog" data-category-link={id}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{category.label}</h3>
+            <p>{category.description}</p>
+            <strong>{categoryCounts[id]} resources <span>→</span></strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="shell section benchmark-catalog" id="catalog">
+    <div class="section-heading">
+      <div><p class="eyebrow">Complete collection</p><h2>Find the right data or stress test.</h2></div>
+      <p>Search by capability, modality, or resource name, then follow the direct links to datasets, leaderboards, code, and papers.</p>
+    </div>
+
+    <div class="benchmark-controls" aria-label="Benchmark filters">
+      <input id="benchmark-search" type="search" placeholder="Search resources, modalities, capabilities…" aria-label="Search data and benchmarks" />
+      <select id="benchmark-category" aria-label="Filter by scientific question">
+        <option value="">All scientific questions</option>
+        {categoryEntries.map(([id, category]) => <option value={id}>{category.shortLabel}</option>)}
+      </select>
+      <select id="benchmark-type" aria-label="Filter by resource type">
+        <option value="">All resource types</option>
+        <option value="dataset">Datasets</option>
+        <option value="benchmark">Benchmarks</option>
+        <option value="competition">Competitions</option>
+        <option value="platform">Platforms</option>
+      </select>
+      <select id="benchmark-pillar" aria-label="Filter by research pillar">
+        <option value="">All research pillars</option>
+        {Object.entries(benchmarkPillars).map(([id, label]) => <option value={id}>{label}</option>)}
+      </select>
+      <span class="benchmark-count" id="benchmark-count">{sortedResources.length} resources</span>
+    </div>
+
+    <div class="benchmark-catalog-grid" id="benchmark-list">
+      {sortedResources.map((resource) => <BenchmarkCard resource={resource} />)}
+    </div>
+    <div class="empty-state" id="benchmark-empty">
+      <h2>No matching resources</h2>
+      <p>Try a broader keyword or clear one of the filters.</p>
+    </div>
+  </section>
+
+  <section class="shell section benchmark-method">
+    <div class="benchmark-method-inner">
+      <div>
+        <p class="eyebrow">Evaluation philosophy</p>
+        <h2>Measure behavior, not just average accuracy.</h2>
+      </div>
+      <div class="benchmark-principles">
+        <article><span>01</span><h3>Expose structure</h3><p>Datasets make states, difficulty, interactions, and failure conditions explicit enough to study.</p></article>
+        <article><span>02</span><h3>Test transfer</h3><p>Evaluation asks whether systems generalize across environments, embodiments, modalities, and levels of difficulty.</p></article>
+        <article><span>03</span><h3>Stress the boundary</h3><p>Agentic and adversarial tests probe behavior beyond comfortable average-case distributions.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const search = document.querySelector<HTMLInputElement>("#benchmark-search");
+    const category = document.querySelector<HTMLSelectElement>("#benchmark-category");
+    const type = document.querySelector<HTMLSelectElement>("#benchmark-type");
+    const pillar = document.querySelector<HTMLSelectElement>("#benchmark-pillar");
+    const count = document.querySelector<HTMLElement>("#benchmark-count");
+    const empty = document.querySelector<HTMLElement>("#benchmark-empty");
+    const resources = Array.from(document.querySelectorAll<HTMLElement>("#benchmark-list [data-benchmark]"));
+
+    const filterResources = () => {
+      const query = search?.value.trim().toLowerCase() || "";
+      const selectedCategory = category?.value || "";
+      const selectedType = type?.value || "";
+      const selectedPillar = pillar?.value || "";
+      let visible = 0;
+
+      for (const resource of resources) {
+        const matchesQuery = !query || (resource.dataset.search || "").includes(query);
+        const matchesCategory = !selectedCategory || resource.dataset.category === selectedCategory;
+        const matchesType = !selectedType || (resource.dataset.types || "").split("|").includes(selectedType);
+        const matchesPillar = !selectedPillar || resource.dataset.pillar === selectedPillar;
+        const matches = matchesQuery && matchesCategory && matchesType && matchesPillar;
+        resource.hidden = !matches;
+        if (matches) visible += 1;
+      }
+
+      if (count) count.textContent = `${visible} ${visible === 1 ? "resource" : "resources"}`;
+      if (empty) empty.style.display = visible === 0 ? "block" : "none";
+    };
+
+    [search, category, type, pillar].forEach((control) => {
+      control?.addEventListener(control instanceof HTMLInputElement ? "input" : "change", filterResources);
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-category-link]").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (category) category.value = link.dataset.categoryLink || "";
+        filterResources();
+      });
+    });
+  </script>
+</BaseLayout>

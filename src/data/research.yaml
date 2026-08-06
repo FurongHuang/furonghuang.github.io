@@ -188,6 +188,7 @@ impact_publication_titles:
   - "TraceVLA: Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies"
   - "Position: On the Possibilities of AI-Generated Text Detection"
   - "WAVES: Benchmarking the Robustness of Image Watermarks"
+  - "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
 frontier_publication_titles:
   - "μ0: A Scalable 3D Interaction-Trace World Model"
   - "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos"
@@ -196,7 +197,6 @@ frontier_publication_titles:
   - "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
   - Agentic Critical Training
   - "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
-  - "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
 areas:
   - slug: multimodal-learning
     pillar: world-models

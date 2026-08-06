@@ -26,6 +26,7 @@ const worksFor = (titles: readonly string[]) => titles
   .filter(Boolean);
 const impactWorks = worksFor(impactPublicationTitles);
 const frontierWorks = worksFor(frontierPublicationTitles);
+const cvPublicationCount = works.reduce((count, work) => count + (work.appearances?.length || 0), 0);
 const featuredAlumniNames = ["Bang An", "Sicheng Zhu", "Souradip Chakraborty", "Xiaoyu Liu", "Yuhang Zhou", "Yuancheng Xu"];
 const featuredAlumni = featuredAlumniNames
   .map((name) => alumni.find((person) => person.name === name))
@@ -109,7 +110,7 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
       </div>
     </div>
     <div class="button-row" style="margin-top: 2rem">
-      <a class="button secondary" href="/publications/">View all {publicationData.stats.normalized_works} records <span>→</span></a>
+      <a class="button secondary" href="/publications/">View all {cvPublicationCount} CV entries <span>→</span></a>
     </div>
   </section>
 

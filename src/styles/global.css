@@ -1699,6 +1699,7 @@ button.button { cursor: pointer; }
 
 .people-hero img {
   width: 210px;
+  height: 210px;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: 50% 22%;
@@ -3093,7 +3094,7 @@ footer > small {
   .screening-panel { grid-template-columns: 1fr; }
   .placement-heading { gap: 1.25rem; }
   .pillar-section-inner { gap: 2rem; }
-  .people-hero img { grid-row: 1; width: 150px; }
+  .people-hero img { grid-row: 1; width: 150px; height: 150px; }
   .project-grid,
   .people-grid { grid-template-columns: 1fr; }
   .direction-choice-grid { grid-template-columns: 1fr; }

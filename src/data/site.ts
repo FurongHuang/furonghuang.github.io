@@ -145,6 +145,13 @@ export {
 export const news = [
   {
     date: "August 2026",
+    type: "Student impact",
+    title: "From CMSC 848N to a Y Combinator-backed startup",
+    detail: "UMD CS alumnus Ananth Sankaralingam (B.S. ’26), co-founder of Chromie.dev, reflects on how Furong’s graduate AI course broadened his view of what could be built with large language models.",
+    href: "https://www.cs.umd.edu/article/2026/08/learning-when-pivot"
+  },
+  {
+    date: "August 2026",
     type: "Talk",
     title: "Reasoning as Control: Toward Self-Improving Agentic Systems",
     detail: "Featured talk at the Agentic AI Summit 2026 at UC Berkeley, spanning control across thinking, actions, and workflow.",

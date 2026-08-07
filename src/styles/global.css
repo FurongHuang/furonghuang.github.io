@@ -561,7 +561,7 @@ button.button { cursor: pointer; }
 .publication-overview {
   display: grid;
   gap: 2rem;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
 }
 
 .compact-metrics { border: 1px solid var(--line); border-radius: 20px; background: rgba(255, 253, 249, 0.78); }
@@ -621,6 +621,10 @@ button.button { cursor: pointer; }
 .publication-history svg text { fill: var(--ink-soft); font-family: "DM Sans", sans-serif; font-size: 17px; }
 .publication-history svg .year-label { font-size: 15px; }
 .publication-history > p { margin: -0.2rem 0.5rem 0.25rem; color: var(--ink-soft); font-size: 0.62rem; text-align: right; }
+
+.publication-history-section {
+  padding-top: 0;
+}
 
 .research-map {
   position: relative;

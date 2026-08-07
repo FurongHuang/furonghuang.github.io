@@ -39,13 +39,6 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
       <div class="metric"><strong>{appearanceCounts.journal || 0}</strong><span>Journal entries</span></div>
       <div class="metric"><strong>{appearanceCounts.preprint || 0}</strong><span>Preprints</span></div>
     </div>
-    <div class="publication-trajectory">
-      <div class="publication-trajectory-copy">
-        <p class="eyebrow">Research trajectory</p>
-        <h2>A long-running program across theory and systems.</h2>
-      </div>
-      <PublicationHistory works={appearances} asOf={publicationData.as_of} />
-    </div>
   </section>
 
   <section class="shell section" style="padding-top: 0">
@@ -75,6 +68,16 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
     <div class="empty-state" id="publication-empty">
       <h2>No matching publications</h2>
       <p>Try a broader keyword or clear one of the filters.</p>
+    </div>
+  </section>
+
+  <section class="shell section publication-history-section" aria-label="Publication history">
+    <div class="publication-trajectory">
+      <div class="publication-trajectory-copy">
+        <p class="eyebrow">Research trajectory</p>
+        <h2>A long-running program across theory and systems.</h2>
+      </div>
+      <PublicationHistory works={appearances} asOf={publicationData.as_of} />
     </div>
   </section>
 

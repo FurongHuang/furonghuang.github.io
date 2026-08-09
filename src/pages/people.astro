@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import LabMomentsCarousel from "../components/LabMomentsCarousel.astro";
 import PersonCard from "../components/PersonCard.astro";
 import { alumni, currentPhdStudents, postdocs } from "../data/people";
 
@@ -37,19 +38,7 @@ const alumniClasses = groupByYear(placedAlumni);
     <img src="/assets/headshot.jpg" alt="Furong Huang" width="1791" height="1791" />
   </section>
 
-  <section class="shell people-group-photo-section">
-    <figure class="prospective-group-photo people-group-photo">
-      <img
-        src="/assets/people/furong-lab-group.jpg"
-        alt="Furong Huang with members of Furong Lab outside a University of Maryland building"
-        loading="lazy"
-        decoding="async"
-        width="2400"
-        height="1625"
-      />
-      <figcaption>Furong Lab at the University of Maryland</figcaption>
-    </figure>
-  </section>
+  <LabMomentsCarousel />
 
   <section class="shell section" style="padding-top: 1rem">
     <div class="section-heading">

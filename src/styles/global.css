@@ -427,6 +427,19 @@ button.button { cursor: pointer; }
 .email-question > span,
 .email-question > small { display: block; }
 
+.email-question .email-join-routing {
+  margin: 0.5rem 0 0.2rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.email-question .email-join-routing a {
+  color: var(--teal);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
 .email-question > div {
   display: flex;
   gap: 0.35rem;

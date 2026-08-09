@@ -1,4 +1,6 @@
 ---
+import { inquiryFormUrl } from "../data/site";
+
 const { inverted = false } = Astro.props as { inverted?: boolean };
 ---
 
@@ -6,6 +8,11 @@ const { inverted = false } = Astro.props as { inverted?: boolean };
   <button class="email-start" type="button" aria-expanded="false">Contact Furong</button>
   <div class="email-question" hidden>
     <span>Quick human check: how many research pillars does Furong Lab have?</span>
+    <p class="email-join-routing" data-inquiry-routing>
+      Interested in joining Furong Lab? Please use the{" "}
+      <a href={inquiryFormUrl} target="_blank" rel="noreferrer">research inquiry form <span aria-hidden="true">↗</span></a>{" "}
+      —not email—so your message reaches the correct review queue.
+    </p>
     <div role="group" aria-label="Choose the number of research pillars">
       {[2, 3, 4].map((number) => <button type="button" data-answer={number}>{number}</button>)}
     </div>
@@ -83,6 +90,7 @@ const { inverted = false } = Astro.props as { inverted?: boolean };
         }
         const email = address();
         if (question) {
+          const inquiryRouting = question.querySelector<HTMLElement>("[data-inquiry-routing]");
           question.innerHTML = "";
           const heading = document.createElement("span");
           heading.textContent = "Furong's email address";
@@ -91,6 +99,7 @@ const { inverted = false } = Astro.props as { inverted?: boolean };
           note.className = "email-instruction";
           note.textContent = "Please type this address into your email app.";
           question.append(heading, image, note);
+          if (inquiryRouting) question.append(inquiryRouting);
         }
       });
     }

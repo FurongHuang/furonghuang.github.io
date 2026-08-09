@@ -12,6 +12,8 @@ export const profile = {
   huggingface: "https://huggingface.co/furonghuang-lab"
 };
 
+export const inquiryFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfCDcDLdyErXGUtSD10RALfIqLhKwvE9UW-0ug37RbPuQKPVA/viewform";
+
 export const affiliations = [
   { label: "Department of Computer Science", href: "https://www.cs.umd.edu/" },
   { label: "Center for Machine Learning · UMIACS", href: "https://ml.umd.edu/" },

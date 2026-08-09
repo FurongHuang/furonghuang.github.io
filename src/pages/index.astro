@@ -26,7 +26,23 @@ const worksFor = (titles: readonly string[]) => titles
   .filter(Boolean);
 const impactWorks = worksFor(impactPublicationTitles);
 const frontierWorks = worksFor(frontierPublicationTitles);
-const cvPublicationCount = works.reduce((count, work) => count + (work.appearances?.length || 0), 0);
+const distinctWorkCount = works.length;
+const selectedWorkSignificance: Record<string, string> = {
+  "μ0: A Scalable 3D Interaction-Trace World Model": "Introduces interaction traces as a scalable representation for learning transferable 3D world models across embodiments.",
+  "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos": "Shows that minutes of human egocentric video can support zero-shot robot behavior without robot-specific demonstrations.",
+  "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data": "Scales dexterous manipulation by turning diverse human egocentric experience into transferable robot-learning signals.",
+  "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning": "Builds state-aware scene graphs that let embodied agents plan from vision-language representations of changing environments.",
+  "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement": "Uses search-guided sample selection to improve visual reasoning while requiring substantially less training data.",
+  "Agentic Critical Training": "Treats agent improvement as a closed loop of proposing, criticizing, revising, and learning from trajectories.",
+  "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse": "Optimizes agentic workflows by precomputing reusable reasoning structures and adapting them to each query.",
+  "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition": "Established efficient guarantees for escaping saddle points, connecting nonconvex optimization theory to practical learning.",
+  "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination & Visual Illusion in Large Vision-Language Models": "Separates visual illusion from language hallucination to diagnose where multimodal models actually fail.",
+  "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models": "Introduced an interpretable gradient-based framework for automatically constructing strong adversarial prompts against language models.",
+  "TraceVLA: Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies": "Uses visual traces to give generalist robot policies stronger spatial-temporal awareness across tasks.",
+  "Position: On the Possibilities of AI-Generated Text Detection": "Clarifies fundamental limits and realistic opportunities for detecting AI-generated text.",
+  "WAVES: Benchmarking the Robustness of Image Watermarks": "Created a standardized stress-testing benchmark for comparing image-watermark robustness under diverse attacks.",
+  "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach": "Reveals latent safety risks through agentic evaluations that go beyond single-turn model testing."
+};
 const featuredAlumniNames = ["Bang An", "Sicheng Zhu", "Souradip Chakraborty", "Xiaoyu Liu", "Yuhang Zhou", "Yuancheng Xu"];
 const featuredAlumni = featuredAlumniNames
   .map((name) => alumni.find((person) => person.name === name))
@@ -62,7 +78,7 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
   </section>
 
   <section class="shell metrics-strip homepage-metrics" aria-label="Furong Lab at a glance">
-    <div class="metric"><strong>{cvPublicationCount}</strong><span>CV publication entries</span></div>
+    <div class="metric"><strong>{distinctWorkCount}</strong><span>Distinct scholarly works</span></div>
     <div class="metric"><strong>{currentPhdStudents.length}</strong><span>Current Ph.D. students</span></div>
     <div class="metric"><strong>{alumni.length}</strong><span>Doctoral alumni</span></div>
     <div class="metric"><strong>{alumniDestinationCount}</strong><span>Alumni destinations</span></div>
@@ -97,7 +113,7 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
         <p>Recent projects spanning 3D world models, embodied planning, efficient visual reasoning, agentic workflows, and latent safety.</p>
       </div>
       <div class="paper-grid featured-paper-grid">
-        {frontierWorks.map((paper) => <PaperCard paper={paper} />)}
+        {frontierWorks.map((paper) => <PaperCard paper={paper} significance={selectedWorkSignificance[paper.title]} />)}
       </div>
     </div>
     <div class="featured-work-group">
@@ -106,11 +122,11 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
         <p>Foundational results, widely used benchmarks, and representative systems across optimization, multimodal intelligence, AI safety, robotics, and content provenance.</p>
       </div>
       <div class="paper-grid featured-paper-grid">
-        {impactWorks.map((paper) => <PaperCard paper={paper} />)}
+        {impactWorks.map((paper) => <PaperCard paper={paper} significance={selectedWorkSignificance[paper.title]} />)}
       </div>
     </div>
     <div class="button-row" style="margin-top: 2rem">
-      <a class="button secondary" href="/publications/">View all {cvPublicationCount} CV entries <span>→</span></a>
+      <a class="button secondary" href="/publications/">View all {distinctWorkCount} distinct works <span>→</span></a>
     </div>
   </section>
 

@@ -26,6 +26,33 @@ const foundationalWorks = foundationalTitles
   .map((title) => works.find((work) => work.title === title))
   .filter(Boolean)
   .map((work) => ({ ...work, venue: foundationalVenueOverrides[work.title] || work.venue }));
+const researchEvolution = [
+  {
+    years: "2011–2015",
+    title: "Structure and latent variables",
+    detail: "Graphical models, tensor methods, and identifiable structure in high-dimensional learning."
+  },
+  {
+    years: "2015–2019",
+    title: "Tensor methods and nonconvex optimization",
+    detail: "Scalable tensor algorithms, latent-variable learning, saddle-point escape, and efficient theory for modern optimization landscapes."
+  },
+  {
+    years: "2019–present",
+    title: "Reinforcement learning, robustness, and fairness",
+    detail: "Sequential decision-making, robust and multi-agent reinforcement learning, adversarial training, and fairness under shift."
+  },
+  {
+    years: "2023–present",
+    title: "Multimodal and embodied intelligence",
+    detail: "Vision-language reasoning, diagnostic evaluation, robotics, and models grounded in physical interaction."
+  },
+  {
+    years: "2025–present",
+    title: "Reasoning control and trustworthy self-improvement",
+    detail: "Agents, test-time computation, world models, and feedback loops that learn from failure."
+  }
+];
 ---
 
 <BaseLayout title="Research — Furong Lab">
@@ -39,6 +66,28 @@ const foundationalWorks = foundationalTitles
 
   <section class="shell section" style="padding-top: 1rem">
     <ResearchMap />
+  </section>
+
+  <section class="shell section research-evolution-section" aria-labelledby="research-evolution-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Research evolution</p>
+        <h2 id="research-evolution-title">One program, evolving across methods and systems.</h2>
+      </div>
+      <p>
+        The current pillars extend a consistent question: how can learning systems recover structure, make reliable decisions under uncertainty, and improve from difficult feedback?
+      </p>
+    </div>
+    <ol class="research-evolution" aria-label="Evolution of Furong Huang's research program">
+      {researchEvolution.map((stage, index) => (
+        <li>
+          <div class="research-evolution-marker" aria-hidden="true"><span>{String(index + 1).padStart(2, "0")}</span></div>
+          <p>{stage.years}</p>
+          <h3>{stage.title}</h3>
+          <span>{stage.detail}</span>
+        </li>
+      ))}
+    </ol>
   </section>
 
   <section class="shell research-infrastructure-entry">

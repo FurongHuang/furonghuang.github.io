@@ -21,12 +21,13 @@ interface Paper {
   flags?: string[];
 }
 
-const { paper, compact = false, eagerImage = false, thumbnailFit = "contain", initiallyHidden = false } = Astro.props as {
+const { paper, compact = false, eagerImage = false, thumbnailFit = "contain", initiallyHidden = false, significance } = Astro.props as {
   paper: Paper;
   compact?: boolean;
   eagerImage?: boolean;
   thumbnailFit?: "cover" | "contain";
   initiallyHidden?: boolean;
+  significance?: string;
 };
 const inferLabel = (label: string | undefined, url: string) => {
   const cleanLabel = label?.trim();
@@ -111,6 +112,7 @@ const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
       <span>{paper.year || "Forthcoming"}</span>
     </div>
     <h3>{paper.title}</h3>
+    {significance && <p class="paper-significance">{significance}</p>}
     <p class="paper-authors">{authorText}</p>
     {venue && venue !== String(paper.year) && <p class="paper-venue">{venue}</p>}
     <div class="paper-links">

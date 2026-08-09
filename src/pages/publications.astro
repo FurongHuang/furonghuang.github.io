@@ -33,6 +33,7 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
 
   <section class="shell publication-overview" aria-label="Publication overview">
     <div class="metrics-strip compact-metrics publication-metrics">
+      <div class="metric"><strong>{works.length}</strong><span>Distinct scholarly works</span></div>
       <div class="metric"><strong>{appearances.length}</strong><span>CV publication entries</span></div>
       <div class="metric"><strong>{appearanceCounts.conference || 0}</strong><span>Conference entries</span></div>
       <div class="metric"><strong>{appearanceCounts.workshop || 0}</strong><span>Workshop entries</span></div>
@@ -56,7 +57,7 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
         <option value="">All years</option>
         {years.map((year) => <option value={year}>{year}</option>)}
       </select>
-      <span class="publication-count" id="publication-count">{works.length} records</span>
+      <span class="publication-count" id="publication-count">{works.length} distinct works</span>
     </div>
 
     <div class="publication-list" id="publication-list">
@@ -131,8 +132,8 @@ const appearanceCounts = appearances.reduce((result: Record<string, number>, app
 
       const shown = filtering ? matches : Math.min(matches, displayLimit);
       if (count) count.textContent = filtering
-        ? `${matches} ${matches === 1 ? "record" : "records"}`
-        : `${shown} of ${matches} records`;
+        ? `${matches} ${matches === 1 ? "distinct work" : "distinct works"}`
+        : `${shown} of ${matches} distinct works`;
       if (empty) empty.style.display = matches === 0 ? "block" : "none";
       if (more) more.hidden = filtering || shown >= matches;
       if (syncUrl) updatePublicationUrl();

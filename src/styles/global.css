@@ -269,6 +269,10 @@ main {
   background: transparent;
 }
 
+.talk-resource-links {
+  margin-top: 1.5rem;
+}
+
 button.button { cursor: pointer; }
 
 .publication-more-row {

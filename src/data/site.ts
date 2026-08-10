@@ -157,7 +157,12 @@ export const news = [
     type: "Talk",
     title: "Reasoning as Control: Toward Self-Improving Agentic Systems",
     detail: "Featured talk at the Agentic AI Summit 2026 at UC Berkeley, with slides on control across thinking, actions, and workflow.",
-    href: "/blog/reasoning-as-control/"
+    href: "/blog/reasoning-as-control/",
+    links: [
+      { label: "Talk article", href: "/blog/reasoning-as-control/" },
+      { label: "Slides (PDF)", href: "/talks/reasoning-as-control-agentic-ai-summit-2026.pdf" },
+      { label: "Summit page", href: "https://rdi.berkeley.edu/events/agentic-ai-summit-2026" }
+    ]
   },
   {
     date: "July 2026",

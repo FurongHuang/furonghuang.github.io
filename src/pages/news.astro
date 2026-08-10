@@ -16,7 +16,11 @@ import { news } from "../data/site";
           <time>{item.date}</time>
           <span class="news-type">{item.type}</span>
           <div><h2>{item.title}</h2><p>{item.detail}</p></div>
-          {item.href ? <a href={item.href}>Open <span>↗</span></a> : <span></span>}
+          {"links" in item && item.links ? (
+            <div class="news-actions">
+              {item.links.map((link) => <a href={link.href}>{link.label} <span>↗</span></a>)}
+            </div>
+          ) : item.href ? <a href={item.href}>Open <span>↗</span></a> : <span></span>}
         </article>
       ))}
     </div>

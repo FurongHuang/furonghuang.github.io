@@ -1882,6 +1882,13 @@ button.button { cursor: pointer; }
 .news-list h2 { margin: 0; font-family: "Newsreader", serif; font-size: 1.55rem; line-height: 1.05; }
 .news-list p { margin: 0.35rem 0 0; color: var(--ink-soft); font-size: 0.86rem; }
 .news-list article > a { font-size: 0.72rem; font-weight: 700; }
+.news-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: flex-start;
+}
+.news-actions a { font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
 .archive-note { margin-top: 1.5rem; color: var(--ink-soft); font-size: 0.78rem; }
 
 .blog-grid {
@@ -3203,6 +3210,7 @@ footer > small {
   .market-roster { grid-template-columns: 1fr; padding: 1.5rem; }
   .news-list article { grid-template-columns: 100px 100px 1fr; }
   .news-list article > a,
+  .news-list article > .news-actions,
   .news-list article > span:last-child { grid-column: 3; }
   .publication-controls { position: static; grid-template-columns: 1fr 1fr; }
   .publication-trajectory { padding: 1.5rem; }
@@ -3272,6 +3280,7 @@ footer > small {
   .news-list article { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
   .news-list article > div,
   .news-list article > a,
+  .news-list article > .news-actions,
   .news-list article > span:last-child { grid-column: 1 / -1; }
   .person-card { grid-template-columns: 74px 1fr; }
   .person-photo,

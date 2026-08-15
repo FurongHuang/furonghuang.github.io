@@ -1,4 +1,5 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -69,7 +70,10 @@ const isDue = ({ releaseDate }) =>
 const published = [];
 const alreadyPublished = [];
 const missingDue = [];
+const blockedValidation = [];
 const upcoming = [];
+
+const getSha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 
 for (const entry of schedule) {
   if (basename(entry.filename) !== entry.filename) {
@@ -93,6 +97,35 @@ for (const entry of schedule) {
     continue;
   }
 
+  const receiptPath = join(draftSlideRoot, ".validation", `${entry.filename}.json`);
+  if (!existsSync(receiptPath)) {
+    blockedValidation.push({ ...entry, reason: "No validation receipt exists for this deck." });
+    continue;
+  }
+
+  let receipt;
+  try {
+    receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
+  } catch {
+    blockedValidation.push({ ...entry, reason: "The validation receipt is unreadable." });
+    continue;
+  }
+
+  if (receipt.version !== 1 || receipt.filename !== entry.filename) {
+    blockedValidation.push({ ...entry, reason: "The validation receipt does not match this deck." });
+    continue;
+  }
+
+  if (receipt.status !== "pass") {
+    blockedValidation.push({ ...entry, reason: "The latest validation did not pass." });
+    continue;
+  }
+
+  if (receipt.sha256 !== getSha256(draft)) {
+    blockedValidation.push({ ...entry, reason: "The deck changed after validation and must be reviewed again." });
+    continue;
+  }
+
   if (!dryRun) {
     mkdirSync(publicSlideRoot, { recursive: true });
     copyFileSync(draft, destination);
@@ -108,6 +141,7 @@ const result = {
   published,
   alreadyPublished,
   missingDue,
+  blockedValidation,
   upcomingCount: upcoming.length
 };
 

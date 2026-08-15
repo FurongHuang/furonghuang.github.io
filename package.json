@@ -9,6 +9,7 @@
     "sync": "node scripts/sync-content.mjs",
     "sync:thumbnails": "python3 scripts/sync_publication_thumbnails.py",
     "slides:publish": "node scripts/publish-due-slides.mjs",
+    "slides:validate": "node scripts/manage-slide-validation.mjs",
     "check": "astro check",
     "build": "astro build && node scripts/check-rendered-spacing.mjs",
     "check:spacing": "node scripts/check-rendered-spacing.mjs",

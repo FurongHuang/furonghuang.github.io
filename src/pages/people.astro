@@ -26,6 +26,14 @@ const groupByYear = (people: typeof alumni) => {
 
 const currentCohorts = groupByYear(currentPhdStudents);
 const alumniClasses = groupByYear(placedAlumni);
+
+const roboticsPhotos = [
+  { src: "/assets/people/lab-gallery/robotics-team.webp", alt: "Furong Lab researchers with two Franka Research 3 robot arms and a mobile robot platform", theme: "Robotics in action", caption: "Researchers and robots in the lab", width: 956, height: 1200 },
+  { src: "/assets/people/lab-gallery/robotics-lab.webp", alt: "Two Franka Research 3 robot arms and mobile robot platforms in Furong Lab", theme: "Lab platforms", caption: "Franka Research 3 robot arms", width: 900, height: 1200 },
+  { src: "/assets/people/lab-gallery/robot-setup.webp", alt: "Researchers setting up a robot in the laboratory", theme: "Robotics in action", caption: "Preparing a robot for research", width: 900, height: 1200 },
+  { src: "/assets/people/lab-gallery/robotics-workbench.webp", alt: "A researcher assembling robotics equipment at a workbench", theme: "Robotics in action", caption: "Hands-on systems work", width: 900, height: 1200 },
+  { src: "/assets/people/lab-gallery/robotics-build.jpg", alt: "Furong Lab researchers assembling robotics equipment in the laboratory", theme: "Building the lab", caption: "Developing the robotics workspace", width: 1200, height: 900 }
+];
 ---
 
 <BaseLayout title="People — Furong Lab" description="Current researchers and alumni of Furong Lab at the University of Maryland.">
@@ -37,8 +45,6 @@ const alumniClasses = groupByYear(placedAlumni);
     </div>
     <img src="/assets/headshot.jpg" alt="Furong Huang" width="1791" height="1791" />
   </section>
-
-  <LabMomentsCarousel />
 
   <section class="shell section" style="padding-top: 1rem">
     <div class="section-heading">
@@ -65,6 +71,21 @@ const alumniClasses = groupByYear(placedAlumni);
       ))}
     </div>
   </section>
+
+  <LabMomentsCarousel
+    photos={roboticsPhotos}
+    eyebrow="Lab spaces"
+    heading="Where embodied AI becomes physical."
+    description="Furong Lab has exclusive use of AVW 4462 and half of IRB 2223. Through Furong’s affiliation with the Maryland Robotics Center, the group also uses shared robotics space in the IRB lobby rooms 0116 and 0120. These facilities support robotics and embodied-AI experimentation within a broader research program; not every lab member works with robots."
+    sectionId="lab-spaces"
+    locations={[
+      { building: "AVW", room: "Room 4462", access: "Exclusive Furong Lab use" },
+      { building: "IRB", room: "Room 2223", access: "Exclusive Furong Lab use (half of room)" },
+      { building: "IRB lobby", room: "Rooms 0116 & 0120", access: "Shared via Maryland Robotics Center" }
+    ]}
+  />
+
+  <LabMomentsCarousel />
 
   <section class="alumni-band" id="alumni">
     <div class="shell section">

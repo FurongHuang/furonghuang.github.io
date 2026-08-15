@@ -1,5 +1,29 @@
 ---
-const photos = [
+type LabPhoto = {
+  src: string;
+  alt: string;
+  theme: string;
+  caption: string;
+  width: number;
+  height: number;
+};
+
+type LabLocation = {
+  building: string;
+  room: string;
+  access: string;
+};
+
+type Props = {
+  photos?: LabPhoto[];
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  sectionId?: string;
+  locations?: LabLocation[];
+};
+
+const defaultPhotos: LabPhoto[] = [
   { src: "/assets/people/furong-lab-group.jpg", alt: "Furong Huang with members of Furong Lab outside a University of Maryland building", theme: "Furong Lab", caption: "The lab at the University of Maryland", width: 2400, height: 1625 },
   { src: "/assets/people/lab-gallery/lab-outdoors.webp", alt: "Members of Furong Lab gathered outdoors at dusk", theme: "Community", caption: "An evening with Furong Lab", width: 1600, height: 1200 },
   { src: "/assets/people/lab-gallery/lab-selfie.webp", alt: "Furong Lab members taking a group selfie outdoors", theme: "Community", caption: "A candid lab moment", width: 1600, height: 1200 },
@@ -10,11 +34,6 @@ const photos = [
   { src: "/assets/people/lab-gallery/lab-table.webp", alt: "Members of Furong Lab seated together at a restaurant", theme: "Community", caption: "A lab gathering", width: 1600, height: 1200 },
   { src: "/assets/people/lab-gallery/team-dinner.webp", alt: "Furong Lab members smiling together at dinner", theme: "Community", caption: "Furong Lab together", width: 675, height: 1200 },
   { src: "/assets/people/lab-gallery/group-on-the-road.webp", alt: "Furong Huang and lab members traveling together", theme: "Community", caption: "The lab on the road", width: 1550, height: 1200 },
-  { src: "/assets/people/lab-gallery/robotics-team.webp", alt: "Furong Lab researchers with two robots in the robotics laboratory", theme: "Research in action", caption: "The robotics team in the lab", width: 956, height: 1200 },
-  { src: "/assets/people/lab-gallery/robotics-lab.webp", alt: "Two humanoid robots standing in the robotics laboratory", theme: "Research in action", caption: "Building embodied AI systems", width: 900, height: 1200 },
-  { src: "/assets/people/lab-gallery/robot-setup.webp", alt: "Researchers setting up a robot in the laboratory", theme: "Research in action", caption: "A new robot takes shape", width: 900, height: 1200 },
-  { src: "/assets/people/lab-gallery/robotics-workbench.webp", alt: "A researcher assembling robotics equipment at a workbench", theme: "Research in action", caption: "Hands-on work in robotics", width: 900, height: 1200 },
-  { src: "/assets/people/lab-gallery/robotics-build.jpg", alt: "Furong Lab researchers assembling robotics equipment in the laboratory", theme: "Research in action", caption: "Building the robotics lab", width: 1200, height: 900 },
   { src: "/assets/people/lab-gallery/research-panel.webp", alt: "Furong Huang and fellow panelists speaking at a research event", theme: "Research in action", caption: "Sharing ideas with the broader research community", width: 1600, height: 1200 },
   { src: "/assets/people/lab-gallery/poster-session-one.webp", alt: "A Furong Lab researcher presenting a poster at a conference", theme: "Research in action", caption: "Presenting new work", width: 900, height: 1200 },
   { src: "/assets/people/lab-gallery/poster-session-two.webp", alt: "Furong Lab researchers discussing a poster at a conference", theme: "Research in action", caption: "Research conversations at a poster session", width: 900, height: 1200 },
@@ -25,15 +44,36 @@ const photos = [
   { src: "/assets/people/lab-gallery/commencement-memory-two.png", alt: "Furong Lab graduates seated together at University of Maryland commencement", theme: "Milestones", caption: "Celebrating the class of 2026", width: 1008, height: 796 },
   { src: "/assets/people/lab-gallery/research-milestone.png", alt: "Furong Huang celebrating a Furong Lab graduate at UMIACS", theme: "Milestones", caption: "Celebrating a research milestone", width: 1200, height: 887 }
 ];
+
+const {
+  photos = defaultPhotos,
+  eyebrow = "Life in Furong Lab",
+  heading = "Milestones, ideas, and time together.",
+  description = "From presenting new work to graduations and shared meals—the lab is a community as much as a research group.",
+  sectionId = "lab-moments",
+  locations = []
+} = Astro.props as Props;
 ---
 
-<section class="shell section lab-moments" aria-labelledby="lab-moments-title">
+<section class="shell section lab-moments" id={sectionId} aria-labelledby={`${sectionId}-title`}>
   <div class="lab-moments-heading">
     <div>
-      <p class="eyebrow">Life in Furong Lab</p>
-      <h2 id="lab-moments-title">Research, milestones, and time together.</h2>
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 id={`${sectionId}-title`}>{heading}</h2>
     </div>
-    <p>From building robots and presenting new ideas to graduations and shared meals—the lab is a community as much as a research group.</p>
+    <div class="lab-moments-copy">
+      <p>{description}</p>
+      {locations.length > 0 && (
+        <div class="lab-location-list" aria-label="Furong Lab locations">
+          {locations.map((location) => (
+            <span>
+              <strong>{location.building}</strong> {location.room}
+              <small>· {location.access}</small>
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
   </div>
 
   <div class="lab-carousel" data-lab-carousel>
@@ -134,10 +174,40 @@ const photos = [
     margin: 0.35rem 0 0;
   }
 
-  .lab-moments-heading > p {
+  .lab-moments-copy > p {
     max-width: 38rem;
     margin: 0;
     color: var(--ink-soft);
+  }
+
+  .lab-location-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .lab-location-list span {
+    padding: 0.55rem 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--teal) 30%, var(--line));
+    border-radius: 999px;
+    color: var(--ink-soft);
+    background: color-mix(in srgb, var(--teal) 7%, var(--paper));
+    font-size: 0.75rem;
+  }
+
+  .lab-location-list strong {
+    color: var(--teal-dark);
+    letter-spacing: 0.06em;
+  }
+
+  .lab-location-list small {
+    margin-left: 0.45rem;
+    padding-left: 0.45rem;
+    border-left: 1px solid color-mix(in srgb, var(--teal) 25%, var(--line));
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 700;
   }
 
   .lab-carousel {

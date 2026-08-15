@@ -5,6 +5,7 @@ postdocs:
   - name: Haoran Chen
     role: Postdoctoral associate · Computer Science
     period: 2026–present
+    location: IRB 4226 · Seat 1
     href: https://haoranchen.github.io/
     image: /assets/people/haoran-chen.png
     imagePosition: 50% 24%
@@ -13,6 +14,7 @@ current_phd_students:
   - name: Andrew Mendez
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    location: IRB 2112 · Seat 27
     href: https://www.linkedin.com/in/interactivetech
     image: /assets/people/andrew-mendez.jpg
     imagePosition: 50% 32%
@@ -55,7 +57,7 @@ current_phd_students:
   - name: Seungjae (Jay) Lee
     role: Ph.D. advisee · Computer Science
     period: 2024–present
-    location: Room 3018 · Seat 1
+    location: IRB 3018 · Seat 1
     href: https://sjlee.cc/
     image: /assets/people/seungjae-lee.jpg
     imagePosition: 50% 18%

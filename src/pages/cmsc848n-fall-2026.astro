@@ -283,20 +283,46 @@ const references = [
     <div class="course-section-heading">
       <div><p class="eyebrow">Personalized research project</p><h2>Choose one project. Make it your own.</h2></div>
       <div>
-        <p>Professor Huang is designing a new catalogue of ambitious research candidates for the class. Each will begin with a real open problem and a credible path toward a publishable contribution. Enrolled students will receive the detailed briefs when project selection opens.</p>
+        <p>Professor Huang is designing a new catalogue of ambitious research candidates for the class. Each begins with a real open problem and a credible path toward a publishable contribution. Detailed briefs are available to enrolled students with the course password.</p>
       </div>
     </div>
 
-    <div class="project-signup-callout">
+    <div
+      class="project-signup-callout"
+      data-catalog-lock
+      data-catalog-url="/courses/cmsc848n/fall-2026/project-catalog.v1.json"
+    >
       <div>
-        <p class="eyebrow">Project catalogue</p>
-        <h3>New projects, designed toward top-tier publication.</h3>
-        <p>The detailed Fall 2026 candidate list is not public yet. When selection opens, enrolled students will be able to study the briefs, rank their choices, explain how they want to personalize the work, and find collaborators.</p>
+        <p class="eyebrow">Protected project catalogue</p>
+        <h3>Unlock the Fall 2026 research briefs.</h3>
+        <p>The detailed catalogue is encrypted. Enter the password shared by Professor Huang to review the candidate questions, technical hypotheses, evidence requirements, and starting papers.</p>
       </div>
-      <div class="project-signup-actions">
-        <span class="button course-button-light is-disabled">Catalogue opens later</span>
-        <span>Details for enrolled students</span>
+      <form class="project-unlock-form" data-catalog-form>
+        <label for="project-catalog-password">Course password</label>
+        <div>
+          <input
+            id="project-catalog-password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            spellcheck="false"
+            required
+            data-catalog-password
+          />
+          <button class="button course-button-light" type="submit" data-catalog-submit>Unlock</button>
+        </div>
+        <p role="status" aria-live="polite" data-catalog-status>Password is checked in this browser and is never submitted.</p>
+      </form>
+    </div>
+
+    <noscript><p class="catalog-noscript">JavaScript is required to decrypt the protected project catalogue.</p></noscript>
+
+    <div class="protected-catalog" hidden data-catalog-shell>
+      <div class="catalog-heading">
+        <div><p class="eyebrow">Fall 2026 candidate catalogue</p><h3>Open a brief. Find the question you want to sharpen.</h3></div>
+        <div><p>Rank several candidates and propose one personalization. Final scopes will reflect team preparation, available compute, and overlap across the class.</p><button type="button" data-catalog-relock>Lock catalogue</button></div>
       </div>
+      <div class="project-catalog" data-project-catalog aria-label="Fall 2026 research project candidates"></div>
     </div>
 
     <p class="eyebrow">Every candidate will be a complete research brief</p>
@@ -370,6 +396,215 @@ const references = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  type ProjectCandidate = {
+    number: string;
+    track: string;
+    title: string;
+    challenge: string;
+    question: string;
+    hypothesis: string;
+    evidence: string;
+    personalize: string;
+    skills: string[];
+    startingPoints: [string, string][];
+  };
+
+  type EncryptedCatalog = {
+    version: number;
+    kdf: "PBKDF2";
+    hash: "SHA-256";
+    iterations: number;
+    cipher: "AES-GCM";
+    salt: string;
+    iv: string;
+    aad: string;
+    ciphertext: string;
+  };
+
+  const lock = document.querySelector<HTMLElement>("[data-catalog-lock]");
+  const form = document.querySelector<HTMLFormElement>("[data-catalog-form]");
+  const passwordInput = document.querySelector<HTMLInputElement>("[data-catalog-password]");
+  const submitButton = document.querySelector<HTMLButtonElement>("[data-catalog-submit]");
+  const status = document.querySelector<HTMLElement>("[data-catalog-status]");
+  const catalogShell = document.querySelector<HTMLElement>("[data-catalog-shell]");
+  const catalog = document.querySelector<HTMLElement>("[data-project-catalog]");
+  const relockButton = document.querySelector<HTMLButtonElement>("[data-catalog-relock]");
+
+  if (lock && form && passwordInput && submitButton && status && catalogShell && catalog && relockButton) {
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+    let encryptedCatalog: Promise<EncryptedCatalog> | null = null;
+
+    const fromBase64 = (value: string) => {
+      const decoded = atob(value);
+      return Uint8Array.from(decoded, (character) => character.charCodeAt(0));
+    };
+
+    const loadEncryptedCatalog = () => {
+      if (!encryptedCatalog) {
+        const url = lock.dataset.catalogUrl;
+        if (!url) throw new Error("Missing catalogue URL");
+        encryptedCatalog = fetch(url, { cache: "no-store" }).then(async (response) => {
+          if (!response.ok) throw new Error("Catalogue unavailable");
+          return response.json() as Promise<EncryptedCatalog>;
+        });
+      }
+      return encryptedCatalog;
+    };
+
+    const textElement = <K extends keyof HTMLElementTagNameMap>(tag: K, text: string, className?: string) => {
+      const element = document.createElement(tag);
+      element.textContent = text;
+      if (className) element.className = className;
+      return element;
+    };
+
+    const addBriefField = (list: HTMLDListElement, label: string, value: string) => {
+      const row = document.createElement("div");
+      row.append(textElement("dt", label), textElement("dd", value));
+      list.append(row);
+    };
+
+    const renderCatalog = (projects: ProjectCandidate[]) => {
+      const fragment = document.createDocumentFragment();
+
+      projects.forEach((project) => {
+        const card = document.createElement("details");
+        card.className = "project-card";
+
+        const summary = document.createElement("summary");
+        const meta = document.createElement("div");
+        meta.className = "project-card-meta";
+        meta.append(textElement("span", project.number), textElement("small", project.track));
+        summary.append(
+          meta,
+          textElement("h4", project.title),
+          textElement("p", project.challenge),
+          textElement("span", "Open research brief", "project-open-label")
+        );
+
+        const body = document.createElement("div");
+        body.className = "project-card-body";
+        const fields = document.createElement("dl");
+        addBriefField(fields, "Research question", project.question);
+        addBriefField(fields, "Technical hypothesis", project.hypothesis);
+        addBriefField(fields, "Evidence bar", project.evidence);
+        addBriefField(fields, "Make it yours", project.personalize);
+
+        const skills = document.createElement("div");
+        skills.className = "project-skills";
+        skills.setAttribute("aria-label", "Useful preparation");
+        project.skills.forEach((skill) => skills.append(textElement("span", skill)));
+
+        const reading = document.createElement("div");
+        reading.className = "project-reading";
+        reading.append(textElement("strong", "Starting points"));
+        project.startingPoints.forEach(([label, url]) => {
+          const parsedUrl = new URL(url);
+          if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") return;
+          const link = textElement("a", `${label} ↗`);
+          link.href = parsedUrl.href;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          reading.append(link);
+        });
+
+        body.append(fields, skills, reading);
+        card.append(summary, body);
+        fragment.append(card);
+      });
+
+      catalog.replaceChildren(fragment);
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const password = passwordInput.value;
+      if (!password || !window.crypto?.subtle) {
+        status.textContent = window.crypto?.subtle
+          ? "Enter the course password."
+          : "This browser cannot decrypt the catalogue. Please use a current browser.";
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Unlocking…";
+      status.textContent = "Checking password…";
+      let loaded = false;
+
+      try {
+        const payload = await loadEncryptedCatalog();
+        loaded = true;
+        if (
+          payload.version !== 1 ||
+          payload.kdf !== "PBKDF2" ||
+          payload.hash !== "SHA-256" ||
+          payload.cipher !== "AES-GCM" ||
+          payload.iterations < 100000 ||
+          payload.iterations > 1000000
+        ) throw new Error("Unsupported catalogue format");
+
+        const keyMaterial = await crypto.subtle.importKey(
+          "raw",
+          encoder.encode(password),
+          "PBKDF2",
+          false,
+          ["deriveKey"]
+        );
+        const key = await crypto.subtle.deriveKey(
+          {
+            name: "PBKDF2",
+            salt: fromBase64(payload.salt),
+            iterations: payload.iterations,
+            hash: payload.hash
+          },
+          keyMaterial,
+          { name: "AES-GCM", length: 256 },
+          false,
+          ["decrypt"]
+        );
+        const plaintext = await crypto.subtle.decrypt(
+          {
+            name: "AES-GCM",
+            iv: fromBase64(payload.iv),
+            additionalData: encoder.encode(payload.aad)
+          },
+          key,
+          fromBase64(payload.ciphertext)
+        );
+        const decrypted = JSON.parse(decoder.decode(plaintext)) as { projects?: ProjectCandidate[] };
+        if (!Array.isArray(decrypted.projects) || decrypted.projects.length === 0) {
+          throw new Error("Invalid catalogue");
+        }
+
+        renderCatalog(decrypted.projects);
+        passwordInput.value = "";
+        lock.hidden = true;
+        catalogShell.hidden = false;
+        status.textContent = "Catalogue unlocked.";
+        requestAnimationFrame(() => catalog.querySelector("summary")?.focus());
+      } catch {
+        status.textContent = loaded
+          ? "That password did not unlock the catalogue. Please try again."
+          : "The encrypted catalogue is temporarily unavailable. Please try again.";
+        passwordInput.select();
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Unlock";
+      }
+    });
+
+    relockButton.addEventListener("click", () => {
+      catalog.replaceChildren();
+      catalogShell.hidden = true;
+      lock.hidden = false;
+      status.textContent = "Password is checked in this browser and is never submitted.";
+      requestAnimationFrame(() => passwordInput.focus());
+    });
+  }
+</script>
 
 <style>
   :global(html) { scroll-padding-top: 7rem; }
@@ -536,6 +771,78 @@ const references = [
   .course-button-light { border-color: white; color: var(--ink); background: white; }
   .course-button-light.is-disabled { cursor: default; opacity: 0.92; }
 
+  .project-unlock-form { display: grid; gap: 0.6rem; min-width: min(100%, 390px); }
+  .project-unlock-form label { color: #8dded8; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .project-unlock-form > div { display: grid; grid-template-columns: minmax(180px, 1fr) auto; gap: 0.55rem; }
+  .project-unlock-form input {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    padding: 0.78rem 1rem;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+    font: inherit;
+  }
+  .project-unlock-form input:focus { border-color: #8dded8; outline: 3px solid rgba(141, 222, 216, 0.22); }
+  .project-unlock-form button { min-width: 110px; }
+  .project-unlock-form button:disabled { cursor: wait; opacity: 0.72; }
+  .project-unlock-form > p { min-height: 1.2em; margin: 0; color: #8dded8; font-size: 0.68rem; }
+  .catalog-noscript { margin: -2rem 0 3rem; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; color: var(--ink-soft); background: var(--white); }
+
+  .protected-catalog { margin-bottom: 5rem; }
+  .catalog-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 1.5rem;
+  }
+  .catalog-heading h3 { margin: 0; font-family: "Newsreader", serif; font-size: clamp(2.2rem, 4vw, 3.7rem); line-height: 1; }
+  .catalog-heading > div:last-child { display: grid; gap: 0.75rem; justify-items: start; }
+  .catalog-heading > div:last-child p { margin: 0; color: var(--ink-soft); font-size: 0.86rem; }
+  .catalog-heading button { padding: 0; border: 0; color: var(--teal); background: transparent; font: inherit; font-size: 0.72rem; font-weight: 800; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; }
+  .project-catalog { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; align-items: start; }
+
+  :global(.project-card) { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }
+  :global(.project-card[open]) { border-color: rgba(24, 139, 133, 0.42); box-shadow: 0 20px 50px rgba(16, 42, 67, 0.08); }
+  :global(.project-card summary) { position: relative; display: flex; flex-direction: column; min-height: 255px; padding: 1.6rem; cursor: pointer; list-style: none; }
+  :global(.project-card summary::-webkit-details-marker) { display: none; }
+  :global(.project-card summary::after) {
+    position: absolute;
+    top: 1.35rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--teal);
+    content: "+";
+    font-size: 1.35rem;
+    line-height: 1.85rem;
+    text-align: center;
+    transition: transform 180ms ease, border-color 180ms ease;
+  }
+  :global(.project-card[open] summary::after) { border-color: var(--teal); transform: rotate(45deg); }
+  :global(.project-card summary:hover::after) { border-color: var(--teal); }
+  :global(.project-card[open] summary) { border-bottom: 1px solid var(--line); background: rgba(216, 243, 239, 0.18); }
+  :global(.project-card-meta) { display: flex; gap: 0.8rem; align-items: center; padding-right: 3rem; }
+  :global(.project-card-meta span) { color: var(--teal); font-family: "Newsreader", serif; font-size: 1.6rem; line-height: 1; }
+  :global(.project-card-meta small) { color: var(--ink-soft); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  :global(.project-card h4) { max-width: 520px; margin: 2.5rem 0 0.65rem; font-family: "Newsreader", serif; font-size: clamp(1.7rem, 3vw, 2.25rem); line-height: 1.02; }
+  :global(.project-card summary > p) { max-width: 570px; margin: 0; color: var(--ink-soft); font-size: 0.84rem; }
+  :global(.project-open-label) { margin-top: auto; padding-top: 1.25rem; color: var(--teal); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  :global(.project-card-body) { padding: 0 1.6rem 1.6rem; }
+  :global(.project-card dl) { margin: 0; }
+  :global(.project-card dl > div) { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+  :global(.project-card dt) { color: var(--teal); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  :global(.project-card dd) { margin: 0; color: var(--ink-soft); font-size: 0.78rem; }
+  :global(.project-skills) { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 1.2rem 0; }
+  :global(.project-skills span) { padding: 0.35rem 0.55rem; border-radius: 999px; color: var(--ink); background: rgba(216, 243, 239, 0.68); font-size: 0.64rem; font-weight: 800; }
+  :global(.project-reading) { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline; padding-top: 1rem; border-top: 1px solid var(--line); }
+  :global(.project-reading strong) { margin-right: auto; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; }
+  :global(.project-reading a) { color: var(--teal); font-size: 0.72rem; font-weight: 800; }
+  :global(.project-reading a:hover) { text-decoration: underline; text-underline-offset: 0.18em; }
 
   .project-directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
   .project-directions article { min-height: 210px; padding: 1.6rem; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }
@@ -608,6 +915,7 @@ const references = [
     .week-lectures { grid-column: 2; }
     .project-signup-callout { grid-template-columns: 1fr; }
     .project-signup-actions { justify-items: start; }
+    .catalog-heading { grid-template-columns: 1fr; gap: 1rem; }
     .project-directions { grid-template-columns: repeat(2, 1fr); }
     .milestone-list li { grid-template-columns: 110px 1fr; gap: 0.6rem 1rem; }
     .milestone-list p { grid-column: 2; }
@@ -622,6 +930,7 @@ const references = [
     .course-quick-links,
     .course-facts,
     .calendar-markers,
+    .project-catalog,
     .project-directions,
     .assessment-grid,
     .policy-grid { grid-template-columns: 1fr; }
@@ -633,6 +942,9 @@ const references = [
     .week-lectures { grid-column: 1; }
     .lecture-item { grid-template-columns: 90px 1fr; }
     .week-lectures small { grid-column: 2; }
+    .project-unlock-form > div { grid-template-columns: 1fr; }
+    .project-unlock-form button { width: 100%; }
+    :global(.project-card dl > div) { grid-template-columns: 1fr; gap: 0.4rem; }
     .project-directions article:last-child { display: block; min-height: 210px; }
     .project-directions article:last-child h3 { margin: 3rem 0 0.6rem; }
     .milestone-list li { grid-template-columns: 1fr; }

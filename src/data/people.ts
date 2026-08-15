@@ -5,6 +5,7 @@ export interface Person {
   name: string;
   role: string;
   period?: string;
+  location?: string;
   destination?: string;
   href?: string;
   image?: string;
@@ -13,7 +14,7 @@ export interface Person {
   onMarket?: boolean;
 }
 
-const optionalFields = ["period", "destination", "href", "image", "imagePosition"] as const;
+const optionalFields = ["period", "location", "destination", "href", "image", "imagePosition"] as const;
 
 function validateGroup(value: unknown, group: string): Person[] {
   if (!Array.isArray(value)) throw new Error(`people.yaml: ${group} must be a list`);

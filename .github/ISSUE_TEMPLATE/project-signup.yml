@@ -1,0 +1,74 @@
+name: CMSC 848N Fall 2026 — project selection
+description: Choose an instructor-designed project, personalize it, and find collaborators.
+title: "[CMSC 848N · Fall 2026 project] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this public form only after the course project catalog is published. Choose a listed project, explain how you want to personalize it, and form a team. Do not include student IDs, grades, private contact information, or other sensitive data.
+  - type: input
+    id: project-choice
+    attributes:
+      label: Project choice
+      description: Copy the exact project title from the course catalog.
+      placeholder: Project title from the catalog
+    validations:
+      required: true
+  - type: textarea
+    id: personalization
+    attributes:
+      label: Personalization plan
+      description: How would you tailor the research question, scope, system design, or evaluation?
+      placeholder: I want to personalize this project by…
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - Reasoning and adaptive inference
+        - Planning, state, and memory
+        - Tools, workflows, and multi-agent systems
+        - Web or coding agents
+        - Research or scientific agents
+        - Embodied agents and robotics
+        - Robustness, safety, or evaluation
+        - Learning and self-improvement
+    validations:
+      required: true
+  - type: textarea
+    id: team
+    attributes:
+      label: Current team
+      description: List GitHub usernames only. Write “forming” if you do not yet have a team.
+      placeholder: "@username, @username — or forming"
+    validations:
+      required: true
+  - type: dropdown
+    id: collaborators
+    attributes:
+      label: Are you looking for collaborators?
+      options:
+        - Yes — please contact me through this issue
+        - Maybe — open to discussing fit
+        - No — team is currently full
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: First evidence plan
+      description: Name an initial baseline, environment or benchmark, and one metric you could measure repeatedly.
+    validations:
+      required: true
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Submission checks
+      options:
+        - label: The course project catalog has been published, and I selected a project from it.
+          required: true
+        - label: I have not included private student information or other sensitive data.
+          required: true

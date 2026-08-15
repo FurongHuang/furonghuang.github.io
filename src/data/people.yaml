@@ -51,6 +51,7 @@ current_phd_students:
   - name: Minghui Liu
     role: Ph.D. advisee · Computer Science
     period: 2024–present
+    location: IRB 2108 · Seat 13
     href: https://minghui-liu.github.io/
     image: /assets/people/minghui-liu.jpg
     imagePosition: 50% 24%
@@ -88,6 +89,7 @@ current_phd_students:
   - name: Yoonkyo Jung
     role: Ph.D. advisee · Computer Science
     period: 2025–present
+    location: IRB 3108 · Seat 13
     href: https://yoonkyojung.com/
     image: /assets/people/yoonkyo-jung.jpg
     imagePosition: 50% 30%

@@ -1,0 +1,71 @@
+name: CMSC 848N Fall 2026 — project signup
+description: Propose a project, register a team, or find collaborators for CMSC 848N.
+title: "[CMSC 848N · Fall 2026] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this public form to share a project direction and form a team. Do not include student IDs, grades, private contact information, or other sensitive data.
+  - type: input
+    id: project-name
+    attributes:
+      label: Working project title
+      placeholder: A concise, descriptive title
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Research question and idea
+      description: What agent-system claim do you want to test, and why does it matter?
+      placeholder: We want to test whether…
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - Reasoning and adaptive inference
+        - Planning, state, and memory
+        - Tools, workflows, and multi-agent systems
+        - Web or coding agents
+        - Research or scientific agents
+        - Embodied agents and robotics
+        - Robustness, safety, or evaluation
+        - Learning and self-improvement
+    validations:
+      required: true
+  - type: textarea
+    id: team
+    attributes:
+      label: Current team
+      description: List GitHub usernames only. Write “forming” if you do not yet have a team.
+      placeholder: "@username, @username — or forming"
+    validations:
+      required: true
+  - type: dropdown
+    id: collaborators
+    attributes:
+      label: Are you looking for collaborators?
+      options:
+        - Yes — please contact me through this issue
+        - Maybe — open to discussing fit
+        - No — team is currently full
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: First evidence plan
+      description: Name an initial baseline, environment or benchmark, and one metric you could measure repeatedly.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Public-post check
+      options:
+        - label: I have not included private student information or other sensitive data.
+          required: true

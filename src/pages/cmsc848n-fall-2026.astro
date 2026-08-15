@@ -1,0 +1,591 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const slideRoot = "/courses/cmsc848n/fall-2026/slides";
+
+// Add a filename here only when its approved deck is copied into slideRoot.
+// Course policy: publish each deck two days before its lecture.
+const releasedSlides = new Set<string>([]);
+
+const weeks = [
+  {
+    week: "01",
+    module: "Agent-system foundations",
+    outcome: "Define the complete agent system and reason about sequential experience.",
+    lectures: [
+      ["Agent Systems: The Model Is Not the Agent", "W1-L1-Agent-Systems-The-Model-Is-Not-the-Agent.pptx"],
+      ["RL Essentials for Agents", "W1-L2-RL-Essentials-for-Agents.pptx"]
+    ]
+  },
+  {
+    week: "02",
+    module: "Learning agent policies",
+    outcome: "Learn from demonstrations, preferences, and verifiable feedback.",
+    lectures: [
+      ["Learning Agent Policies from Feedback", "W2-L1-Learning-Agent-Policies-from-Feedback.pptx"],
+      ["Training Multi-Turn Agents: Rollouts, Credit, and Stability", "W2-L2-Training-Multi-Turn-Agents.pptx"]
+    ]
+  },
+  {
+    week: "03",
+    module: "Reasoning and adaptive inference",
+    outcome: "Control search, verification, compute, recovery, and stopping at test time.",
+    lectures: [
+      ["Reasoning at Test Time: Traces, Search, Verifiers, and Compute", "W3-L1-Reasoning-at-Test-Time.pptx"],
+      ["Adaptive Inference Control: Critics, Stopping, Recovery, and Efficiency", "W3-L2-Adaptive-Inference-Control.pptx"]
+    ]
+  },
+  {
+    week: "04",
+    module: "Planning, state, memory, and context",
+    outcome: "Build explicit state and memory that support controlled replanning.",
+    lectures: [
+      ["Planning and State", "W4-L1-Planning-and-State.pptx"],
+      ["Memory and Context Engineering", "W4-L2-Memory-and-Context-Engineering.pptx"]
+    ]
+  },
+  {
+    week: "05",
+    module: "Tools, protocols, and authority",
+    outcome: "Design typed tools with bounded authority, verification, and audit.",
+    lectures: [
+      ["Tool Interfaces and Action Protocols", "W5-L1-Tool-Interfaces-and-Action-Protocols.pptx"],
+      ["Authorization and Safe Execution", "W5-L2-Authorization-and-Safe-Execution.pptx"]
+    ]
+  },
+  {
+    week: "06",
+    module: "Durable composition",
+    outcome: "Compose agents into workflows and justified multi-agent teams.",
+    lectures: [
+      ["Agentic Workflows and Orchestration", "W6-L1-Agentic-Workflows-and-Orchestration.pptx"],
+      ["Multi-Agent Systems", "W6-L2-Multi-Agent-Systems.pptx"]
+    ]
+  },
+  {
+    week: "07",
+    module: "Web agents",
+    outcome: "Build browser agents that ground actions and resist adversarial content.",
+    lectures: [
+      ["Web Agents: Perception, Control, and Evaluation", "W7-L1-Web-Agents-Perception-Control-and-Evaluation.pptx"],
+      ["Securing Web Agents: Intent, Privilege, and Adversarial Content", "W7-L2-Securing-Web-Agents-Intent-Privilege-and-Adversarial-Content.pptx"]
+    ]
+  },
+  {
+    week: "08",
+    module: "Coding agents",
+    outcome: "Navigate repositories, execute repair loops, and evaluate patches validly.",
+    lectures: [
+      ["Coding Agents: Repository Navigation and Repair Loops", "W8-L1-Coding-Agents-Repository-Navigation-and-Repair-Loops.pptx"],
+      ["Coding Agents II: Execution, Training, and Valid Evaluation", "W8-L2-Coding-Agents-Execution-Training-and-Valid-Evaluation.pptx"]
+    ]
+  },
+  {
+    week: "09",
+    module: "Research and scientific agents",
+    outcome: "Connect sources, claims, hypotheses, experiments, and qualified conclusions.",
+    lectures: [
+      ["Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-Deep-Research-Agents-Search-Evidence-and-Reproducible-Synthesis.pptx"],
+      ["Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"]
+    ]
+  },
+  {
+    week: "10",
+    module: "Embodied agents and robotics",
+    outcome: "Design and evaluate closed-loop world-model and vision-language-action agents.",
+    lectures: [
+      ["World Models and Vision-Language-Action Agents", "W10-L1-World-Models-and-Vision-Language-Action-Agents.pptx"],
+      ["Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"]
+    ]
+  },
+  {
+    week: "11",
+    module: "Agent robustness and safety",
+    outcome: "Threat-model the lifecycle and plan prevention, monitoring, and recovery.",
+    lectures: [
+      ["Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pptx"],
+      ["Defense in Depth, Monitoring, and Incident Response", "W11-L2-Defense-in-Depth-Monitoring-and-Incident-Response.pptx"]
+    ]
+  },
+  {
+    week: "12",
+    module: "Learning from experience and self-improvement",
+    outcome: "Govern persistent adaptation with evaluation, lineage, retention, and rollback.",
+    lectures: [
+      ["Learning from Experience: Prompts, Skills, Policies, and Continual Adaptation", "W12-L1-Learning-from-Experience-Prompts-Skills-Policies-and-Continual-Adaptation.pptx"],
+      ["Self-Modifying and Evolutionary Agents", "W12-L2-Self-Modifying-and-Evolutionary-Agents.pptx"]
+    ]
+  },
+  {
+    week: "13",
+    module: "Evaluation, provenance, and synthesis",
+    outcome: "Make deployment decisions from reproducible evidence and accountable provenance.",
+    lectures: [
+      ["Agent Evaluation and Deployment Evidence", "W13-L1-Agent-Evaluation-and-Deployment-Evidence.pptx"],
+      ["Provenance, Watermarking, and Frontier Challenges", "W13-L2-Provenance-Watermarking-and-Frontier-Challenges.pptx"]
+    ]
+  }
+];
+
+const assessments = [
+  ["10%", "Trace diagnosis", "Short in-class analysis of agent behavior and failure."],
+  ["20%", "Implementation labs", "Minimal agents, tool boundaries, evaluation, and red-teaming."],
+  ["30%", "Midterm package", "Literature map, runnable baseline, results, and evaluation plan."],
+  ["20%", "Final presentation", "A concise claim–evidence narrative with limitations."],
+  ["20%", "Final artifacts", "Paper-style report, code, traces, ablations, and safety analysis."]
+];
+
+const milestones = [
+  ["Weeks 1–2", "Form teams", "Choose an area and establish a shared project workspace."],
+  ["Week 4", "Proposal", "Submit the task contract, benchmark or environment, and one-page plan."],
+  ["Week 6", "Baseline", "Deliver a runnable baseline and the first reproducible evidence bundle."],
+  ["Week 8", "Midterm package", "Report preliminary results and a concrete failure taxonomy."],
+  ["Week 10", "Freeze evaluation", "Lock held-out tasks, metrics, budgets, and contamination controls."],
+  ["Week 12", "Artifact audit", "Peer review, regression check, security test, and release rehearsal."],
+  ["Finals", "Present and release", "Seven-minute presentation, paper-style report, and runnable artifacts."]
+];
+
+const references = [
+  ["Reinforcement Learning: An Introduction", "Sutton & Barto · 2018", "https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf"],
+  ["A Survey on Large Language Model Based Autonomous Agents", "Wang et al. · 2024", "https://arxiv.org/abs/2308.11432"],
+  ["Direct Preference Optimization", "Rafailov et al. · 2023", "https://arxiv.org/abs/2305.18290"],
+  ["ReAct: Synergizing Reasoning and Acting", "Yao et al. · 2023", "https://arxiv.org/abs/2210.03629"],
+  ["Toolformer", "Schick et al. · 2023", "https://arxiv.org/abs/2302.04761"],
+  ["WebArena", "Zhou et al. · 2024", "https://arxiv.org/abs/2307.13854"],
+  ["SWE-bench", "Jimenez et al. · 2024", "https://arxiv.org/abs/2310.06770"]
+];
+
+const signupUrl = "https://github.com/FurongHuang/furonghuang.github.io/issues/new?template=project-signup.yml";
+---
+
+<BaseLayout
+  title="CMSC 848N — Generative AI Agents · Fall 2026"
+  description="Fall 2026 at the University of Maryland: foundations and frontiers of generative AI agents."
+  image="/courses/cmsc848n/fall-2026/og.png"
+  imageAlt="CMSC 848N Generative AI Agents · Fall 2026 · University of Maryland"
+>
+  <section class="shell course-hero">
+    <div class="course-hero-copy">
+      <p class="eyebrow">Fall 2026 · CMSC 848N · University of Maryland</p>
+      <h1>Generative<br /><em>AI Agents</em></h1>
+      <p class="course-lede">
+        Foundations and frontiers of systems that reason, plan, act, use tools, and adapt in complex environments.
+      </p>
+      <div class="button-row">
+        <a class="button" href="#schedule">View schedule <span aria-hidden="true">↓</span></a>
+        <a class="button secondary" href="#projects">Join a project <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <aside class="course-at-a-glance" aria-label="Course at a glance">
+      <p class="eyebrow">At a glance</p>
+      <div><strong>13</strong><span>weeks</span></div>
+      <div><strong>26</strong><span>lectures</span></div>
+      <div><strong>01</strong><span>research project</span></div>
+      <p>Meeting time, room, and office hours will be posted before the semester begins.</p>
+    </aside>
+  </section>
+
+  <nav class="shell course-quick-links" aria-label="Course shortcuts">
+    <a href="#overview"><span>01</span> Overview</a>
+    <a href="#schedule"><span>02</span> Schedule & slides</a>
+    <a href="#projects"><span>03</span> Project signup</a>
+    <a href="#policies"><span>04</span> Policies</a>
+  </nav>
+
+  <section id="overview" class="shell section course-overview">
+    <div class="course-section-heading">
+      <div>
+        <p class="eyebrow">The course</p>
+        <h2>Build agents whose claims can survive contact with the world.</h2>
+      </div>
+      <div>
+        <p>
+          An agent is more than a model. It is a governed sequential decision system: model, controller, environment, state and memory, tools and protocols, authority policy, evaluator, and people.
+        </p>
+        <p>
+          We will connect theoretical foundations to modern practice, with an emphasis on algorithmic building blocks, valid evaluation, and open research problems.
+        </p>
+      </div>
+    </div>
+
+    <div class="course-facts">
+      <article><span>Instructor</span><strong>Prof. Furong Huang</strong><p>Computer Science · UMD</p></article>
+      <article><span>Format</span><strong>Two lectures per week</strong><p>75 minutes each · time and room TBA</p></article>
+      <article><span>Prerequisites</span><strong>ML + deep learning</strong><p>Probability, optimization, linear algebra, and Python</p></article>
+      <article><span>Coursework</span><strong>Evidence over demos</strong><p>Diagnosis, implementation, and a research project</p></article>
+    </div>
+  </section>
+
+  <section id="schedule" class="course-band">
+    <div class="shell section">
+      <div class="course-section-heading compact">
+        <div><p class="eyebrow">Schedule & slides</p><h2>Thirteen weeks, one cumulative argument.</h2></div>
+        <p>Lecture titles are posted now. Each approved deck will appear two days before its lecture; dates and readings will be added as the semester calendar is finalized.</p>
+      </div>
+
+      <ol class="course-schedule">
+        {weeks.map(({ week, module, outcome, lectures }) => (
+          <li>
+            <div class="week-number"><span>Week</span><strong>{week}</strong></div>
+            <div class="week-topic"><h3>{module}</h3><p>{outcome}</p></div>
+            <div class="week-lectures">
+              {lectures.map(([title, file], index) => releasedSlides.has(file) ? (
+                <a class="lecture-item" href={`${slideRoot}/${file}`} download>
+                  <span>L{index + 1}</span>
+                  <strong>{title}</strong>
+                  <small>PPTX ↓</small>
+                </a>
+              ) : (
+                <div class="lecture-item is-pending">
+                  <span>L{index + 1}</span>
+                  <strong>{title}</strong>
+                  <small>Posts 2 days before class</small>
+                </div>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="projects" class="shell section projects-section">
+    <div class="course-section-heading">
+      <div><p class="eyebrow">Research project</p><h2>Make one defensible system claim.</h2></div>
+      <div>
+        <p>Teams will build, evaluate, and document an agent system. Every project reports task success, end-to-end cost, latency, and reliability across repeated runs, with at least one ablation and one structured failure analysis.</p>
+      </div>
+    </div>
+
+    <div class="project-signup-callout">
+      <div>
+        <p class="eyebrow">Project board</p>
+        <h3>Have a team—or looking for one?</h3>
+        <p>Open a GitHub signup with your area, short idea, current team, and whether you welcome collaborators. Do not include student IDs or other private information.</p>
+      </div>
+      <div class="project-signup-actions">
+        <a class="button course-button-light" href={signupUrl}>Create project signup ↗</a>
+        <a href="https://github.com/FurongHuang/furonghuang.github.io/issues?q=is%3Aissue+CMSC+848N+Fall+2026">Browse project board ↗</a>
+      </div>
+    </div>
+
+    <div class="project-directions" aria-label="Suggested project directions">
+      <article><span>01</span><h3>Reasoning & control</h3><p>Search, verifiers, stopping, recovery, and test-time compute.</p></article>
+      <article><span>02</span><h3>Memory & planning</h3><p>State representation, long-horizon control, and context engineering.</p></article>
+      <article><span>03</span><h3>Web & code agents</h3><p>Grounded tool use, software repair, security, and evaluation.</p></article>
+      <article><span>04</span><h3>Scientific agents</h3><p>Evidence synthesis, experiment design, and reproducible claims.</p></article>
+      <article><span>05</span><h3>Embodied agents</h3><p>World models, VLA systems, data efficiency, and physical safety.</p></article>
+      <article><span>06</span><h3>Robust self-improvement</h3><p>Continual adaptation, release gates, provenance, and rollback.</p></article>
+    </div>
+
+    <div class="milestone-section">
+      <p class="eyebrow">Milestones</p>
+      <ol class="milestone-list">
+        {milestones.map(([when, title, detail]) => (
+          <li><span>{when}</span><strong>{title}</strong><p>{detail}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="course-band assessment-band">
+    <div class="shell section">
+      <div class="course-section-heading compact">
+        <div><p class="eyebrow">Assessment</p><h2>Measure the work by its evidence.</h2></div>
+        <p>The final syllabus will confirm all due dates and policies. The planned weighting below anchors the course design.</p>
+      </div>
+      <div class="assessment-grid">
+        {assessments.map(([weight, title, detail]) => (
+          <article><strong>{weight}</strong><h3>{title}</h3><p>{detail}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="resources" class="shell section resources-section">
+    <div class="course-section-heading compact">
+      <div><p class="eyebrow">Starting references</p><h2>Read the primary work.</h2></div>
+      <p>Additional readings will be posted by week. We will distinguish peer-reviewed work, preprints, official specifications, vendor evidence, and course synthesis.</p>
+    </div>
+    <div class="reference-list">
+      {references.map(([title, meta, url], index) => (
+        <a href={url}>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{title}</strong>
+          <small>{meta}</small>
+          <i aria-hidden="true">↗</i>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="policies" class="shell section policies-section">
+    <div class="course-section-heading compact">
+      <div><p class="eyebrow">Working policies</p><h2>Clear expectations, before launch.</h2></div>
+      <p>These are planning guidelines. The official Fall 2026 syllabus and University policies will supersede this page where they differ.</p>
+    </div>
+    <div class="policy-grid">
+      <article><h3>Collaboration</h3><p>Collaboration is expected within project teams. Individual assessments must reflect your own understanding. Credit every external contribution, library, model, dataset, prompt source, and borrowed artifact.</p></article>
+      <article><h3>Generative AI use</h3><p>AI tools are part of the subject matter and may be used when the assignment permits. Preserve prompts, model and version information, tool traces, and material edits so results remain auditable.</p></article>
+      <article><h3>Responsible experimentation</h3><p>Use least privilege, sandbox side effects, protect private data, and obtain approval before tests that touch people or external systems. Projects with consequential actions require monitoring and rollback ownership.</p></article>
+      <article><h3>Accessibility & support</h3><p>Students who need accommodations should contact the University’s accessibility service and the instructor early. Please raise barriers to course materials or participation as soon as possible.</p></article>
+    </div>
+  </section>
+
+  <section class="shell course-final-cta">
+    <p class="eyebrow">CMSC 848N · Fall 2026</p>
+    <h2>Models speak. Agents change state.</h2>
+    <p>Our job is to understand the system in between—and demand evidence for what it can safely do.</p>
+    <div class="button-row">
+      <a class="button" href="#schedule">Download slides</a>
+      <a class="button secondary" href={signupUrl}>Sign up a project ↗</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  :global(html) { scroll-padding-top: 7rem; }
+
+  .course-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+    gap: 5rem;
+    align-items: end;
+    min-height: 680px;
+    padding-block: 7rem 4rem;
+  }
+
+  .course-hero h1,
+  .course-section-heading h2,
+  .course-final-cta h2 {
+    margin: 0;
+    font-family: "Newsreader", serif;
+    font-weight: 600;
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+  }
+
+  .course-hero h1 { font-size: clamp(4.6rem, 9vw, 8.5rem); }
+  .course-hero h1 em { color: var(--teal); font-style: normal; }
+
+  .course-lede {
+    max-width: 720px;
+    margin: 2rem 0;
+    color: var(--ink-soft);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+  }
+
+  .course-at-a-glance {
+    padding: 2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .course-at-a-glance > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .course-at-a-glance strong { font-family: "Newsreader", serif; font-size: 2.2rem; }
+  .course-at-a-glance span,
+  .course-at-a-glance > p:last-child { color: var(--ink-soft); font-size: 0.8rem; }
+
+  .course-quick-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-block: 1px solid var(--line);
+  }
+
+  .course-quick-links a {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1.25rem;
+    border-right: 1px solid var(--line);
+    font-weight: 700;
+  }
+
+  .course-quick-links a:last-child { border-right: 0; }
+  .course-quick-links a:hover { background: var(--white); }
+  .course-quick-links span { color: var(--teal); font-size: 0.68rem; letter-spacing: 0.12em; }
+
+  .course-section-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+    gap: 5rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .course-section-heading h2 { max-width: 820px; font-size: clamp(3rem, 6vw, 6rem); }
+  .course-section-heading > div:last-child p,
+  .course-section-heading > p { margin: 0; color: var(--ink-soft); }
+  .course-section-heading > div:last-child p + p { margin-top: 1rem; }
+  .course-section-heading.compact h2 { font-size: clamp(2.8rem, 5vw, 4.8rem); }
+
+  .course-facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+  }
+
+  .course-facts article {
+    min-height: 180px;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--white);
+  }
+
+  .course-facts span { display: block; margin-bottom: 2.5rem; color: var(--teal); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .course-facts strong { display: block; font-family: "Newsreader", serif; font-size: 1.45rem; line-height: 1.1; }
+  .course-facts p { margin: 0.55rem 0 0; color: var(--ink-soft); font-size: 0.78rem; }
+
+  .course-band { border-block: 1px solid rgba(16, 42, 67, 0.08); background: rgba(255, 253, 249, 0.55); }
+  .course-schedule { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+  .course-schedule > li {
+    display: grid;
+    grid-template-columns: 90px minmax(220px, 0.55fr) minmax(420px, 1fr);
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .week-number span { display: block; color: var(--ink-soft); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .week-number strong { color: var(--teal); font-family: "Newsreader", serif; font-size: 2.75rem; line-height: 1; }
+  .week-topic h3 { margin: 0; font-family: "Newsreader", serif; font-size: 1.55rem; line-height: 1.1; }
+  .week-topic p { margin: 0.6rem 0 0; color: var(--ink-soft); font-size: 0.78rem; }
+  .week-lectures { display: grid; gap: 0.5rem; }
+  .lecture-item {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+    min-height: 3.2rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--white);
+  }
+  .week-lectures a:hover { border-color: var(--teal); transform: translateX(3px); }
+  .lecture-item.is-pending { background: rgba(255, 253, 249, 0.5); }
+  .lecture-item.is-pending small { color: var(--ink-soft); text-align: right; }
+  .week-lectures span,
+  .week-lectures small { color: var(--teal); font-size: 0.65rem; font-weight: 800; }
+  .week-lectures strong { font-size: 0.8rem; line-height: 1.35; }
+
+  .project-signup-callout {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+    padding: clamp(2rem, 5vw, 4rem);
+    overflow: hidden;
+    border-radius: var(--radius);
+    color: var(--white);
+    background: var(--ink);
+    box-shadow: var(--shadow);
+  }
+  .project-signup-callout h3 { margin: 0; font-family: "Newsreader", serif; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 0.98; }
+  .project-signup-callout p:not(.eyebrow) { max-width: 700px; color: #c6d5df; }
+  .project-signup-actions { display: grid; gap: 1rem; justify-items: center; min-width: 220px; }
+  .project-signup-actions > a:last-child { color: #8dded8; font-size: 0.75rem; font-weight: 800; }
+  .course-button-light { border-color: white; color: var(--ink); background: white; }
+
+  .project-directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+  .project-directions article { min-height: 210px; padding: 1.6rem; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }
+  .project-directions span { color: var(--teal); font-size: 0.7rem; font-weight: 800; }
+  .project-directions h3 { margin: 3rem 0 0.6rem; font-family: "Newsreader", serif; font-size: 1.55rem; }
+  .project-directions p { margin: 0; color: var(--ink-soft); font-size: 0.82rem; }
+
+  .milestone-section { margin-top: 5rem; }
+  .milestone-list { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+  .milestone-list li { display: grid; grid-template-columns: 150px 220px 1fr; gap: 2rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .milestone-list span { color: var(--teal); font-size: 0.75rem; font-weight: 800; }
+  .milestone-list strong { font-family: "Newsreader", serif; font-size: 1.15rem; }
+  .milestone-list p { margin: 0; color: var(--ink-soft); font-size: 0.8rem; }
+
+  .assessment-band { background: linear-gradient(135deg, rgba(216, 243, 239, 0.48), rgba(255, 253, 249, 0.6)); }
+  .assessment-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.7rem; }
+  .assessment-grid article { min-height: 230px; padding: 1.45rem; border: 1px solid rgba(16, 42, 67, 0.12); border-radius: 18px; background: rgba(255, 253, 249, 0.82); }
+  .assessment-grid > article > strong { color: var(--teal); font-family: "Newsreader", serif; font-size: 2.4rem; }
+  .assessment-grid h3 { margin: 3rem 0 0.5rem; font-family: "Newsreader", serif; font-size: 1.3rem; }
+  .assessment-grid p { margin: 0; color: var(--ink-soft); font-size: 0.76rem; }
+
+  .reference-list { border-top: 1px solid var(--line); }
+  .reference-list a { display: grid; grid-template-columns: 50px 1fr 220px 24px; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .reference-list a:hover strong { color: var(--teal); }
+  .reference-list span { color: var(--teal); font-size: 0.7rem; font-weight: 800; }
+  .reference-list strong { font-family: "Newsreader", serif; font-size: 1.15rem; }
+  .reference-list small { color: var(--ink-soft); }
+  .reference-list i { color: var(--teal); font-style: normal; }
+
+  .policy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .policy-grid article { padding: 2rem; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }
+  .policy-grid h3 { margin: 0 0 1rem; font-family: "Newsreader", serif; font-size: 1.65rem; }
+  .policy-grid p { margin: 0; color: var(--ink-soft); }
+
+  .course-final-cta {
+    margin-block: 3rem 8rem;
+    padding: clamp(2.5rem, 6vw, 5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+  .course-final-cta h2 { max-width: 900px; font-size: clamp(3.2rem, 7vw, 7rem); }
+  .course-final-cta > p:not(.eyebrow) { max-width: 720px; color: var(--ink-soft); font-size: 1.05rem; }
+
+  @media (max-width: 1050px) {
+    .course-facts { grid-template-columns: repeat(2, 1fr); }
+    .course-schedule > li { grid-template-columns: 70px minmax(180px, 0.45fr) minmax(360px, 1fr); gap: 1.25rem; }
+    .assessment-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 800px) {
+    .course-hero,
+    .course-section-heading { grid-template-columns: 1fr; gap: 2.5rem; min-height: 0; }
+    .course-hero { padding-top: 5rem; }
+    .course-section-heading { align-items: start; margin-bottom: 2.5rem; }
+    .course-quick-links { grid-template-columns: 1fr 1fr; }
+    .course-quick-links a:nth-child(2) { border-right: 0; }
+    .course-quick-links a:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+    .course-schedule > li { grid-template-columns: 55px 1fr; }
+    .week-lectures { grid-column: 2; }
+    .project-signup-callout { grid-template-columns: 1fr; }
+    .project-signup-actions { justify-items: start; }
+    .project-directions { grid-template-columns: repeat(2, 1fr); }
+    .milestone-list li { grid-template-columns: 110px 1fr; gap: 0.6rem 1rem; }
+    .milestone-list p { grid-column: 2; }
+    .assessment-grid { grid-template-columns: repeat(2, 1fr); }
+    .reference-list a { grid-template-columns: 35px 1fr 20px; }
+    .reference-list small { grid-column: 2; }
+    .reference-list i { grid-column: 3; grid-row: 1 / 3; }
+  }
+
+  @media (max-width: 560px) {
+    .course-hero h1 { font-size: clamp(4rem, 20vw, 6rem); }
+    .course-quick-links,
+    .course-facts,
+    .project-directions,
+    .assessment-grid,
+    .policy-grid { grid-template-columns: 1fr; }
+    .course-quick-links a { border-right: 0; border-bottom: 1px solid var(--line); }
+    .course-quick-links a:last-child { border-bottom: 0; }
+    .course-schedule > li { grid-template-columns: 1fr; }
+    .week-number { display: flex; gap: 0.5rem; align-items: baseline; }
+    .week-number strong { font-size: 1.8rem; }
+    .week-lectures { grid-column: 1; }
+    .lecture-item { grid-template-columns: 28px 1fr; }
+    .week-lectures small { grid-column: 2; }
+    .milestone-list li { grid-template-columns: 1fr; }
+    .milestone-list p { grid-column: 1; }
+  }
+</style>

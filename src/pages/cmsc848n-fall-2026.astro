@@ -1,11 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { existsSync, readdirSync } from "node:fs";
+import { resolve } from "node:path";
 
 const slideRoot = "/courses/cmsc848n/fall-2026/slides";
-
-// Add a filename here only when its approved deck is copied into slideRoot.
-// Course policy: publish each deck two days before its lecture.
-const releasedSlides = new Set<string>([]);
+const slideDirectory = resolve(process.cwd(), "public/courses/cmsc848n/fall-2026/slides");
+const releasedSlides = new Set<string>(
+  existsSync(slideDirectory)
+    ? readdirSync(slideDirectory).filter((filename) => filename.toLowerCase().endsWith(".pptx"))
+    : []
+);
 
 const courseDateFormatter = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",

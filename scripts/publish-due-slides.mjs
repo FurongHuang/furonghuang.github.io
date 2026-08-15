@@ -1,0 +1,114 @@
+import { copyFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
+import { dirname, basename, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const repoRoot = dirname(dirname(fileURLToPath(import.meta.url)));
+const coursePagePath = join(repoRoot, "src/pages/cmsc848n-fall-2026.astro");
+const publicSlideRoot = join(repoRoot, "public/courses/cmsc848n/fall-2026/slides");
+
+const argumentsByName = new Map(
+  process.argv.slice(2).map((argument) => {
+    const separator = argument.indexOf("=");
+    return separator === -1
+      ? [argument, true]
+      : [argument.slice(0, separator), argument.slice(separator + 1)];
+  })
+);
+
+const draftSlideRoot = resolve(
+  String(argumentsByName.get("--drafts") || process.env.CMSC848N_SLIDE_DRAFTS || join(repoRoot, "..", "06_Slide_Drafts"))
+);
+const dryRun = argumentsByName.has("--dry-run");
+const now = argumentsByName.has("--now")
+  ? new Date(String(argumentsByName.get("--now")))
+  : new Date();
+
+if (Number.isNaN(now.getTime())) {
+  throw new Error("--now must be a valid ISO date-time.");
+}
+
+const getNewYorkClock = (date) => {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  }).formatToParts(date);
+  const value = (type) => parts.find((part) => part.type === type)?.value || "";
+  return {
+    date: `${value("year")}-${value("month")}-${value("day")}`,
+    minutes: Number(value("hour")) * 60 + Number(value("minute"))
+  };
+};
+
+const subtractCalendarDays = (date, days) => {
+  const result = new Date(`${date}T12:00:00Z`);
+  result.setUTCDate(result.getUTCDate() - days);
+  return result.toISOString().slice(0, 10);
+};
+
+const source = readFileSync(coursePagePath, "utf8");
+const lecturePattern = /\[\s*"(\d{4}-\d{2}-\d{2})"\s*,\s*"(?:[^"\\]|\\.)*"\s*,\s*"([^"\n]+\.pptx)"\s*\]/g;
+const schedule = Array.from(source.matchAll(lecturePattern), (match) => ({
+  lectureDate: match[1],
+  releaseDate: subtractCalendarDays(match[1], 2),
+  filename: match[2]
+}));
+
+if (schedule.length === 0) {
+  throw new Error("No CMSC 848N slide schedule entries were found.");
+}
+
+const clock = getNewYorkClock(now);
+const isDue = ({ releaseDate }) =>
+  clock.date > releaseDate || (clock.date === releaseDate && clock.minutes >= 11 * 60);
+
+const published = [];
+const alreadyPublished = [];
+const missingDue = [];
+const upcoming = [];
+
+for (const entry of schedule) {
+  if (basename(entry.filename) !== entry.filename) {
+    throw new Error(`Unsafe slide filename in schedule: ${entry.filename}`);
+  }
+
+  if (!isDue(entry)) {
+    upcoming.push(entry);
+    continue;
+  }
+
+  const destination = join(publicSlideRoot, entry.filename);
+  if (existsSync(destination)) {
+    alreadyPublished.push(entry);
+    continue;
+  }
+
+  const draft = join(draftSlideRoot, entry.filename);
+  if (!existsSync(draft)) {
+    missingDue.push(entry);
+    continue;
+  }
+
+  if (!dryRun) {
+    mkdirSync(publicSlideRoot, { recursive: true });
+    copyFileSync(draft, destination);
+  }
+  published.push(entry);
+}
+
+const result = {
+  checkedAt: now.toISOString(),
+  newYorkDate: clock.date,
+  draftSlideRoot,
+  dryRun,
+  published,
+  alreadyPublished,
+  missingDue,
+  upcomingCount: upcoming.length
+};
+
+process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);

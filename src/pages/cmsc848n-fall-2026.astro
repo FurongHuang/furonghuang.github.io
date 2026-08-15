@@ -7,9 +7,11 @@ const slideRoot = "/courses/cmsc848n/fall-2026/slides";
 const slideDirectory = resolve(process.cwd(), "public/courses/cmsc848n/fall-2026/slides");
 const releasedSlides = new Set<string>(
   existsSync(slideDirectory)
-    ? readdirSync(slideDirectory).filter((filename) => filename.toLowerCase().endsWith(".pptx"))
+    ? readdirSync(slideDirectory).filter((filename) => filename.toLowerCase().endsWith(".pdf"))
     : []
 );
+
+const getPublishedSlideFilename = (filename: string) => filename.replace(/\.pptx$/i, ".pdf");
 
 const courseDateFormatter = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
@@ -248,7 +250,7 @@ const references = [
     <div class="shell section">
       <div class="course-section-heading compact">
         <div><p class="eyebrow">Schedule & slides</p><h2>Thirteen modules, one cumulative argument.</h2></div>
-        <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10; each approved deck appears exactly two days before its 11:00 a.m. lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
+        <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10; each approved staged PDF appears exactly two days before its 11:00 a.m. lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
       </div>
 
       <ol class="course-schedule">
@@ -257,11 +259,11 @@ const references = [
             <div class="week-number"><span>Module</span><strong>{number}</strong></div>
             <div class="week-topic"><h3>{module}</h3><p>{outcome}</p></div>
             <div class="week-lectures">
-              {lectures.map(([date, title, file], index) => releasedSlides.has(file) ? (
-                <a class="lecture-item" href={`${slideRoot}/${file}`} download>
+              {lectures.map(([date, title, file], index) => releasedSlides.has(getPublishedSlideFilename(file)) ? (
+                <a class="lecture-item" href={`${slideRoot}/${getPublishedSlideFilename(file)}`} download>
                   <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                   <strong>{title}</strong>
-                  <small>PPTX ↓</small>
+                  <small>PDF ↓</small>
                 </a>
               ) : (
                 <div class="lecture-item is-pending">

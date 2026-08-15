@@ -20,6 +20,7 @@ const draftSlideRoot = resolve(
   String(argumentsByName.get("--drafts") || process.env.CMSC848N_SLIDE_DRAFTS || join(repoRoot, "..", "06_Slide_Drafts"))
 );
 const dryRun = argumentsByName.has("--dry-run");
+const publicationRoot = join(draftSlideRoot, ".publication");
 const now = argumentsByName.has("--now")
   ? new Date(String(argumentsByName.get("--now")))
   : new Date();
@@ -56,7 +57,8 @@ const lecturePattern = /\[\s*"(\d{4}-\d{2}-\d{2})"\s*,\s*"(?:[^"\\]|\\.)*"\s*,\s
 const schedule = Array.from(source.matchAll(lecturePattern), (match) => ({
   lectureDate: match[1],
   releaseDate: subtractCalendarDays(match[1], 2),
-  filename: match[2]
+  filename: match[2],
+  publicFilename: match[2].replace(/\.pptx$/i, ".pdf")
 }));
 
 if (schedule.length === 0) {
@@ -85,7 +87,7 @@ for (const entry of schedule) {
     continue;
   }
 
-  const destination = join(publicSlideRoot, entry.filename);
+  const destination = join(publicSlideRoot, entry.publicFilename);
   if (existsSync(destination)) {
     alreadyPublished.push(entry);
     continue;
@@ -93,7 +95,13 @@ for (const entry of schedule) {
 
   const draft = join(draftSlideRoot, entry.filename);
   if (!existsSync(draft)) {
-    missingDue.push(entry);
+    missingDue.push({ ...entry, reason: "The source PPTX is missing." });
+    continue;
+  }
+
+  const stagedPdf = join(publicationRoot, entry.publicFilename);
+  if (!existsSync(stagedPdf) || readFileSync(stagedPdf).subarray(0, 5).toString("ascii") !== "%PDF-") {
+    missingDue.push({ ...entry, reason: "The staged build PDF is missing or invalid." });
     continue;
   }
 
@@ -111,8 +119,12 @@ for (const entry of schedule) {
     continue;
   }
 
-  if (receipt.version !== 1 || receipt.filename !== entry.filename) {
-    blockedValidation.push({ ...entry, reason: "The validation receipt does not match this deck." });
+  if (
+    receipt.version !== 2 ||
+    receipt.filename !== entry.filename ||
+    receipt.publicFilename !== entry.publicFilename
+  ) {
+    blockedValidation.push({ ...entry, reason: "The validation receipt does not match this deck and staged PDF." });
     continue;
   }
 
@@ -121,14 +133,27 @@ for (const entry of schedule) {
     continue;
   }
 
-  if (receipt.sha256 !== getSha256(draft)) {
+  if (
+    !Number.isInteger(receipt.sourceSlideCount) || receipt.sourceSlideCount < 1 ||
+    !Number.isInteger(receipt.stagedPdfPageCount) || receipt.stagedPdfPageCount < receipt.sourceSlideCount ||
+    receipt.stagedPdfPageCount !== receipt.expectedBuildPageCount
+  ) {
+    blockedValidation.push({ ...entry, reason: "The validation receipt does not prove complete PowerPoint build coverage." });
+    continue;
+  }
+
+  if (receipt.sourceSha256 !== getSha256(draft)) {
     blockedValidation.push({ ...entry, reason: "The deck changed after validation and must be reviewed again." });
+    continue;
+  }
+  if (receipt.stagedPdfSha256 !== getSha256(stagedPdf)) {
+    blockedValidation.push({ ...entry, reason: "The staged build PDF changed after validation and must be reviewed again." });
     continue;
   }
 
   if (!dryRun) {
     mkdirSync(publicSlideRoot, { recursive: true });
-    copyFileSync(draft, destination);
+    copyFileSync(stagedPdf, destination);
   }
   published.push(entry);
 }

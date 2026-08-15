@@ -20,6 +20,7 @@ const draftSlideRoot = resolve(
   String(argumentsByName.get("--drafts") || process.env.CMSC848N_SLIDE_DRAFTS || join(repoRoot, "..", "06_Slide_Drafts"))
 );
 const validationRoot = join(draftSlideRoot, ".validation");
+const publicationRoot = join(draftSlideRoot, ".publication");
 const now = argumentsByName.has("--now")
   ? new Date(String(argumentsByName.get("--now")))
   : new Date();
@@ -46,6 +47,12 @@ const subtractCalendarDays = (date, days) => {
 };
 
 const getSha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
+const getPublishedFilename = (filename) => filename.replace(/\.pptx$/i, ".pdf");
+const isPdf = (path) => readFileSync(path).subarray(0, 5).toString("ascii") === "%PDF-";
+const hasBuildCoverage = (receipt) =>
+  Number.isInteger(receipt.sourceSlideCount) && receipt.sourceSlideCount > 0 &&
+  Number.isInteger(receipt.stagedPdfPageCount) && receipt.stagedPdfPageCount >= receipt.sourceSlideCount &&
+  receipt.stagedPdfPageCount === receipt.expectedBuildPageCount;
 const source = readFileSync(coursePagePath, "utf8");
 const lecturePattern = /\[\s*"(\d{4}-\d{2}-\d{2})"\s*,\s*"(?:[^"\\]|\\.)*"\s*,\s*"([^"\n]+\.pptx)"\s*\]/g;
 const schedule = Array.from(source.matchAll(lecturePattern), (match) => ({
@@ -74,34 +81,83 @@ if (action === "check") {
 
   for (const entry of dueForValidation) {
     const deckPath = join(draftSlideRoot, entry.filename);
+    const publicFilename = getPublishedFilename(entry.filename);
+    const stagedPdfPath = join(publicationRoot, publicFilename);
     if (!existsSync(deckPath)) {
       missingDrafts.push(entry);
       continue;
     }
 
-    const sha256 = getSha256(deckPath);
+    const sourceSha256 = getSha256(deckPath);
+    const stagedPdfSha256 = existsSync(stagedPdfPath) && isPdf(stagedPdfPath)
+      ? getSha256(stagedPdfPath)
+      : null;
     const receiptPath = join(validationRoot, `${entry.filename}.json`);
     if (!existsSync(receiptPath)) {
-      needsValidation.push({ ...entry, deckPath, sha256, reason: "No validation receipt exists." });
+      needsValidation.push({
+        ...entry,
+        publicFilename,
+        deckPath,
+        stagedPdfPath,
+        sourceSha256,
+        stagedPdfSha256,
+        reason: stagedPdfSha256
+          ? "No validation receipt exists."
+          : "The staged build PDF is missing or invalid."
+      });
       continue;
     }
 
     try {
       const receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
-      if (receipt.status === "pass" && receipt.sha256 === sha256) {
-        alreadyValidated.push({ ...entry, deckPath, sha256, receiptPath });
+      if (
+        receipt.version === 2 &&
+        receipt.status === "pass" &&
+        receipt.sourceSha256 === sourceSha256 &&
+        stagedPdfSha256 &&
+        receipt.stagedPdfSha256 === stagedPdfSha256 &&
+        hasBuildCoverage(receipt)
+      ) {
+        alreadyValidated.push({
+          ...entry,
+          publicFilename,
+          deckPath,
+          stagedPdfPath,
+          sourceSha256,
+          stagedPdfSha256,
+          receiptPath
+        });
       } else {
         needsValidation.push({
           ...entry,
+          publicFilename,
           deckPath,
-          sha256,
-          reason: receipt.sha256 === sha256
-            ? "The latest validation did not pass."
-            : "The deck changed after its latest validation."
+          stagedPdfPath,
+          sourceSha256,
+          stagedPdfSha256,
+          reason: !stagedPdfSha256
+            ? "The staged build PDF is missing or invalid."
+            : receipt.version !== 2
+              ? "The validation receipt predates staged-PDF validation."
+              : receipt.status !== "pass"
+                ? "The latest validation did not pass."
+                : receipt.sourceSha256 !== sourceSha256
+                  ? "The deck changed after its latest validation."
+                  : receipt.stagedPdfSha256 !== stagedPdfSha256
+                    ? "The staged build PDF changed after its latest validation."
+                    : "The validation receipt does not prove complete PowerPoint build coverage."
         });
       }
     } catch {
-      needsValidation.push({ ...entry, deckPath, sha256, reason: "The validation receipt is unreadable." });
+      needsValidation.push({
+        ...entry,
+        publicFilename,
+        deckPath,
+        stagedPdfPath,
+        sourceSha256,
+        stagedPdfSha256,
+        reason: "The validation receipt is unreadable."
+      });
     }
   }
 
@@ -110,6 +166,7 @@ if (action === "check") {
     newYorkDate: date,
     draftSlideRoot,
     validationRoot,
+    publicationRoot,
     needsValidation,
     alreadyValidated,
     missingDrafts
@@ -117,6 +174,13 @@ if (action === "check") {
 } else if (action === "record") {
   const filename = String(argumentsByName.get("--filename") || "");
   const status = String(argumentsByName.get("--status") || "");
+  const getPositiveIntegerArgument = (name) => {
+    const value = Number(argumentsByName.get(name));
+    return Number.isInteger(value) && value > 0 ? value : null;
+  };
+  const sourceSlideCount = getPositiveIntegerArgument("--source-slides");
+  const stagedPdfPageCount = getPositiveIntegerArgument("--build-pages");
+  const expectedBuildPageCount = getPositiveIntegerArgument("--expected-build-pages");
   const reportPath = argumentsByName.has("--report")
     ? resolve(String(argumentsByName.get("--report")))
     : "";
@@ -135,6 +199,21 @@ if (action === "check") {
   if (!existsSync(deckPath)) {
     throw new Error(`The staged deck does not exist: ${deckPath}`);
   }
+  const publicFilename = getPublishedFilename(filename);
+  const stagedPdfPath = join(publicationRoot, publicFilename);
+  const stagedPdfIsValid = existsSync(stagedPdfPath) && isPdf(stagedPdfPath);
+  if (status === "pass" && !stagedPdfIsValid) {
+    throw new Error(`The staged build PDF does not exist or is invalid: ${stagedPdfPath}`);
+  }
+  if (status === "pass" && (!sourceSlideCount || !stagedPdfPageCount || !expectedBuildPageCount)) {
+    throw new Error("Passing validation requires positive --source-slides, --build-pages, and --expected-build-pages counts.");
+  }
+  if (status === "pass" && stagedPdfPageCount !== expectedBuildPageCount) {
+    throw new Error("The staged PDF page count does not match PowerPoint's total PrintSteps count.");
+  }
+  if (status === "pass" && stagedPdfPageCount < sourceSlideCount) {
+    throw new Error("The staged PDF has fewer pages than the source deck has slides.");
+  }
 
   const report = readFileSync(reportPath, "utf8");
   if (report.length > 100_000) {
@@ -142,9 +221,14 @@ if (action === "check") {
   }
 
   const receipt = {
-    version: 1,
+    version: 2,
     filename,
-    sha256: getSha256(deckPath),
+    publicFilename,
+    sourceSha256: getSha256(deckPath),
+    stagedPdfSha256: stagedPdfIsValid ? getSha256(stagedPdfPath) : null,
+    sourceSlideCount,
+    stagedPdfPageCount,
+    expectedBuildPageCount,
     status,
     validatedAt: now.toISOString(),
     report

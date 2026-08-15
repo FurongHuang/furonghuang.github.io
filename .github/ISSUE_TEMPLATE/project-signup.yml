@@ -1,25 +1,26 @@
-name: CMSC 848N Fall 2026 — project signup
-description: Propose a project, register a team, or find collaborators for CMSC 848N.
-title: "[CMSC 848N · Fall 2026] "
+name: CMSC 848N Fall 2026 — project selection
+description: Choose an instructor-designed project, personalize it, and find collaborators.
+title: "[CMSC 848N · Fall 2026 project] "
 labels: []
 body:
   - type: markdown
     attributes:
       value: |
-        Use this public form to share a project direction and form a team. Do not include student IDs, grades, private contact information, or other sensitive data.
+        Use this public form only after the course project catalog is published. Choose a listed project, explain how you want to personalize it, and form a team. Do not include student IDs, grades, private contact information, or other sensitive data.
   - type: input
-    id: project-name
+    id: project-choice
     attributes:
-      label: Working project title
-      placeholder: A concise, descriptive title
+      label: Project choice
+      description: Copy the exact project title from the course catalog.
+      placeholder: Project title from the catalog
     validations:
       required: true
   - type: textarea
-    id: idea
+    id: personalization
     attributes:
-      label: Research question and idea
-      description: What agent-system claim do you want to test, and why does it matter?
-      placeholder: We want to test whether…
+      label: Personalization plan
+      description: How would you tailor the research question, scope, system design, or evaluation?
+      placeholder: I want to personalize this project by…
     validations:
       required: true
   - type: dropdown
@@ -63,9 +64,11 @@ body:
     validations:
       required: true
   - type: checkboxes
-    id: public
+    id: readiness
     attributes:
-      label: Public-post check
+      label: Submission checks
       options:
+        - label: The course project catalog has been published, and I selected a project from it.
+          required: true
         - label: I have not included private student information or other sensitive data.
           required: true

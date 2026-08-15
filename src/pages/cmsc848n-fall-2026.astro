@@ -136,7 +136,7 @@ const assessments = [
 ];
 
 const milestones = [
-  ["Weeks 1–2", "Form teams", "Choose an area and establish a shared project workspace."],
+  ["Weeks 1–2", "Choose and form teams", "Select a project from the course catalog, personalize its direction, and establish a shared workspace."],
   ["Week 4", "Proposal", "Submit the task contract, benchmark or environment, and one-page plan."],
   ["Week 6", "Baseline", "Deliver a runnable baseline and the first reproducible evidence bundle."],
   ["Week 8", "Midterm package", "Report preliminary results and a concrete failure taxonomy."],
@@ -155,7 +155,6 @@ const references = [
   ["SWE-bench", "Jimenez et al. · 2024", "https://arxiv.org/abs/2310.06770"]
 ];
 
-const signupUrl = "https://github.com/FurongHuang/furonghuang.github.io/issues/new?template=project-signup.yml";
 ---
 
 <BaseLayout
@@ -181,7 +180,7 @@ const signupUrl = "https://github.com/FurongHuang/furonghuang.github.io/issues/n
       <p class="eyebrow">At a glance</p>
       <div><strong>13</strong><span>weeks</span></div>
       <div><strong>26</strong><span>lectures</span></div>
-      <div><strong>01</strong><span>research project</span></div>
+      <div><strong>01</strong><span>personalized research project</span></div>
       <p>Meeting time, room, and office hours will be posted before the semester begins.</p>
     </aside>
   </section>
@@ -213,7 +212,7 @@ const signupUrl = "https://github.com/FurongHuang/furonghuang.github.io/issues/n
       <article><span>Instructor</span><strong>Prof. Furong Huang</strong><p>Computer Science · UMD</p></article>
       <article><span>Format</span><strong>Two lectures per week</strong><p>75 minutes each · time and room TBA</p></article>
       <article><span>Prerequisites</span><strong>ML + deep learning</strong><p>Probability, optimization, linear algebra, and Python</p></article>
-      <article><span>Coursework</span><strong>Evidence over demos</strong><p>Diagnosis, implementation, and a research project</p></article>
+      <article><span>Coursework</span><strong>Evidence over demos</strong><p>Diagnosis, implementation, and one personalized research project</p></article>
     </div>
   </section>
 
@@ -252,25 +251,26 @@ const signupUrl = "https://github.com/FurongHuang/furonghuang.github.io/issues/n
 
   <section id="projects" class="shell section projects-section">
     <div class="course-section-heading">
-      <div><p class="eyebrow">Research project</p><h2>Make one defensible system claim.</h2></div>
+      <div><p class="eyebrow">Personalized research project</p><h2>Choose one project. Make it your own.</h2></div>
       <div>
-        <p>Teams will build, evaluate, and document an agent system. Every project reports task success, end-to-end cost, latency, and reliability across repeated runs, with at least one ablation and one structured failure analysis.</p>
+        <p>Professor Huang will publish a curated catalog of research projects. Students will choose one, then personalize its question, scope, system design, and evidence plan. Every project reports task success, end-to-end cost, latency, and reliability across repeated runs, with at least one ablation and one structured failure analysis.</p>
       </div>
     </div>
 
     <div class="project-signup-callout">
       <div>
-        <p class="eyebrow">Project board</p>
-        <h3>Have a team—or looking for one?</h3>
-        <p>Open a GitHub signup with your area, short idea, current team, and whether you welcome collaborators. Do not include student IDs or other private information.</p>
+        <p class="eyebrow">Project catalog</p>
+        <h3>A focused menu, with room to explore.</h3>
+        <p>The catalog will offer several concrete projects across the course themes. Once it opens, students can rank their choices, explain how they want to personalize the work, and find collaborators. Do not include student IDs or other private information.</p>
       </div>
       <div class="project-signup-actions">
-        <a class="button course-button-light" href={signupUrl}>Create project signup ↗</a>
-        <a href="https://github.com/FurongHuang/furonghuang.github.io/issues?q=is%3Aissue+CMSC+848N+Fall+2026">Browse project board ↗</a>
+        <span class="button course-button-light is-disabled">Catalog coming soon</span>
+        <span>Signup opens with the catalog</span>
       </div>
     </div>
 
-    <div class="project-directions" aria-label="Suggested project directions">
+    <p class="eyebrow">Project families</p>
+    <div class="project-directions" aria-label="Planned project families">
       <article><span>01</span><h3>Reasoning & control</h3><p>Search, verifiers, stopping, recovery, and test-time compute.</p></article>
       <article><span>02</span><h3>Memory & planning</h3><p>State representation, long-horizon control, and context engineering.</p></article>
       <article><span>03</span><h3>Web & code agents</h3><p>Grounded tool use, software repair, security, and evaluation.</p></article>
@@ -339,7 +339,7 @@ const signupUrl = "https://github.com/FurongHuang/furonghuang.github.io/issues/n
     <p>Our job is to understand the system in between—and demand evidence for what it can safely do.</p>
     <div class="button-row">
       <a class="button" href="#schedule">Download slides</a>
-      <a class="button secondary" href={signupUrl}>Sign up a project ↗</a>
+      <a class="button secondary" href="#projects">View project plan ↑</a>
     </div>
   </section>
 </BaseLayout>
@@ -496,8 +496,9 @@ const signupUrl = "https://github.com/FurongHuang/furonghuang.github.io/issues/n
   .project-signup-callout h3 { margin: 0; font-family: "Newsreader", serif; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 0.98; }
   .project-signup-callout p:not(.eyebrow) { max-width: 700px; color: #c6d5df; }
   .project-signup-actions { display: grid; gap: 1rem; justify-items: center; min-width: 220px; }
-  .project-signup-actions > a:last-child { color: #8dded8; font-size: 0.75rem; font-weight: 800; }
+  .project-signup-actions > span:last-child { color: #8dded8; font-size: 0.75rem; font-weight: 800; }
   .course-button-light { border-color: white; color: var(--ink); background: white; }
+  .course-button-light.is-disabled { cursor: default; opacity: 0.92; }
 
   .project-directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
   .project-directions article { min-height: 210px; padding: 1.6rem; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }

@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "sync": "node scripts/sync-content.mjs",
     "sync:thumbnails": "python3 scripts/sync_publication_thumbnails.py",
+    "slides:polish": "node scripts/manage-slide-validation.mjs --action=check-polish",
     "slides:publish": "node scripts/publish-due-slides.mjs",
     "slides:validate": "node scripts/manage-slide-validation.mjs",
     "check": "astro check",

@@ -20,6 +20,7 @@ const draftSlideRoot = resolve(
   String(argumentsByName.get("--drafts") || process.env.CMSC848N_SLIDE_DRAFTS || join(repoRoot, "..", "06_Slide_Drafts"))
 );
 const dryRun = argumentsByName.has("--dry-run");
+const polishedRoot = join(draftSlideRoot, ".polished");
 const publicationRoot = join(draftSlideRoot, ".publication");
 const now = argumentsByName.has("--now")
   ? new Date(String(argumentsByName.get("--now")))
@@ -70,6 +71,7 @@ const isDue = ({ releaseDate }) =>
   clock.date > releaseDate || (clock.date === releaseDate && clock.minutes >= 11 * 60);
 
 const published = [];
+const updated = [];
 const alreadyPublished = [];
 const missingDue = [];
 const blockedValidation = [];
@@ -87,15 +89,15 @@ for (const entry of schedule) {
     continue;
   }
 
-  const destination = join(publicSlideRoot, entry.publicFilename);
-  if (existsSync(destination)) {
-    alreadyPublished.push(entry);
+  const sourceDeck = join(draftSlideRoot, entry.filename);
+  if (!existsSync(sourceDeck)) {
+    missingDue.push({ ...entry, reason: "The source PPTX is missing." });
     continue;
   }
 
-  const draft = join(draftSlideRoot, entry.filename);
-  if (!existsSync(draft)) {
-    missingDue.push({ ...entry, reason: "The source PPTX is missing." });
+  const polishedDeck = join(polishedRoot, entry.filename);
+  if (!existsSync(polishedDeck)) {
+    missingDue.push({ ...entry, reason: "The polished private PPTX derivative is missing." });
     continue;
   }
 
@@ -120,7 +122,7 @@ for (const entry of schedule) {
   }
 
   if (
-    receipt.version !== 2 ||
+    receipt.version !== 3 ||
     receipt.filename !== entry.filename ||
     receipt.publicFilename !== entry.publicFilename
   ) {
@@ -142,8 +144,12 @@ for (const entry of schedule) {
     continue;
   }
 
-  if (receipt.sourceSha256 !== getSha256(draft)) {
-    blockedValidation.push({ ...entry, reason: "The deck changed after validation and must be reviewed again." });
+  if (receipt.sourceSha256 !== getSha256(sourceDeck)) {
+    blockedValidation.push({ ...entry, reason: "The source deck changed after validation and must be polished and reviewed again." });
+    continue;
+  }
+  if (receipt.polishedSha256 !== getSha256(polishedDeck)) {
+    blockedValidation.push({ ...entry, reason: "The polished derivative changed after validation and must be reviewed again." });
     continue;
   }
   if (receipt.stagedPdfSha256 !== getSha256(stagedPdf)) {
@@ -151,11 +157,22 @@ for (const entry of schedule) {
     continue;
   }
 
+  const destination = join(publicSlideRoot, entry.publicFilename);
+  if (existsSync(destination) && getSha256(destination) === getSha256(stagedPdf)) {
+    alreadyPublished.push(entry);
+    continue;
+  }
+
+  const replacesExisting = existsSync(destination);
   if (!dryRun) {
     mkdirSync(publicSlideRoot, { recursive: true });
     copyFileSync(stagedPdf, destination);
   }
-  published.push(entry);
+  if (replacesExisting) {
+    updated.push(entry);
+  } else {
+    published.push(entry);
+  }
 }
 
 const result = {
@@ -164,6 +181,7 @@ const result = {
   draftSlideRoot,
   dryRun,
   published,
+  updated,
   alreadyPublished,
   missingDue,
   blockedValidation,

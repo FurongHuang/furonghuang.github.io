@@ -62,6 +62,15 @@ The non-publication content is deliberately centralized:
 - `public/assets/people/` and `public/assets/projects/` — local portraits and
   project visuals
 
+### Fall 2026 · CMSC 848N
+
+The course hub lives at `src/pages/cmsc848n-fall-2026.astro`. Its weekly
+schedule is a single data list at the top of that file. Keep decks private until
+two days before their lecture. At release time, copy only the approved deck to
+`public/courses/cmsc848n/fall-2026/slides/` and add its exact filename to the
+`releasedSlides` set in the course page. Project signups use
+`.github/ISSUE_TEMPLATE/project-signup.yml`.
+
 The homepage uses `public/assets/bodyshot.webp`; the People page uses
 `public/assets/headshot.jpg`.
 

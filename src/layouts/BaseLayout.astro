@@ -8,6 +8,7 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   noindex?: boolean;
 }
 
@@ -15,6 +16,7 @@ const {
   title = "Furong Huang — Trustworthy Foundation Models",
   description = "Furong Huang leads research on world models, reasoning control, and trustworthy self-improvement for foundation models.",
   image = "/assets/bodyshot.webp",
+  imageAlt = "Furong Huang",
   noindex = false
 } = Astro.props;
 
@@ -96,7 +98,7 @@ const isPrimaryActive = (href: string) => {
     <meta property="og:description" content={description} />
     {!noindex && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:image" content={socialImageUrl} />
-    <meta property="og:image:alt" content="Furong Huang" />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

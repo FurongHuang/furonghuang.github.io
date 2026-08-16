@@ -1818,6 +1818,8 @@ button.button { cursor: pointer; }
 .person-card h3 a span { margin-left: 0.25rem; color: var(--ink-soft); font-family: "DM Sans", sans-serif; font-size: 0.7rem; }
 .person-card h3 a:hover { color: var(--teal); }
 .person-card p { margin: 0; color: var(--ink-soft); font-size: 0.72rem; line-height: 1.4; }
+.person-card .person-focus { margin-top: 0.4rem; color: var(--ink); }
+.person-focus span { display: block; color: var(--teal); font-size: 0.63rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .person-location { display: block; margin-top: 0.35rem; color: var(--teal); font-size: 0.68rem; font-weight: 700; }
 .person-period { display: block; margin-top: 0.35rem; color: var(--ink-soft); font-size: 0.68rem; }
 .person-market {

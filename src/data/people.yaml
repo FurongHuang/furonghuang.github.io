@@ -4,6 +4,7 @@
 postdocs:
   - name: Haoran Chen
     role: Postdoctoral associate · Computer Science
+    researchFocus: Computer vision · Continual learning · Transfer learning
     period: 2026–present
     location: IRB 4226 · Seat 1
     href: https://haoranchen.github.io/
@@ -13,6 +14,7 @@ postdocs:
 current_phd_students:
   - name: Andrew Mendez
     role: Ph.D. advisee · Computer Science
+    researchFocus: Self-improving AI systems
     period: 2025–present
     location: IRB 2112 · Seat 27
     href: https://www.linkedin.com/in/interactivetech
@@ -20,36 +22,42 @@ current_phd_students:
     imagePosition: 50% 32%
   - name: Byeonghyun Pak
     role: Ph.D. advisee · Computer Science
+    researchFocus: Robotics · Multimodal foundation models
     period: 2026–present
     href: https://byeonghyunpak.github.io/
     image: /assets/people/byeonghyun-pak.webp
     imagePosition: 50% 18%
   - name: Drew Gjerstad
     role: Ph.D. advisee · Computer Science
+    researchFocus: Generative modeling · Bayesian optimization · Scientific machine learning
     period: 2026–present
     href: https://www.linkedin.com/in/drewgjerstad
     image: /assets/people/drew-gjerstad.jpg
     imagePosition: 50% 28%
   - name: Feijiang Han
     role: Ph.D. advisee · Computer Science
+    researchFocus: Mechanistic interpretability · World models
     period: 2026–present
     href: https://feijianghan.com/
     image: /assets/people/feijiang-han.jpg
     imagePosition: 50% 34%
   - name: Jiawei Xu
     role: Ph.D. advisee · Computer Science
+    researchFocus: Generative modeling · Scientific machine learning · ML theory
     period: 2025–present
     href: https://jimmyxu123.github.io/
     image: /assets/people/jiawei-xu.jpg
     imagePosition: 50% 32%
   - name: Lingzhi Yuan
     role: Ph.D. advisee · Computer Science
+    researchFocus: Trustworthy ML · LLM and agent safety · Harness optimization
     period: 2025–present
-    href: https://www.linkedin.com/in/lingzhiyuan1
+    href: https://lingzhiyxp.github.io/
     image: /assets/people/lingzhi-yuan.jpg
     imagePosition: 50% 30%
   - name: Minghui Liu
     role: Ph.D. advisee · Computer Science
+    researchFocus: LLM reasoning · Reinforcement learning · Efficient AI
     period: 2024–present
     location: IRB 2108 · Seat 13
     href: https://minghui-liu.github.io/
@@ -57,6 +65,7 @@ current_phd_students:
     imagePosition: 50% 24%
   - name: Seungjae (Jay) Lee
     role: Ph.D. advisee · Computer Science
+    researchFocus: Robot learning · World models · Data-efficient decision-making
     period: 2024–present
     location: IRB 3018 · Seat 1
     href: https://sjlee.cc/
@@ -64,30 +73,36 @@ current_phd_students:
     imagePosition: 50% 18%
   - name: Shayan Shabihi
     role: Ph.D. advisee · Computer Science
+    researchFocus: AI security · Privacy · Agentic systems
     period: 2025–present
+    location: IRB 2108 · Seat 8
     href: https://shayanshabihi.com/
     image: /assets/people/shayan-shabihi.jpg
     imagePosition: 50% 22%
   - name: Sy-Tuyen Ho
     role: Ph.D. advisee · Computer Science
+    researchFocus: Trustworthy multimodal AI · Agentic systems · Data privacy
     period: 2025–present
     href: https://hosytuyen.github.io/
     image: /assets/people/sy-tuyen-ho.jpg
     imagePosition: 50% 30%
   - name: Weize Liu
     role: Ph.D. advisee · Computer Science
+    researchFocus: LLM reasoning · Post-training · Data synthesis
     period: 2025–present
     href: https://attention-is-all-i-need.github.io/
     image: /assets/people/weize-liu.jpg
     imagePosition: 50% 28%
   - name: Yijun Liang
     role: Ph.D. advisee · Computer Science
+    researchFocus: Multimodal foundation models
     period: 2026–present
     href: https://www.linkedin.com/in/joanna-yijunliang/
     image: /assets/people/yijun-liang.jpg
     imagePosition: 50% 42%
   - name: Yoonkyo Jung
     role: Ph.D. advisee · Computer Science
+    researchFocus: Robot foundation models · Scalable robot learning · World models
     period: 2025–present
     location: IRB 3108 · Seat 13
     href: https://yoonkyojung.com/

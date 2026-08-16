@@ -27,6 +27,7 @@ const initials = person.name
   <div>
     <h3>{person.href ? <a href={person.href} target="_blank" rel="noopener">{person.name}<span>↗</span></a> : person.name}</h3>
     <p>{person.role}</p>
+    {person.researchFocus && <p class="person-focus"><span>Research focus</span>{person.researchFocus}</p>}
     {person.location && <span class="person-location">{person.location}</span>}
     {person.period && <span class="person-period">{person.period}</span>}
     {person.onMarket && <span class="person-market">On the market</span>}

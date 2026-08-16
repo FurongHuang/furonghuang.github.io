@@ -4,6 +4,7 @@ import peopleYaml from "./people.yaml?raw";
 export interface Person {
   name: string;
   role: string;
+  researchFocus?: string;
   period?: string;
   location?: string;
   destination?: string;
@@ -14,7 +15,7 @@ export interface Person {
   onMarket?: boolean;
 }
 
-const optionalFields = ["period", "location", "destination", "href", "image", "imagePosition"] as const;
+const optionalFields = ["researchFocus", "period", "location", "destination", "href", "image", "imagePosition"] as const;
 
 function validateGroup(value: unknown, group: string): Person[] {
   if (!Array.isArray(value)) throw new Error(`people.yaml: ${group} must be a list`);

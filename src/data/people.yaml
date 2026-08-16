@@ -42,7 +42,7 @@ current_phd_students:
     image: /assets/people/feijiang-han.jpg
     imagePosition: 50% 34%
   - name: Jiawei Xu
-    role: Ph.D. advisee · Computer Science
+    role: Ph.D. advisee · AMSC
     researchFocus: Generative modeling · Scientific machine learning · ML theory
     period: 2025–present
     href: https://jimmyxu123.github.io/
@@ -101,7 +101,7 @@ current_phd_students:
     image: /assets/people/yijun-liang.jpg
     imagePosition: 50% 42%
   - name: Yoonkyo Jung
-    role: Ph.D. advisee · Computer Science
+    role: Ph.D. advisee · Electrical & Computer Engineering
     researchFocus: Robot foundation models · Scalable robot learning · World models
     period: 2025–present
     location: IRB 3108 · Seat 13

@@ -148,21 +148,26 @@ const modules = [
 ];
 
 const assessments = [
-  ["10%", "Trace diagnosis", "Short in-class analysis of agent behavior and failure."],
-  ["20%", "Implementation labs", "Minimal agents, tool boundaries, evaluation, and red-teaming."],
-  ["30%", "Midterm package", "Literature map, runnable baseline, results, and evaluation plan."],
-  ["20%", "Final presentation", "A concise claim–evidence narrative with limitations."],
-  ["20%", "Final artifacts", "Paper-style report, code, traces, ablations, and safety analysis."]
+  ["10%", "In-class quizzes", "Impromptu short quizzes during lectures.", "Sep 1–Dec 3"],
+  ["20%", "Homework", "Three assignments covering the course material.", "Sep 30 · Oct 30 · Nov 30"],
+  ["30%", "Midterm report", "Project progress, a literature review, and baseline results.", "Oct 15"],
+  ["20%", "Final presentation", "A concise presentation of the project, results, and limitations.", "Dec 8 & 10"],
+  ["20%", "Final report", "A paper-style account of the final project and its evidence.", "Dec 11"]
+];
+
+const assessmentRubrics = [
+  ["Reports", ["Problem statement clarity", "Depth of literature review", "Specific and credible research plan", "Writing quality", "Sound results and analysis in the final report"]],
+  ["Presentations", ["Time management", "Clear and legible slides", "Coherent oral communication", "Novelty of the proposed idea", "Comprehensive models, data, baselines, and ablations"]]
 ];
 
 const milestones = [
-  ["Weeks 1–2", "Choose and form teams", "Select a project from the course catalog, personalize its direction, and establish a shared workspace."],
+  ["Weeks 1–2", "Rank projects and form teams", "Submit project preferences, propose one personalization, and establish a shared workspace with a team of up to three students."],
   ["Week 4", "Proposal", "Submit the task contract, benchmark or environment, and one-page plan."],
   ["Week 6", "Baseline", "Deliver a runnable baseline and the first reproducible evidence bundle."],
-  ["Week 8", "Midterm package", "Report preliminary results and a concrete failure taxonomy."],
+  ["Week 8", "Midterm report", "Report preliminary results and a concrete failure taxonomy."],
   ["Week 10", "Freeze evaluation", "Lock held-out tasks, metrics, budgets, and contamination controls."],
   ["Week 12", "Artifact audit", "Peer review, regression check, security test, and release rehearsal."],
-  ["Dec 8 & 10", "Present and release", "Final presentations, paper-style report, and runnable artifacts."]
+  ["Dec 8 & 10", "Present and submit", "Deliver the final presentation, paper-style report, runnable code, and supporting evidence."]
 ];
 
 const projectBriefFields = [
@@ -176,13 +181,26 @@ const projectBriefFields = [
 ];
 
 const references = [
-  ["Reinforcement Learning: An Introduction", "Sutton & Barto · 2018", "https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf"],
-  ["A Survey on Large Language Model Based Autonomous Agents", "Wang et al. · 2024", "https://arxiv.org/abs/2308.11432"],
-  ["Direct Preference Optimization", "Rafailov et al. · 2023", "https://arxiv.org/abs/2305.18290"],
-  ["ReAct: Synergizing Reasoning and Acting", "Yao et al. · 2023", "https://arxiv.org/abs/2210.03629"],
-  ["Toolformer", "Schick et al. · 2023", "https://arxiv.org/abs/2302.04761"],
-  ["WebArena", "Zhou et al. · 2024", "https://arxiv.org/abs/2307.13854"],
-  ["SWE-bench", "Jimenez et al. · 2024", "https://arxiv.org/abs/2310.06770"]
+  ["Reinforcement Learning: An Introduction", "Sutton & Barto · 2018", "https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf", "Core", "Module 01"],
+  ["A Survey on Large Language Model Based Autonomous Agents", "Wang et al. · 2024", "https://arxiv.org/abs/2308.11432", "Further", "Module 01"],
+  ["Proximal Policy Optimization Algorithms", "Schulman et al. · 2017", "https://arxiv.org/abs/1707.06347", "Further", "Modules 01–02"],
+  ["Training Language Models to Follow Instructions with Human Feedback", "Ouyang et al. · 2022", "https://arxiv.org/abs/2203.02155", "Core", "Module 02"],
+  ["Direct Preference Optimization", "Rafailov et al. · 2023", "https://arxiv.org/abs/2305.18290", "Core", "Module 02"],
+  ["Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", "Wei et al. · 2022", "https://arxiv.org/abs/2201.11903", "Further", "Module 03"],
+  ["Tree of Thoughts: Deliberate Problem Solving with Large Language Models", "Yao et al. · 2023", "https://arxiv.org/abs/2305.10601", "Further", "Module 03"],
+  ["ReAct: Synergizing Reasoning and Acting", "Yao et al. · 2023", "https://arxiv.org/abs/2210.03629", "Core", "Modules 03 & 05"],
+  ["Generative Agents: Interactive Simulacra of Human Behavior", "Park et al. · 2023", "https://arxiv.org/abs/2304.03442", "Core", "Module 04"],
+  ["Toolformer", "Schick et al. · 2023", "https://arxiv.org/abs/2302.04761", "Core", "Module 05"],
+  ["AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation", "Wu et al. · 2023", "https://arxiv.org/abs/2308.08155", "Core", "Module 06"],
+  ["WebArena", "Zhou et al. · 2024", "https://arxiv.org/abs/2307.13854", "Core", "Module 07"],
+  ["AgentDojo: Evaluating Prompt Injection Attacks and Defenses for LLM Agents", "Debenedetti et al. · 2024", "https://arxiv.org/abs/2406.13352", "Core", "Modules 07 & 11"],
+  ["SWE-bench", "Jimenez et al. · 2024", "https://arxiv.org/abs/2310.06770", "Further", "Module 08"],
+  ["SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering", "Yang et al. · 2024", "https://arxiv.org/abs/2405.15793", "Core", "Module 08"],
+  ["The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery", "Lu et al. · 2024", "https://arxiv.org/abs/2408.06292", "Core", "Module 09"],
+  ["Mastering Diverse Domains through World Models", "Hafner et al. · 2023", "https://arxiv.org/abs/2301.04104", "Further", "Module 10"],
+  ["OpenVLA: An Open-Source Vision-Language-Action Model", "Kim et al. · 2024", "https://arxiv.org/abs/2406.09246", "Core", "Module 10"],
+  ["Reflexion: Language Agents with Verbal Reinforcement Learning", "Shinn et al. · 2023", "https://arxiv.org/abs/2303.11366", "Core", "Module 12"],
+  ["AgentBench: Evaluating LLMs as Agents", "Liu et al. · 2023", "https://arxiv.org/abs/2308.03688", "Core", "Module 13"]
 ];
 
 ---
@@ -202,7 +220,7 @@ const references = [
       </p>
       <div class="button-row">
         <a class="button" href="#schedule">View schedule <span aria-hidden="true">↓</span></a>
-        <a class="button secondary" href="#projects">Join a project <span aria-hidden="true">→</span></a>
+        <a class="button secondary" href="#projects">Explore projects <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -218,7 +236,7 @@ const references = [
   <nav class="shell course-quick-links" aria-label="Course shortcuts">
     <a href="#overview"><span>01</span> Overview</a>
     <a href="#schedule"><span>02</span> Schedule & slides</a>
-    <a href="#projects"><span>03</span> Project signup</a>
+    <a href="#projects"><span>03</span> Projects</a>
     <a href="#policies"><span>04</span> Policies</a>
   </nav>
 
@@ -239,17 +257,19 @@ const references = [
     </div>
 
     <div class="course-facts">
-      <article><span>Instructor</span><strong>Prof. Furong Huang</strong><p>Computer Science · UMD</p></article>
+      <article><span>Instructor</span><strong>Prof. Furong Huang</strong><p>IRB 4124 · furongh@umd.edu</p></article>
       <article><span>Meetings</span><strong>Tue & Thu · 11:00–12:15</strong><p>CSI 3117 · America/New_York</p></article>
       <article><span>Prerequisites</span><strong>ML + deep learning</strong><p>Probability, optimization, linear algebra, and Python</p></article>
       <article><span>Coursework</span><strong>Evidence over demos</strong><p>Diagnosis, implementation, and one personalized research project</p></article>
+      <article><span>Expected workload</span><strong>8–12 hours per week</strong><p>Readings, homework, experiments, and team research</p></article>
+      <article><span>Communication</span><strong>ELMS + course Slack</strong><p>Links, TAs, and office hours will be announced before classes begin</p></article>
     </div>
   </section>
 
   <section id="schedule" class="course-band">
     <div class="shell section">
       <div class="course-section-heading compact">
-        <div><p class="eyebrow">Schedule & slides</p><h2>Thirteen modules, one cumulative argument.</h2></div>
+        <div><p class="eyebrow">Schedule & slides</p><h2>Thirteen modules.</h2></div>
         <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10; lecture slides appear exactly two days before each 11:00 a.m. lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
       </div>
 
@@ -300,7 +320,7 @@ const references = [
     >
       <div>
         <p class="eyebrow">Protected project catalogue</p>
-        <h3>Unlock the Fall 2026 research briefs.</h3>
+        <h3>Unlock the research projects.</h3>
         <p>The detailed catalogue is encrypted. Enter the password shared by Professor Huang to review the candidate questions, technical hypotheses, evidence requirements, and starting papers.</p>
       </div>
       <form class="project-unlock-form" data-catalog-form>
@@ -323,6 +343,16 @@ const references = [
 
     <noscript><p class="catalog-noscript">JavaScript is required to decrypt the protected project catalogue.</p></noscript>
 
+    <div class="project-selection-section">
+      <p class="eyebrow">How project selection works</p>
+      <div class="project-directions selection-steps">
+        <article><span>01</span><h3>Review</h3><p>Read the protected catalogue and identify several projects that fit your preparation and interests.</p></article>
+        <article><span>02</span><h3>Rank</h3><p>Rank three choices and propose one way to personalize your preferred direction. The planned deadline is Friday, September 11 at 5:00 p.m.</p></article>
+        <article><span>03</span><h3>Form a team</h3><p>Projects are completed in teams of up to three students. You may indicate preferred teammates when submitting your rankings.</p></article>
+        <article><span>04</span><h3>Confirm</h3><p>Final assignments will balance preparation, project demand, and available compute. Submission instructions will be posted in ELMS.</p></article>
+      </div>
+    </div>
+
     <div class="protected-catalog" hidden data-catalog-shell>
       <div class="catalog-heading">
         <div><p class="eyebrow">Fall 2026 candidate catalogue</p><h3>Open a brief. Find the question you want to sharpen.</h3></div>
@@ -331,7 +361,7 @@ const references = [
       <div class="project-catalog" data-project-catalog aria-label="Fall 2026 research project candidates"></div>
     </div>
 
-    <p class="eyebrow">Every candidate will be a complete research brief</p>
+    <p class="eyebrow">What each research project description includes</p>
     <div class="project-directions" aria-label="Information included in each project candidate">
       {projectBriefFields.map(([number, title, detail]) => (
         <article><span>{number}</span><h3>{title}</h3><p>{detail}</p></article>
@@ -351,12 +381,21 @@ const references = [
   <section class="course-band assessment-band">
     <div class="shell section">
       <div class="course-section-heading compact">
-        <div><p class="eyebrow">Assessment</p><h2>Measure the work by its evidence.</h2></div>
-        <p>The final syllabus will confirm all due dates and policies. The planned weighting below anchors the course design.</p>
+        <div><p class="eyebrow">Assessment</p><h2>How your work will be assessed.</h2></div>
+        <p>The assessment structure follows the <a href="https://umd-huang-lab.github.io/cmsc848n-fall2025/syllabus.html">Fall 2025 syllabus</a>. Dates below are planned; the final Fall 2026 syllabus will confirm them, grade thresholds, and whether plus/minus grading is used.</p>
       </div>
       <div class="assessment-grid">
-        {assessments.map(([weight, title, detail]) => (
-          <article><strong>{weight}</strong><h3>{title}</h3><p>{detail}</p></article>
+        {assessments.map(([weight, title, detail, due]) => (
+          <article><strong>{weight}</strong><h3>{title}</h3><p>{detail}</p><small>{due}</small></article>
+        ))}
+      </div>
+      <div class="assessment-rubrics">
+        {assessmentRubrics.map(([title, criteria]) => (
+          <article>
+            <p class="eyebrow">Grading rubric</p>
+            <h3>{title}</h3>
+            <ul>{criteria.map((criterion) => <li>{criterion}</li>)}</ul>
+          </article>
         ))}
       </div>
     </div>
@@ -365,14 +404,14 @@ const references = [
   <section id="resources" class="shell section resources-section">
     <div class="course-section-heading compact">
       <div><p class="eyebrow">Starting references</p><h2>Read the primary work.</h2></div>
-      <p>Additional readings will be posted by week. We will distinguish peer-reviewed work, preprints, official specifications, vendor evidence, and course synthesis.</p>
+      <p>Core readings anchor the modules; further readings add context or alternative methods. Additional papers will be posted by week, with peer-reviewed work, preprints, official specifications, vendor evidence, and course synthesis clearly distinguished.</p>
     </div>
     <div class="reference-list">
-      {references.map(([title, meta, url], index) => (
+      {references.map(([title, meta, url, status, module], index) => (
         <a href={url}>
           <span>{String(index + 1).padStart(2, "0")}</span>
           <strong>{title}</strong>
-          <small>{meta}</small>
+          <small><b>{status}</b> · {module}<br />{meta}</small>
           <i aria-hidden="true">↗</i>
         </a>
       ))}
@@ -381,15 +420,20 @@ const references = [
 
   <section id="policies" class="shell section policies-section">
     <div class="course-section-heading compact">
-      <div><p class="eyebrow">Working policies</p><h2>Clear expectations, before launch.</h2></div>
-      <p>These are planning guidelines. The official Fall 2026 syllabus and University policies will supersede this page where they differ.</p>
+      <div><p class="eyebrow">Course policies</p><h2>Expectations and support.</h2></div>
+      <p>These are planning guidelines. The official Fall 2026 syllabus will supersede this page where they differ. Students are responsible for reviewing <a href="https://www.ugst.umd.edu/courserelatedpolicies.html">UMD’s course-related policies and resources</a>.</p>
     </div>
     <div class="policy-grid">
-      <article><h3>Collaboration</h3><p>Collaboration is expected within project teams. Individual assessments must reflect your own understanding. Credit every external contribution, library, model, dataset, prompt source, and borrowed artifact.</p></article>
-      <article><h3>Generative AI use</h3><p>AI tools are part of the subject matter and may be used when the assignment permits. Preserve prompts, model and version information, tool traces, and material edits so results remain auditable.</p></article>
-      <article><h3>Responsible experimentation</h3><p>Use least privilege, sandbox side effects, protect private data, and obtain approval before tests that touch people or external systems. Projects with consequential actions require monitoring and rollback ownership.</p></article>
-      <article><h3>Accessibility & support</h3><p>Students who need accommodations should contact the University’s accessibility service and the instructor early. Please raise barriers to course materials or participation as soon as possible.</p></article>
+      <article><h3>Teams & collaboration</h3><p>Projects use teams of up to three students. Record individual contributions in the midterm and final reports. A self-proposed topic requires written instructor approval; individual quizzes and other designated individual work must be completed independently.</p></article>
+      <article><h3>Generative AI use</h3><p>AI tools may be used only when an assignment permits them. Disclose the model and version, preserve material prompts and tool traces, describe substantive edits, and verify every claim. AI assistance is not permitted on in-class quizzes unless explicitly stated.</p></article>
+      <article><h3>Academic integrity</h3><p>Follow the UMD Code of Academic Integrity and Honor Pledge. Cite external code, models, datasets, papers, prompts, and tools. Do not copy or distribute solutions, fabricate evidence, or present another person’s or system’s work as your own.</p></article>
+      <article><h3>Late work</h3><p>A shared 72-hour late bank applies across homework and written reports. It does not apply to quizzes, live presentations, or other in-person assessments. Once the bank is exhausted, late work is accepted only through an approved accommodation or excused-absence process.</p></article>
+      <article><h3>Attendance & absences</h3><p>Regular attendance and active participation are expected. Report known absences before the schedule-adjustment deadline and unexpected absences as soon as possible through a private ELMS or course-Slack message. Do not post medical documentation publicly.</p></article>
+      <article><h3>Responsible experimentation</h3><p>Use least privilege, sandbox side effects, protect private data, and obtain approval before tests that touch people or external systems. Human-subject research requires appropriate approval before data collection; consequential actions require monitoring and rollback ownership.</p></article>
+      <article><h3>Accessibility & support</h3><p>Students who need accommodations should contact the University’s accessibility service and the instructor early. Please raise barriers to course materials, assessments, or participation as soon as possible so arrangements can be made.</p></article>
+      <article><h3>Communication & continuity</h3><p>ELMS is the official source for announcements, assignments, grades, and urgent changes; course Slack supports discussion and help. If campus operations are interrupted, the continuation plan and any deadline changes will be announced through ELMS.</p></article>
     </div>
+    <p class="course-revision">Planning page last updated August 16, 2026. Material changes after the first class will be dated and announced through ELMS.</p>
   </section>
 
   <section class="shell course-final-cta">
@@ -698,7 +742,7 @@ const references = [
 
   .course-facts {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.8rem;
   }
 
@@ -851,6 +895,8 @@ const references = [
   :global(.project-reading a:hover) { text-decoration: underline; text-underline-offset: 0.18em; }
 
   .project-directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+  .project-selection-section { margin: 3rem 0; }
+  .selection-steps { grid-template-columns: repeat(4, 1fr); }
   .project-directions article { min-height: 210px; padding: 1.6rem; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }
   .project-directions span { color: var(--teal); font-size: 0.7rem; font-weight: 800; }
   .project-directions h3 { margin: 3rem 0 0.6rem; font-family: "Newsreader", serif; font-size: 1.55rem; }
@@ -864,6 +910,8 @@ const references = [
     min-height: 150px;
   }
   .project-directions article:last-child h3 { margin: 0; }
+  .selection-steps article:last-child { display: block; grid-column: auto; min-height: 210px; }
+  .selection-steps article:last-child h3 { margin: 3rem 0 0.6rem; }
 
   .milestone-section { margin-top: 5rem; }
   .milestone-list { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
@@ -878,6 +926,11 @@ const references = [
   .assessment-grid > article > strong { color: var(--teal); font-family: "Newsreader", serif; font-size: 2.4rem; }
   .assessment-grid h3 { margin: 3rem 0 0.5rem; font-family: "Newsreader", serif; font-size: 1.3rem; }
   .assessment-grid p { margin: 0; color: var(--ink-soft); font-size: 0.76rem; }
+  .assessment-grid small { display: block; margin-top: 1rem; color: var(--teal); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; }
+  .assessment-rubrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-top: 2rem; }
+  .assessment-rubrics article { padding: 2rem; border: 1px solid rgba(16, 42, 67, 0.12); border-radius: 20px; background: rgba(255, 253, 249, 0.72); }
+  .assessment-rubrics h3 { margin: 0.65rem 0 1rem; font-family: "Newsreader", serif; font-size: 1.7rem; }
+  .assessment-rubrics ul { display: grid; gap: 0.55rem; margin: 0; padding-left: 1.1rem; color: var(--ink-soft); font-size: 0.8rem; }
 
   .reference-list { border-top: 1px solid var(--line); }
   .reference-list a { display: grid; grid-template-columns: 50px 1fr 220px 24px; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--line); }
@@ -885,12 +938,14 @@ const references = [
   .reference-list span { color: var(--teal); font-size: 0.7rem; font-weight: 800; }
   .reference-list strong { font-family: "Newsreader", serif; font-size: 1.15rem; }
   .reference-list small { color: var(--ink-soft); }
+  .reference-list small b { color: var(--teal); font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; }
   .reference-list i { color: var(--teal); font-style: normal; }
 
   .policy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
   .policy-grid article { padding: 2rem; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }
   .policy-grid h3 { margin: 0 0 1rem; font-family: "Newsreader", serif; font-size: 1.65rem; }
   .policy-grid p { margin: 0; color: var(--ink-soft); }
+  .course-revision { margin: 1.5rem 0 0; color: var(--ink-soft); font-size: 0.72rem; }
 
   .course-final-cta {
     margin-block: 3rem 8rem;
@@ -939,6 +994,7 @@ const references = [
     .project-catalog,
     .project-directions,
     .assessment-grid,
+    .assessment-rubrics,
     .policy-grid { grid-template-columns: 1fr; }
     .course-quick-links a { border-right: 0; border-bottom: 1px solid var(--line); }
     .course-quick-links a:last-child { border-bottom: 0; }

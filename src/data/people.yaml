@@ -31,7 +31,7 @@ current_phd_students:
     role: Ph.D. advisee · Computer Science
     researchFocus: Generative modeling · Bayesian optimization · Scientific machine learning
     period: 2026–present
-    href: https://www.linkedin.com/in/drewgjerstad
+    href: https://drewgjerstad.github.io
     image: /assets/people/drew-gjerstad.jpg
     imagePosition: 50% 28%
   - name: Feijiang Han
@@ -89,7 +89,7 @@ current_phd_students:
     imagePosition: 50% 30%
   - name: Weize Liu
     role: Ph.D. advisee · Computer Science
-    researchFocus: LLM reasoning · Post-training · Data synthesis
+    researchFocus: LLM reasoning · Agentic systems · Synthetic data generation
     period: 2025–present
     href: https://attention-is-all-i-need.github.io/
     image: /assets/people/weize-liu.jpg

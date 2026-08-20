@@ -94,14 +94,6 @@ current_phd_students:
     href: https://attention-is-all-i-need.github.io/
     image: /assets/people/weize-liu.jpg
     imagePosition: 50% 28%
-  - name: Yijun Liang
-    role: Ph.D. advisee · Computer Science
-    researchFocus: Multimodal foundation models
-    period: 2026–present
-    location: IRB 5120 · Seat 5
-    href: https://www.linkedin.com/in/joanna-yijunliang/
-    image: /assets/people/yijun-liang.jpg
-    imagePosition: 50% 42%
   - name: Yoonkyo Jung
     role: Ph.D. advisee · Electrical & Computer Engineering
     researchFocus: Robot foundation models · Scalable robot learning · World models

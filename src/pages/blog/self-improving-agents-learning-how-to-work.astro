@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Self-Improving Agents: Learning How to Work — Furong Huang"
+  description="Why self-improving agents must turn experience into better methods—and how to test whether later work actually improves."
+>
+  <article class="shell blog-post">
+    <header>
+      <a class="eyebrow" href="/blog/">Blog · Agentic AI</a>
+      <h1>Self-Improving Agents: Learning How to Work</h1>
+      <p class="post-deck">An agent should finish a task with more than a result. It should be better equipped for the next one.</p>
+      <time datetime="2026-09-04">September 4, 2026</time>
+    </header>
+
+    <div class="post-body">
+      <p>Consider a coding agent assigned to fix a failing test. It searches the repository, edits a generated file, and eventually discovers that the real change belongs in the generator. It repairs the source, regenerates the output, and submits a correct patch.</p>
+      <p>A week later, it receives a different issue in the same repository. It edits the generated file again.</p>
+      <p>Both tasks might end in success. Yet something important is missing. The first task taught the agent something that should have changed how it approached the second. Instead, the system paid twice for the same discovery.</p>
+      <p>Now imagine that the first run leaves behind a change to the agent’s working procedure: check whether a file is generated before editing it, locate the source when it is, and verify that regeneration produces the intended change. On the next relevant task, the agent starts with that procedure available. It can refine it further when it encounters a different build system.</p>
+
+      <blockquote>This is the form of self-improvement I care about: an agent uses the consequences of its work to improve the way it does future work.</blockquote>
+
+      <p>The result is still a patch, an analysis, or a completed experiment. But the work can produce a second result: a more capable agent. That improvement might live in a skill, a workflow, a better action policy, or the model’s parameters. What matters is that the next task benefits.</p>
+      <p>Not every interaction deserves an update. The ambition is to make useful experience consequential, rather than requiring a human engineer to interpret every failure and specify every change.</p>
+
+      <h2>The thing that learns is the whole agent</h2>
+      <p>In <a href="/blog/reasoning-as-control/"><em>Reasoning as Control</em></a>, I argued that self-improvement should extend to how a system allocates computation, chooses actions, and organizes workflows.<sup><a href="#ref-control" aria-label="Reference 1">1</a></sup> The model is one part of that system. The procedures through which it uses its capabilities are another.</p>
+      <p>For the coding agent, knowing how to reason about source code is not sufficient. It also needs to decide what to inspect, when to run a test, how to interpret the result, and whether its current approach is worth continuing. These choices determine whether it uses its underlying capabilities effectively.</p>
+      <p>Once those procedures can be revised through experience, they become part of the learned system.</p>
+      <p><a href="https://arxiv.org/abs/2305.16291" target="_blank" rel="noopener"><strong>Voyager</strong></a> offers an early, concrete example. Guanzhi Wang and colleagues built a Minecraft agent that accumulated executable skills and reused them to solve new tasks in a fresh world. Its underlying language model was accessed through black-box calls, without parameter fine-tuning. Persistent improvement came through the skills available to the agent.<sup><a href="#ref-voyager" aria-label="Reference 2">2</a></sup></p>
+      <p>The <a href="https://arxiv.org/abs/2505.22954v3" target="_blank" rel="noopener"><strong>Darwin Gödel Machine</strong></a>, developed by Jenny Zhang and colleagues, makes the agent’s own implementation a target for improvement. An agent examines evaluation logs, proposes a change, and modifies its code. The system maintains an archive of variants from which further changes can be explored. Reported discoveries included more precise file-editing tools and revised solution-generation workflows, while the underlying foundation models remained frozen.<sup><a href="#ref-dgm" aria-label="Reference 3">3</a></sup></p>
+      <p>There is evidence of transfer, too. In the paper’s cross-benchmark evaluation, an agent evolved on SWE-bench achieved 28.9% on Polyglot, compared with 14.2% for the starting agent; Polyglot was not used in that evolution run. The experiment does not establish indefinite improvement, and the outer archive-and-selection process remained fixed. But it demonstrates something substantial: improvements to an agent’s working methods can survive the problems used to discover them.</p>
+      <p>I would not dismiss this as “only improving the harness.” Better tools and better procedures are capabilities of the deployed system. A model need not become intrinsically stronger for the agent built around it to become more effective.</p>
+
+      <h2>Experience has to change the method</h2>
+      <p>Return to the generated-file mistake. Saving the transcript would preserve what happened. Writing “be careful with generated files” would compress it. Neither, by itself, establishes that the agent will make a better decision next time.</p>
+      <p>The useful change is operational: a different inspection step, a tool that identifies generated artifacts, or a learned preference for checking provenance before editing. The lesson needs to alter a decision.</p>
+      <p>Our <a href="https://arxiv.org/abs/2603.08706" target="_blank" rel="noopener"><strong>Agentic Critical Training (ACT)</strong></a> work, led by Weize Liu, studies one component of that ability. Rather than training a model to imitate a supplied reflection, ACT trains it to choose between an expert action and a model-generated alternative. The reward depends on the choice, not on matching a reference explanation. When used before subsequent agent training, this improves performance in the paper’s experiments. It relies on expert-action supervision; it is not, by itself, an autonomous lifelong-learning system.<sup><a href="#ref-act" aria-label="Reference 4">4</a></sup></p>
+      <p>The relevance to self-improvement is that judgment must affect behavior. An eloquent account of a mistake is useful only insofar as it helps the system avoid or repair that mistake.</p>
+      <p><a href="https://arxiv.org/abs/2601.20802" target="_blank" rel="noopener"><strong>Self-Distillation Policy Optimization (SDPO)</strong></a> provides a complementary mechanism. After an attempt, the model receives feedback such as an execution error. A feedback-conditioned version of the model then supplies next-token distributions for the original trajectory, creating a dense training signal for the policy that generated it. Information unavailable during the attempt becomes supervision afterward.<sup><a href="#ref-sdpo" aria-label="Reference 5">5</a></sup></p>
+      <p>That is a precise way to turn hindsight into a change in future behavior. It also clarifies why “self” does not mean learning in isolation. The environment contributes evidence the model did not previously have. The system’s job is to extract something useful from it.</p>
+      <p>A self-improving agent therefore needs more than a place to store experience. It needs a mechanism for converting experience into a better method.</p>
+
+      <h2>Learning a repertoire, not one perfect workflow</h2>
+      <p>There is a temptation to imagine self-improvement as a sequence of replacements: discover a better procedure, discard the old one, repeat.</p>
+      <p>But a procedure can be better for one problem and worse for another. Our coding agent should not perform an expensive build-system investigation before every one-line documentation edit. Learning the generated-file lesson should make its behavior more selective, not uniformly more elaborate.</p>
+      <p>Our <a href="https://arxiv.org/abs/2606.11290" target="_blank" rel="noopener"><strong>FlowBank</strong></a> work, led by Lingzhi Yuan, studies this issue at the workflow level. Instead of retaining only the best average workflow from an optimization run, FlowBank builds a compact portfolio of complementary workflows and learns to select among them for each query, accounting for predicted performance and cost.<sup><a href="#ref-flowbank" aria-label="Reference 6">6</a></sup></p>
+      <p>Across five benchmarks, it improved the average score from 70.40 for the strongest evaluated automated baseline to 73.40, a gain of 3.00 points, with the same executor model used across methods. The deployed portfolio is fixed after construction; the paper does not demonstrate a bank that continually learns from deployment.</p>
+      <p>It does, however, support an important premise: useful progress can come from preserving several methods and learning where each belongs. A natural next step, discussed in the paper, is to let new experience improve both the repertoire and its selection policy.</p>
+      <p>For the coding agent, that could mean retaining a cheap path for ordinary edits and a more careful path for generated artifacts. A later discovery might improve only one of them. Another might reveal that the existing distinction is inadequate.</p>
+      <p>This is a richer view of self-improvement than adding another paragraph to a prompt. The agent develops a better set of methods and a better understanding of when to use them.</p>
+
+      <h2>The agent should help decide what to learn next</h2>
+      <p>There is another step beyond learning from whatever happens to arrive.</p>
+      <p>Suppose the agent has encountered generated code in two repositories. It now has a tentative procedure, but does not know how broadly it applies. It could wait for another user request. Or, within an authorized test environment, it could construct small repositories with different generation conventions and investigate where the procedure breaks.</p>
+      <p>The second option turns an accidental lesson into a deliberate learning problem.</p>
+      <p>Voyager already contains a version of this idea: its automatic curriculum chooses tasks to drive further exploration alongside the growing skill library. The learner helps shape the experience from which it will learn.</p>
+      <p>For a working agent, I would extend that principle to uncertainty about its own methods. When a failure exposes a recurring weakness, the system should be able to identify what evidence would resolve it. That might require a targeted experiment, a comparison between procedures, or a human clarification about the intended outcome.</p>
+      <p>This introduces a trade-off. Solving the current task as cheaply as possible and learning the most from it are not always the same objective. A diagnostic experiment may cost more now but prevent repeated failures later. Conversely, elaborate reflection on a one-off issue may never repay its cost.</p>
+      <p>The agent needs to learn when further learning is worth doing.</p>
+      <p>This is not a claim that every deployed agent should conduct open-ended experiments. Users’ tasks are not a license to explore indiscriminately. It is an argument for giving learning its own budget and permitted environment, rather than treating it as either free or forbidden.</p>
+      <p>Under that design, deployment can supply questions for the next round of learning. Improvements can then change what the agent is able to discover. Whether this produces sustained acceleration is an empirical question, not something guaranteed by drawing a feedback loop.</p>
+
+      <h2>Better must mean better on later work</h2>
+      <p>The strongest skeptical interpretation is that these systems are accumulating exceptions, tuning against familiar tests, or spending additional compute that a fixed agent could also have used. A larger skill library and a higher final score do not distinguish those explanations from useful learning.</p>
+      <p>I would evaluate a self-improving agent over a sequence of tasks, against systems with the same starting capabilities: one that remains fixed, one that retains raw experience, and one that learns reusable methods. All would then face common unseen tasks. The comparison should count the cost of proposing changes, testing them, updating models, and retrieving what was learned—not just the final execution.</p>
+      <p>The key result would be a learning curve: does prior experience make later work more accurate, less expensive, or less dependent on human correction? Testing earlier capabilities would reveal regressions. Removing the learned methods would help determine whether they caused the gain. Different task orders would test whether progress depends on a carefully arranged curriculum.</p>
+      <p>This is where evaluation belongs in the philosophy: it tells us whether the learning loop is actually producing learning.</p>
+      <p>The evaluator may need to learn as well. In <a href="https://aclanthology.org/2026.acl-long.418/" target="_blank" rel="noopener"><strong>REFORM</strong></a>, our work with Pankayaraj Pathmanathan, a reward model helps discover responses whose reward scores are inconsistent with their preference class. Targeted training on those failures improves robustness in the evaluated settings. Here, discovering a weakness creates data for repairing the mechanism that judges quality.<sup><a href="#ref-reform" aria-label="Reference 7">7</a></sup></p>
+      <p>That does not justify allowing an agent to approve itself under standards it can freely rewrite. I would keep independent tests for proposed changes to both the worker and its evaluator. But evaluation should enable the system to learn from informative failures, rather than simply reward familiarity with a fixed test suite.</p>
+      <p>For the generated-file lesson, progress would mean fewer mistaken edits on unfamiliar repositories—not a higher score on examples the agent wrote for itself.</p>
+
+      <h2>Can one agent’s progress help another?</h2>
+      <p>Once an agent can learn a useful method, it is reasonable to ask whether another agent must rediscover it.</p>
+      <p>Imagine one coding agent developing the generated-file procedure while another struggles with the same class of error elsewhere. Sharing the procedure could save work. More importantly, the second agent might test it under different conditions and discover a missing qualification. The shared method could become better than either agent’s original version.</p>
+      <p>That would be collective learning, rather than simply parallel execution. The distinction is testable: does experience acquired by one agent improve another’s performance on work it has not already seen?</p>
+      <p>The transfer should preserve what matters about the original setting. A repository-specific convention is not a universal rule, and private project details do not become shareable merely because they would be useful. Nor should copying the same lesson across many agents be mistaken for independent confirmation.</p>
+      <p>The promising unit of exchange is therefore a usable method with enough context to judge its applicability. Sharing succeeds when it reduces the recipient’s learning burden without making it inherit an unsupported assumption.</p>
+      <p>This is a possible extension of self-improvement, not a substitute for demonstrating it in one agent first.</p>
+
+      <h2>What the next task should inherit</h2>
+      <p>Return to the coding agent a week later.</p>
+      <p>The meaningful change is not that it can recount the previous mistake. It recognizes when the old lesson applies, checks the source of the generated file, and avoids the unnecessary edit. When the repository behaves differently, it investigates the difference instead of blindly replaying the procedure.</p>
+      <p>Perhaps the learned method eventually becomes a reusable tool. Perhaps repeated experience improves the model’s action judgments. Perhaps another agent contributes a better check. These are different implementations of the same idea: the process of doing the work helps improve the process that will do the next piece of work.</p>
+      <p>That is why I see self-improving agents as more than agents with memory, and more than models that occasionally receive another training run. The system takes on part of the responsibility for discovering how it should improve.</p>
+      <p>We should still ask whether an agent can complete the task in front of it. But for a system intended to keep working, the next question matters too:</p>
+
+      <blockquote>What will it do better because it has done this before?</blockquote>
+
+      <p class="post-note"><em>This essay was prompted by Yongkyun’s <a href="https://codepointer.dev/p/self-evolving-ai-learning-from-its" target="_blank" rel="noopener">Self-Evolving AI: Learning from Its Own Runs</a>, which surveys what agent systems can change, when changes take effect, and how they are accepted. My emphasis here is on the broader goal: making an agent’s working methods learnable through experience.</em><sup><a href="#ref-codepointer" aria-label="Reference 8">8</a></sup></p>
+
+      <h2>References</h2>
+      <ol class="references">
+        <li id="ref-control">Furong Huang. <a href="/blog/reasoning-as-control/">Reasoning as Control</a>. July 30, 2026.</li>
+        <li id="ref-voyager">Guanzhi Wang et al. <a href="https://arxiv.org/abs/2305.16291" target="_blank" rel="noopener">Voyager: An Open-Ended Embodied Agent with Large Language Models</a>. 2023.</li>
+        <li id="ref-dgm">Jenny Zhang, Shengran Hu, Cong Lu, Robert Lange, and Jeff Clune. <a href="https://arxiv.org/abs/2505.22954v3" target="_blank" rel="noopener">Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents</a>. 2025; version 3, March 2026. The 14.2% to 28.9% result is the cross-benchmark evaluation of the SWE-bench-evolved agent on Polyglot, not the separately Polyglot-optimized result. The archive-maintenance and parent-selection process is fixed in the reported system.</li>
+        <li id="ref-act">Weize Liu, Minghui Liu, Sy-Tuyen Ho, Souradip Chakraborty, Xiyao Wang, and Furong Huang. <a href="https://arxiv.org/abs/2603.08706" target="_blank" rel="noopener">Agentic Critical Training</a>. 2026 preprint. ACT uses expert-action supervision and is cited here as evidence for training action judgment, not as an end-to-end deployment-time self-improvement system.</li>
+        <li id="ref-sdpo">Jonas Hübotter et al. <a href="https://arxiv.org/abs/2601.20802" target="_blank" rel="noopener">Reinforcement Learning via Self-Distillation</a>. 2026 preprint.</li>
+        <li id="ref-flowbank">Lingzhi Yuan, Chenghao Deng, Fangxu Yu, Souradip Chakraborty, Mohammad Rostami, and Furong Huang. <a href="https://arxiv.org/abs/2606.11290" target="_blank" rel="noopener">FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse</a>. 2026 preprint. The cited gain is 3.00 points in average benchmark score (4.26% relative). Appendix F distinguishes the fixed deployed portfolio from proposed continual extensions.</li>
+        <li id="ref-reform">Pankayaraj Pathmanathan and Furong Huang. <a href="https://aclanthology.org/2026.acl-long.418/" target="_blank" rel="noopener">Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling</a>. ACL 2026, pp. 9230–9263.</li>
+        <li id="ref-codepointer">Yongkyun. <a href="https://codepointer.dev/p/self-evolving-ai-learning-from-its" target="_blank" rel="noopener">Self-Evolving AI: Learning from Its Own Runs</a>. Code Pointer, September 4, 2026.</li>
+      </ol>
+
+      <div class="post-links">
+        <a href="/blog/reasoning-as-control/">Read Reasoning as Control <span>→</span></a>
+        <a href="/research/agentic-workflows/">Explore agentic workflows <span>→</span></a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

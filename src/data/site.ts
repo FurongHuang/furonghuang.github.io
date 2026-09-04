@@ -292,12 +292,12 @@ export const news = [
 
 export const blogPosts = [
   {
-    slug: "when-students-shape-the-science",
-    date: "May 22, 2026",
-    title: "When Students Shape the Science",
+    slug: "self-improving-agents-learning-how-to-work",
+    date: "September 4, 2026",
+    title: "Self-Improving Agents: Learning How to Work",
     excerpt:
-      "Six graduating researchers, six intellectual arcs, and one evolving lab vision spanning data, governance, alignment, fairness, self-improvement, and physical AI.",
-    tags: ["Mentorship", "Lab vision", "Research journey"]
+      "A self-improving agent should finish a task with more than a result: experience should change how it approaches the next one.",
+    tags: ["Agentic AI", "Self-improvement", "Evaluation"]
   },
   {
     slug: "reasoning-as-control",
@@ -314,6 +314,14 @@ export const blogPosts = [
     excerpt:
       "Why the next generation of robot world models may depend less on bigger pixel predictors and more on compact, structured representations of interaction.",
     tags: ["Physical AI", "World models", "Robot learning"]
+  },
+  {
+    slug: "when-students-shape-the-science",
+    date: "May 22, 2026",
+    title: "When Students Shape the Science",
+    excerpt:
+      "Six graduating researchers, six intellectual arcs, and one evolving lab vision spanning data, governance, alignment, fairness, self-improvement, and physical AI.",
+    tags: ["Mentorship", "Lab vision", "Research journey"]
   },
   {
     slug: "where-has-furong-been",

@@ -1941,6 +1941,11 @@ button.button { cursor: pointer; }
 .post-body h2 { margin: 3rem 0 0.75rem; font-size: 2.4rem; line-height: 1.05; }
 .post-body a { color: var(--teal); text-decoration: underline; text-underline-offset: 0.18em; }
 .post-body blockquote { margin: 3rem 0; padding: 2rem 0 2rem 2rem; border-left: 4px solid var(--teal); color: var(--teal); font-size: 2rem; line-height: 1.25; }
+.post-body sup { font-family: "DM Sans", sans-serif; font-size: 0.62em; line-height: 0; }
+.post-body .post-note { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 1.05rem; }
+.post-body .references { margin: 1rem 0 0; padding-left: 1.4rem; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+.post-body .references li { margin-bottom: 0.9rem; padding-left: 0.35rem; }
+.post-body .references li:target { color: var(--ink); }
 .post-body .post-links a { color: var(--ink); text-decoration: none; font-family: "DM Sans", sans-serif; }
 
 .publication-controls input,

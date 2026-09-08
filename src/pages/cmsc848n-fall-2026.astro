@@ -237,7 +237,7 @@ const prerequisiteReadings = [
       <p class="eyebrow">At a glance</p>
       <div><strong>15</strong><span>semester weeks</span></div>
       <div><strong>26</strong><span>lectures</span></div>
-      <div><strong>15</strong><span>personalized research projects</span></div>
+      <div><strong>27</strong><span>personalized research projects</span></div>
       <p>Tuesdays & Thursdays · 11:00 a.m.–12:15 p.m. · CSI 3117</p>
     </aside>
   </section>
@@ -480,12 +480,16 @@ const prerequisiteReadings = [
     track: string;
     title: string;
     challenge: string;
+    motivation?: string;
     question: string;
     hypothesis: string;
+    example?: string;
+    firstSteps?: string;
+    pitfalls?: string;
     evidence: string;
     personalize: string;
     skills: string[];
-    startingPoints: [string, string][];
+    startingPoints: [string, string, string?][];
   };
 
   type EncryptedCatalog = {
@@ -544,8 +548,9 @@ const prerequisiteReadings = [
       list.append(row);
     };
 
-    const renderCatalog = (projects: ProjectCandidate[]) => {
+    const renderCatalog = (projects: ProjectCandidate[], guidance?: string) => {
       const fragment = document.createDocumentFragment();
+      if (guidance) fragment.append(textElement("p", guidance, "catalog-guidance"));
 
       projects.forEach((project) => {
         const card = document.createElement("details");
@@ -565,10 +570,14 @@ const prerequisiteReadings = [
         const body = document.createElement("div");
         body.className = "project-card-body";
         const fields = document.createElement("dl");
+        if (project.motivation) addBriefField(fields, "Why this matters", project.motivation);
+        if (project.example) addBriefField(fields, "Example", project.example);
         addBriefField(fields, "Research question", project.question);
-        addBriefField(fields, "Technical hypothesis", project.hypothesis);
-        addBriefField(fields, "Evidence bar", project.evidence);
-        addBriefField(fields, "Make it yours", project.personalize);
+        addBriefField(fields, "Hypothesis to test", project.hypothesis);
+        if (project.firstSteps) addBriefField(fields, "Start here", project.firstSteps);
+        addBriefField(fields, "How to evaluate", project.evidence);
+        if (project.pitfalls) addBriefField(fields, "Watch out for", project.pitfalls);
+        addBriefField(fields, "Scope and options", project.personalize);
 
         const skills = document.createElement("div");
         skills.className = "project-skills";
@@ -577,16 +586,21 @@ const prerequisiteReadings = [
 
         const reading = document.createElement("div");
         reading.className = "project-reading";
-        reading.append(textElement("strong", "Starting points"));
-        project.startingPoints.forEach(([label, url]) => {
+        reading.append(textElement("strong", "Readings and resources"));
+        const readingList = document.createElement("ol");
+        project.startingPoints.forEach(([label, url, note]) => {
           const parsedUrl = new URL(url);
           if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") return;
           const link = textElement("a", `${label} ↗`);
           link.href = parsedUrl.href;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
-          reading.append(link);
+          const item = document.createElement("li");
+          item.append(link);
+          if (note) item.append(textElement("p", note));
+          readingList.append(item);
         });
+        reading.append(readingList);
 
         body.append(fields, skills, reading);
         card.append(summary, body);
@@ -651,12 +665,12 @@ const prerequisiteReadings = [
           key,
           fromBase64(payload.ciphertext)
         );
-        const decrypted = JSON.parse(decoder.decode(plaintext)) as { projects?: ProjectCandidate[] };
+        const decrypted = JSON.parse(decoder.decode(plaintext)) as { projects?: ProjectCandidate[]; guidance?: string };
         if (!Array.isArray(decrypted.projects) || decrypted.projects.length === 0) {
           throw new Error("Invalid catalogue");
         }
 
-        renderCatalog(decrypted.projects);
+        renderCatalog(decrypted.projects, decrypted.guidance);
         passwordInput.value = "";
         lock.hidden = true;
         catalogShell.hidden = false;
@@ -913,12 +927,16 @@ const prerequisiteReadings = [
   :global(.project-card dl) { margin: 0; }
   :global(.project-card dl > div) { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
   :global(.project-card dt) { color: var(--teal); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
-  :global(.project-card dd) { margin: 0; color: var(--ink-soft); font-size: 0.78rem; }
+  :global(.project-card dd) { min-width: 0; margin: 0; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.65; }
+  :global(.catalog-guidance) { grid-column: 1 / -1; margin: 0 0 1rem; max-width: 85ch; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.65; }
   :global(.project-skills) { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 1.2rem 0; }
   :global(.project-skills span) { padding: 0.35rem 0.55rem; border-radius: 999px; color: var(--ink); background: rgba(216, 243, 239, 0.68); font-size: 0.64rem; font-weight: 800; }
-  :global(.project-reading) { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline; padding-top: 1rem; border-top: 1px solid var(--line); }
+  :global(.project-reading) { padding-top: 1rem; border-top: 1px solid var(--line); }
+  :global(.project-reading ol) { margin: 0.8rem 0 0; padding-left: 1.25rem; }
+  :global(.project-reading li) { margin-bottom: 0.9rem; padding-left: 0.2rem; overflow-wrap: anywhere; }
+  :global(.project-reading li p) { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.82rem; line-height: 1.6; }
   :global(.project-reading strong) { margin-right: auto; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; }
-  :global(.project-reading a) { color: var(--teal); font-size: 0.72rem; font-weight: 800; }
+  :global(.project-reading a) { color: var(--teal); font-size: 0.82rem; font-weight: 700; line-height: 1.5; }
   :global(.project-reading a:hover) { text-decoration: underline; text-underline-offset: 0.18em; }
 
   .project-directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }

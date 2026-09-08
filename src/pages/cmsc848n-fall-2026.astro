@@ -181,26 +181,28 @@ const projectBriefFields = [
 ];
 
 const references = [
-  ["Reinforcement Learning: An Introduction", "Sutton & Barto · 2018", "https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf", "Core", "Module 01"],
-  ["A Survey on Large Language Model Based Autonomous Agents", "Wang et al. · 2024", "https://arxiv.org/abs/2308.11432", "Further", "Module 01"],
-  ["Proximal Policy Optimization Algorithms", "Schulman et al. · 2017", "https://arxiv.org/abs/1707.06347", "Further", "Modules 01–02"],
-  ["Training Language Models to Follow Instructions with Human Feedback", "Ouyang et al. · 2022", "https://arxiv.org/abs/2203.02155", "Core", "Module 02"],
-  ["Direct Preference Optimization", "Rafailov et al. · 2023", "https://arxiv.org/abs/2305.18290", "Core", "Module 02"],
-  ["Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", "Wei et al. · 2022", "https://arxiv.org/abs/2201.11903", "Further", "Module 03"],
-  ["Tree of Thoughts: Deliberate Problem Solving with Large Language Models", "Yao et al. · 2023", "https://arxiv.org/abs/2305.10601", "Further", "Module 03"],
-  ["ReAct: Synergizing Reasoning and Acting", "Yao et al. · 2023", "https://arxiv.org/abs/2210.03629", "Core", "Modules 03 & 05"],
-  ["Generative Agents: Interactive Simulacra of Human Behavior", "Park et al. · 2023", "https://arxiv.org/abs/2304.03442", "Core", "Module 04"],
-  ["Toolformer", "Schick et al. · 2023", "https://arxiv.org/abs/2302.04761", "Core", "Module 05"],
-  ["AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation", "Wu et al. · 2023", "https://arxiv.org/abs/2308.08155", "Core", "Module 06"],
-  ["WebArena", "Zhou et al. · 2024", "https://arxiv.org/abs/2307.13854", "Core", "Module 07"],
-  ["AgentDojo: Evaluating Prompt Injection Attacks and Defenses for LLM Agents", "Debenedetti et al. · 2024", "https://arxiv.org/abs/2406.13352", "Core", "Modules 07 & 11"],
-  ["SWE-bench", "Jimenez et al. · 2024", "https://arxiv.org/abs/2310.06770", "Further", "Module 08"],
-  ["SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering", "Yang et al. · 2024", "https://arxiv.org/abs/2405.15793", "Core", "Module 08"],
-  ["The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery", "Lu et al. · 2024", "https://arxiv.org/abs/2408.06292", "Core", "Module 09"],
-  ["Mastering Diverse Domains through World Models", "Hafner et al. · 2023", "https://arxiv.org/abs/2301.04104", "Further", "Module 10"],
-  ["OpenVLA: An Open-Source Vision-Language-Action Model", "Kim et al. · 2024", "https://arxiv.org/abs/2406.09246", "Core", "Module 10"],
-  ["Reflexion: Language Agents with Verbal Reinforcement Learning", "Shinn et al. · 2023", "https://arxiv.org/abs/2303.11366", "Core", "Module 12"],
-  ["AgentBench: Evaluating LLMs as Agents", "Liu et al. · 2023", "https://arxiv.org/abs/2308.03688", "Core", "Module 13"]
+  ["Reinforcement Learning: An Introduction (2nd edition)","Sutton & Barto · 2018","https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf","Core","Module 01"],
+  ["A Survey on Large Language Model based Autonomous Agents","Wang et al. · arXiv 2023","https://arxiv.org/abs/2308.11432","Further","Module 01"],
+  ["Proximal Policy Optimization Algorithms","Schulman et al. · arXiv 2017","https://arxiv.org/abs/1707.06347","Further","Modules 01–02"],
+  ["Training language models to follow instructions with human feedback","Ouyang et al. · arXiv 2022","https://arxiv.org/abs/2203.02155","Core","Module 02"],
+  ["Direct Preference Optimization: Your Language Model is Secretly a Reward Model","Rafailov et al. · arXiv 2023","https://arxiv.org/abs/2305.18290","Core","Module 02"],
+  ["DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models","Shao et al. · arXiv 2024","https://arxiv.org/abs/2402.03300","Further","Module 02 · GRPO"],
+  ["DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning","Guo et al. · Nature 2025","https://www.nature.com/articles/s41586-025-09422-z","Further","Modules 02–03"],
+  ["Chain-of-Thought Prompting Elicits Reasoning in Large Language Models","Wei et al. · arXiv 2022","https://arxiv.org/abs/2201.11903","Further","Module 03"],
+  ["Tree of Thoughts: Deliberate Problem Solving with Large Language Models","Yao et al. · arXiv 2023","https://arxiv.org/abs/2305.10601","Further","Module 03"],
+  ["ReAct: Synergizing Reasoning and Acting in Language Models","Yao et al. · arXiv 2022","https://arxiv.org/abs/2210.03629","Core","Modules 03 & 05"],
+  ["Generative Agents: Interactive Simulacra of Human Behavior","Park et al. · arXiv 2023","https://arxiv.org/abs/2304.03442","Core","Module 04"],
+  ["Toolformer: Language Models Can Teach Themselves to Use Tools","Schick et al. · arXiv 2023","https://arxiv.org/abs/2302.04761","Core","Module 05"],
+  ["AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation","Wu et al. · arXiv 2023","https://arxiv.org/abs/2308.08155","Core","Module 06"],
+  ["WebArena: A Realistic Web Environment for Building Autonomous Agents","Zhou et al. · arXiv 2023","https://arxiv.org/abs/2307.13854","Core","Module 07"],
+  ["AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents","Debenedetti et al. · arXiv 2024","https://arxiv.org/abs/2406.13352","Core","Modules 07 & 11"],
+  ["SWE-bench: Can Language Models Resolve Real-World GitHub Issues?","Jimenez et al. · arXiv 2023","https://arxiv.org/abs/2310.06770","Further","Module 08"],
+  ["SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering","Yang et al. · arXiv 2024","https://arxiv.org/abs/2405.15793","Core","Module 08"],
+  ["The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery","Lu et al. · arXiv 2024","https://arxiv.org/abs/2408.06292","Core","Module 09"],
+  ["Mastering diverse control tasks through world models","Hafner et al. · Nature 2025","https://www.nature.com/articles/s41586-025-08744-2","Further","Module 10"],
+  ["OpenVLA: An Open-Source Vision-Language-Action Model","Kim et al. · arXiv 2024","https://arxiv.org/abs/2406.09246","Core","Module 10"],
+  ["Reflexion: Language Agents with Verbal Reinforcement Learning","Shinn et al. · arXiv 2023","https://arxiv.org/abs/2303.11366","Core","Module 12"],
+  ["AgentBench: Evaluating LLMs as Agents","Liu et al. · arXiv 2023","https://arxiv.org/abs/2308.03688","Core","Module 13"]
 ];
 
 const prerequisiteReadings = [
@@ -458,6 +460,7 @@ const prerequisiteReadings = [
       <div><p class="eyebrow">Across the semester</p><h3>Course references.</h3></div>
       <p>Additional papers will be posted by week, with peer-reviewed work, preprints, official specifications, vendor evidence, and course synthesis clearly distinguished.</p>
     </div>
+    <p>Reference metadata checked September 8, 2026. Titles identify the linked version; years marked arXiv are initial posting years, not necessarily conference years. Journal versions are labeled by venue. Foundational readings remain useful even when newer work is available.</p>
     <div class="reference-list">
       {references.map(([title, meta, url, status, module], index) => (
         <a href={url}>

@@ -10,6 +10,7 @@ interface Props {
   image?: string;
   imageAlt?: string;
   noindex?: boolean;
+  hidePersonalContact?: boolean;
 }
 
 const {
@@ -17,7 +18,8 @@ const {
   description = "Furong Huang leads research on world models, reasoning control, and trustworthy self-improvement for foundation models.",
   image = "/assets/bodyshot.webp",
   imageAlt = "Furong Huang",
-  noindex = false
+  noindex = false,
+  hidePersonalContact = false
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
@@ -161,11 +163,11 @@ const isPrimaryActive = (href: string) => {
       <div>
         <strong>{profile.labName}</strong>
         <p>Building foundation models that reason, act, recover, and improve.</p>
-        <p>{profile.location} · {profile.institution}</p>
+        <p>{hidePersonalContact ? profile.institution : `${profile.location} · ${profile.institution}`}</p>
       </div>
       <div class="footer-links">
         <SocialLinks compact />
-        <EmailReveal />
+        {!hidePersonalContact && <EmailReveal />}
       </div>
       <small>© {new Date().getFullYear()} Furong Lab · University of Maryland</small>
     </footer>

@@ -216,6 +216,7 @@ const prerequisiteReadings = [
 
 <BaseLayout
   title="CMSC 848N — Generative AI Agents · Fall 2026"
+  hidePersonalContact
   description="Fall 2026 at the University of Maryland: foundations and frontiers of generative AI agents."
   image="/courses/cmsc848n/fall-2026/og.png"
   imageAlt="CMSC 848N Generative AI Agents · Fall 2026 · University of Maryland"
@@ -266,12 +267,36 @@ const prerequisiteReadings = [
     </div>
 
     <div class="course-facts">
-      <article><span>Instructor</span><strong>Prof. Furong Huang</strong><p>IRB 4124 · furongh@umd.edu</p></article>
+      <article>
+        <span>Course team</span>
+        <strong>Prof. Furong Huang</strong>
+        <p>Instructors (TAs)</p>
+        <div class="course-ta-list" aria-label="Instructors (TAs)">
+          <div class="course-ta-person">
+            <div class="course-ta-avatar" aria-hidden="true">YP</div>
+            <b>
+              <a class="course-ta-profile" href="https://www.linkedin.com/in/yucheng-pan-410a422a2/" target="_blank" rel="noopener noreferrer" aria-label="Yucheng Pan on LinkedIn (opens in a new tab)">Yucheng Pan <i aria-hidden="true">↗</i></a>
+              <a class="course-ta-email" href="mailto:ycpan@umd.edu">ycpan@umd.edu</a>
+            </b>
+          </div>
+          <div class="course-ta-person">
+            <img src="/assets/people/yijun-liang.jpg" alt="Yijun Liang" width="48" height="48" loading="lazy" decoding="async" />
+            <b>Yijun Liang<br /><a class="course-ta-email" href="mailto:yliang17@umd.edu">yliang17@umd.edu</a></b>
+          </div>
+          <div class="course-ta-person">
+            <img src="/assets/people/taewon-kang.jpg" alt="Taewon Kang" width="48" height="48" loading="lazy" decoding="async" />
+            <b>
+              <a class="course-ta-profile" href="https://www.cs.umd.edu/people/taewon" target="_blank" rel="noopener noreferrer" aria-label="Taewon Kang's UMD profile (opens in a new tab)">Taewon Kang <i aria-hidden="true">↗</i></a>
+              <a class="course-ta-email" href="mailto:taewon@umd.edu">taewon@umd.edu</a>
+            </b>
+          </div>
+        </div>
+      </article>
       <article><span>Meetings</span><strong>Tue & Thu · 11:00–12:15</strong><p>CSI 3117 · America/New_York</p></article>
       <article><span>Prerequisites</span><strong>ML + deep learning</strong><p>Probability, optimization, linear algebra, and Python</p></article>
       <article><span>Coursework</span><strong>Evidence over demos</strong><p>Diagnosis, implementation, and one personalized research project</p></article>
       <article><span>Expected workload</span><strong>8–12 hours per week</strong><p>Readings, homework, experiments, and team research</p></article>
-      <article><span>Communication</span><strong>ELMS + course Slack</strong><p>Links, TAs, and office hours will be announced before classes begin</p></article>
+      <article><span>Communication</span><strong>ELMS + course Slack</strong><p>Course links and office hours will be shared through ELMS and course Slack</p></article>
     </div>
   </section>
 
@@ -548,11 +573,46 @@ const prerequisiteReadings = [
       list.append(row);
     };
 
-    const renderCatalog = (projects: ProjectCandidate[], guidance?: string) => {
+    type ProjectGroup = { id: string; title: string; description: string; projects: string[] };
+
+    const renderCatalog = (projects: ProjectCandidate[], guidance?: string, groups: ProjectGroup[] = [], researchGuidance?: string) => {
       const fragment = document.createDocumentFragment();
       if (guidance) fragment.append(textElement("p", guidance, "catalog-guidance"));
+      if (researchGuidance) {
+        const advice = document.createElement("details");
+        advice.className = "catalog-guidance";
+        advice.append(textElement("summary", "Planning a sound experiment"), textElement("p", researchGuidance));
+        fragment.append(advice);
+      }
+      const byNumber = new Map(projects.map(project => [project.number, project]));
+      const ordered: ProjectCandidate[] = [];
+      const seen = new Set<string>();
+      const headings = new Map<string, ProjectGroup>();
+      const navigation = document.createElement("nav");
+      navigation.className = "catalog-guidance catalog-theme-links";
+      navigation.setAttribute("aria-label", "Project themes");
+      groups.forEach((group, index) => {
+        const members = group.projects.filter(number => byNumber.has(number) && !seen.has(number));
+        if (!members.length) return;
+        const safeGroup = { ...group, id: `catalog-theme-${index + 1}` };
+        headings.set(members[0], safeGroup);
+        const link = textElement("a", `${group.title} (${members.length})`);
+        link.href = `#${safeGroup.id}`;
+        navigation.append(link);
+        members.forEach(number => { seen.add(number); ordered.push(byNumber.get(number)!); });
+      });
+      if (navigation.childElementCount) fragment.append(navigation);
+      ordered.push(...projects.filter(project => !seen.has(project.number)));
 
-      projects.forEach((project) => {
+      ordered.forEach((project) => {
+        const group = headings.get(project.number);
+        if (group) {
+          const heading = document.createElement("div");
+          heading.className = "catalog-theme-heading";
+          heading.id = group.id;
+          heading.append(textElement("h3", group.title), textElement("p", group.description));
+          fragment.append(heading);
+        }
         const card = document.createElement("details");
         card.className = "project-card";
 
@@ -564,20 +624,20 @@ const prerequisiteReadings = [
           meta,
           textElement("h4", project.title),
           textElement("p", project.challenge),
-          textElement("span", "Open research brief", "project-open-label")
+          textElement("span", "Open project brief", "project-open-label")
         );
 
         const body = document.createElement("div");
         body.className = "project-card-body";
         const fields = document.createElement("dl");
-        if (project.motivation) addBriefField(fields, "Why this matters", project.motivation);
-        if (project.example) addBriefField(fields, "Example", project.example);
-        addBriefField(fields, "Research question", project.question);
-        addBriefField(fields, "Hypothesis to test", project.hypothesis);
-        if (project.firstSteps) addBriefField(fields, "Start here", project.firstSteps);
-        addBriefField(fields, "How to evaluate", project.evidence);
-        if (project.pitfalls) addBriefField(fields, "Watch out for", project.pitfalls);
-        addBriefField(fields, "Scope and options", project.personalize);
+        if (project.example) addBriefField(fields, "Consider this example", project.example);
+        if (project.motivation) addBriefField(fields, "What you will investigate", project.motivation);
+        addBriefField(fields, "The central question", project.question);
+        addBriefField(fields, "An idea to test", project.hypothesis);
+        if (project.firstSteps) addBriefField(fields, "Your first experiment", project.firstSteps);
+        addBriefField(fields, "What would count as convincing evidence?", project.evidence);
+        if (project.pitfalls) addBriefField(fields, "Where to be careful", project.pitfalls);
+        addBriefField(fields, "Choosing your scope", project.personalize);
 
         const skills = document.createElement("div");
         skills.className = "project-skills";
@@ -665,12 +725,12 @@ const prerequisiteReadings = [
           key,
           fromBase64(payload.ciphertext)
         );
-        const decrypted = JSON.parse(decoder.decode(plaintext)) as { projects?: ProjectCandidate[]; guidance?: string };
+        const decrypted = JSON.parse(decoder.decode(plaintext)) as { projects?: ProjectCandidate[]; guidance?: string; groups?: ProjectGroup[]; researchGuidance?: string };
         if (!Array.isArray(decrypted.projects) || decrypted.projects.length === 0) {
           throw new Error("Invalid catalogue");
         }
 
-        renderCatalog(decrypted.projects, decrypted.guidance);
+        renderCatalog(decrypted.projects, decrypted.guidance, decrypted.groups, decrypted.researchGuidance);
         passwordInput.value = "";
         lock.hidden = true;
         catalogShell.hidden = false;
@@ -798,6 +858,40 @@ const prerequisiteReadings = [
   .course-facts span { display: block; margin-bottom: 2.5rem; color: var(--teal); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
   .course-facts strong { display: block; font-family: "Newsreader", serif; font-size: 1.45rem; line-height: 1.1; }
   .course-facts p { margin: 0.55rem 0 0; color: var(--ink-soft); font-size: 0.78rem; }
+  .course-facts a { color: var(--teal); text-decoration: underline; text-underline-offset: 0.16em; }
+  .course-ta-list { display: grid; gap: 0.5rem; margin-top: 0.65rem; }
+  .course-ta-person {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 0.65rem;
+    align-items: center;
+  }
+  .course-ta-list img,
+  .course-ta-avatar {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .course-ta-avatar {
+    display: grid;
+    place-items: center;
+    color: var(--teal);
+    background: rgba(33, 111, 108, 0.08);
+    font-size: 0.68rem;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+  .course-ta-list b { min-width: 0; font-size: 0.78rem; line-height: 1.2; }
+  .course-ta-profile { color: var(--ink); text-decoration-color: rgba(33, 111, 108, 0.35); }
+  .course-ta-profile i { font-size: 0.68rem; font-style: normal; }
+  .course-ta-profile:hover,
+  .course-ta-profile:focus-visible { color: var(--teal); }
+  .course-ta-email { display: block; margin-top: 0.1rem; color: var(--ink-soft); font-size: 0.68rem; font-weight: 500; text-decoration: none; }
+  .course-ta-email:hover,
+  .course-ta-email:focus-visible { color: var(--teal); text-decoration: underline; }
   .course-section-heading a { color: var(--teal); text-decoration: underline; text-underline-offset: 0.18em; }
 
   .course-band { border-block: 1px solid rgba(16, 42, 67, 0.08); background: rgba(255, 253, 249, 0.55); }
@@ -929,6 +1023,10 @@ const prerequisiteReadings = [
   :global(.project-card dt) { color: var(--teal); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
   :global(.project-card dd) { min-width: 0; margin: 0; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.65; }
   :global(.catalog-guidance) { grid-column: 1 / -1; margin: 0 0 1rem; max-width: 85ch; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.65; }
+  :global(.catalog-theme-links) { display: flex; flex-direction: column; gap: 0.4rem; }
+  :global(.catalog-theme-heading) { grid-column: 1 / -1; margin-top: 1.5rem; scroll-margin-top: 7rem; }
+  :global(.catalog-theme-heading h3) { margin: 0 0 0.5rem; }
+  :global(.catalog-theme-heading p) { max-width: 85ch; color: var(--ink-soft); line-height: 1.65; }
   :global(.project-skills) { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 1.2rem 0; }
   :global(.project-skills span) { padding: 0.35rem 0.55rem; border-radius: 999px; color: var(--ink); background: rgba(216, 243, 239, 0.68); font-size: 0.64rem; font-weight: 800; }
   :global(.project-reading) { padding-top: 1rem; border-top: 1px solid var(--line); }

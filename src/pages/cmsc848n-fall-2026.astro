@@ -502,6 +502,7 @@ const prerequisiteReadings = [
 <script>
   type ProjectCandidate = {
     number: string;
+    orientation: "Research-oriented" | "Engineering-oriented";
     track: string;
     title: string;
     challenge: string;
@@ -622,6 +623,7 @@ const prerequisiteReadings = [
         meta.append(textElement("span", project.number), textElement("small", project.track));
         summary.append(
           meta,
+          textElement("p", project.orientation, "project-orientation"),
           textElement("h4", project.title),
           textElement("p", project.challenge),
           textElement("span", "Open project brief", "project-open-label")
@@ -1022,6 +1024,7 @@ const prerequisiteReadings = [
   :global(.project-card dl > div) { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
   :global(.project-card dt) { color: var(--teal); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
   :global(.project-card dd) { min-width: 0; margin: 0; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.65; }
+  :global(.project-card .project-orientation) { margin: 0.5rem 0; color: var(--teal); font-size: 0.8rem; font-weight: 700; }
   :global(.catalog-guidance) { grid-column: 1 / -1; margin: 0 0 1rem; max-width: 85ch; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.65; }
   :global(.catalog-theme-links) { display: flex; flex-direction: column; gap: 0.4rem; }
   :global(.catalog-theme-heading) { grid-column: 1 / -1; margin-top: 1.5rem; scroll-margin-top: 7rem; }

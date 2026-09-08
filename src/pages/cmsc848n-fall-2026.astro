@@ -152,12 +152,114 @@ const assessments = [
   ["20%", "Homework", "Three assignments covering the course material.", "Sep 30 · Oct 30 · Nov 30"],
   ["30%", "Midterm report", "Project progress, a literature review, and baseline results.", "Oct 15"],
   ["20%", "Final presentation", "A concise presentation of the project, results, and limitations.", "Dec 8 & 10"],
-  ["20%", "Final report", "A paper-style account of the final project and its evidence.", "Dec 11"]
+  ["20%", "Final report and artifacts", "A research or engineering report, runnable code, and supporting evidence.", "Dec 11"]
 ];
 
-const assessmentRubrics = [
-  ["Reports", ["Problem statement clarity", "Depth of literature review", "Specific and credible research plan", "Writing quality", "Sound results and analysis in the final report"]],
-  ["Presentations", ["Time management", "Clear and legible slides", "Coherent oral communication", "Novelty of the proposed idea", "Comprehensive models, data, baselines, and ablations"]]
+const projectRubrics = [
+  {
+    "title": "Midterm package",
+    "weight": "30% of course grade",
+    "rows": [
+      [
+        "Problem and scope",
+        20,
+        "A precise question or use case, motivated by a concrete limitation; clearly defined success criteria and a feasible semester scope."
+      ],
+      [
+        "Related work and baseline",
+        25,
+        "Accurate discussion of the closest approaches, verified citations, and a runnable baseline appropriate to the question."
+      ],
+      [
+        "Preliminary evidence",
+        30,
+        "An end-to-end experiment or prototype, interpretable measurements, and an analysis of failures and uncertainty."
+      ],
+      [
+        "Evaluation plan and milestones",
+        25,
+        "Held-out tasks, meaningful metrics, fair comparisons, resource budgets, major risks, and a credible plan for the remaining work."
+      ]
+    ]
+  },
+  {
+    "title": "Final presentation",
+    "weight": "20% of course grade",
+    "rows": [
+      [
+        "Problem and approach",
+        20,
+        "Clear motivation, necessary background, and an understandable explanation of the technical choices."
+      ],
+      [
+        "Evidence and interpretation",
+        40,
+        "Results against appropriate baselines, readable figures, and conclusions supported by measurements. A demo supplements the evidence."
+      ],
+      [
+        "Limitations and discussion",
+        20,
+        "Thoughtful treatment of failure cases, alternative explanations, uncertainty, and questions from the audience."
+      ],
+      [
+        "Communication and contributions",
+        20,
+        "A coherent presentation within the allotted time, legible slides, and clearly identified contributions from each team member."
+      ]
+    ]
+  },
+  {
+    "title": "Final artifacts: research track",
+    "weight": "20% of course grade",
+    "rows": [
+      [
+        "Research question and contribution",
+        20,
+        "A precise hypothesis and a clear account of what the work adds relative to the closest prior work."
+      ],
+      [
+        "Experimental rigor",
+        35,
+        "Strong baselines, controlled comparisons, relevant ablations, held-out evaluation, and uncertainty estimates where appropriate."
+      ],
+      [
+        "Technical correctness and analysis",
+        25,
+        "Correct methods and mathematics, defensible conclusions, and substantive analysis of failures and competing explanations."
+      ],
+      [
+        "Reproducibility and reporting",
+        20,
+        "A clear paper-style report, runnable code, documented configurations and dependencies, and sufficient details to reproduce the main results."
+      ]
+    ]
+  },
+  {
+    "title": "Final artifacts: engineering track",
+    "weight": "20% of course grade",
+    "rows": [
+      [
+        "Correctness and reliability",
+        35,
+        "An end-to-end system meeting agreed requirements, with automated tests, failure handling, and appropriate security and privacy protections."
+      ],
+      [
+        "Evaluation",
+        25,
+        "Comparison with a simple baseline under documented workloads, measuring relevant quality, latency, cost, or usability outcomes."
+      ],
+      [
+        "System design",
+        20,
+        "Well-justified interfaces and architectural choices, explicit tradeoffs, and a maintainable implementation."
+      ],
+      [
+        "Reproducibility and documentation",
+        20,
+        "Reliable setup instructions, a repeatable demo, test commands, configurations, and clearly documented limitations."
+      ]
+    ]
+  }
 ];
 
 const milestones = [
@@ -425,15 +527,51 @@ const prerequisiteReadings = [
           <article><strong>{weight}</strong><h3>{title}</h3><p>{detail}</p><small>{due}</small></article>
         ))}
       </div>
-      <div class="assessment-rubrics">
-        {assessmentRubrics.map(([title, criteria]) => (
-          <article>
-            <p class="eyebrow">Grading rubric</p>
-            <h3>{title}</h3>
-            <ul>{criteria.map((criterion) => <li>{criterion}</li>)}</ul>
-          </article>
-        ))}
+      <p><a href="#project-rubrics">Project grading rubrics and submission requirements ↓</a></p>
+    </div>
+  </section>
+
+  <section id="project-rubrics" class="shell section">
+    <div class="course-section-heading compact">
+      <div><p class="eyebrow">Project assessment</p><h2>Project grading rubrics.</h2></div>
+      <p>Proposed Fall 2026 rubrics, subject to confirmation in the final syllabus. Research and engineering tracks share expectations for technical depth, sound evaluation, and reproducibility.</p>
+    </div>
+    <p>Teams select a track and agree on scope with the instructor at the proposal milestone. Hybrid projects use one agreed rubric. The midterm package corresponds to the midterm report; final artifacts include the final report and supporting materials.</p>
+    <p>Each table totals 100 points within its component. The two final-artifact rubrics are alternatives. In-class quizzes (10%) and homework (20%) remain separate assessments.</p>
+    {projectRubrics.map(({ title, weight, rows }) => (
+      <div class="project-rubric">
+        <h3>{title}</h3>
+        <p>{weight}</p>
+        <div class="rubric-table-scroll" role="region" aria-label={title} tabindex="0">
+          <table>
+            <caption>{title}: 100 points</caption>
+            <thead><tr><th scope="col">Criterion</th><th scope="col">Points</th><th scope="col">What earns full credit</th></tr></thead>
+            <tbody>{rows.map(([criterion, points, description]) => (
+              <tr><th scope="row">{criterion}</th><td>{points}</td><td>{description}</td></tr>
+            ))}</tbody>
+          </table>
+        </div>
       </div>
+    ))}
+    <div class="project-rubric">
+      <h3>What to submit</h3>
+      <ul>
+        <li><strong>Midterm:</strong> a short report, runnable code, preliminary results, and an updated experimental plan.</li>
+        <li><strong>Final presentation:</strong> slides explaining the problem, approach, results, limitations, and individual contributions.</li>
+        <li><strong>Final artifacts:</strong> the research or engineering report, code, setup and evaluation commands, configurations, and supporting evidence. Engineering submissions also include automated tests and a repeatable demo.</li>
+      </ul>
+      <h3>Scoring and fairness</h3>
+      <p>Score each criterion on a 0–4 scale, allowing half-points: <strong>4</strong> fully meets the criterion with convincing evidence; <strong>3</strong> largely meets it with minor gaps; <strong>2</strong> partially meets it with substantial gaps; <strong>1</strong> shows limited progress; <strong>0</strong> is missing or not assessable.</p>
+      <p>Criterion points = allocated points × score ÷ 4. For example, 80/100 on final artifacts contributes 16 of the 20 available course points.</p>
+      <ul>
+        <li>Negative results can earn full credit when the investigation is rigorous and informative.</li>
+        <li>Conference acceptance, a novel algorithm, expensive compute, and positive results are not grading requirements.</li>
+        <li>Compare methods under fair resource budgets and explain unavoidable differences.</li>
+        <li>Disclose reused code, datasets, assets, AI assistance, and each member’s contributions.</li>
+        <li>Use synthetic or approved data for privacy-sensitive projects. Physical experiments require appropriate safety controls.</li>
+        <li>Agree on material scope changes before final evaluation.</li>
+        <li>Shared artifacts receive a team grade. Individual adjustments require documented contributions and demonstrated understanding, with an opportunity to clarify discrepancies.</li>
+      </ul>
     </div>
   </section>
 
@@ -763,6 +901,15 @@ const prerequisiteReadings = [
 </script>
 
 <style>
+  .project-rubric { margin-top: 2.5rem; }
+  .project-rubric p, .project-rubric li { line-height: 1.65; }
+  .project-rubric li + li { margin-top: 0.65rem; }
+  .rubric-table-scroll { overflow-x: auto; }
+  .rubric-table-scroll:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+  .project-rubric table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; line-height: 1.6; }
+  .project-rubric caption { text-align: left; padding-bottom: 0.75rem; }
+  .project-rubric th, .project-rubric td { padding: 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .project-rubric th[scope="row"] { min-width: 9rem; }
   :global(html) { scroll-padding-top: 7rem; }
 
   .course-hero {

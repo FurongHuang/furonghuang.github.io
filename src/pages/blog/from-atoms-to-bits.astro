@@ -1,0 +1,208 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="From Atoms to Bits: Building the Digital Development Loop for Physical Intelligence — Furong Huang"
+  description="Every physical trial should improve both the robot and the process that develops the next one.">
+<article class="shell blog-post atoms-post">
+  <header class="post-header">
+    <div class="post-kicker">
+      <a class="eyebrow" href="/blog/">Blog · Physical AI</a>
+    </div>
+    <h1>From Atoms to Bits<span>Building the Digital Development Loop for Physical Intelligence</span>
+</h1>
+    <p class="post-deck">Every physical trial should improve both the robot and the process that develops the next one.</p>
+    <div class="post-meta">
+      <span>Furong Huang</span><time datetime="2026-09-09">September 9, 2026</time><span data-reading-time>8 min read</span>
+    </div>
+  </header>
+
+  <div class="post-body">
+    <nav class="article-contents" aria-label="In this essay">
+      <p>In this essay</p>
+      <ol>
+        <li><a href="#digital-iteration">What has to move into computation</a></li>
+        <li><a href="#four-foundations">Why these four capabilities belong together</a></li>
+        <li><a href="#real-to-sim">Build simulators that improve with evidence</a></li>
+        <li><a href="#automatic-evaluation">Give digital agents the evaluation work</a></li>
+        <li><a href="#development-benchmark">Measure the development process</a></li>
+        <li><a href="#inheritance">What the next robot should inherit</a></li>
+      </ol>
+    </nav>
+
+    <div class="article-opening">
+      <p>A robot places a mug in a dishwasher. The gripper opens, and the mug slips.</p>
+      <p>We change the controller so that it releases the mug later. To find out whether that helps, we reset the scene and run another physical trial. The code changed in seconds; evaluating the change still requires the robot.</p>
+      <p>Now imagine turning that failure into a reusable digital experiment. We reconstruct the relevant conditions, compare release strategies, and check selected predictions against physical trials. Each check improves our ability to test the next change in computation. This is the shift I mean by moving iteration from atoms to bits.</p>
+    </div>
+
+    <section aria-labelledby="digital-iteration">
+      <h2 id="digital-iteration">What has to move into computation</h2>
+      <p>A robot’s operating loop is to perceive, act, and observe the result. Its <strong>development loop</strong> is to change a model, test it, understand the result, and decide what to change next. Moving this second loop into a digital environment is the larger opportunity.</p>
+      <p>Training on a computer already gives us digital model updates. But if every meaningful comparison still requires new robot trials, the pace of development remains tied to physical experimentation. <strong>Evaluation is what lets us decide which digital changes are worth keeping.</strong> Without it, more generated data or simulated rollouts need not produce better robots.</p>
+      <p>A useful digital experiment therefore needs evidence from the world, a representation that preserves what matters for control, an environment in which alternative actions can be tested, and a process that evaluates the results. These requirements explain why data acquisition, perception, world modeling, and digital agents belong in the same research agenda.</p>
+      <p>Model-based learning has long connected real experience with simulated experience, as in Sutton’s Dyna architecture.<sup><a href="#ref-dyna" aria-label="Reference 1">1</a></sup> The ambition here extends across the development lifecycle: use computation to collect and process experience, build models, test revisions, and diagnose failures, while physical experiments establish where the digital conclusions can be trusted.</p>
+    </section>
+
+    <section aria-labelledby="four-foundations">
+      <h2 id="four-foundations">Why these four capabilities belong together</h2>
+      <p>The dependencies matter. Observations alone cannot tell us what would happen under a different action. A useful representation still cannot execute an experiment. A simulator can produce outcomes without telling us whether a model improved. Four works from our collaborations address parts of this chain; integrating them into a reliable development system remains a research goal.</p>
+
+      <figure class="development-loop" aria-labelledby="loop-caption">
+        <div class="loop-stages">
+          <div>
+<span class="stage-number">01</span><strong>Acquire</strong><span>Evidence from interaction</span><a href="#acquire">IVE</a>
+</div>
+          <div>
+<span class="stage-number">02</span><strong>Represent</strong><span>Information needed for control</span><a href="#represent">DynaFLIP</a>
+</div>
+          <div>
+<span class="stage-number">03</span><strong>Simulate</strong><span>Environments for testing actions</span><a href="#simulate">Foundation: μ₀</a>
+</div>
+          <div>
+<span class="stage-number">04</span><strong>Evaluate</strong><span>Agents that run and assess tests</span><a href="#evaluate">Foundation: Guava</a>
+</div>
+        </div>
+        <div class="evaluation-return">
+          <span aria-hidden="true">↶</span><p><strong>Test → diagnose → revise → test again</strong><span>Digital results guide physical checks. Physical evidence updates the models, simulators, and tests.</span></p>
+        </div>
+        <figcaption id="loop-caption">The proposed development loop. μ₀ contributes a motion representation toward simulation; Guava contributes a tool interface toward automated evaluation. The complete loop has yet to be demonstrated.</figcaption>
+      </figure>
+
+      <h3 id="acquire">1. Acquire the experience the loop needs</h3>
+      <p>Video in the wild offers interaction data without robot action labels: people grasp, push, place, and recover from mistakes. This can support learning before we collect task-specific robot demonstrations. But a recording shows what happened once. It may leave the causes of success unresolved.</p>
+      <p><strong>IVE</strong> addresses the complementary problem of acquiring new experience. It uses semantic scene graphs and memory to propose configurations, checks their predicted feasibility, and executes them through action tools. The collected experience is evaluated for downstream learning.<sup><a href="#ref-ive" aria-label="Reference 2">2</a></sup> Physical interaction remains necessary; an agent helps choose and organize it.</p>
+      <p>Within the proposed loop, acquisition would respond to a specific uncertainty. If two release strategies cannot be distinguished digitally, the system should collect an interaction that helps resolve that comparison. Connecting exploration to this evaluation need is a further step.</p>
+
+      <h3 id="represent">2. Preserve the information that changes an action</h3>
+      <p>Experience is useful only if our models retain the relevant information. Recognizing a mug does not establish where to grasp it or whether it will remain supported after release. For control, geometry and motion matter alongside object identity.</p>
+      <p><strong>DynaFLIP</strong> uses image–language–3D flow triplets from human and robot videos to train a visual representation. Motion provides supervision during pretraining; the resulting encoder takes images as input at deployment. The work evaluates these features in downstream manipulation.<sup><a href="#ref-dynaflip" aria-label="Reference 3">3</a></sup></p>
+      <p>This connects data to the rest of the loop: representations should preserve distinctions that change predicted outcomes or policy performance. Information discarded here can limit both the controller and the world model built on it.</p>
+
+      <h3 id="simulate">3. Turn physical experience into executable experiments</h3>
+      <p>To evaluate a controller, we need an environment that responds to its actions and returns the observations used to choose its next action. Replaying a video cannot answer whether releasing the mug later would help.</p>
+      <p><strong>μ₀</strong> offers a foundation through 3D interaction traces: trajectories of salient points on objects, hands, and tools. TraceExtract obtains supervision from heterogeneous videos, and the pretrained trace model can support different robot embodiments through action experts.<sup><a href="#ref-mu0" aria-label="Reference 4">4</a></sup> This supplies an inspectable motion representation. It does not yet constitute a general simulator for evaluating arbitrary policies.</p>
+      <p>A research direction is to combine learned dynamics with explicit objects, relations, and task conditions in a <strong>neural-symbolic world model</strong>. For the mug, predicted motion would be connected to a testable condition: does it remain supported after release? Such a model would still need to reproduce the effects of actions, relevant contact behavior, and the observations seen by the controller. Making the state explicit helps us inspect these assumptions; it does not make them correct.</p>
+
+      <h3 id="evaluate">4. Make experiments accessible to digital agents</h3>
+      <p>A simulator alone leaves substantial work to the researcher: choose tests, run candidates, measure outcomes, investigate failures, and propose revisions. Automating this work would let us run more experiments without requiring a researcher to manage each one.</p>
+      <p><strong>Guava</strong> studies how reasoning models use embodied tools through iterative perception–reasoning–action, semantic action abstractions, and multimodal observations.<sup><a href="#ref-guava" aria-label="Reference 5">5</a></sup> Its demonstrated setting is manipulation. I propose extending this interface principle to development: give digital agents tools for testing and improving physical agents.</p>
+      <p>The distinction is concrete. A manipulation agent selects how to place the mug. An evaluation agent compares the models that select those actions and gathers evidence for deciding which one to keep.</p>
+    </section>
+
+    <section aria-labelledby="real-to-sim">
+      <h2 id="real-to-sim">Build simulators that improve with evidence</h2>
+      <p>For this loop to work, constructing the simulator must become part of development. Real observations provide initial estimates of the scene, robot dynamics, and observation process. Paired physical trials then expose mismatches, which guide corrections to the digital environment. Closing the <strong>real-to-sim gap</strong> becomes an ongoing experimental process.</p>
+      <p>The relevant fidelity depends on the decision. A simulator may be adequate for rejecting an infeasible approach yet too inaccurate to compare two release times. In the mug example, we need agreement on how release timing affects stability, including any visual differences that change the policy’s behavior. A convincing rendering alone cannot establish that agreement.</p>
+      <p>Video may not determine friction or compliance. The environment should retain plausible alternatives until additional sensing or physical interventions distinguish them. If the preferred controller changes across those alternatives, that uncertainty is a reason to run a physical test.</p>
+      <p>The simulator should accumulate a record of which comparisons have been checked, under which conditions. A new trial can then improve both the robot model and the environment used to evaluate future models. The aim is to expand the range of model changes we can evaluate reliably between physical checks.</p>
+    </section>
+
+    <section aria-labelledby="automatic-evaluation">
+      <h2 id="automatic-evaluation">Give digital agents the evaluation work</h2>
+      <p>An evaluation agent could compare perception models, world models, or policies by selecting relevant scenarios, running controlled experiments, computing task metrics, and preserving the configurations and trajectories behind each result. It could then identify a likely failure mechanism and propose a revision or a physical check.</p>
+      <p>For the mug, it might compare release strategies from matched initial conditions, measure whether the mug remains supported for a specified duration, repeat trials to estimate variability, and test across plausible contact parameters. The success rule should be specified before the comparison and checked against recorded outcomes. A persuasive explanation from the agent is insufficient evidence.</p>
+      <p><strong>The agent has two evaluation responsibilities: assess the candidate models, and assess whether the simulator supports that assessment.</strong> SIMPLER provides a precedent for comparing simulation evaluations with physical results, including agreement in policy rankings.<sup><a href="#ref-simpler" aria-label="Reference 6">6</a></sup> A development system needs to maintain that agreement as models change.</p>
+      <p>This becomes harder under optimization. A policy could exploit a simulator that makes contact too forgiving, releasing earlier and improving its digital score while becoming worse on the robot. Agreement on yesterday’s policies does not guarantee agreement on a policy optimized against the simulator.</p>
+      <p>Selected physical checks must therefore continue across development rounds, with independent held-out tests for the final claims. When reality contradicts a digital result, the agent should investigate both the candidate model and the experimental environment. When evidence is insufficient, its useful output may be the next experiment to run.</p>
+    </section>
+
+    <section aria-labelledby="development-benchmark">
+      <h2 id="development-benchmark">Measure the development process</h2>
+      <p>The strongest skeptical interpretation is that this adds an expensive simulator and an agent to a familiar model-based workflow. The proposal earns its value only if it improves the cost and reliability of developing real robots.</p>
+      <p>I would compare direct physical evaluation, an established simulation workflow, and the proposed calibrated, agent-operated loop over successive model revisions. Each would start with comparable data and the same physical interaction budget. Their selected policies would face common held-out physical tasks.</p>
+      <p>The decisive result would be better physical performance for that budget, with compute and human effort also reported. We should track whether digital comparisons remain predictive after optimization and whether the benefit persists across rounds. Removing simulator updates, accumulated tests, or agent automation would help identify which parts produce the gain.</p>
+    </section>
+
+    <section aria-labelledby="inheritance">
+      <h2 id="inheritance">What the next robot should inherit</h2>
+      <p>The next robot may have a different gripper. It cannot assume that the old correction will prevent the mug from slipping. It can inherit the failure case, the competing explanations, the experiment that distinguishes them, and the conditions under which the digital result was verified.</p>
+      <p>I want future robot learning systems to improve their own ability to experiment. Each verified interaction would help establish which questions can be answered digitally and which still require the robot. A growing body of reusable tests and calibrated environments could support many model revisions between physical checks. The cost of exploring the next idea could then depend increasingly on computation.</p>
+    </section>
+
+    <section class="reference-section" aria-labelledby="references">
+      <h2 id="references">References</h2>
+      <ol class="references">
+        <li id="ref-dyna">Richard S. Sutton. <a href="https://doi.org/10.1145/122344.122377" target="_blank" rel="noopener">Dyna, an Integrated Architecture for Learning, Planning, and Reacting</a>.</li>
+        <li id="ref-ive">
+<a href="https://ive-robot.github.io/" target="_blank" rel="noopener">Imagine, Verify, Execute: Memory-guided Agentic Exploration with Vision-Language Models</a>.</li>
+        <li id="ref-dynaflip">
+<a href="https://arxiv.org/abs/2605.30350" target="_blank" rel="noopener">DynaFLIP: Rethinking Robotics Perception via Tri-Modal-Dynamics Guided Representation</a>. <a href="https://dynaflip-robotics.github.io/" target="_blank" rel="noopener">Project page</a>.</li>
+        <li id="ref-mu0">
+<a href="https://arxiv.org/abs/2606.13769" target="_blank" rel="noopener">μ₀: A Scalable 3D Interaction-Trace World Model</a>.</li>
+        <li id="ref-guava">
+<a href="https://arxiv.org/abs/2606.18363" target="_blank" rel="noopener">Guava: An Effective and Universal Harness for Embodied Manipulation</a>.</li>
+        <li id="ref-simpler">
+<a href="https://simpler-env.github.io/" target="_blank" rel="noopener">SIMPLER: Evaluating Real-World Robot Manipulation Policies in Simulation</a>.</li>
+      </ol>
+    </section>
+    <div class="post-links">
+      <a href="/blog/physical-language-for-robotics/">Robotics Needs a Better Physical Language <span aria-hidden="true">→</span></a>
+      <a href="/blog/self-improving-agents-learning-how-to-work/">Self-Improving Agents: Learning How to Work <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</article>
+
+
+</BaseLayout>
+<style is:global>
+/* Article-only additions to the current Furong Lab website stylesheet. */
+.atoms-post { padding-top: 4.75rem; }
+.atoms-post .post-header { max-width: 1030px; margin: 0 auto 3.5rem; }
+.post-kicker { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.6rem; }
+.post-kicker .eyebrow { margin: 0; }
+.atoms-post h1 { font-size: clamp(3.7rem, 8vw, 6.8rem); line-height: .98; margin-bottom: 1.8rem; }
+.atoms-post h1 > span { display: block; max-width: 980px; margin-top: 1.1rem; font-size: clamp(1.8rem, 3.35vw, 2.8rem); line-height: 1.13; letter-spacing: -.025em; font-weight: 400; }
+.atoms-post .post-deck { max-width: 790px; font-size: 1.2rem; line-height: 1.6; margin-bottom: 1.5rem; }
+.post-meta { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem 1.45rem; color: var(--ink-soft); font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.atoms-post .post-body { max-width: 760px; }
+.atoms-post .post-body p { margin: 0 0 1.3rem; }
+.atoms-post .post-body h2 { margin-top: 3.65rem; margin-bottom: 1.2rem; font-size: clamp(2rem, 3.7vw, 2.6rem); line-height: 1.12; letter-spacing: -.025em; font-weight: 500; }
+.atoms-post .post-body h3 { margin: 2.55rem 0 1rem; font-size: 1.62rem; line-height: 1.22; letter-spacing: -.015em; font-weight: 600; }
+.atoms-post .post-body h2[id], .atoms-post .post-body h3[id], .atoms-post .references li[id] { scroll-margin-top: 115px; }
+.atoms-post .post-body a { color: var(--teal-dark); }
+.article-contents { margin-bottom: 2.6rem; padding: 1.15rem 0 1.25rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-family: "DM Sans", sans-serif; }
+.atoms-post .article-contents > p { margin: 0 0 .75rem; color: var(--ink-soft); font-size: .67rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.article-contents ol { display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: row; gap: .55rem 2.5rem; padding-left: 1.05rem; margin: 0; font-size: .83rem; line-height: 1.5; }
+.article-contents li { padding-left: .2rem; }
+.atoms-post .article-contents a { color: var(--ink); text-decoration-color: transparent; text-underline-offset: .2em; }
+.atoms-post .article-contents a:hover { text-decoration-color: var(--teal); color: var(--teal-dark); }
+.article-opening > p:first-child { font-size: 1.5rem; line-height: 1.55; }
+.atoms-post .post-body blockquote { font-size: clamp(1.6rem, 3vw, 2rem); margin: 2.5rem 0; padding: .3rem 0 .3rem 1.4rem; line-height: 1.3; color: var(--teal-dark); }
+.development-loop { margin: 2.5rem 0 3rem; padding: 1.45rem 0 1.25rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-family: "DM Sans", sans-serif; }
+.loop-stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.15rem; }
+.loop-stages > div { position: relative; display: flex; flex-direction: column; gap: .35rem; min-width: 0; }
+.loop-stages > div:not(:last-child)::after { content: "→"; position: absolute; right: -.5rem; top: 1.4rem; font-size: 1rem; color: var(--ink-soft); }
+.loop-stages .stage-number { font-size: .65rem; color: var(--ink-soft); letter-spacing: .07em; }
+.loop-stages strong { font-family: "Newsreader", serif; font-size: 1.6rem; line-height: 1.25; font-weight: 600; }
+.loop-stages span:not(.stage-number) { max-width: 135px; color: var(--ink-soft); font-size: .73rem; line-height: 1.4; min-height: 2.8em; }
+.loop-stages a { width: fit-content; font-size: .76rem; font-weight: 600; }
+.evaluation-return { display: flex; gap: .8rem; align-items: center; margin-top: 1.4rem; padding: .95rem 0; border-top: 1px solid var(--teal); color: var(--teal-dark); }
+.evaluation-return > span { font-size: 2rem; line-height: 1; }
+.atoms-post .evaluation-return p { margin: 0; font-size: .76rem; line-height: 1.5; }
+.evaluation-return p strong, .evaluation-return p span { display: block; }
+.development-loop figcaption { color: var(--ink-soft); font-size: .69rem; line-height: 1.6; }
+.atoms-post .references { font-size: 1rem; }
+.atoms-post .reference-section h2 { font-size: 1.8rem; }
+.atoms-post .post-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 1.8rem; font-size: .86rem; line-height: 1.5; }
+.atoms-post .post-links a { color: var(--ink); }
+.atoms-post a:focus-visible { outline: 2px solid var(--teal-dark); outline-offset: 4px; }
+@media (max-width: 680px) {
+  .atoms-post { padding-top: 2.75rem; padding-bottom: 3rem; }
+  .atoms-post .post-header { margin-bottom: 2.4rem; }
+  .atoms-post h1 { font-size: clamp(3.6rem, 13vw, 4.6rem); }
+  .atoms-post h1 > span { font-size: 1.8rem; line-height: 1.14; margin-top: 1.2rem; }
+  .atoms-post .post-deck { font-size: 1.03rem; }
+  .post-meta { font-size: .63rem; column-gap: 1rem; }
+  .post-meta time { font-size: .63rem; }
+  .article-contents ol { grid-template-columns: 1fr; gap: .65rem; font-size: .8rem; }
+  .article-opening > p:first-child { font-size: 1.3rem; }
+  .atoms-post .post-body h2 { margin-top: 2.8rem; font-size: 2rem; }
+  .atoms-post .post-body h3 { font-size: 1.5rem; }
+  .loop-stages { grid-template-columns: 1fr 1fr; gap: 1.45rem 2rem; }
+  .loop-stages > div:nth-child(2)::after { content: none; }
+  .loop-stages span:not(.stage-number) { min-height: 0; }
+  .atoms-post .post-links { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+</style>

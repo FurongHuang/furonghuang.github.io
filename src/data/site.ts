@@ -292,6 +292,14 @@ export const news = [
 
 export const blogPosts = [
   {
+    slug: "from-atoms-to-bits",
+    date: "September 9, 2026",
+    title: "From Atoms to Bits: Building the Digital Development Loop for Physical Intelligence",
+    excerpt:
+      "Every physical trial should improve both the robot and the process that develops the next one.",
+    tags: ["Physical AI", "Evaluation", "Robotics"]
+  },
+  {
     slug: "self-improving-agents-learning-how-to-work",
     date: "September 4, 2026",
     title: "Self-Improving Agents: Learning How to Work",

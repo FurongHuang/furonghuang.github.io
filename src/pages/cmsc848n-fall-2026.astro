@@ -11,7 +11,7 @@ const releasedSlides = new Set<string>(
     : []
 );
 
-const getPublishedSlideFilename = (filename: string) => filename.replace(/\.pptx$/i, ".pdf");
+const getPublishedSlideFilename = (filename: string | null) => filename ? filename.replace(/\.pptx$/i, ".pdf") : "";
 
 const courseDateFormatter = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
@@ -43,16 +43,16 @@ const modules = [
     outcome: "Learn from demonstrations, preferences, and verifiable feedback.",
     lectures: [
       ["2026-09-08", "Policy Gradients and Learning from Feedback", "W2-L1-2026-Policy-Gradients-and-Learning-from-Feedback.pptx"],
-      ["2026-09-10", "DeepSeek-R1, GRPO, and Agentic Reinforcement Learning", "W2-L2-2026-DeepSeek-R1-GRPO-and-Agentic-RL.pptx"]
+      ["2026-09-10", "Policy Gradients and Learning from Feedback (continued)", null],
+      ["2026-09-15", "DeepSeek-R1, GRPO, and Agentic Reinforcement Learning", "W2-L2-2026-DeepSeek-R1-GRPO-and-Agentic-RL.pptx"]
     ]
   },
   {
     number: "03",
-    module: "Reasoning and adaptive inference",
-    outcome: "Control search, verification, compute, recovery, and stopping at test time.",
+    module: "Alignment and controlled decoding",
+    outcome: "Derive preference optimization and connect it to controlled decoding at test time.",
     lectures: [
-      ["2026-09-15", "Alignment from DPO to Controlled Decoding", "W3-L1-2026-Alignment-DPO-to-Controlled-Decoding.pptx"],
-      ["2026-09-17", "Adaptive Inference Control: Critics, Stopping, Recovery, and Efficiency", "W3-L2-Adaptive-Inference-Control.pptx"]
+      ["2026-09-17", "Alignment from DPO to Controlled Decoding", "W3-L1-2026-Alignment-DPO-to-Controlled-Decoding.pptx"]
     ]
   },
   {
@@ -408,7 +408,7 @@ const prerequisiteReadings = [
     <div class="shell section">
       <div class="course-section-heading compact">
         <div><p class="eyebrow">Schedule & slides</p><h2>Thirteen modules.</h2></div>
-        <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10; lecture slides appear exactly two days before each 11:00 a.m. lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
+        <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10; new lecture slide decks appear exactly two days before each 11:00 a.m. lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
       </div>
 
       <ol class="course-schedule">
@@ -427,7 +427,7 @@ const prerequisiteReadings = [
                 <div class="lecture-item is-pending">
                   <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                   <strong>{title}</strong>
-                  <small>Slides {formatReleaseDate(date)} · 11 AM</small>
+                  <small>{file ? `Slides ${formatReleaseDate(date)} · 11 AM` : "Continued from prior lecture"}</small>
                 </div>
               ))}
             </div>
@@ -626,7 +626,7 @@ const prerequisiteReadings = [
       <article><h3>Accessibility & support</h3><p>Students who need accommodations should contact the University’s accessibility service and the instructor early. Please raise barriers to course materials, assessments, or participation as soon as possible so arrangements can be made.</p></article>
       <article><h3>Communication & continuity</h3><p>ELMS is the official source for announcements, assignments, grades, and urgent changes; course Slack supports discussion and help. If campus operations are interrupted, the continuation plan and any deadline changes will be announced through ELMS.</p></article>
     </div>
-    <p class="course-revision">Planning page last updated September 2, 2026. Material changes after the first class will be dated and announced through ELMS.</p>
+    <p class="course-revision">Planning page last updated September 11, 2026. Material changes after the first class will be dated and announced through ELMS.</p>
   </section>
 
   <section class="shell course-final-cta">

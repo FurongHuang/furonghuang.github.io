@@ -1,7 +1,9 @@
 ---
 import "../styles/global.css";
-import { profile } from "../data/site";
+import { profile, blogPosts } from "../data/site";
 import { blogSocialImages, defaultBlogSocialImage } from "../data/blog-social-images";
+import { getBlogCitation } from "../data/blog-citations";
+import BlogCitation from "../components/BlogCitation.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import EmailReveal from "../components/EmailReveal.astro";
 
@@ -30,6 +32,8 @@ const {
 } = Astro.props;
 
 const siteUrl = Astro.site || new URL("https://furong-huang.com");
+const blogPost = blogPosts.find((post) => pathname.replace(/\/$/, "") === `/blog/${post.slug}`);
+const blogCitation = blogPost ? getBlogCitation(blogPost, siteUrl) : undefined;
 const canonicalUrl = new URL(pathname, siteUrl);
 const socialImageUrl = new URL(image, siteUrl);
 const pageType = pathname.startsWith("/blog/") && pathname !== "/blog/" ? "article" : "website";
@@ -99,6 +103,7 @@ const isPrimaryActive = (href: string) => {
     {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#102a43" />
     {!noindex && <link rel="canonical" href={canonicalUrl} />}
+    {blogCitation && <link rel="alternate" type="application/x-bibtex" title="BibTeX citation" href={blogCitation.download} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:site_name" content={profile.labName} />
     <meta property="og:type" content={pageType} />
@@ -165,6 +170,7 @@ const isPrimaryActive = (href: string) => {
     </header>
     <main id="main">
       <slot />
+      {blogCitation && <BlogCitation citation={blogCitation} />}
     </main>
     <footer>
       <div>

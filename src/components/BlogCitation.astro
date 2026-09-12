@@ -1,0 +1,56 @@
+---
+import type { BlogCitation } from "../data/blog-citations";
+
+interface Props { citation: BlogCitation; }
+const { citation } = Astro.props;
+---
+
+<section class="shell blog-citation" id="cite-this-post" aria-labelledby="blog-citation-heading" data-blog-citation>
+  <h2 id="blog-citation-heading">Cite this post</h2>
+  <p class="citation-description">{citation.author}. “{citation.title}.” {citation.date}.</p>
+  <div class="citation-actions">
+    <button type="button" data-copy-blog-citation hidden>Copy BibTeX</button>
+    <a href={citation.download} download>Download .bib</a>
+    <a href="/blog/citations.bib" download>All blog citations</a>
+  </div>
+  <p class="citation-status" role="status" aria-live="polite" data-citation-status></p>
+  <details>
+    <summary>View BibTeX</summary>
+    <pre tabindex="0" aria-label={`BibTeX citation for ${citation.title}`}><code>{citation.bibtex}</code></pre>
+  </details>
+</section>
+
+<script>
+  for (const section of document.querySelectorAll<HTMLElement>("[data-blog-citation]")) {
+    const button = section.querySelector<HTMLButtonElement>("[data-copy-blog-citation]");
+    const status = section.querySelector<HTMLElement>("[data-citation-status]");
+    const code = section.querySelector("code");
+    if (!button || !status || !code) continue;
+    button.hidden = false;
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent || "");
+        status.textContent = "BibTeX copied.";
+      } catch {
+        const details = section.querySelector("details");
+        if (details) details.open = true;
+        status.textContent = "Copy is unavailable. Select the BibTeX below or download the .bib file.";
+      }
+    });
+  }
+</script>
+
+<style>
+  .blog-citation { max-width: 840px; margin-bottom: 5rem; padding-top: 2rem; border-top: 1px solid var(--line); scroll-margin-top: 7rem; }
+  h2 { margin: 0 0 .75rem; font-family: "Newsreader", Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.3rem); }
+  .citation-description { color: var(--ink-soft); line-height: 1.6; }
+  .citation-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+  .citation-actions button, .citation-actions a { font: inherit; font-size: .9rem; font-weight: 600; }
+  .citation-actions button { padding: .65rem 1rem; border: 1px solid var(--ink); border-radius: 999px; color: white; background: var(--ink); cursor: pointer; }
+  .citation-actions a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: .2em; padding-block: .5rem; }
+  .citation-status { min-height: 1.5em; margin: .5rem 0; font-size: .85rem; color: var(--ink-soft); }
+  summary { cursor: pointer; font-size: .9rem; font-weight: 600; }
+  pre { max-width: 100%; padding: 1.25rem; margin: 1rem 0 0; border: 1px solid var(--line); border-radius: 12px; background: var(--white); white-space: pre-wrap; overflow-wrap: anywhere; font-size: .8rem; line-height: 1.6; }
+  code { font-family: "SFMono-Regular", Consolas, monospace; }
+  button:focus-visible, a:focus-visible, summary:focus-visible, pre:focus-visible { outline: 2px solid var(--teal-dark); outline-offset: 4px; }
+</style>

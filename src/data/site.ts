@@ -293,6 +293,8 @@ export const news = [
 export const blogPosts = [
   {
     slug: "world-models-a-multiverse-we-can-act-on",
+    published: "2026-09-11",
+    citationKey: "huang2026worldmodels",
     date: "September 11, 2026",
     title: "World Models: A Multiverse We Can Act On",
     excerpt:
@@ -301,6 +303,8 @@ export const blogPosts = [
   },
   {
     slug: "from-atoms-to-bits",
+    published: "2026-09-09",
+    citationKey: "huang2026atomstobits",
     date: "September 9, 2026",
     title: "From Atoms to Bits: Building the Digital Development Loop for Physical Intelligence",
     excerpt:
@@ -309,6 +313,8 @@ export const blogPosts = [
   },
   {
     slug: "self-improving-agents-learning-how-to-work",
+    published: "2026-09-04",
+    citationKey: "huang2026selfimprovingagents",
     date: "September 4, 2026",
     title: "Self-Improving Agents: Learning How to Work",
     excerpt:
@@ -317,6 +323,8 @@ export const blogPosts = [
   },
   {
     slug: "reasoning-as-control",
+    published: "2026-07-30",
+    citationKey: "huang2026reasoningascontrol",
     date: "July 30, 2026",
     title: "Reasoning as Control: Toward Self-Improving Agentic Systems",
     excerpt:
@@ -325,6 +333,8 @@ export const blogPosts = [
   },
   {
     slug: "physical-language-for-robotics",
+    published: "2026-06-14",
+    citationKey: "huang2026physicallanguage",
     date: "June 14, 2026",
     title: "Robotics Needs a Better Physical Language",
     excerpt:
@@ -333,6 +343,8 @@ export const blogPosts = [
   },
   {
     slug: "when-students-shape-the-science",
+    published: "2026-05-22",
+    citationKey: "huang2026studentsshapescience",
     date: "May 22, 2026",
     title: "When Students Shape the Science",
     excerpt:
@@ -341,6 +353,8 @@ export const blogPosts = [
   },
   {
     slug: "where-has-furong-been",
+    published: "2024-09-24",
+    citationKey: "huang2024neuripscompetition",
     date: "September 24, 2024",
     title: "Where Has Furong Been? Behind the Scenes of Our NeurIPS Competition",
     excerpt:
@@ -349,6 +363,8 @@ export const blogPosts = [
   },
   {
     slug: "neurips-2022",
+    published: "2022-11-23",
+    citationKey: "huang2022neuripspapers",
     date: "November 23, 2022",
     title: "NeurIPS ’22 Main Conference Papers from Furong Lab @ UMD",
     excerpt:

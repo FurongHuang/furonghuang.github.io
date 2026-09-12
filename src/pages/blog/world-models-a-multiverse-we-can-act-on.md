@@ -2,6 +2,8 @@
 layout: ../../layouts/ResearchEssayLayout.astro
 title: "World Models: A Multiverse We Can Act On"
 description: "World models for the agentic era: possible futures, grounded neural–symbolic abstractions, and multi-principal systems that reason about consequences before acting."
+image: "/assets/blog/world-models-social.png"
+imageAlt: "World Models: A Multiverse We Can Act On — branching possible futures."
 deck: "The future of agents is not one predicted universe. It is a multiverse of consequences we can understand—and futures we can shape together."
 date: "2026-09-11"
 displayDate: "September 11, 2026"

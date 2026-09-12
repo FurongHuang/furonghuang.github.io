@@ -6,6 +6,8 @@ interface Props {
   frontmatter: {
     title: string;
     description: string;
+    image?: string;
+    imageAlt?: string;
     deck: string;
     date: string;
     displayDate: string;
@@ -24,6 +26,7 @@ const articleSchema = {
   "@type": "BlogPosting",
   headline: post.title,
   description: post.description,
+  ...(post.image && { image: new URL(post.image, Astro.site || "https://furong-huang.com/").href }),
   datePublished: post.date,
   author: { "@type": "Person", name: "Furong Huang", url: "https://furong-huang.com/" },
   mainEntityOfPage: new URL(Astro.url.pathname, Astro.site || "https://furong-huang.com/").href,
@@ -32,7 +35,7 @@ const articleSchema = {
 };
 ---
 
-<BaseLayout title={`${post.title} — Furong Huang`} description={post.description}>
+<BaseLayout title={`${post.title} — Furong Huang`} description={post.description} image={post.image} imageAlt={post.imageAlt}>
   <article class="shell research-essay" aria-labelledby="essay-title">
     <header class="essay-header">
       <a class="eyebrow" href="/blog/">Blog · Agentic AI</a>

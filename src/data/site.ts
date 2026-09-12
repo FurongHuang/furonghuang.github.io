@@ -146,6 +146,16 @@ export {
 
 export const news = [
   {
+    date: "August 18, 2026",
+    type: "Talk",
+    title: "Toward Self-Improving Agentic Systems Across Thinking, Actions, and Workflow",
+    detail: "Furong spoke at Math & AI Summer in Seattle at Amazon, covering controlled decoding, agentic critical training, and query-adaptive workflows for self-improving agentic systems.",
+    href: "/talks/self-improving-agentic-systems-math-ai-summer-seattle-2026.pdf",
+    links: [
+      { label: "Slides (PDF)", href: "/talks/self-improving-agentic-systems-math-ai-summer-seattle-2026.pdf" }
+    ]
+  },
+  {
     date: "August 2026",
     type: "Student impact",
     title: "From CMSC 848N to a Y Combinator-backed startup",

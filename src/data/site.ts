@@ -146,6 +146,17 @@ export {
 
 export const news = [
   {
+    date: "September 9, 2026",
+    type: "Tutorial talk",
+    title: "From Atoms to Bits: Building the Digital Development Loop for Physical Intelligence",
+    detail: "Furong presented at the ECCV 2026 tutorial \u201cEvaluating Visual Foundation and World Models\u201d in Malmö, Sweden. Drawing on IVE, DynaFLIP, μ₀, and Guava, the talk examined evaluation as infrastructure for a reliable digital development loop grounded in physical evidence.",
+    href: "/blog/from-atoms-to-bits/",
+    links: [
+      { label: "Talk essay & papers", href: "/blog/from-atoms-to-bits/" },
+      { label: "Tutorial page", href: "https://vfm-eval.github.io/" }
+    ]
+  },
+  {
     date: "August 18, 2026",
     type: "Talk",
     title: "Toward Self-Improving Agentic Systems Across Thinking, Actions, and Workflow",

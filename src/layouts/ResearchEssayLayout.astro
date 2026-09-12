@@ -1,0 +1,149 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+type Heading = { depth: number; slug: string; text: string };
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    deck: string;
+    date: string;
+    displayDate: string;
+    readingTime: string;
+    referenceCount: number;
+    tags: string[];
+  };
+  getHeadings?: () => Heading[] | Promise<Heading[]>;
+  headings?: Heading[];
+}
+const { frontmatter: post, getHeadings, headings: suppliedHeadings = [] } = Astro.props;
+const headings = (getHeadings ? await getHeadings() : suppliedHeadings)
+  .filter((heading) => heading.depth === 2 && heading.slug !== "footnote-label");
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.description,
+  datePublished: post.date,
+  author: { "@type": "Person", name: "Furong Huang", url: "https://furong-huang.com/" },
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site || "https://furong-huang.com/").href,
+  keywords: post.tags.join(", "),
+  inLanguage: "en"
+};
+---
+
+<BaseLayout title={`${post.title} — Furong Huang`} description={post.description}>
+  <article class="shell research-essay" aria-labelledby="essay-title">
+    <header class="essay-header">
+      <a class="eyebrow" href="/blog/">Blog · Agentic AI</a>
+      <h1 id="essay-title">{post.title}</h1>
+      <p class="essay-deck">{post.deck}</p>
+      <div class="essay-meta">
+        <span>Furong Huang</span>
+        <time datetime={post.date}>{post.displayDate}</time>
+        <span>{post.readingTime}</span>
+        <a href="#references">{post.referenceCount} linked references</a>
+      </div>
+      <div class="essay-tags" aria-label="Topics">
+        {post.tags.map((tag) => <span>{tag}</span>)}
+      </div>
+    </header>
+
+    {headings.length > 0 && (
+      <nav class="essay-contents" aria-label="In this essay">
+        <details>
+          <summary>In this essay <span>Explore the three pillars and the research landscape</span></summary>
+          <ol>{headings.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol>
+        </details>
+      </nav>
+    )}
+
+    <div class="essay-body"><slot /></div>
+
+    <aside class="essay-related" aria-label="Related reading">
+      <p class="eyebrow">Continue the conversation</p>
+      <a href="/blog/self-improving-agents-learning-how-to-work/">Self-Improving Agents: Learning How to Work <span aria-hidden="true">→</span></a>
+      <p>How experience can change the way an agent approaches its next task.</p>
+      <a class="essay-back" href="/blog/">All essays <span aria-hidden="true">→</span></a>
+    </aside>
+  </article>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} is:inline></script>
+</BaseLayout>
+
+<style>
+  .research-essay { max-width: 1040px; padding-top: clamp(2.5rem, 6vw, 5rem); padding-bottom: 5rem; }
+  .essay-header { max-width: 920px; margin: 0 auto 2.4rem; }
+  .essay-header h1 { font-family: "Newsreader", Georgia, serif; font-size: clamp(2.6rem, 5.4vw, 4.8rem); line-height: 1.08; letter-spacing: -.035em; margin: 1rem 0 1.4rem; text-wrap: balance; }
+  .essay-deck { max-width: 830px; font-size: clamp(1.16rem, 2vw, 1.4rem); line-height: 1.6; color: var(--ink-soft); margin: 0 0 1.6rem; }
+  .essay-meta { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; font-size: .88rem; color: var(--ink-soft); }
+  .essay-meta a { color: var(--teal-dark); text-decoration: underline; text-underline-offset: .2em; }
+  .essay-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+  .essay-tags span { padding: .28rem .72rem; border: 1px solid var(--line); border-radius: 100px; font-size: .78rem; color: var(--ink-soft); }
+  .essay-contents { max-width: 840px; margin: 0 auto 2.8rem; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+  .essay-contents summary { cursor: pointer; font-weight: 700; }
+  .essay-contents summary span { display: block; font-size: .83rem; font-weight: 400; color: var(--ink-soft); margin-top: .2rem; }
+  .essay-contents ol { columns: 2; column-gap: 2.2rem; padding-left: 1.3rem; margin: 1rem 0 .2rem; }
+  .essay-contents li { break-inside: avoid; padding: .32rem 0; font-size: .9rem; line-height: 1.5; }
+  .essay-contents a:hover { color: var(--teal-dark); text-decoration: underline; }
+  .essay-body { max-width: 840px; margin: 0 auto; font-size: 1.075rem; line-height: 1.85; overflow-wrap: break-word; }
+  .essay-body :global(p) { margin: 0 0 1.35rem; }
+  .essay-body > :global(p:first-child) { font-size: 1.27rem; line-height: 1.6; padding: 1.3rem 1.5rem; border-left: 3px solid var(--teal); background: rgba(216,243,239,.42); border-radius: 0 12px 12px 0; margin-bottom: 1.8rem; }
+  .essay-body :global(h2) { font-family: "Newsreader", Georgia, serif; font-size: clamp(1.9rem, 3.2vw, 2.5rem); line-height: 1.18; letter-spacing: -.02em; margin: 3.5rem 0 1.35rem; padding-top: 1.45rem; border-top: 1px solid var(--line); text-wrap: balance; }
+  .essay-body :global(h3) { font-size: 1.2rem; line-height: 1.4; margin: 2rem 0 1rem; }
+  .essay-body :global(a) { color: var(--teal-dark); text-decoration: underline; text-decoration-thickness: .06em; text-underline-offset: .18em; }
+  .essay-body :global(a:hover) { text-decoration-thickness: .12em; }
+  .essay-body :global(a:focus-visible), .essay-contents a:focus-visible { outline: 2px solid var(--teal-dark); outline-offset: 4px; border-radius: 2px; }
+  .essay-body :global([id]) { scroll-margin-top: 7rem; }
+  .essay-body :global(sup) { line-height: 0; }
+  .essay-body :global(a[data-footnote-ref]) { font-size: .82em; padding: .12em .2em; font-weight: 600; text-decoration: none; }
+  .essay-body :global(a[data-footnote-ref]:hover) { background: var(--teal-light); border-radius: 3px; }
+  .essay-body :global(table) { display: block; width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.8rem 0; font-size: .88rem; line-height: 1.65; }
+  .essay-body :global(th), .essay-body :global(td) { padding: .9rem 1rem; border: 1px solid var(--line); min-width: 180px; vertical-align: top; text-align: left; }
+  .essay-body :global(th) { background: var(--teal-light); font-weight: 700; }
+  .essay-body :global(tbody tr:nth-child(even)) { background: rgba(255,253,249,.8); }
+  .essay-body :global(.equation) { overflow-x: auto; margin: 1.8rem 0; padding: 1.25rem .75rem; border-radius: 12px; background: var(--white); border: 1px solid var(--line); }
+  .essay-body :global(math) { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", math; font-size: 1.04em; }
+  .essay-body :global(.equation math) { min-width: max-content; margin: 0 auto; }
+  .essay-body :global(hr) { margin: 3rem 0 1.6rem; border: 0; border-top: 1px solid var(--line); }
+  .essay-body :global(.footnotes) { font-size: .91rem; line-height: 1.7; }
+  .essay-body :global(.footnotes > h2) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+  .essay-body :global(.footnotes ol) { padding-left: 1.8rem; }
+  .essay-body :global(.footnotes li) { padding: .4rem .5rem .55rem; margin: 0 0 .6rem; border-radius: 6px; }
+  .essay-body :global(.footnotes li p) { margin: 0; }
+  .essay-body :global(.footnotes li::marker) { font-weight: 700; color: var(--ink-soft); }
+  .essay-body :global(.footnotes li:target) { background: var(--teal-light); outline: 1px solid var(--teal); }
+  .essay-body :global([data-footnote-backref]) { padding: .1em .25em; text-decoration: none; }
+  .essay-related { max-width: 840px; margin: 3.5rem auto 0; padding-top: 2rem; border-top: 1px solid var(--line); }
+  .essay-related > a { font-weight: 700; color: var(--teal-dark); }
+  .essay-related p:not(.eyebrow) { color: var(--ink-soft); font-size: .94rem; }
+  .essay-related .essay-back { font-size: .9rem; }
+  @media (max-width: 620px) {
+    .research-essay { width: calc(100% - 2rem); }
+    .essay-contents ol { columns: 1; }
+    .essay-body { font-size: 1rem; line-height: 1.8; }
+    .essay-body > :global(p:first-child) { padding: 1.1rem; font-size: 1.16rem; }
+    .essay-body :global(th), .essay-body :global(td) { min-width: 170px; padding: .75rem; }
+    .essay-meta { gap: .4rem 1rem; font-size: .82rem; }
+  }
+  @media print {
+    .essay-contents, .essay-related, .essay-tags { display: none; }
+    .research-essay { max-width: none; padding: 0; }
+    .essay-body { max-width: none; font-size: 10pt; line-height: 1.5; }
+    .essay-body :global(table) { display: table; font-size: 8pt; }
+    .essay-body :global(th), .essay-body :global(td) { min-width: 0; }
+  }
+</style>
+
+<script>
+  // Native footnotes work without JavaScript; add descriptive hover text and
+  // keyboard access to the two wide survey tables as progressive enhancements.
+  const essay = document.querySelector(".research-essay");
+  essay?.querySelectorAll<HTMLAnchorElement>("a[data-footnote-ref]").forEach((link) => {
+    const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+    if (target) link.title = (target.textContent || "").replace(/↩.*$/s, "").replace(/\s+/g, " ").trim();
+  });
+  essay?.querySelectorAll<HTMLTableElement>(".essay-body table").forEach((table, index) => {
+    table.tabIndex = 0;
+    table.setAttribute("aria-label", index === 0 ? "World-model research traditions; scroll horizontally on small screens" : "World-model applications; scroll horizontally on small screens");
+  });
+</script>

@@ -292,6 +292,14 @@ export const news = [
 
 export const blogPosts = [
   {
+    slug: "world-models-a-multiverse-we-can-act-on",
+    date: "September 11, 2026",
+    title: "World Models: A Multiverse We Can Act On",
+    excerpt:
+      "The agentic era needs more than imagined futures: models of actionable consequences, grounded neural–symbolic abstractions, and the worlds we share.",
+    tags: ["World models", "Neural–symbolic AI", "Collective agency"]
+  },
+  {
     slug: "from-atoms-to-bits",
     date: "September 9, 2026",
     title: "From Atoms to Bits: Building the Digital Development Loop for Physical Intelligence",

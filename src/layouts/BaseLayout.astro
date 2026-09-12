@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { profile } from "../data/site";
+import { blogSocialImages, defaultBlogSocialImage } from "../data/blog-social-images";
 import SocialLinks from "../components/SocialLinks.astro";
 import EmailReveal from "../components/EmailReveal.astro";
 
@@ -13,16 +14,21 @@ interface Props {
   hidePersonalContact?: boolean;
 }
 
+const pathname = Astro.url.pathname;
+const isBlog = pathname === "/blog" || pathname.startsWith("/blog/");
+const blogSocialImage = isBlog
+  ? blogSocialImages[pathname.split("/")[2] || ""] || defaultBlogSocialImage
+  : undefined;
+
 const {
   title = "Furong Huang — Trustworthy Foundation Models",
   description = "Furong Huang leads research on world models, reasoning control, and trustworthy self-improvement for foundation models.",
-  image = "/assets/bodyshot.webp",
-  imageAlt = "Furong Huang",
+  image = blogSocialImage?.image ?? "/assets/bodyshot.webp",
+  imageAlt = blogSocialImage?.alt ?? "Furong Huang",
   noindex = false,
   hidePersonalContact = false
 } = Astro.props;
 
-const pathname = Astro.url.pathname;
 const siteUrl = Astro.site || new URL("https://furong-huang.com");
 const canonicalUrl = new URL(pathname, siteUrl);
 const socialImageUrl = new URL(image, siteUrl);
@@ -105,6 +111,7 @@ const isPrimaryActive = (href: string) => {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

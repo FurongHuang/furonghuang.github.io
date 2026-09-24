@@ -1,0 +1,866 @@
+{
+  "updated": "2026-09-24",
+  "sources": {
+    "survey": {
+      "title": "A Survey on Large Language Model based Autonomous Agents",
+      "url": "https://arxiv.org/abs/2308.11432",
+      "citation": "Wang et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "react": {
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "citation": "Yao et al. · arXiv 2022",
+      "kind": "Paper"
+    },
+    "ppo": {
+      "title": "Proximal Policy Optimization Algorithms",
+      "url": "https://arxiv.org/abs/1707.06347",
+      "citation": "Schulman et al. · arXiv 2017",
+      "kind": "Paper"
+    },
+    "deepseekR1": {
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "citation": "DeepSeek-AI et al. · arXiv 2025",
+      "kind": "Paper"
+    },
+    "deepseekMath": {
+      "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+      "url": "https://arxiv.org/abs/2402.03300",
+      "citation": "Shao et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "dpo": {
+      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "url": "https://arxiv.org/abs/2305.18290",
+      "citation": "Rafailov et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "rlhf": {
+      "title": "Training language models to follow instructions with human feedback",
+      "url": "https://arxiv.org/abs/2203.02155",
+      "citation": "Ouyang et al. · arXiv 2022",
+      "kind": "Paper"
+    },
+    "transferQ": {
+      "title": "Transfer Q Star: Principled Decoding for LLM Alignment",
+      "url": "https://arxiv.org/abs/2405.20495",
+      "citation": "Chakraborty et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "genarm": {
+      "title": "GenARM: Reward Guided Generation with Autoregressive Reward Model for Test-time Alignment",
+      "url": "https://arxiv.org/abs/2410.08193",
+      "citation": "Xu et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "collab": {
+      "title": "Collab: Controlled Decoding using Mixture of Agents for LLM Alignment",
+      "url": "https://arxiv.org/abs/2503.21720",
+      "citation": "Chakraborty et al. · arXiv 2025",
+      "kind": "Paper"
+    },
+    "webDreamer": {
+      "title": "Is Your LLM Secretly a World Model of the Internet? Model-Based Planning for Web Agents",
+      "url": "https://arxiv.org/abs/2411.06559",
+      "citation": "Gu et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "llmP": {
+      "title": "LLM+P: Empowering Large Language Models with Optimal Planning Proficiency",
+      "url": "https://arxiv.org/abs/2304.11477",
+      "citation": "Liu et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "travelPlanner": {
+      "title": "TravelPlanner: A Benchmark for Real-World Planning with Language Agents",
+      "url": "https://arxiv.org/abs/2402.01622",
+      "citation": "Xie et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "treeSearch": {
+      "title": "Tree Search for Language Model Agents",
+      "url": "https://arxiv.org/abs/2407.01476",
+      "citation": "Koh et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "generativeAgents": {
+      "title": "Generative Agents: Interactive Simulacra of Human Behavior",
+      "url": "https://arxiv.org/abs/2304.03442",
+      "citation": "Park et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "rag": {
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "citation": "Lewis et al. · arXiv 2020",
+      "kind": "Paper"
+    },
+    "voyager": {
+      "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "url": "https://arxiv.org/abs/2305.16291",
+      "citation": "Wang et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "hippoRag": {
+      "title": "HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models",
+      "url": "https://arxiv.org/abs/2405.14831",
+      "citation": "Gutiérrez et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "reflexion": {
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2303.11366",
+      "citation": "Shinn et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "longMemEval": {
+      "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+      "url": "https://arxiv.org/abs/2410.10813",
+      "citation": "Wu et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "toolformer": {
+      "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "url": "https://arxiv.org/abs/2302.04761",
+      "citation": "Schick et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "camel": {
+      "title": "Defeating Prompt Injections by Design",
+      "url": "https://arxiv.org/abs/2503.18813",
+      "citation": "Debenedetti et al. · arXiv 2025",
+      "kind": "Paper"
+    },
+    "agentDojo": {
+      "title": "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents",
+      "url": "https://arxiv.org/abs/2406.13352",
+      "citation": "Debenedetti et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "aflow": {
+      "title": "AFlow: Automating Agentic Workflow Generation",
+      "url": "https://arxiv.org/abs/2410.10762",
+      "citation": "Zhang et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "autogen": {
+      "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+      "url": "https://arxiv.org/abs/2308.08155",
+      "citation": "Wu et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "multiAgentFailures": {
+      "title": "Why Do Multi-Agent LLM Systems Fail?",
+      "url": "https://arxiv.org/abs/2503.13657",
+      "citation": "Cemri et al. · arXiv 2025",
+      "kind": "Paper"
+    },
+    "webArena": {
+      "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+      "url": "https://arxiv.org/abs/2307.13854",
+      "citation": "Zhou et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "mind2web": {
+      "title": "Mind2Web: Towards a Generalist Agent for the Web",
+      "url": "https://arxiv.org/abs/2306.06070",
+      "citation": "Deng et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "visualWebArena": {
+      "title": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
+      "url": "https://arxiv.org/abs/2401.13649",
+      "citation": "Koh et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "injecAgent": {
+      "title": "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents",
+      "url": "https://arxiv.org/abs/2403.02691",
+      "citation": "Zhan et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "sweAgent": {
+      "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+      "url": "https://arxiv.org/abs/2405.15793",
+      "citation": "Yang et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "sweBench": {
+      "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "url": "https://arxiv.org/abs/2310.06770",
+      "citation": "Jimenez et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "agentless": {
+      "title": "Agentless: Demystifying LLM-based Software Engineering Agents",
+      "url": "https://arxiv.org/abs/2407.01489",
+      "citation": "Xia et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "sweGym": {
+      "title": "Training Software Engineering Agents and Verifiers with SWE-Gym",
+      "url": "https://arxiv.org/abs/2412.21139",
+      "citation": "Pan et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "r2eGym": {
+      "title": "R2E-Gym: Procedural Environments and Hybrid Verifiers for Scaling Open-Weights SWE Agents",
+      "url": "https://arxiv.org/abs/2504.07164",
+      "citation": "Jain et al. · arXiv 2025",
+      "kind": "Paper"
+    },
+    "sweSmith": {
+      "title": "SWE-smith: Scaling Data for Software Engineering Agents",
+      "url": "https://arxiv.org/abs/2504.21798",
+      "citation": "Yang et al. · arXiv 2025",
+      "kind": "Paper"
+    },
+    "storm": {
+      "title": "Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models",
+      "url": "https://arxiv.org/abs/2402.14207",
+      "citation": "Shao et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "alce": {
+      "title": "Enabling Large Language Models to Generate Text with Citations",
+      "url": "https://arxiv.org/abs/2305.14627",
+      "citation": "Gao et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "gaia": {
+      "title": "GAIA: a benchmark for General AI Assistants",
+      "url": "https://arxiv.org/abs/2311.12983",
+      "citation": "Mialon et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "aiScientist": {
+      "title": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+      "url": "https://arxiv.org/abs/2408.06292",
+      "citation": "Lu et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "scienceAgentBench": {
+      "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+      "url": "https://arxiv.org/abs/2410.05080",
+      "citation": "Chen et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "mleBench": {
+      "title": "MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering",
+      "url": "https://arxiv.org/abs/2410.07095",
+      "citation": "Chan et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "dreamer": {
+      "title": "Mastering Diverse Domains through World Models",
+      "url": "https://arxiv.org/abs/2301.04104",
+      "citation": "Hafner et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "openVla": {
+      "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
+      "url": "https://arxiv.org/abs/2406.09246",
+      "citation": "Kim et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "openX": {
+      "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+      "url": "https://arxiv.org/abs/2310.08864",
+      "citation": "Open X-Embodiment Collaboration · arXiv 2023",
+      "kind": "Paper"
+    },
+    "libero": {
+      "title": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+      "url": "https://arxiv.org/abs/2306.03310",
+      "citation": "Liu et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "simpler": {
+      "title": "Evaluating Real-World Robot Manipulation Policies in Simulation",
+      "url": "https://arxiv.org/abs/2405.05941",
+      "citation": "Li et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "agentPoison": {
+      "title": "AgentPoison: Red-teaming LLM Agents via Poisoning Memory or Knowledge Bases",
+      "url": "https://arxiv.org/abs/2407.12784",
+      "citation": "Chen et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "poisonedRag": {
+      "title": "PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models",
+      "url": "https://arxiv.org/abs/2402.07867",
+      "citation": "Zou et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "aiControl": {
+      "title": "AI Control: Improving Safety Despite Intentional Subversion",
+      "url": "https://arxiv.org/abs/2312.06942",
+      "citation": "Greenblatt et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "selfRefine": {
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "url": "https://arxiv.org/abs/2303.17651",
+      "citation": "Madaan et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "adas": {
+      "title": "Automated Design of Agentic Systems",
+      "url": "https://arxiv.org/abs/2408.08435",
+      "citation": "Hu et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "darwinGodel": {
+      "title": "Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents",
+      "url": "https://arxiv.org/abs/2505.22954",
+      "citation": "Zhang et al. · arXiv 2025",
+      "kind": "Paper"
+    },
+    "stop": {
+      "title": "Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation",
+      "url": "https://arxiv.org/abs/2310.02304",
+      "citation": "Zelikman et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "reliability": {
+      "title": "Towards a Science of AI Agent Reliability",
+      "url": "https://arxiv.org/abs/2602.16666",
+      "citation": "Rabanser et al. · arXiv 2026",
+      "kind": "Paper"
+    },
+    "reBench": {
+      "title": "RE-Bench: Evaluating frontier AI R&D capabilities of language model agents against human experts",
+      "url": "https://arxiv.org/abs/2411.15114",
+      "citation": "Wijk et al. · arXiv 2024",
+      "kind": "Paper"
+    },
+    "watermark": {
+      "title": "A Watermark for Large Language Models",
+      "url": "https://arxiv.org/abs/2301.10226",
+      "citation": "Kirchenbauer et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "detection": {
+      "title": "Can AI-Generated Text be Reliably Detected?",
+      "url": "https://arxiv.org/abs/2303.11156",
+      "citation": "Sadasivan et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "rlBook": {
+      "title": "Reinforcement Learning: An Introduction (2nd edition)",
+      "url": "https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf",
+      "citation": "Sutton & Barto · 2018",
+      "kind": "Textbook"
+    },
+    "controlledDecoding": {
+      "title": "Controlled Decoding from Language Models",
+      "url": "https://proceedings.mlr.press/v235/mudgal24a.html",
+      "citation": "Mudgal et al. · ICML 2024",
+      "kind": "Paper"
+    },
+    "contextEngineering": {
+      "title": "Effective context engineering for AI agents",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "citation": "Anthropic · 2025",
+      "kind": "Engineering article"
+    },
+    "mcp": {
+      "title": "Model Context Protocol specification",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25",
+      "citation": "MCP contributors · version 2025-11-25",
+      "kind": "Official specification"
+    },
+    "protection": {
+      "title": "The Protection of Information in Computer Systems",
+      "url": "https://web.mit.edu/Saltzer/www/publications/protection/",
+      "citation": "Saltzer & Schroeder · 1975",
+      "kind": "Paper"
+    },
+    "workflowPatterns": {
+      "title": "Workflow Patterns",
+      "url": "https://doi.org/10.1023/A:1022883727209",
+      "citation": "van der Aalst et al. · Distributed and Parallel Databases, 2003",
+      "kind": "Paper"
+    },
+    "sagas": {
+      "title": "Sagas",
+      "url": "https://www.cs.princeton.edu/research/techreps/598",
+      "citation": "Garcia-Molina & Salem · 1987 technical report",
+      "kind": "Paper"
+    },
+    "buildingAgents": {
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "citation": "Anthropic · 2024",
+      "kind": "Engineering article"
+    }
+  },
+  "lectures": {
+    "2026-09-01": {
+      "status": "current",
+      "focus": "Identify the model, memory, planning, and action components of an agent. What information passes between them?",
+      "core": [
+        {
+          "source": "survey",
+          "guide": "Focus on the agent framework and its main components."
+        }
+      ],
+      "further": [
+        {
+          "source": "react"
+        }
+      ]
+    },
+    "2026-09-03": {
+      "status": "current",
+      "focus": "Write down an MDP and distinguish a policy, a value function, and a Bellman equation.",
+      "core": [
+        {
+          "source": "rlBook",
+          "guide": "Chapters 3–4: finite Markov decision processes and dynamic programming."
+        }
+      ],
+      "further": []
+    },
+    "2026-09-08": {
+      "status": "current",
+      "focus": "For the RL continuation, compare a sampled return with a bootstrapped value target.",
+      "core": [
+        {
+          "source": "rlBook",
+          "guide": "Chapter 6: temporal-difference learning, especially TD prediction, SARSA, and Q-learning."
+        }
+      ],
+      "further": [
+        {
+          "source": "rlBook",
+          "guide": "Chapter 9: on-policy prediction with function approximation."
+        }
+      ]
+    },
+    "2026-09-10": {
+      "status": "current",
+      "focus": "For the RL continuation, follow the policy-gradient derivation and explain the role of a baseline.",
+      "core": [
+        {
+          "source": "rlBook",
+          "guide": "Chapter 13: policy-gradient methods and actor–critic methods."
+        }
+      ],
+      "further": [
+        {
+          "source": "ppo",
+          "guide": "Focus on the clipped surrogate objective; we will return to it when studying GRPO."
+        }
+      ]
+    },
+    "2026-09-15": {
+      "status": "current",
+      "focus": "Compare PPO and GRPO: how are advantages estimated, and what does the reference policy do?",
+      "core": [
+        {
+          "source": "deepseekMath",
+          "guide": "Focus on the GRPO objective and group-relative advantage estimates."
+        },
+        {
+          "source": "deepseekR1",
+          "guide": "Focus on the training stages, reward design, and evaluation."
+        }
+      ],
+      "further": [
+        {
+          "source": "ppo"
+        }
+      ]
+    },
+    "2026-09-17": {
+      "status": "current",
+      "focus": "Derive the DPO loss from KL-regularized reward maximization, then compare parameter updates with control during decoding.",
+      "core": [
+        {
+          "source": "dpo",
+          "guide": "Follow the reward–policy relationship and preference-likelihood derivation."
+        },
+        {
+          "source": "controlledDecoding",
+          "guide": "Focus on the tokenwise objective and prefix value function."
+        }
+      ],
+      "further": [
+        {
+          "source": "rlhf"
+        },
+        {
+          "source": "transferQ"
+        },
+        {
+          "source": "genarm"
+        },
+        {
+          "source": "collab"
+        }
+      ]
+    },
+    "2026-09-22": {
+      "status": "current",
+      "focus": "What state does a planner need, how does it predict an action's outcome, and when should it replan?",
+      "core": [
+        {
+          "source": "react"
+        },
+        {
+          "source": "webDreamer",
+          "guide": "Focus on how the agent simulates and compares candidate actions."
+        }
+      ],
+      "further": [
+        {
+          "source": "llmP"
+        },
+        {
+          "source": "travelPlanner"
+        },
+        {
+          "source": "treeSearch"
+        }
+      ]
+    },
+    "2026-09-24": {
+      "status": "current",
+      "focus": "Compare storing an experience, retrieving it, and summarizing it. What evidence can each step lose?",
+      "core": [
+        {
+          "source": "generativeAgents",
+          "guide": "Focus on the memory stream, retrieval, reflection, and planning."
+        }
+      ],
+      "further": [
+        {
+          "source": "contextEngineering",
+          "guide": "Focus on compaction and structured notes; this is a practitioner article."
+        },
+        {
+          "source": "rag"
+        },
+        {
+          "source": "voyager"
+        },
+        {
+          "source": "hippoRag"
+        },
+        {
+          "source": "reflexion"
+        },
+        {
+          "source": "longMemEval"
+        }
+      ]
+    },
+    "2026-09-29": {
+      "status": "planned",
+      "focus": "How does an agent learn when to call a tool, and what must the tool interface make explicit?",
+      "core": [
+        {
+          "source": "toolformer"
+        }
+      ],
+      "further": [
+        {
+          "source": "mcp",
+          "guide": "Read the overview, tools, and security sections of the version used in the lecture draft."
+        },
+        {
+          "source": "react"
+        }
+      ]
+    },
+    "2026-10-01": {
+      "status": "planned",
+      "focus": "Trace how untrusted input could influence a tool call. Where should permissions be enforced?",
+      "core": [
+        {
+          "source": "camel",
+          "guide": "The CaMeL paper: focus on separating control flow from untrusted data."
+        }
+      ],
+      "further": [
+        {
+          "source": "protection",
+          "guide": "Section I: design principles, including least privilege and complete mediation."
+        },
+        {
+          "source": "agentDojo"
+        }
+      ]
+    },
+    "2026-10-06": {
+      "status": "planned",
+      "focus": "Describe a workflow's branches, shared state, and recovery after a partially completed operation.",
+      "core": [
+        {
+          "source": "workflowPatterns",
+          "guide": "Focus on sequence, parallel split, synchronization, choice, and merge patterns. Publisher access may require a university login."
+        }
+      ],
+      "further": [
+        {
+          "source": "buildingAgents",
+          "guide": "Compare the workflow examples and their tradeoffs."
+        },
+        {
+          "source": "sagas"
+        },
+        {
+          "source": "aflow"
+        }
+      ]
+    },
+    "2026-10-08": {
+      "status": "planned",
+      "focus": "When does dividing a task among agents help, and how can coordination fail?",
+      "core": [
+        {
+          "source": "autogen"
+        }
+      ],
+      "further": [
+        {
+          "source": "multiAgentFailures"
+        }
+      ]
+    },
+    "2026-10-15": {
+      "status": "planned",
+      "focus": "How is a web task represented, how is success checked, and what makes the environment difficult?",
+      "core": [
+        {
+          "source": "webArena"
+        }
+      ],
+      "further": [
+        {
+          "source": "mind2web"
+        },
+        {
+          "source": "visualWebArena"
+        }
+      ]
+    },
+    "2026-10-20": {
+      "status": "planned",
+      "focus": "Separate the user's request from instructions embedded in a page or tool result. How should a benchmark test that boundary?",
+      "core": [
+        {
+          "source": "agentDojo"
+        }
+      ],
+      "further": [
+        {
+          "source": "injecAgent"
+        },
+        {
+          "source": "camel"
+        }
+      ]
+    },
+    "2026-10-22": {
+      "status": "planned",
+      "focus": "Follow the path from a GitHub issue to a tested patch. Which parts depend on the agent–computer interface?",
+      "core": [
+        {
+          "source": "sweAgent"
+        },
+        {
+          "source": "sweBench",
+          "guide": "Focus on task construction and patch evaluation."
+        }
+      ],
+      "further": [
+        {
+          "source": "agentless"
+        }
+      ]
+    },
+    "2026-10-27": {
+      "status": "planned",
+      "focus": "What makes a software task a useful training environment, and how can a verifier give misleading feedback?",
+      "core": [
+        {
+          "source": "sweGym"
+        }
+      ],
+      "further": [
+        {
+          "source": "r2eGym"
+        },
+        {
+          "source": "sweSmith"
+        }
+      ]
+    },
+    "2026-10-29": {
+      "status": "planned",
+      "focus": "How should a research agent gather sources, support its claims, and check citation quality?",
+      "core": [
+        {
+          "source": "storm",
+          "guide": "The STORM paper: focus on question generation, source gathering, and article organization."
+        }
+      ],
+      "further": [
+        {
+          "source": "alce"
+        },
+        {
+          "source": "gaia"
+        }
+      ]
+    },
+    "2026-11-03": {
+      "status": "planned",
+      "focus": "Distinguish proposing a hypothesis, running an experiment, and establishing a scientific result.",
+      "core": [
+        {
+          "source": "aiScientist"
+        }
+      ],
+      "further": [
+        {
+          "source": "scienceAgentBench"
+        },
+        {
+          "source": "mleBench"
+        }
+      ]
+    },
+    "2026-11-05": {
+      "status": "planned",
+      "focus": "Compare learning a world model with learning a policy conditioned on vision and language.",
+      "core": [
+        {
+          "source": "dreamer",
+          "guide": "The DreamerV3 paper: focus on the learned world model and policy learning."
+        },
+        {
+          "source": "openVla"
+        }
+      ],
+      "further": []
+    },
+    "2026-11-10": {
+      "status": "planned",
+      "focus": "What transfers across robots and tasks, and what evidence supports transfer to a new setting?",
+      "core": [
+        {
+          "source": "openX"
+        }
+      ],
+      "further": [
+        {
+          "source": "libero"
+        },
+        {
+          "source": "simpler",
+          "guide": "The SIMPLER paper: examine the relationship between simulation and real-world evaluation."
+        }
+      ]
+    },
+    "2026-11-12": {
+      "status": "planned",
+      "focus": "How can poisoned memory or retrieved knowledge change an agent's behavior? State the attacker's access and objective.",
+      "core": [
+        {
+          "source": "agentPoison"
+        }
+      ],
+      "further": [
+        {
+          "source": "poisonedRag"
+        }
+      ]
+    },
+    "2026-11-17": {
+      "status": "planned",
+      "focus": "What can a monitor observe, which actions can it stop, and what assumptions does the safety argument require?",
+      "core": [
+        {
+          "source": "aiControl"
+        }
+      ],
+      "further": [
+        {
+          "source": "camel"
+        },
+        {
+          "source": "agentDojo"
+        }
+      ]
+    },
+    "2026-11-19": {
+      "status": "planned",
+      "focus": "What persists after feedback: a written reflection, a reusable skill, or a change to the model?",
+      "core": [
+        {
+          "source": "reflexion"
+        }
+      ],
+      "further": [
+        {
+          "source": "selfRefine"
+        },
+        {
+          "source": "voyager"
+        }
+      ]
+    },
+    "2026-11-24": {
+      "status": "planned",
+      "focus": "How are proposed agent modifications generated, evaluated, and selected? How would you detect overfitting to the development tasks?",
+      "core": [
+        {
+          "source": "adas"
+        }
+      ],
+      "further": [
+        {
+          "source": "darwinGodel"
+        },
+        {
+          "source": "stop"
+        }
+      ]
+    },
+    "2026-12-01": {
+      "status": "planned",
+      "focus": "What do repeated trials, changed conditions, and compute budgets reveal that one average success rate misses?",
+      "core": [
+        {
+          "source": "reliability",
+          "guide": "Read as a 2026 preprint; focus on the proposed reliability dimensions and their measurement."
+        }
+      ],
+      "further": [
+        {
+          "source": "reBench"
+        }
+      ]
+    },
+    "2026-12-03": {
+      "status": "planned",
+      "focus": "State the assumptions behind watermark detection and identify what a positive or negative test can establish.",
+      "core": [
+        {
+          "source": "watermark"
+        }
+      ],
+      "further": [
+        {
+          "source": "detection"
+        }
+      ]
+    }
+  }
+}

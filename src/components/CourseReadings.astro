@@ -1,0 +1,149 @@
+---
+import readingData from "../data/cmsc848n-readings.json";
+
+interface ReadingSource {
+  title: string;
+  url: string;
+  citation: string;
+  kind: string;
+}
+interface ReadingItem { source: string; guide?: string; }
+interface LectureReading {
+  status: string;
+  focus: string;
+  core: ReadingItem[];
+  further: ReadingItem[];
+}
+interface Props {
+  lectures: { date: string; title: string; module: string; lecture: number }[];
+}
+
+const { lectures } = Astro.props;
+const readings: Record<string, LectureReading> = readingData.lectures;
+const sources: Record<string, ReadingSource> = readingData.sources;
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  timeZone: "UTC", weekday: "short", month: "short", day: "numeric"
+});
+const formatDate = (date: string) => dateFormatter.format(new Date(`${date}T12:00:00Z`));
+const revisionDate = new Intl.DateTimeFormat("en-US", {
+  timeZone: "UTC", month: "long", day: "numeric", year: "numeric"
+}).format(new Date(`${readingData.updated}T12:00:00Z`));
+
+// A schedule edit must keep its reading assignments aligned with the lecture dates.
+const scheduledDates = new Set(lectures.map(({ date }) => date));
+if (scheduledDates.size !== lectures.length ||
+    Object.keys(readings).length !== scheduledDates.size ||
+    Object.keys(readings).some((date) => !scheduledDates.has(date))) {
+  throw new Error("CMSC 848N lecture dates and pre-class readings must match exactly.");
+}
+for (const { date } of lectures) {
+  const reading = readings[date];
+  if (!reading?.core.length || !["current", "planned"].includes(reading.status)) {
+    throw new Error(`Missing or invalid CMSC 848N reading assignment for ${date}.`);
+  }
+  for (const item of [...reading.core, ...reading.further]) {
+    if (!sources[item.source]?.url.startsWith("https://")) {
+      throw new Error(`Missing or invalid reading source: ${item.source}.`);
+    }
+  }
+}
+---
+
+<section id="readings" class="shell section readings-section" aria-labelledby="readings-title">
+  <div class="readings-heading">
+    <div>
+      <p class="eyebrow">Prepare for each lecture</p>
+      <h2 id="readings-title">Pre-class readings.</h2>
+    </div>
+    <div>
+      <p>Start with <strong>Read first</strong>. Optional readings provide more detail or a different approach. Use the reading focus to guide your preparation.</p>
+      <p>These links are available ahead of the slide PDFs. Upcoming lecture readings are marked <strong>Planned</strong> and may be revised as the course develops.</p>
+      <p><a href="#resources">Mathematical prerequisites</a> · <a href="#schedule">Lecture schedule</a></p>
+    </div>
+  </div>
+  <p class="reading-revision">Updated <time datetime={readingData.updated}>{revisionDate}</time>. Titles identify the linked versions; arXiv years are initial posting years. Textbooks, engineering articles, and official specifications are labeled separately.</p>
+
+  <div class="lecture-readings">
+    {lectures.map(({ date, title, module, lecture }) => {
+      const reading = readings[date];
+      return (
+        <article id={`reading-${date}`} class="reading-entry" data-reading-date={date} aria-labelledby={`reading-title-${date}`}>
+          <div class="reading-date">
+            <time datetime={date}>{formatDate(date)}</time>
+            <span>Module {module} · L{lecture}</span>
+            {reading.status === "planned" && <span class="reading-status">Planned</span>}
+          </div>
+          <div class="reading-content">
+            <h3 id={`reading-title-${date}`}>{title}</h3>
+            <p class="reading-focus"><strong>Reading focus:</strong> {reading.focus}</p>
+            <h4>Read first</h4>
+            <ul class="reading-papers core-readings">
+              {reading.core.map(({ source, guide }) => (
+                <li>
+                  <a href={sources[source].url}>{sources[source].title}</a>
+                  <span class="reading-citation">{sources[source].kind} · {sources[source].citation}</span>
+                  {guide && <p class="reading-guide">{guide}</p>}
+                </li>
+              ))}
+            </ul>
+            {reading.further.length > 0 && (
+              <details class="optional-readings">
+                <summary>Optional reading ({reading.further.length})</summary>
+                <ul class="reading-papers">
+                  {reading.further.map(({ source, guide }) => (
+                    <li>
+                      <a href={sources[source].url}>{sources[source].title}</a>
+                      <span class="reading-citation">{sources[source].kind} · {sources[source].citation}</span>
+                      {guide && <p class="reading-guide">{guide}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .readings-section { scroll-margin-top: 6rem; }
+  .readings-heading { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: start; }
+  .readings-heading h2 { margin: 0.6rem 0 0; font-family: "Newsreader", serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.02; }
+  .readings-heading p:not(.eyebrow) { margin: 0 0 1rem; color: var(--ink-soft); }
+  .readings-heading a { text-decoration: underline; text-underline-offset: 3px; }
+  .reading-revision { max-width: 80ch; margin: 1.5rem 0 2rem; color: var(--ink-soft); font-size: 0.82rem; }
+  .lecture-readings { border-top: 1px solid var(--line); }
+  .reading-entry { display: grid; grid-template-columns: 155px minmax(0, 1fr); gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 6rem; }
+  .reading-entry:target { border-top: 3px solid var(--teal); }
+  .reading-date { display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .reading-date time { color: var(--teal); font-weight: 800; }
+  .reading-date > span { color: var(--ink-soft); font-size: 0.8rem; }
+  .reading-date .reading-status { margin-top: 0.25rem; padding: 0.15rem 0.5rem; border: 1px solid var(--line); border-radius: 4px; }
+  .reading-content { min-width: 0; max-width: 880px; }
+  .reading-content h3 { margin: 0; font-family: "Newsreader", serif; font-size: 1.8rem; line-height: 1.15; }
+  .reading-focus { margin: 0.8rem 0 1.2rem; color: var(--ink-soft); }
+  .reading-content h4 { margin: 0 0 0.6rem; font-size: 0.95rem; }
+  .reading-papers { margin: 0; padding-left: 1.3rem; }
+  .reading-papers li { padding-left: 0.2rem; margin-bottom: 1rem; }
+  .reading-papers li:last-child { margin-bottom: 0; }
+  .reading-papers a { font-weight: 650; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .reading-papers a:hover { color: var(--teal); text-decoration-color: currentColor; }
+  .reading-citation { display: block; margin-top: 0.2rem; color: var(--ink-soft); font-size: 0.82rem; }
+  .reading-guide { margin: 0.3rem 0 0; color: var(--ink-soft); font-size: 0.9rem; }
+  .optional-readings { margin-top: 1.1rem; }
+  .optional-readings summary { width: fit-content; padding: 0.4rem 0; color: var(--teal); font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+  .optional-readings[open] summary { margin-bottom: 0.6rem; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+  @media (max-width: 800px) {
+    .readings-heading { grid-template-columns: 1fr; gap: 1.5rem; }
+    .reading-entry { grid-template-columns: 130px minmax(0, 1fr); gap: 1.25rem; }
+  }
+  @media (max-width: 560px) {
+    .reading-entry { grid-template-columns: 1fr; gap: 0.8rem; }
+    .reading-date { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; }
+    .reading-date .reading-status { margin-top: 0; }
+    .reading-content h3 { font-size: 1.5rem; }
+  }
+</style>

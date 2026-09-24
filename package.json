@@ -12,7 +12,7 @@
     "slides:publish": "node scripts/publish-due-slides.mjs",
     "slides:validate": "node scripts/manage-slide-validation.mjs",
     "check": "astro check",
-    "build": "astro build && node scripts/check-rendered-spacing.mjs",
+    "build": "astro build && node scripts/check-rendered-spacing.mjs && node scripts/check-cmsc848n-readings.mjs",
     "check:spacing": "node scripts/check-rendered-spacing.mjs",
     "preview": "astro preview"
   },

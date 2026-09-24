@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CourseReadings from "../components/CourseReadings.astro";
 import { existsSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 
@@ -27,7 +28,14 @@ const formatReleaseDate = (date: string) => {
   return courseDateFormatter.format(releaseDate);
 };
 
-const modules = [
+interface CourseModule {
+  number: string;
+  module: string;
+  outcome: string;
+  lectures: [string, string, string | null][];
+}
+
+const modules: CourseModule[] = [
   {
     number: "01",
     module: "Agent-system foundations",
@@ -282,30 +290,6 @@ const projectBriefFields = [
   ["07", "Research artifacts", "A conference-style paper, reproducible code, evidence, and a concise presentation."]
 ];
 
-const references = [
-  ["Reinforcement Learning: An Introduction (2nd edition)","Sutton & Barto · 2018","https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf","Core","Module 01"],
-  ["A Survey on Large Language Model based Autonomous Agents","Wang et al. · arXiv 2023","https://arxiv.org/abs/2308.11432","Further","Module 01"],
-  ["Proximal Policy Optimization Algorithms","Schulman et al. · arXiv 2017","https://arxiv.org/abs/1707.06347","Further","Modules 01–02"],
-  ["Training language models to follow instructions with human feedback","Ouyang et al. · arXiv 2022","https://arxiv.org/abs/2203.02155","Core","Module 02"],
-  ["Direct Preference Optimization: Your Language Model is Secretly a Reward Model","Rafailov et al. · arXiv 2023","https://arxiv.org/abs/2305.18290","Core","Module 02"],
-  ["DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models","Shao et al. · arXiv 2024","https://arxiv.org/abs/2402.03300","Further","Module 02 · GRPO"],
-  ["DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning","Guo et al. · Nature 2025","https://www.nature.com/articles/s41586-025-09422-z","Further","Modules 02–03"],
-  ["Chain-of-Thought Prompting Elicits Reasoning in Large Language Models","Wei et al. · arXiv 2022","https://arxiv.org/abs/2201.11903","Further","Module 03"],
-  ["Tree of Thoughts: Deliberate Problem Solving with Large Language Models","Yao et al. · arXiv 2023","https://arxiv.org/abs/2305.10601","Further","Module 03"],
-  ["ReAct: Synergizing Reasoning and Acting in Language Models","Yao et al. · arXiv 2022","https://arxiv.org/abs/2210.03629","Core","Modules 03 & 05"],
-  ["Generative Agents: Interactive Simulacra of Human Behavior","Park et al. · arXiv 2023","https://arxiv.org/abs/2304.03442","Core","Module 04"],
-  ["Toolformer: Language Models Can Teach Themselves to Use Tools","Schick et al. · arXiv 2023","https://arxiv.org/abs/2302.04761","Core","Module 05"],
-  ["AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation","Wu et al. · arXiv 2023","https://arxiv.org/abs/2308.08155","Core","Module 06"],
-  ["WebArena: A Realistic Web Environment for Building Autonomous Agents","Zhou et al. · arXiv 2023","https://arxiv.org/abs/2307.13854","Core","Module 07"],
-  ["AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents","Debenedetti et al. · arXiv 2024","https://arxiv.org/abs/2406.13352","Core","Modules 07 & 11"],
-  ["SWE-bench: Can Language Models Resolve Real-World GitHub Issues?","Jimenez et al. · arXiv 2023","https://arxiv.org/abs/2310.06770","Further","Module 08"],
-  ["SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering","Yang et al. · arXiv 2024","https://arxiv.org/abs/2405.15793","Core","Module 08"],
-  ["The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery","Lu et al. · arXiv 2024","https://arxiv.org/abs/2408.06292","Core","Module 09"],
-  ["Mastering diverse control tasks through world models","Hafner et al. · Nature 2025","https://www.nature.com/articles/s41586-025-08744-2","Further","Module 10"],
-  ["OpenVLA: An Open-Source Vision-Language-Action Model","Kim et al. · arXiv 2024","https://arxiv.org/abs/2406.09246","Core","Module 10"],
-  ["Reflexion: Language Agents with Verbal Reinforcement Learning","Shinn et al. · arXiv 2023","https://arxiv.org/abs/2303.11366","Core","Module 12"],
-  ["AgentBench: Evaluating LLMs as Agents","Liu et al. · arXiv 2023","https://arxiv.org/abs/2308.03688","Core","Module 13"]
-];
 
 const prerequisiteReadings = [
   ["Mathematics for Machine Learning (Math4ML)", "Calculus & linear algebra", "https://users.umiacs.umd.edu/~hal3/courses/2013S_ML/math4ml.pdf"],
@@ -350,8 +334,9 @@ const prerequisiteReadings = [
   <nav class="shell course-quick-links" aria-label="Course shortcuts">
     <a href="#overview"><span>01</span> Overview</a>
     <a href="#schedule"><span>02</span> Schedule & slides</a>
-    <a href="#projects"><span>03</span> Projects</a>
-    <a href="#policies"><span>04</span> Policies</a>
+    <a href="#readings"><span>03</span> Pre-class readings</a>
+    <a href="#projects"><span>04</span> Projects</a>
+    <a href="#policies"><span>05</span> Policies</a>
   </nav>
 
   <section id="overview" class="shell section course-overview">
@@ -417,17 +402,22 @@ const prerequisiteReadings = [
             <div class="week-number"><span>Module</span><strong>{number}</strong></div>
             <div class="week-topic"><h3>{module}</h3><p>{outcome}</p></div>
             <div class="week-lectures">
-              {lectures.map(([date, title, file], index) => releasedSlides.has(getPublishedSlideFilename(file)) ? (
-                <a class="lecture-item" href={`${slideRoot}/${getPublishedSlideFilename(file)}`} download>
-                  <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
-                  <strong>{title}</strong>
-                  <small>PDF ↓</small>
-                </a>
-              ) : (
-                <div class="lecture-item is-pending">
-                  <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
-                  <strong>{title}</strong>
-                  <small>{file ? `Slides ${formatReleaseDate(date)} · 11 AM` : "Continued from prior lecture"}</small>
+              {lectures.map(([date, title, file], index) => (
+                <div class="lecture-session">
+                  {releasedSlides.has(getPublishedSlideFilename(file)) ? (
+                    <a class="lecture-item" href={`${slideRoot}/${getPublishedSlideFilename(file)}`} download>
+                      <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
+                      <strong>{title}</strong>
+                      <small>PDF ↓</small>
+                    </a>
+                  ) : (
+                    <div class="lecture-item is-pending">
+                      <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
+                      <strong>{title}</strong>
+                      <small>{file ? `Slides ${formatReleaseDate(date)} · 11 AM` : "Continued from prior lecture"}</small>
+                    </div>
+                  )}
+                  <a class="lecture-reading-link" href={`#reading-${date}`} aria-label={`Pre-class reading for ${formatCourseDate(date)}: ${title}`}>Pre-class reading →</a>
                 </div>
               ))}
             </div>
@@ -442,6 +432,10 @@ const prerequisiteReadings = [
       </div>
     </div>
   </section>
+
+  <CourseReadings lectures={modules.flatMap(({ number, lectures }) =>
+    lectures.map(([date, title], index) => ({ date, title, module: number, lecture: index + 1 }))
+  )} />
 
   <section id="projects" class="shell section projects-section">
     <div class="course-section-heading">
@@ -577,8 +571,8 @@ const prerequisiteReadings = [
 
   <section id="resources" class="shell section resources-section">
     <div class="course-section-heading compact">
-      <div><p class="eyebrow">Starting references</p><h2>Read the primary work.</h2></div>
-      <p>Begin with the Week 1 mathematical prerequisites below. Core readings anchor the later modules; further readings add context or alternative methods.</p>
+      <div><p class="eyebrow">Mathematical prerequisites</p><h2>Review the foundations.</h2></div>
+      <p>Use these reviews throughout the semester. For the papers assigned to individual lectures, see the <a href="#readings">pre-class reading list</a>.</p>
     </div>
     <div class="resource-group-heading">
       <div><p class="eyebrow">Week 1 · September 1 & 3</p><h3>Refresh the mathematics behind this week’s lectures.</h3></div>
@@ -590,21 +584,6 @@ const prerequisiteReadings = [
           <span>{String(index + 1).padStart(2, "0")}</span>
           <strong>{title}</strong>
           <small><b>Prerequisite</b> · {topic}<br />PDF</small>
-          <i aria-hidden="true">↗</i>
-        </a>
-      ))}
-    </div>
-    <div class="resource-group-heading course-reference-heading">
-      <div><p class="eyebrow">Across the semester</p><h3>Course references.</h3></div>
-      <p>Additional papers will be posted by week, with peer-reviewed work, preprints, official specifications, vendor evidence, and course synthesis clearly distinguished.</p>
-    </div>
-    <p>Reference metadata checked September 8, 2026. Titles identify the linked version; years marked arXiv are initial posting years, not necessarily conference years. Journal versions are labeled by venue. Foundational readings remain useful even when newer work is available.</p>
-    <div class="reference-list">
-      {references.map(([title, meta, url, status, module], index) => (
-        <a href={url}>
-          <span>{String(index + 1).padStart(2, "0")}</span>
-          <strong>{title}</strong>
-          <small><b>{status}</b> · {module}<br />{meta}</small>
           <i aria-hidden="true">↗</i>
         </a>
       ))}
@@ -963,7 +942,7 @@ const prerequisiteReadings = [
 
   .course-quick-links {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     border-block: 1px solid var(--line);
   }
 
@@ -1061,7 +1040,10 @@ const prerequisiteReadings = [
   .week-number strong { color: var(--teal); font-family: "Newsreader", serif; font-size: 2.75rem; line-height: 1; }
   .week-topic h3 { margin: 0; font-family: "Newsreader", serif; font-size: 1.55rem; line-height: 1.1; }
   .week-topic p { margin: 0.6rem 0 0; color: var(--ink-soft); font-size: 0.78rem; }
-  .week-lectures { display: grid; gap: 0.5rem; }
+  .week-lectures { display: grid; gap: 1rem; }
+  .lecture-session { min-width: 0; }
+  .lecture-reading-link { display: inline-block; padding: 0.5rem 0.85rem; color: var(--teal); font-size: 0.8rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .lecture-reading-link:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
   .lecture-item {
     display: grid;
     grid-template-columns: 105px 1fr minmax(165px, auto);
@@ -1073,7 +1055,7 @@ const prerequisiteReadings = [
     border-radius: 12px;
     background: var(--white);
   }
-  .week-lectures a:hover { border-color: var(--teal); transform: translateX(3px); }
+  a.lecture-item:hover { border-color: var(--teal); transform: translateX(3px); }
   .lecture-item.is-pending { background: rgba(255, 253, 249, 0.5); }
   .lecture-item.is-pending small { color: var(--ink-soft); text-align: right; }
   .lecture-meta { display: grid; gap: 0.1rem; }
@@ -1233,7 +1215,6 @@ const prerequisiteReadings = [
   .resource-group-heading h3 { max-width: 760px; margin: 0.45rem 0 0; font-family: "Newsreader", serif; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.03; }
   .resource-group-heading > p { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
   .prerequisite-list { margin-bottom: 4rem; }
-  .course-reference-heading { margin-top: 1rem; }
   .reference-list a { display: grid; grid-template-columns: 50px 1fr 220px 24px; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--line); }
   .reference-list a:hover strong { color: var(--teal); }
   .reference-list span { color: var(--teal); font-size: 0.7rem; font-weight: 800; }
@@ -1272,8 +1253,8 @@ const prerequisiteReadings = [
     .course-section-heading { align-items: start; margin-bottom: 2.5rem; }
     .resource-group-heading { grid-template-columns: 1fr; gap: 1rem; }
     .course-quick-links { grid-template-columns: 1fr 1fr; }
-    .course-quick-links a:nth-child(2) { border-right: 0; }
-    .course-quick-links a:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+    .course-quick-links a:nth-child(even) { border-right: 0; }
+    .course-quick-links a:not(:last-child) { border-bottom: 1px solid var(--line); }
     .course-schedule > li { grid-template-columns: 55px 1fr; }
     .week-lectures { grid-column: 2; }
     .project-signup-callout { grid-template-columns: 1fr; }

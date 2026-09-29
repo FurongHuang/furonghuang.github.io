@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24",
+  "updated": "2026-09-28",
   "sources": {
     "survey": {
       "title": "A Survey on Large Language Model based Autonomous Agents",
@@ -506,6 +506,26 @@
     },
     "2026-09-22": {
       "status": "current",
+      "focus": "Continue the September 17 alignment material using the same slides and readings.",
+      "core": [
+        {
+          "source": "dpo",
+          "guide": "Revisit the reward-policy relationship and preference-likelihood derivation."
+        },
+        {
+          "source": "controlledDecoding",
+          "guide": "Revisit the tokenwise objective and prefix value function."
+        }
+      ],
+      "further": [
+        { "source": "rlhf" },
+        { "source": "transferQ" },
+        { "source": "genarm" },
+        { "source": "collab" }
+      ]
+    },
+    "2026-09-24": {
+      "status": "current",
       "focus": "What state does a planner need, how does it predict an action's outcome, and when should it replan?",
       "core": [
         {
@@ -528,9 +548,9 @@
         }
       ]
     },
-    "2026-09-24": {
-      "status": "current",
-      "focus": "Compare storing an experience, retrieving it, and summarizing it. What evidence can each step lose?",
+    "2026-09-29": {
+      "status": "planned",
+      "focus": "Trace how the agent harness builds context for each model call. Then compare storing, retrieving, and summarizing experience. What evidence can each step lose?",
       "core": [
         {
           "source": "generativeAgents",
@@ -559,7 +579,7 @@
         }
       ]
     },
-    "2026-09-29": {
+    "2026-10-01": {
       "status": "planned",
       "focus": "How does an agent learn when to call a tool, and what must the tool interface make explicit?",
       "core": [
@@ -574,25 +594,10 @@
         },
         {
           "source": "react"
-        }
-      ]
-    },
-    "2026-10-01": {
-      "status": "planned",
-      "focus": "Trace how untrusted input could influence a tool call. Where should permissions be enforced?",
-      "core": [
-        {
-          "source": "camel",
-          "guide": "The CaMeL paper: focus on separating control flow from untrusted data."
-        }
-      ],
-      "further": [
-        {
-          "source": "protection",
-          "guide": "Section I: design principles, including least privilege and complete mediation."
         },
         {
-          "source": "agentDojo"
+          "source": "protection",
+          "guide": "Optional background for tool permissions: Section I, least privilege and complete mediation."
         }
       ]
     },

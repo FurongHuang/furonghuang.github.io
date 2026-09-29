@@ -36,11 +36,25 @@ for (const [date, reading] of Object.entries(data.lectures)) {
 assert.deepEqual([...usedSources].sort(), Object.keys(data.sources).sort(), "Remove unassigned references from the reading data.");
 assert.ok(!/\/Users\/|sourceDeckPath|polishedDeckPath|\.human-redesign|Dropbox\//.test(JSON.stringify(data)), "Reading data must not expose private paths.");
 
-// Guard the corrected early-semester sequence and already published W4 PDFs.
+// Guard the instructor-confirmed teaching sequence and relocated readings.
 assert.deepEqual(data.lectures["2026-09-15"].core.map((item) => item.source), ["deepseekMath", "deepseekR1"]);
 assert.deepEqual(data.lectures["2026-09-17"].core.map((item) => item.source), ["dpo", "controlledDecoding"]);
-for (const filename of ["W4-L1-2026-Planning-and-State.pdf", "W4-L2-2026-Memory-and-Context-Engineering.pdf"]) {
+assert.deepEqual(data.lectures["2026-09-22"].core.map((item) => item.source), ["dpo", "controlledDecoding"]);
+assert.deepEqual(data.lectures["2026-09-24"].core.map((item) => item.source), ["react", "webDreamer"]);
+assert.deepEqual(data.lectures["2026-09-29"].core.map((item) => item.source), ["generativeAgents"]);
+assert.deepEqual(data.lectures["2026-10-01"].core.map((item) => item.source), ["toolformer"]);
+for (const filename of ["W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf", "W4-L1-2026-Planning-and-State.pdf"]) {
   assert.ok(schedule.includes(`/courses/cmsc848n/fall-2026/slides/${filename}`), `Keep the published slide link: ${filename}`);
+}
+const pageSource = readFileSync(new URL("../src/pages/cmsc848n-fall-2026.astro", import.meta.url), "utf8");
+const revisedLectures = [
+  ["2026-09-22", "Alignment from DPO to Controlled Decoding (continued)", "W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf"],
+  ["2026-09-24", "Planning and State", "W4-L1-2026-Planning-and-State.pdf"],
+  ["2026-09-29", "Memory and Context Engineering", "W5-L1-2026-Memory-and-Context-Engineering.pptx"],
+  ["2026-10-01", "Tool Use and Action Interfaces", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pptx"]
+];
+for (const lecture of revisedLectures) {
+  assert.ok(pageSource.includes(`[${lecture.map((value) => JSON.stringify(value)).join(", ")}]`), `Incorrect date/topic/deck mapping: ${lecture[0]}`);
 }
 for (const date of ["2026-10-13", "2026-11-26"]) assert.ok(!data.lectures[date], "Do not assign lecture readings on a university break.");
 

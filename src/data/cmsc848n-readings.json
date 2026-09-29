@@ -549,7 +549,7 @@
       ]
     },
     "2026-09-29": {
-      "status": "planned",
+      "status": "current",
       "focus": "Trace how the agent harness builds context for each model call. Then compare storing, retrieving, and summarizing experience. What evidence can each step lose?",
       "core": [
         {

@@ -580,7 +580,7 @@
       ]
     },
     "2026-10-01": {
-      "status": "planned",
+      "status": "current",
       "focus": "How does an agent learn when to call a tool, and what must the tool interface make explicit?",
       "core": [
         {

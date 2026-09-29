@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "sources": {
     "survey": {
       "title": "A Survey on Large Language Model based Autonomous Agents",
@@ -91,6 +91,36 @@
       "citation": "Park et al. · arXiv 2023",
       "kind": "Paper"
     },
+    "coala": {
+      "title": "Cognitive Architectures for Language Agents",
+      "url": "https://arxiv.org/abs/2309.02427",
+      "citation": "Sumers et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "referralAugmentation": {
+      "title": "Referral Augmentation for Zero-Shot Information Retrieval",
+      "url": "https://arxiv.org/abs/2305.15098",
+      "citation": "Tang et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "fireAct": {
+      "title": "FireAct: Toward Language Agent Fine-tuning",
+      "url": "https://arxiv.org/abs/2310.05915",
+      "citation": "Chen et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "ape": {
+      "title": "Large Language Models Are Human-Level Prompt Engineers",
+      "url": "https://arxiv.org/abs/2211.01910",
+      "citation": "Zhou et al. · arXiv 2022",
+      "kind": "Paper"
+    },
+    "betterTogether": {
+      "title": "Fine-Tuning and Prompt Optimization: Two Great Steps that Work Better Together",
+      "url": "https://arxiv.org/abs/2407.10930",
+      "citation": "Soylu et al. · arXiv 2024",
+      "kind": "Paper"
+    },
     "rag": {
       "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
       "url": "https://arxiv.org/abs/2005.11401",
@@ -125,6 +155,18 @@
       "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
       "url": "https://arxiv.org/abs/2302.04761",
       "citation": "Schick et al. · arXiv 2023",
+      "kind": "Paper"
+    },
+    "codeAct": {
+      "title": "Executable Code Actions Elicit Better LLM Agents",
+      "url": "https://arxiv.org/abs/2402.01030",
+      "citation": "Wang et al. · ICML 2024",
+      "kind": "Paper"
+    },
+    "xGrammar": {
+      "title": "XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models",
+      "url": "https://arxiv.org/abs/2411.15100",
+      "citation": "Dong et al. · arXiv 2024",
       "kind": "Paper"
     },
     "camel": {
@@ -576,6 +618,30 @@
         },
         {
           "source": "longMemEval"
+        },
+        {
+          "source": "coala",
+          "guide": "Cited in the slides: CoALA."
+        },
+        {
+          "source": "referralAugmentation",
+          "guide": "Cited in the slides."
+        },
+        {
+          "source": "fireAct",
+          "guide": "Cited in the slides."
+        },
+        {
+          "source": "ape",
+          "guide": "Cited in the slides: Automatic Prompt Engineer (APE)."
+        },
+        {
+          "source": "sweAgent",
+          "guide": "Cited in the slides."
+        },
+        {
+          "source": "betterTogether",
+          "guide": "Cited in the slides: BetterTogether."
         }
       ]
     },
@@ -598,6 +664,18 @@
         {
           "source": "protection",
           "guide": "Optional background for tool permissions: Section I, least privilege and complete mediation."
+        },
+        {
+          "source": "codeAct",
+          "guide": "Cited in the slides: CodeAct."
+        },
+        {
+          "source": "xGrammar",
+          "guide": "Cited in the slides."
+        },
+        {
+          "source": "camel",
+          "guide": "Cited in the slides: CaMeL."
         }
       ]
     },

@@ -43,6 +43,33 @@ assert.deepEqual(data.lectures["2026-09-22"].core.map((item) => item.source), ["
 assert.deepEqual(data.lectures["2026-09-24"].core.map((item) => item.source), ["react", "webDreamer"]);
 assert.deepEqual(data.lectures["2026-09-29"].core.map((item) => item.source), ["generativeAgents"]);
 assert.deepEqual(data.lectures["2026-10-01"].core.map((item) => item.source), ["toolformer"]);
+
+// Keep the Week 5 slide citations under their respective lectures.
+const week5SlideCitations = {
+  "2026-09-29": {
+    coala: "2309.02427",
+    referralAugmentation: "2305.15098",
+    fireAct: "2310.05915",
+    ape: "2211.01910",
+    sweAgent: "2405.15793",
+    betterTogether: "2407.10930"
+  },
+  "2026-10-01": {
+    codeAct: "2402.01030",
+    xGrammar: "2411.15100",
+    camel: "2503.18813"
+  }
+};
+for (const [date, citations] of Object.entries(week5SlideCitations)) {
+  const reading = data.lectures[date];
+  const supplementarySources = new Set(reading.further.map((item) => item.source));
+  for (const [source, arxivId] of Object.entries(citations)) {
+    assert.ok(supplementarySources.has(source), `${date}: missing slide citation ${source}.`);
+    assert.equal([...reading.core, ...reading.further].filter((item) => item.source === source).length, 1, `${date}: duplicate slide citation ${source}.`);
+    assert.equal(data.sources[source].url, `https://arxiv.org/abs/${arxivId}`, `${date}: incorrect paper URL for ${source}.`);
+  }
+}
+
 for (const filename of ["W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf", "W4-L1-2026-Planning-and-State.pdf", "W5-L1-2026-Memory-and-Context-Engineering.pdf", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf"]) {
   assert.ok(schedule.includes(`/courses/cmsc848n/fall-2026/slides/${filename}`), `Keep the published slide link: ${filename}`);
 }

@@ -92,10 +92,10 @@ const modules: CourseModule[] = [
   },
   {
     number: "07",
-    module: "Web agents",
-    outcome: "Build browser agents that ground actions and resist adversarial content.",
+    module: "Coding harnesses and web-agent security",
+    outcome: "Trace a coding agent’s control loop, then examine how web agents handle untrusted content.",
     lectures: [
-      ["2026-10-15", "Web Agents: Perception, Control, and Evaluation", "W7-L1-Web-Agents-Perception-Control-and-Evaluation.pptx"],
+      ["2026-10-15", "Inside a Coding-Agent Harness", "W7-L1-2026-Inside-a-Coding-Agent-Harness.pdf"],
       ["2026-10-20", "Securing Web Agents: Intent, Privilege, and Adversarial Content", "W7-L2-Securing-Web-Agents-Intent-Privilege-and-Adversarial-Content.pptx"]
     ]
   },
@@ -396,6 +396,8 @@ const prerequisiteReadings = [
         <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10; new lecture slide decks appear exactly two days before each 11:00 a.m. lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
       </div>
 
+      <p>No class Tuesday, October 13 (Fall Break). W7-L1 meets Thursday, October 15.</p>
+
       <ol class="course-schedule">
         {modules.map(({ number, module, outcome, lectures }) => (
           <li>
@@ -414,7 +416,7 @@ const prerequisiteReadings = [
                     <div class="lecture-item is-pending">
                       <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
-                      <small>{file ? `Slides ${formatReleaseDate(date)} · 11 AM` : "Continued from prior lecture"}</small>
+                      <small>{file ? `PDF release: ${formatReleaseDate(date)} · 11 AM` : "Continued from prior lecture"}</small>
                     </div>
                   )}
                   <a class="lecture-reading-link" href={`#reading-${date}`} aria-label={`Pre-class reading for ${formatCourseDate(date)}: ${title}`}>Pre-class reading →</a>

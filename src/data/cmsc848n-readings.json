@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29",
+  "updated": "2026-10-06",
   "sources": {
     "survey": {
       "title": "A Survey on Large Language Model based Autonomous Agents",
@@ -228,6 +228,12 @@
       "url": "https://arxiv.org/abs/2405.15793",
       "citation": "Yang et al. · arXiv 2024",
       "kind": "Paper"
+    },
+    "miniSweAgentControlFlow": {
+      "title": "mini-SWE-agent: Agent control flow",
+      "url": "https://mini-swe-agent.com/latest/advanced/control_flow/",
+      "citation": "mini-SWE-agent project · official documentation",
+      "kind": "Documentation"
     },
     "sweBench": {
       "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
@@ -717,20 +723,18 @@
     },
     "2026-10-15": {
       "status": "planned",
-      "focus": "How is a web task represented, how is success checked, and what makes the environment difficult?",
+      "focus": "Trace the loop from model output to tool execution and the next observation. Where does the harness store state, handle errors, and decide when to stop?",
       "core": [
         {
-          "source": "webArena"
-        }
-      ],
-      "further": [
-        {
-          "source": "mind2web"
+          "source": "sweAgent",
+          "guide": "Focus on how the agent–computer interface shapes repository navigation, editing, and testing."
         },
         {
-          "source": "visualWebArena"
+          "source": "miniSweAgentControlFlow",
+          "guide": "Follow the control-flow diagram and the run, step, query, and execute_actions methods."
         }
-      ]
+      ],
+      "further": []
     },
     "2026-10-20": {
       "status": "planned",
@@ -746,6 +750,18 @@
         },
         {
           "source": "camel"
+        },
+        {
+          "source": "webArena",
+          "guide": "Optional background on web-agent tasks, environments, and evaluation."
+        },
+        {
+          "source": "mind2web",
+          "guide": "Optional background on grounding actions in web pages."
+        },
+        {
+          "source": "visualWebArena",
+          "guide": "Optional background on visually grounded web-agent evaluation."
         }
       ]
     },

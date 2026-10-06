@@ -43,6 +43,10 @@ assert.deepEqual(data.lectures["2026-09-22"].core.map((item) => item.source), ["
 assert.deepEqual(data.lectures["2026-09-24"].core.map((item) => item.source), ["react", "webDreamer"]);
 assert.deepEqual(data.lectures["2026-09-29"].core.map((item) => item.source), ["generativeAgents"]);
 assert.deepEqual(data.lectures["2026-10-01"].core.map((item) => item.source), ["toolformer"]);
+assert.deepEqual(data.lectures["2026-10-15"].core.map((item) => item.source), ["sweAgent", "miniSweAgentControlFlow"]);
+for (const source of ["webArena", "mind2web", "visualWebArena"]) {
+  assert.ok(data.lectures["2026-10-20"].further.some((item) => item.source === source), `Keep the optional web-agent background: ${source}.`);
+}
 
 // Keep the Week 5 slide citations under their respective lectures.
 const week5SlideCitations = {
@@ -78,11 +82,15 @@ const revisedLectures = [
   ["2026-09-22", "Alignment from DPO to Controlled Decoding (continued)", "W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf"],
   ["2026-09-24", "Planning and State", "W4-L1-2026-Planning-and-State.pdf"],
   ["2026-09-29", "Memory and Context Engineering", "W5-L1-2026-Memory-and-Context-Engineering.pdf"],
-  ["2026-10-01", "Tool Use and Action Interfaces", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf"]
+  ["2026-10-01", "Tool Use and Action Interfaces", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf"],
+  ["2026-10-15", "Inside a Coding-Agent Harness", "W7-L1-2026-Inside-a-Coding-Agent-Harness.pdf"]
 ];
 for (const lecture of revisedLectures) {
   assert.ok(pageSource.includes(`[${lecture.map((value) => JSON.stringify(value)).join(", ")}]`), `Incorrect date/topic/deck mapping: ${lecture[0]}`);
 }
 for (const date of ["2026-10-13", "2026-11-26"]) assert.ok(!data.lectures[date], "Do not assign lecture readings on a university break.");
+assert.ok(schedule.includes("No class Tuesday, October 13 (Fall Break). W7-L1 meets Thursday, October 15."), "Clarify the Fall Break and W7-L1 meeting dates.");
+assert.ok(!scheduledDates.includes("2026-10-13"), "Do not schedule a lecture during Fall Break.");
+assert.ok(pageSource.includes("PDF release: ${formatReleaseDate(date)} · 11 AM"), "Distinguish the PDF release date from the lecture date.");
 
 console.log(`CMSC 848N readings check passed: ${scheduledDates.length} lectures, ${usedSources.size} sources, all schedule links present.`);

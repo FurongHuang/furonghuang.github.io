@@ -18,12 +18,18 @@ assert.ok(html.includes('href="#readings"'), "The reading section must be discov
 
 const usedSources = new Set();
 for (const [date, reading] of Object.entries(data.lectures)) {
-  assert.ok(reading.core.length > 0, `${date}: missing Read first selection.`);
   assert.ok(reading.focus.trim(), `${date}: missing reading focus.`);
-  assert.ok(["current", "planned"].includes(reading.status), `${date}: invalid status.`);
+  assert.ok(["current", "planned", "pending"].includes(reading.status), `${date}: invalid status.`);
   const entry = html.match(new RegExp(`<article\\b[^>]*id="reading-${date}"[^>]*>([\\s\\S]*?)<\\/article>`))?.[1];
   assert.ok(entry, `${date}: missing reading anchor.`);
-  assert.ok(entry.includes("Read first"), `${date}: missing visible priority.`);
+  if (reading.status === "pending") {
+    assert.equal(reading.core.length + reading.further.length, 0, `${date}: do not assign readings to an unconfirmed topic.`);
+    assert.ok(entry.includes("Readings pending"), `${date}: pending assignment must be visible.`);
+    assert.ok(!entry.includes("Read first"), `${date}: do not show an empty reading list.`);
+  } else {
+    assert.ok(reading.core.length > 0, `${date}: missing Read first selection.`);
+    assert.ok(entry.includes("Read first"), `${date}: missing visible priority.`);
+  }
   if (reading.status === "planned") assert.ok(entry.includes("Planned"), `${date}: planned status must be visible.`);
   for (const item of [...reading.core, ...reading.further]) {
     const source = data.sources[item.source];
@@ -43,9 +49,22 @@ assert.deepEqual(data.lectures["2026-09-22"].core.map((item) => item.source), ["
 assert.deepEqual(data.lectures["2026-09-24"].core.map((item) => item.source), ["react", "webDreamer"]);
 assert.deepEqual(data.lectures["2026-09-29"].core.map((item) => item.source), ["generativeAgents"]);
 assert.deepEqual(data.lectures["2026-10-01"].core.map((item) => item.source), ["toolformer"]);
-assert.deepEqual(data.lectures["2026-10-15"].core.map((item) => item.source), ["sweAgent", "miniSweAgentControlFlow"]);
-for (const source of ["webArena", "mind2web", "visualWebArena"]) {
-  assert.ok(data.lectures["2026-10-20"].further.some((item) => item.source === source), `Keep the optional web-agent background: ${source}.`);
+assert.deepEqual(data.lectures["2026-10-15"].core.map((item) => item.source), ["sweAgentV3", "miniSweAgentControlFlow"]);
+assert.deepEqual(data.lectures["2026-10-20"].core.map((item) => item.source), ["sweSmith", "sweSmithTraining"]);
+assert.deepEqual(data.lectures["2026-10-22"].core.map((item) => item.source), ["selfHarness", "harnessEvaluation"]);
+assert.equal(data.lectures["2026-12-03"].status, "pending", "Keep the December 3 class with its topic and readings unconfirmed.");
+const codingPaperVersions = {
+  sweAgentV3: "2405.15793v3",
+  sweSmith: "2504.21798v2",
+  sweUniverse: "2602.02361v1",
+  selfHarness: "2606.09498v3",
+  harnessEvaluation: "2607.12227v4",
+  rrsi: "2609.24972v3",
+  harnessDesign: "2609.20804v1",
+  autoCompact: "2610.02163v1"
+};
+for (const [source, version] of Object.entries(codingPaperVersions)) {
+  assert.equal(data.sources[source].url, `https://arxiv.org/html/${version}`, `Keep the lecture's verified source version: ${source}.`);
 }
 
 // Keep the Week 5 slide citations under their respective lectures.
@@ -83,7 +102,20 @@ const revisedLectures = [
   ["2026-09-24", "Planning and State", "W4-L1-2026-Planning-and-State.pdf"],
   ["2026-09-29", "Memory and Context Engineering", "W5-L1-2026-Memory-and-Context-Engineering.pdf"],
   ["2026-10-01", "Tool Use and Action Interfaces", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf"],
-  ["2026-10-15", "Inside a Coding-Agent Harness", "W7-L1-2026-Inside-a-Coding-Agent-Harness.pdf"]
+  ["2026-10-15", "Inside a Coding-Agent Harness", "W7-L1-2026-Inside-a-Coding-Agent-Harness.pdf"],
+  ["2026-10-20", "Training Coding Agents", "W8-L1-2026-Training-Coding-Agents.pdf"],
+  ["2026-10-22", "Optimizing Coding-Agent Harnesses", "W8-L2-2026-Optimizing-Coding-Agent-Harnesses.pdf"],
+  ["2026-10-27", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-Deep-Research-Agents-Search-Evidence-and-Reproducible-Synthesis.pptx"],
+  ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"],
+  ["2026-11-03", "World Models and Vision-Language-Action Agents", "W10-L1-World-Models-and-Vision-Language-Action-Agents.pptx"],
+  ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"],
+  ["2026-11-10", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pptx"],
+  ["2026-11-12", "Defense in Depth, Monitoring, and Incident Response", "W11-L2-Defense-in-Depth-Monitoring-and-Incident-Response.pptx"],
+  ["2026-11-17", "Learning from Experience: Prompts, Skills, Policies, and Continual Adaptation", "W12-L1-Learning-from-Experience-Prompts-Skills-Policies-and-Continual-Adaptation.pptx"],
+  ["2026-11-19", "Self-Modifying and Evolutionary Agents", "W12-L2-Self-Modifying-and-Evolutionary-Agents.pptx"],
+  ["2026-11-24", "Agent Evaluation and Deployment Evidence", "W13-L1-Agent-Evaluation-and-Deployment-Evidence.pptx"],
+  ["2026-12-01", "Provenance, Watermarking, and Frontier Challenges", "W13-L2-Provenance-Watermarking-and-Frontier-Challenges.pptx"],
+  ["2026-12-03", "Topic to be confirmed", null]
 ];
 for (const lecture of revisedLectures) {
   assert.ok(pageSource.includes(`[${lecture.map((value) => JSON.stringify(value)).join(", ")}]`), `Incorrect date/topic/deck mapping: ${lecture[0]}`);

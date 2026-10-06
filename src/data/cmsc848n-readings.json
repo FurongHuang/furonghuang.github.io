@@ -199,30 +199,6 @@
       "citation": "Cemri et al. · arXiv 2025",
       "kind": "Paper"
     },
-    "webArena": {
-      "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
-      "url": "https://arxiv.org/abs/2307.13854",
-      "citation": "Zhou et al. · arXiv 2023",
-      "kind": "Paper"
-    },
-    "mind2web": {
-      "title": "Mind2Web: Towards a Generalist Agent for the Web",
-      "url": "https://arxiv.org/abs/2306.06070",
-      "citation": "Deng et al. · arXiv 2023",
-      "kind": "Paper"
-    },
-    "visualWebArena": {
-      "title": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
-      "url": "https://arxiv.org/abs/2401.13649",
-      "citation": "Koh et al. · arXiv 2024",
-      "kind": "Paper"
-    },
-    "injecAgent": {
-      "title": "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents",
-      "url": "https://arxiv.org/abs/2403.02691",
-      "citation": "Zhan et al. · arXiv 2024",
-      "kind": "Paper"
-    },
     "sweAgent": {
       "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
       "url": "https://arxiv.org/abs/2405.15793",
@@ -235,34 +211,100 @@
       "citation": "mini-SWE-agent project · official documentation",
       "kind": "Documentation"
     },
+    "sweAgentV3": {
+      "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+      "url": "https://arxiv.org/html/2405.15793v3",
+      "citation": "Yang et al. · arXiv 2024 · v3",
+      "kind": "Paper"
+    },
+    "miniSweAgentCode": {
+      "title": "mini-SWE-agent: Default agent implementation",
+      "url": "https://github.com/SWE-agent/mini-swe-agent/blob/04d809ceab9df28f9adaed044884180159172930/src/minisweagent/agents/default.py",
+      "citation": "SWE-agent project · commit 04d809ce",
+      "kind": "Code"
+    },
+    "sweAgentRepairTrace": {
+      "title": "SWE-agent: Recorded pydicom repair trajectory",
+      "url": "https://github.com/SWE-agent/SWE-agent/blob/3ea751c087f32b16e039a2233dd6eefecef325d5/tests/test_data/trajectories/gpt4__swe-bench-dev-easy_first_only__default__t-0.00__p-0.95__c-3.00__install-1/pydicom__pydicom-1458.traj",
+      "citation": "SWE-agent project · commit 3ea751c0",
+      "kind": "Execution record"
+    },
     "sweBench": {
       "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
       "url": "https://arxiv.org/abs/2310.06770",
       "citation": "Jimenez et al. · arXiv 2023",
       "kind": "Paper"
     },
-    "agentless": {
-      "title": "Agentless: Demystifying LLM-based Software Engineering Agents",
-      "url": "https://arxiv.org/abs/2407.01489",
-      "citation": "Xia et al. · arXiv 2024",
-      "kind": "Paper"
-    },
-    "sweGym": {
-      "title": "Training Software Engineering Agents and Verifiers with SWE-Gym",
-      "url": "https://arxiv.org/abs/2412.21139",
-      "citation": "Pan et al. · arXiv 2024",
-      "kind": "Paper"
-    },
-    "r2eGym": {
-      "title": "R2E-Gym: Procedural Environments and Hybrid Verifiers for Scaling Open-Weights SWE Agents",
-      "url": "https://arxiv.org/abs/2504.07164",
-      "citation": "Jain et al. · arXiv 2025",
-      "kind": "Paper"
-    },
     "sweSmith": {
       "title": "SWE-smith: Scaling Data for Software Engineering Agents",
-      "url": "https://arxiv.org/abs/2504.21798",
-      "citation": "Yang et al. · arXiv 2025",
+      "url": "https://arxiv.org/html/2504.21798v2",
+      "citation": "Yang et al. · arXiv 2025 · v2",
+      "kind": "Paper"
+    },
+    "sweSmithTraining": {
+      "title": "SWE-smith: Train SWE-agents",
+      "url": "https://swesmith.com/guides/train_swe_agent/",
+      "citation": "SWE-smith project · official documentation",
+      "kind": "Documentation"
+    },
+    "sweSmithCollector": {
+      "title": "SWE-smith: Trajectory collection and conversion",
+      "url": "https://github.com/SWE-bench/SWE-smith/blob/9b74ac08118a85c39c356802f7961893af73e07f/swesmith/train/traj_mgr/collect_trajs.py",
+      "citation": "SWE-smith project · commit 9b74ac0",
+      "kind": "Code"
+    },
+    "sweSmithTrainConfig": {
+      "title": "SWE-smith: Qwen 32B training configuration",
+      "url": "https://github.com/SWE-bench/SWE-smith/blob/9b74ac08118a85c39c356802f7961893af73e07f/configs/train/full_ft_qwen_32b.yml",
+      "citation": "SWE-smith project · commit 9b74ac0",
+      "kind": "Code"
+    },
+    "sweUniverse": {
+      "title": "SWE-Universe: Scale Real-World Verifiable Environments to Millions",
+      "url": "https://arxiv.org/html/2602.02361v1",
+      "citation": "Chen et al. · arXiv 2026 · v1",
+      "kind": "Paper"
+    },
+    "deepseekMathV3": {
+      "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+      "url": "https://arxiv.org/html/2402.03300v3#S4",
+      "citation": "Shao et al. · arXiv 2024 · v3",
+      "kind": "Paper"
+    },
+    "selfHarness": {
+      "title": "Self-Harness: Harnesses That Improve Themselves",
+      "url": "https://arxiv.org/html/2606.09498v3",
+      "citation": "Zhang et al. · arXiv 2026 · v3",
+      "kind": "Paper"
+    },
+    "harnessEvaluation": {
+      "title": "Rethinking the Evaluation of Harness Evolution for Agents",
+      "url": "https://arxiv.org/html/2607.12227v4",
+      "citation": "Wang et al. · arXiv 2026 · v4",
+      "kind": "Paper"
+    },
+    "rrsi": {
+      "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+      "url": "https://arxiv.org/html/2609.24972v3",
+      "citation": "Xia et al. · arXiv 2026 · v3",
+      "kind": "Paper"
+    },
+    "rrsiSelection": {
+      "title": "RRSI: Candidate selection implementation",
+      "url": "https://github.com/google-research/rrsi/blob/be50316e1db05914068a973f322770ef08ed7ba1/rrsi/selection.py",
+      "citation": "Google Research · commit be50316",
+      "kind": "Code"
+    },
+    "harnessDesign": {
+      "title": "An Empirical Study of Harness Design for Coding Agents",
+      "url": "https://arxiv.org/html/2609.20804v1",
+      "citation": "Fan et al. · arXiv 2026 · v1",
+      "kind": "Paper"
+    },
+    "autoCompact": {
+      "title": "AutoCompact: Learning When to Compact Context in Long-Horizon Coding Agents",
+      "url": "https://arxiv.org/html/2610.02163v1",
+      "citation": "Zhang et al. · arXiv 2026 · v1",
       "kind": "Paper"
     },
     "storm": {
@@ -723,84 +765,97 @@
     },
     "2026-10-15": {
       "status": "planned",
-      "focus": "Trace the loop from model output to tool execution and the next observation. Where does the harness store state, handle errors, and decide when to stop?",
+      "focus": "Follow a real repair from a failed reproduction through rejected edits to a submitted patch. How do the harness's tools, feedback, and stopping rules affect what the model can do and what the result verifies?",
       "core": [
         {
-          "source": "sweAgent",
-          "guide": "Focus on how the agent–computer interface shapes repository navigation, editing, and testing."
+          "source": "sweAgentV3",
+          "guide": "Focus on the search and editing interfaces, the editor ablation, and the lint-gate limitation. Separate a reported benchmark result from the evidence in one repair trace."
         },
         {
           "source": "miniSweAgentControlFlow",
           "guide": "Follow the control-flow diagram and the run, step, query, and execute_actions methods."
         }
       ],
-      "further": []
+      "further": [
+        {
+          "source": "miniSweAgentCode",
+          "guide": "Inspect the pinned implementation of the execution loop and its error and stopping paths."
+        },
+        {
+          "source": "sweAgentRepairTrace",
+          "guide": "Follow the pydicom repair used in class. Identify what the local reproduction and final submission establish."
+        },
+        {
+          "source": "sweBench",
+          "guide": "Background on task construction and the independent evaluation of a returned patch."
+        }
+      ]
     },
     "2026-10-20": {
       "status": "planned",
-      "focus": "Separate the user's request from instructions embedded in a page or tool result. How should a benchmark test that boundary?",
+      "focus": "Turn executable repair tasks and interaction records into training data. How do trajectory selection, token loss masks, and verifier rewards determine what the model learns?",
       "core": [
         {
-          "source": "agentDojo"
+          "source": "sweSmith",
+          "guide": "Follow task generation, validation, trajectory collection, and the reported training setup. Ask what each test and retained trajectory establishes."
+        },
+        {
+          "source": "sweSmithTraining",
+          "guide": "Trace the steps from collected trajectories to supervised fine-tuning. Identify where successful-run filtering and training configuration enter."
         }
       ],
       "further": [
         {
-          "source": "injecAgent"
+          "source": "sweSmithCollector",
+          "guide": "Distinguish attaching a resolved label from filtering out unsuccessful records."
         },
         {
-          "source": "camel"
+          "source": "sweSmithTrainConfig",
+          "guide": "Inspect the dataset and train_on_input settings. Determine which token labels would be needed to verify the loss mask."
         },
         {
-          "source": "webArena",
-          "guide": "Optional background on web-agent tasks, environments, and evaluation."
+          "source": "sweUniverse",
+          "guide": "Compare how tasks and verifiers are constructed and checked. The lecture's GRPO derivation is a separate course formulation."
         },
         {
-          "source": "mind2web",
-          "guide": "Optional background on grounding actions in web pages."
-        },
-        {
-          "source": "visualWebArena",
-          "guide": "Optional background on visually grounded web-agent evaluation."
+          "source": "deepseekMathV3",
+          "guide": "Review Section 4.1 for the group-relative advantage and clipped objective before the multi-turn coding example."
         }
       ]
     },
     "2026-10-22": {
       "status": "planned",
-      "focus": "Follow the path from a GitHub issue to a tested patch. Which parts depend on the agent–computer interface?",
+      "focus": "Hold the model fixed and propose a change to its runtime. What evidence shows that the change helps on new tasks after accounting for repeated selection, feedback, and compute?",
       "core": [
         {
-          "source": "sweAgent"
+          "source": "selfHarness",
+          "guide": "Read the search procedure and Algorithm 1's acceptance rule. Track which evaluation results are reused to retain an edit."
         },
         {
-          "source": "sweBench",
-          "guide": "Focus on task construction and patch evaluation."
+          "source": "harnessEvaluation",
+          "guide": "Focus on matched-feedback baselines and evaluation on unseen tasks. Identify which controls support a generalization claim."
         }
       ],
       "further": [
         {
-          "source": "agentless"
+          "source": "rrsi",
+          "guide": "Examine how proposal and selection restrictions aim to control overfitting and resource growth."
+        },
+        {
+          "source": "rrsiSelection",
+          "guide": "Inspect the acceptance conditions, including the score floor, cost rule, and domain guards."
+        },
+        {
+          "source": "harnessDesign",
+          "guide": "Compare the effects of planning, action interfaces, and context management across models and budgets."
+        },
+        {
+          "source": "autoCompact",
+          "guide": "Explain why learning when and how to compact context changes the policy, even though compaction operates at runtime."
         }
       ]
     },
     "2026-10-27": {
-      "status": "planned",
-      "focus": "What makes a software task a useful training environment, and how can a verifier give misleading feedback?",
-      "core": [
-        {
-          "source": "sweGym"
-        }
-      ],
-      "further": [
-        {
-          "source": "r2eGym"
-        },
-        {
-          "source": "sweSmith"
-        }
-      ]
-    },
-    "2026-10-29": {
       "status": "planned",
       "focus": "How should a research agent gather sources, support its claims, and check citation quality?",
       "core": [
@@ -818,7 +873,7 @@
         }
       ]
     },
-    "2026-11-03": {
+    "2026-10-29": {
       "status": "planned",
       "focus": "Distinguish proposing a hypothesis, running an experiment, and establishing a scientific result.",
       "core": [
@@ -835,7 +890,7 @@
         }
       ]
     },
-    "2026-11-05": {
+    "2026-11-03": {
       "status": "planned",
       "focus": "Compare learning a world model with learning a policy conditioned on vision and language.",
       "core": [
@@ -849,7 +904,7 @@
       ],
       "further": []
     },
-    "2026-11-10": {
+    "2026-11-05": {
       "status": "planned",
       "focus": "What transfers across robots and tasks, and what evidence supports transfer to a new setting?",
       "core": [
@@ -867,7 +922,7 @@
         }
       ]
     },
-    "2026-11-12": {
+    "2026-11-10": {
       "status": "planned",
       "focus": "How can poisoned memory or retrieved knowledge change an agent's behavior? State the attacker's access and objective.",
       "core": [
@@ -881,7 +936,7 @@
         }
       ]
     },
-    "2026-11-17": {
+    "2026-11-12": {
       "status": "planned",
       "focus": "What can a monitor observe, which actions can it stop, and what assumptions does the safety argument require?",
       "core": [
@@ -898,7 +953,7 @@
         }
       ]
     },
-    "2026-11-19": {
+    "2026-11-17": {
       "status": "planned",
       "focus": "What persists after feedback: a written reflection, a reusable skill, or a change to the model?",
       "core": [
@@ -915,7 +970,7 @@
         }
       ]
     },
-    "2026-11-24": {
+    "2026-11-19": {
       "status": "planned",
       "focus": "How are proposed agent modifications generated, evaluated, and selected? How would you detect overfitting to the development tasks?",
       "core": [
@@ -932,7 +987,7 @@
         }
       ]
     },
-    "2026-12-01": {
+    "2026-11-24": {
       "status": "planned",
       "focus": "What do repeated trials, changed conditions, and compute budgets reveal that one average success rate misses?",
       "core": [
@@ -947,7 +1002,7 @@
         }
       ]
     },
-    "2026-12-03": {
+    "2026-12-01": {
       "status": "planned",
       "focus": "State the assumptions behind watermark detection and identify what a positive or negative test can establish.",
       "core": [
@@ -960,6 +1015,12 @@
           "source": "detection"
         }
       ]
+    },
+    "2026-12-03": {
+      "status": "pending",
+      "focus": "The topic and reading assignment will be confirmed. No pre-class reading is assigned yet.",
+      "core": [],
+      "further": []
     }
   }
 }

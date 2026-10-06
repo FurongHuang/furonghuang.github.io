@@ -29,7 +29,7 @@ const formatReleaseDate = (date: string) => {
 };
 
 interface CourseModule {
-  number: string;
+  number: string | null;
   module: string;
   outcome: string;
   lectures: [string, string, string | null][];
@@ -92,20 +92,19 @@ const modules: CourseModule[] = [
   },
   {
     number: "07",
-    module: "Coding harnesses and web-agent security",
-    outcome: "Trace a coding agent’s control loop, then examine how web agents handle untrusted content.",
+    module: "Inside a coding-agent harness",
+    outcome: "Follow a real repair and explain how the harness shapes actions, feedback, and verification.",
     lectures: [
-      ["2026-10-15", "Inside a Coding-Agent Harness", "W7-L1-2026-Inside-a-Coding-Agent-Harness.pdf"],
-      ["2026-10-20", "Securing Web Agents: Intent, Privilege, and Adversarial Content", "W7-L2-Securing-Web-Agents-Intent-Privilege-and-Adversarial-Content.pptx"]
+      ["2026-10-15", "Inside a Coding-Agent Harness", "W7-L1-2026-Inside-a-Coding-Agent-Harness.pdf"]
     ]
   },
   {
     number: "08",
-    module: "Coding agents",
-    outcome: "Navigate repositories, execute repair loops, and evaluate patches validly.",
+    module: "Training coding agents and improving their harnesses",
+    outcome: "Learn from repair trajectories, then test changes to the runtime around a fixed model.",
     lectures: [
-      ["2026-10-22", "Coding Agents: Repository Navigation and Repair Loops", "W8-L1-Coding-Agents-Repository-Navigation-and-Repair-Loops.pptx"],
-      ["2026-10-27", "Coding Agents II: Execution, Training, and Valid Evaluation", "W8-L2-Coding-Agents-Execution-Training-and-Valid-Evaluation.pptx"]
+      ["2026-10-20", "Training Coding Agents", "W8-L1-2026-Training-Coding-Agents.pdf"],
+      ["2026-10-22", "Optimizing Coding-Agent Harnesses", "W8-L2-2026-Optimizing-Coding-Agent-Harnesses.pdf"]
     ]
   },
   {
@@ -113,8 +112,8 @@ const modules: CourseModule[] = [
     module: "Research and scientific agents",
     outcome: "Connect sources, claims, hypotheses, experiments, and qualified conclusions.",
     lectures: [
-      ["2026-10-29", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-Deep-Research-Agents-Search-Evidence-and-Reproducible-Synthesis.pptx"],
-      ["2026-11-03", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"]
+      ["2026-10-27", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-Deep-Research-Agents-Search-Evidence-and-Reproducible-Synthesis.pptx"],
+      ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"]
     ]
   },
   {
@@ -122,8 +121,8 @@ const modules: CourseModule[] = [
     module: "Embodied agents and robotics",
     outcome: "Design and evaluate closed-loop world-model and vision-language-action agents.",
     lectures: [
-      ["2026-11-05", "World Models and Vision-Language-Action Agents", "W10-L1-World-Models-and-Vision-Language-Action-Agents.pptx"],
-      ["2026-11-10", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"]
+      ["2026-11-03", "World Models and Vision-Language-Action Agents", "W10-L1-World-Models-and-Vision-Language-Action-Agents.pptx"],
+      ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"]
     ]
   },
   {
@@ -131,8 +130,8 @@ const modules: CourseModule[] = [
     module: "Agent robustness and safety",
     outcome: "Threat-model the lifecycle and plan prevention, monitoring, and recovery.",
     lectures: [
-      ["2026-11-12", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pptx"],
-      ["2026-11-17", "Defense in Depth, Monitoring, and Incident Response", "W11-L2-Defense-in-Depth-Monitoring-and-Incident-Response.pptx"]
+      ["2026-11-10", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pptx"],
+      ["2026-11-12", "Defense in Depth, Monitoring, and Incident Response", "W11-L2-Defense-in-Depth-Monitoring-and-Incident-Response.pptx"]
     ]
   },
   {
@@ -140,8 +139,8 @@ const modules: CourseModule[] = [
     module: "Learning from experience and self-improvement",
     outcome: "Govern persistent adaptation with evaluation, lineage, retention, and rollback.",
     lectures: [
-      ["2026-11-19", "Learning from Experience: Prompts, Skills, Policies, and Continual Adaptation", "W12-L1-Learning-from-Experience-Prompts-Skills-Policies-and-Continual-Adaptation.pptx"],
-      ["2026-11-24", "Self-Modifying and Evolutionary Agents", "W12-L2-Self-Modifying-and-Evolutionary-Agents.pptx"]
+      ["2026-11-17", "Learning from Experience: Prompts, Skills, Policies, and Continual Adaptation", "W12-L1-Learning-from-Experience-Prompts-Skills-Policies-and-Continual-Adaptation.pptx"],
+      ["2026-11-19", "Self-Modifying and Evolutionary Agents", "W12-L2-Self-Modifying-and-Evolutionary-Agents.pptx"]
     ]
   },
   {
@@ -149,8 +148,16 @@ const modules: CourseModule[] = [
     module: "Evaluation, provenance, and synthesis",
     outcome: "Make deployment decisions from reproducible evidence and accountable provenance.",
     lectures: [
-      ["2026-12-01", "Agent Evaluation and Deployment Evidence", "W13-L1-Agent-Evaluation-and-Deployment-Evidence.pptx"],
-      ["2026-12-03", "Provenance, Watermarking, and Frontier Challenges", "W13-L2-Provenance-Watermarking-and-Frontier-Challenges.pptx"]
+      ["2026-11-24", "Agent Evaluation and Deployment Evidence", "W13-L1-Agent-Evaluation-and-Deployment-Evidence.pptx"],
+      ["2026-12-01", "Provenance, Watermarking, and Frontier Challenges", "W13-L2-Provenance-Watermarking-and-Frontier-Challenges.pptx"]
+    ]
+  },
+  {
+    number: null,
+    module: "December 3 lecture",
+    outcome: "The topic and reading assignment will be confirmed.",
+    lectures: [
+      ["2026-12-03", "Topic to be confirmed", null]
     ]
   }
 ];
@@ -325,7 +332,7 @@ const prerequisiteReadings = [
     <aside class="course-at-a-glance" aria-label="Course at a glance">
       <p class="eyebrow">At a glance</p>
       <div><strong>15</strong><span>semester weeks</span></div>
-      <div><strong>26</strong><span>lectures</span></div>
+      <div><strong>{modules.reduce((total, module) => total + module.lectures.length, 0)}</strong><span>lectures</span></div>
       <div><strong>27</strong><span>personalized research projects</span></div>
       <p>Tuesdays & Thursdays · 11:00 a.m.–12:15 p.m. · CSI 3117</p>
     </aside>
@@ -401,22 +408,25 @@ const prerequisiteReadings = [
       <ol class="course-schedule">
         {modules.map(({ number, module, outcome, lectures }) => (
           <li>
-            <div class="week-number"><span>Module</span><strong>{number}</strong></div>
-            <div class="week-topic"><h3>{module}</h3><p>{outcome}</p></div>
+            <div class="week-number"><span>{number ? "Module" : "Upcoming"}</span><strong>{number ?? "—"}</strong></div>
+            <div class="week-topic">
+              <h3>{module}</h3><p>{outcome}</p>
+              {number === "08" && <a class="lecture-reading-link" href={`${slideRoot}/coding-agents-sources-and-reuse.md`}>Sources and reuse notices for the three coding-agent lectures</a>}
+            </div>
             <div class="week-lectures">
               {lectures.map(([date, title, file], index) => (
                 <div class="lecture-session">
                   {releasedSlides.has(getPublishedSlideFilename(file)) ? (
                     <a class="lecture-item" href={`${slideRoot}/${getPublishedSlideFilename(file)}`} download>
-                      <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
+                      <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Pending"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
                       <small>PDF ↓</small>
                     </a>
                   ) : (
                     <div class="lecture-item is-pending">
-                      <div class="lecture-meta"><span>L{index + 1}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
+                      <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Pending"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
-                      <small>{file ? `PDF release: ${formatReleaseDate(date)} · 11 AM` : "Continued from prior lecture"}</small>
+                      <small>{file ? `PDF release: ${formatReleaseDate(date)} · 11 AM` : number ? "Continued from prior lecture" : "Topic and readings pending"}</small>
                     </div>
                   )}
                   <a class="lecture-reading-link" href={`#reading-${date}`} aria-label={`Pre-class reading for ${formatCourseDate(date)}: ${title}`}>Pre-class reading →</a>
@@ -607,7 +617,7 @@ const prerequisiteReadings = [
       <article><h3>Accessibility & support</h3><p>Students who need accommodations should contact the University’s accessibility service and the instructor early. Please raise barriers to course materials, assessments, or participation as soon as possible so arrangements can be made.</p></article>
       <article><h3>Communication & continuity</h3><p>ELMS is the official source for announcements, assignments, grades, and urgent changes; course Slack supports discussion and help. If campus operations are interrupted, the continuation plan and any deadline changes will be announced through ELMS.</p></article>
     </div>
-    <p class="course-revision">Planning page last updated September 11, 2026. Material changes after the first class will be dated and announced through ELMS.</p>
+    <p class="course-revision">Planning page last updated October 6, 2026. Material changes after the first class will be dated and announced through ELMS.</p>
   </section>
 
   <section class="shell course-final-cta">

@@ -15,7 +15,7 @@ interface LectureReading {
   further: ReadingItem[];
 }
 interface Props {
-  lectures: { date: string; title: string; module: string; lecture: number }[];
+  lectures: { date: string; title: string; module: string | null; lecture: number }[];
 }
 
 const { lectures } = Astro.props;
@@ -38,7 +38,8 @@ if (scheduledDates.size !== lectures.length ||
 }
 for (const { date } of lectures) {
   const reading = readings[date];
-  if (!reading?.core.length || !["current", "planned"].includes(reading.status)) {
+  if (!reading || !["current", "planned", "pending"].includes(reading.status) ||
+      (reading.status === "pending" ? reading.core.length + reading.further.length > 0 : !reading.core.length)) {
     throw new Error(`Missing or invalid CMSC 848N reading assignment for ${date}.`);
   }
   for (const item of [...reading.core, ...reading.further]) {
@@ -70,22 +71,31 @@ for (const { date } of lectures) {
         <article id={`reading-${date}`} class="reading-entry" data-reading-date={date} aria-labelledby={`reading-title-${date}`}>
           <div class="reading-date">
             <time datetime={date}>{formatDate(date)}</time>
-            <span>Module {module} · L{lecture}</span>
+            {module && <span>Module {module} · L{lecture}</span>}
             {reading.status === "planned" && <span class="reading-status">Planned</span>}
+            {reading.status === "pending" && <span class="reading-status">Readings pending</span>}
           </div>
           <div class="reading-content">
             <h3 id={`reading-title-${date}`}>{title}</h3>
-            <p class="reading-focus"><strong>Reading focus:</strong> {reading.focus}</p>
-            <h4>Read first</h4>
-            <ul class="reading-papers core-readings">
-              {reading.core.map(({ source, guide }) => (
-                <li>
-                  <a href={sources[source].url}>{sources[source].title}</a>
-                  <span class="reading-citation">{sources[source].kind} · {sources[source].citation}</span>
-                  {guide && <p class="reading-guide">{guide}</p>}
-                </li>
-              ))}
-            </ul>
+            {reading.status === "pending" ? (
+              <p class="reading-focus">{reading.focus}</p>
+            ) : (
+              <p class="reading-focus"><strong>Reading focus:</strong> {reading.focus}</p>
+            )}
+            {reading.core.length > 0 && (
+              <>
+                <h4>Read first</h4>
+                <ul class="reading-papers core-readings">
+                  {reading.core.map(({ source, guide }) => (
+                    <li>
+                      <a href={sources[source].url}>{sources[source].title}</a>
+                      <span class="reading-citation">{sources[source].kind} · {sources[source].citation}</span>
+                      {guide && <p class="reading-guide">{guide}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
             {reading.further.length > 0 && (
               <details class="optional-readings">
                 <summary>Optional reading ({reading.further.length})</summary>

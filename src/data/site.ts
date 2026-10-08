@@ -146,6 +146,17 @@ export {
 
 export const news = [
   {
+    date: "October 7, 2026",
+    type: "Paper award",
+    title: "What to Attend, What to Keep wins Best Paper Award at the IROS 2026 Touch2Action Workshop",
+    detail: "The paper introduces SkillFormer, which combines skill-conditioned vision and touch with event memory to track progress in contact-rich robotic manipulation. Congratulations to all coauthors!",
+    href: "https://what-to-attend-what-to-keep.github.io/",
+    links: [
+      { label: "Project & award", href: "https://what-to-attend-what-to-keep.github.io/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2609.38494" }
+    ]
+  },
+  {
     date: "September 9, 2026",
     type: "Tutorial talk",
     title: "From Atoms to Bits: Building the Digital Development Loop for Physical Intelligence",

@@ -148,6 +148,17 @@ export const news = [
   {
     date: "October 7, 2026",
     type: "Paper award",
+    title: "μ₀ receives second-place Best Paper Award at the IROS 2026 RoBoWoMo Workshop",
+    detail: "μ₀: A Scalable 3D Interaction-Trace World Model learns from video to predict 3D interaction traces that transfer across embodiments. Congratulations to all coauthors!",
+    href: "https://mu0-wm.github.io/",
+    links: [
+      { label: "Project", href: "https://mu0-wm.github.io/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2606.13769" }
+    ]
+  },
+  {
+    date: "October 7, 2026",
+    type: "Paper award",
     title: "What to Attend, What to Keep wins Best Paper Award at the IROS 2026 Touch2Action Workshop",
     detail: "The paper introduces SkillFormer, which combines skill-conditioned vision and touch with event memory to track progress in contact-rich robotic manipulation. Congratulations to all coauthors!",
     href: "https://what-to-attend-what-to-keep.github.io/",

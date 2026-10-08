@@ -1028,6 +1028,8 @@ publication_overrides:
     social_links:
       - label: Project
         url: https://guava-harness.github.io/
+      - label: X post
+        url: https://x.com/xiruili7_li/status/2107202204981428470
   - title: "FLARE: Robot Learning with Implicit World Modeling"
     pillar: world-models
     thumbnail: /assets/projects/flare.png

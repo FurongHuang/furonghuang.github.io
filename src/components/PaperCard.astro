@@ -14,6 +14,11 @@ interface Paper {
   category: string;
   venue: string;
   links: Link[];
+  appearances?: Array<{
+    title: string;
+    category: string;
+    venue: string;
+  }>;
   identifiers?: {
     arxiv?: string;
     doi?: string;
@@ -59,6 +64,15 @@ const pillarInfo = pillarMeta[pillar];
 const thumbnail = publicationThumbnailByTitle[paper.title];
 const accent = pillarInfo.color;
 const venue = paper.venue?.trim().replace(/^,\s*/, "") || "";
+const additionalVenues = Array.from(new Set(
+  (paper.appearances || [])
+    .filter((appearance) => appearance.category !== "preprint")
+    .map((appearance) => appearance.venue?.trim().replace(/^,\s*/, "") || "")
+    .filter((appearanceVenue) => appearanceVenue && appearanceVenue !== venue)
+));
+const appearanceSearch = (paper.appearances || [])
+  .map((appearance) => `${appearance.title} ${appearance.venue}`)
+  .join(" ");
 const bibtexVenue = venue !== String(paper.year) ? venue : "";
 
 const bibtexEscape = (value: string) => value
@@ -97,7 +111,7 @@ const bibtexBody = bibtexFields
 const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
 ---
 
-<article class:list={["paper-card", `accent-${accent}`, { compact, "has-thumbnail": Boolean(thumbnail) }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-pillar={pillar} data-search={`${paper.title} ${authorText} ${paper.venue} ${pillarInfo.label}`.toLowerCase()} hidden={initiallyHidden}>
+<article class:list={["paper-card", `accent-${accent}`, { compact, "has-thumbnail": Boolean(thumbnail) }]} data-paper data-year={paper.year || ""} data-category={paper.category} data-pillar={pillar} data-search={`${paper.title} ${authorText} ${paper.venue} ${appearanceSearch} ${pillarInfo.label}`.toLowerCase()} hidden={initiallyHidden}>
   <div
     class:list={["paper-visual", `fit-${thumbnailFit}`, { "has-image": Boolean(thumbnail) }]}
     style={thumbnail ? `--paper-thumbnail: url('${thumbnail}')` : undefined}
@@ -115,6 +129,7 @@ const bibtex = `@${entryType}{${citationKey},\n${bibtexBody}\n}`;
     {significance && <p class="paper-significance">{significance}</p>}
     <p class="paper-authors">{authorText}</p>
     {venue && venue !== String(paper.year) && <p class="paper-venue">{venue}</p>}
+    {additionalVenues.map((additionalVenue) => <p class="paper-venue">Also: {additionalVenue}</p>)}
     <div class="paper-links">
       {cleanLinks.map((link) => <a href={link.url}>{link.label}<span>↗</span></a>)}
     </div>

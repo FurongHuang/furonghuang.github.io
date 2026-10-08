@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-05",
+  "as_of": "2026-10-07",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [
@@ -15,8 +15,8 @@
     "overrides": "data/publications/publication-overrides.json"
   },
   "stats": {
-    "cv_appearances": 255,
-    "normalized_works": 242,
+    "cv_appearances": 279,
+    "normalized_works": 251,
     "my_ncbi_records": 74,
     "orcid_records": 109
   },
@@ -38,15 +38,20 @@
       ],
       "authors_source": "inferred-from-tex",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "conference",
+      "venue": "Conference on Robot Learning (CoRL), 2026",
       "identifiers": {
-        "arxiv": "2606.13769"
+        "arxiv": "2606.13769",
+        "openreview": "ShBMWDRPVu"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2606.13769"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=ShBMWDRPVu"
         },
         {
           "label": "Project page",
@@ -59,12 +64,16 @@
         {
           "label": "Models",
           "url": "https://huggingface.co/collections/furonghuang-lab/mu0"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=m8o1GCWXKs"
         }
       ],
       "appearances": [
         {
-          "category": "preprint",
-          "cv_label": "P26",
+          "category": "conference",
+          "cv_label": "C135",
           "title": "μ0: A Scalable 3D Interaction-Trace World Model",
           "authors_display": "Lee, Seungjae, Yoonkyo Jung, Jusuk Lee, Jonghun Shin, Amir Hossein Shahidzadeh, Yao-Chih Lee, H. Jin Kim, Jia-Bin Huang, and Furong Huang",
           "authors_inferred": [
@@ -78,13 +87,17 @@
             "Jia-Bin Huang",
             "Furong Huang"
           ],
-          "venue": ", 2026",
+          "venue": "Conference on Robot Learning (CoRL), 2026",
           "year": 2026,
           "first_or_last_author": true,
           "links": [
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2606.13769"
+            },
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=ShBMWDRPVu"
             },
             {
               "label": "Project page",
@@ -99,11 +112,42 @@
               "url": "https://huggingface.co/collections/furonghuang-lab/mu0"
             }
           ],
-          "source_file": "sections/publications-preprints.tex"
+          "source_file": "sections/publications-conf.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W92",
+          "title": "μ_0: A Scalable 3D Interaction-Trace World Model",
+          "authors_display": "Lee, Seungjae, Yoonkyo Jung, Jusuk Lee, Jonghun Shin, Amir Hossein Shahidzadeh, Yao-Chih Lee, H. Jin Kim, Jia-Bin Huang, and Furong Huang",
+          "authors_inferred": [
+            "Seungjae Lee",
+            "Yoonkyo Jung",
+            "Jusuk Lee",
+            "Jonghun Shin",
+            "Amir Hossein Shahidzadeh",
+            "Yao-Chih Lee",
+            "H. Jin Kim",
+            "Jia-Bin Huang",
+            "Furong Huang"
+          ],
+          "venue": "RoBoWoMo Workshop, poster and spotlight, IROS 2026. Second-place Best Paper Award",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=m8o1GCWXKs"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2606.13769"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -112,6 +156,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
@@ -413,12 +458,17 @@
       "venue": "The Ninth Annual ACM Conference on Fairness, Accountability, and Transparency (FAccT), 2026",
       "identifiers": {
         "doi": "10.1145/3805689.3812397",
-        "arxiv": "2410.01871"
+        "arxiv": "2410.01871",
+        "openreview": "0ZXd373sAb"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2410.01871"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=0ZXd373sAb"
         },
         {
           "label": "",
@@ -428,7 +478,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C123",
+          "cv_label": "C124",
           "title": "Advancing Regulation in Artificial Intelligence: An Auction-Based Approach",
           "authors_display": "Bornstein, Marco, Zora Che, Suhas Julapalli, Abdirisak Mohamed, Amrit Singh Bedi, and Furong Huang",
           "authors_inferred": [
@@ -449,15 +499,45 @@
             }
           ],
           "source_file": "sections/publications-conf.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W85",
+          "title": "Advancing Regulation in Artificial Intelligence: An Auction-Based Approach",
+          "authors_display": "Bornstein, Marco, Zora Che, Suhas Julapalli, Abdirisak Mohamed, Amrit Singh Bedi, and Furong Huang",
+          "authors_inferred": [
+            "Marco Bornstein",
+            "Zora Che",
+            "Suhas Julapalli",
+            "Abdirisak Mohamed",
+            "Amrit Singh Bedi",
+            "Furong Huang"
+          ],
+          "venue": "Workshop on AI for Mechanism Design and Strategic Decision Making (AIMS), ICLR 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=0ZXd373sAb"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2410.01871"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 1,
         "my_ncbi": 1,
         "orcid": 1
       },
-      "flags": []
+      "flags": [
+        "multiple-cv-appearances"
+      ]
     },
     {
       "id": "advbdgen-a-robust-framework-for-generating-adaptive-eacb586f",
@@ -494,7 +574,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C113",
+          "cv_label": "C114",
           "title": "AdvBDGen: A Robust Framework for Generating Adaptive and Stealthy Backdoors in LLM Alignment Attacks",
           "authors_display": "Pathmanathan, Pankayaraj, Udari Madhushani Sehwag, Michael-Andrei Panaitescu-Liess, Cho-Yu Jason Chiang and Furong Huang",
           "authors_inferred": [
@@ -690,7 +770,7 @@
       "appearances": [
         {
           "category": "journal",
-          "cv_label": "J10",
+          "cv_label": "J11",
           "title": "Adversarial Prompt and Fine-Tuning Attacks Threaten Medical Large Language Models",
           "authors_display": "Yang, Yifan, Qiao Jin, Furong Huang, and Zhiyong Lu",
           "authors_inferred": [
@@ -1147,6 +1227,103 @@
       ]
     },
     {
+      "id": "assessing-safety-and-trustworthiness-of-large-langua-b407a76c",
+      "title": "Assessing safety and trustworthiness of large language models in medicine",
+      "normalized_title": "assessingsafetyandtrustworthinessoflargelanguagemodelsinmedicine",
+      "authors": [
+        "Yifan Yang",
+        "Qiao Jin",
+        "Robert Leaman",
+        "Xiaoyu Liu",
+        "Guangzhi Xiong",
+        "Maame Sarfo-Gyamfi",
+        "Changlin Gong",
+        "Santiago Ferrière-Steinert",
+        "W. John Wilbur",
+        "Xiaojun Li",
+        "Jiaxin Yuan",
+        "Bang An",
+        "Kelvin S. Castro",
+        "Francisco Erramuspe Álvarez",
+        "Matías Stockle",
+        "Aidong Zhang",
+        "Furong Huang",
+        "Zhiyong Lu"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "journal",
+      "venue": "Communications Medicine, 2026",
+      "identifiers": {
+        "doi": "10.1038/s43856-026-01881-3",
+        "arxiv": "2411.14487"
+      },
+      "links": [
+        {
+          "label": "DOI",
+          "url": "https://doi.org/10.1038/s43856-026-01881-3"
+        },
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2411.14487"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "journal",
+          "cv_label": "J12",
+          "title": "Assessing safety and trustworthiness of large language models in medicine",
+          "authors_display": "Yang, Yifan, Qiao Jin, Robert Leaman, Xiaoyu Liu, Guangzhi Xiong, Maame Sarfo-Gyamfi, Changlin Gong, Santiago Ferrière-Steinert, W. John Wilbur, Xiaojun Li, Jiaxin Yuan, Bang An, Kelvin S. Castro, Francisco Erramuspe Álvarez, Matías Stockle, Aidong Zhang, Furong Huang, and Zhiyong Lu",
+          "authors_inferred": [
+            "Yifan Yang",
+            "Qiao Jin",
+            "Robert Leaman",
+            "Xiaoyu Liu",
+            "Guangzhi Xiong",
+            "Maame Sarfo-Gyamfi",
+            "Changlin Gong",
+            "Santiago Ferrière-Steinert",
+            "W. John Wilbur",
+            "Xiaojun Li",
+            "Jiaxin Yuan",
+            "Bang An",
+            "Kelvin S. Castro",
+            "Francisco Erramuspe Álvarez",
+            "Matías Stockle",
+            "Aidong Zhang",
+            "Furong Huang",
+            "Zhiyong Lu"
+          ],
+          "venue": "Communications Medicine, 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "DOI",
+              "url": "https://doi.org/10.1038/s43856-026-01881-3"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2411.14487"
+            }
+          ],
+          "source_file": "sections/publications-jour.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
       "id": "a-survey-of-recent-methods-for-addressing-ai-fairnes-73d43753",
       "title": "A survey of recent methods for addressing AI fairness and bias in biomedicine",
       "normalized_title": "asurveyofrecentmethodsforaddressingaifairnessandbiasinbiomedicine",
@@ -1162,8 +1339,15 @@
       "year": 2024,
       "category": "journal",
       "venue": "Journal of Biomedical Informatics (2024): 104646",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "2402.08250"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2402.08250"
+        }
+      ],
       "appearances": [
         {
           "category": "journal",
@@ -1181,7 +1365,12 @@
           "venue": "Journal of Biomedical Informatics (2024): 104646",
           "year": 2024,
           "first_or_last_author": false,
-          "links": [],
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2402.08250"
+            }
+          ],
           "source_file": "sections/publications-jour.tex"
         }
       ],
@@ -1195,8 +1384,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
-        "authors-inferred-from-tex",
-        "missing-persistent-link"
+        "authors-inferred-from-tex"
       ]
     },
     {
@@ -1787,6 +1975,10 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2411.03554"
+        },
+        {
+          "label": "Project page",
+          "url": "https://furong-huang.com/publications/benchmarking-vision-language-model-unlearning-via-fictitious-facial-identity-dataset/"
         }
       ],
       "appearances": [
@@ -1816,6 +2008,10 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2411.03554"
+            },
+            {
+              "label": "Project page",
+              "url": "https://furong-huang.com/publications/benchmarking-vision-language-model-unlearning-via-fictitious-facial-identity-dataset/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -1871,7 +2067,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C131",
+          "cv_label": "C132",
           "title": "Beyond Episodic Evaluation: Memory Architectural Bottlenecks in Sequential Embodied Question Answering",
           "authors_display": "Cai, Zikui, Kaushal Janga, Tan Dat Dao, Seungjae Lee, Shivin Dass, Mingyo Seo, Kaiyu Yue, Mintong Kang, Nandhu Pillai, Monte Hoover, Aadi Palnitkar, Ruchit Rawal, Ruijie Zheng, Bo Li, Yuke Zhu, Roberto Martin-Martin, Tom Goldstein, and Furong Huang",
           "authors_inferred": [
@@ -2073,21 +2269,26 @@
       ],
       "authors_source": "inferred-from-tex",
       "year": 2025,
-      "category": "preprint",
-      "venue": ", 2025",
+      "category": "workshop",
+      "venue": "Workshop on New Perspective in Graph Machine Learning (NPGML), NeurIPS 2025",
       "identifiers": {
-        "arxiv": "2510.25126"
+        "arxiv": "2510.25126",
+        "openreview": "xa7WxSc08h"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2510.25126"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=xa7WxSc08h"
         }
       ],
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P11",
+          "cv_label": "P12",
           "title": "Bridging the Divide: End-to-End Sequence-Graph Learning",
           "authors_display": "Chen, Yuen, Yulun Wu, Samuel Sharpe, Igor Melnyk, Nam H. Nguyen, Furong Huang, C. Bayan Bruss, and Rizal Fathony",
           "authors_inferred": [
@@ -2110,10 +2311,40 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W82",
+          "title": "Bridging the Divide: End-to-End Sequence-Graph Learning",
+          "authors_display": "Chen, Yuen, Yulun Wu, Samuel Sharpe, Igor Melnyk, Nam H. Nguyen, Furong Huang, C. Bayan Bruss, and Rizal Fathony",
+          "authors_inferred": [
+            "Yuen Chen",
+            "Yulun Wu",
+            "Samuel Sharpe",
+            "Igor Melnyk",
+            "Nam H. Nguyen",
+            "Furong Huang",
+            "C. Bayan Bruss",
+            "Rizal Fathony"
+          ],
+          "venue": "Workshop on New Perspective in Graph Machine Learning (NPGML), NeurIPS 2025",
+          "year": 2025,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=xa7WxSc08h"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2510.25126"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -2122,6 +2353,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
@@ -2155,7 +2387,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P2",
+          "cv_label": "P4",
           "title": "Calibrated Dataset Condensation for Faster Hyperparameter Search",
           "authors_display": "Ding, Mucong, Yuancheng Xu, Tahseen Rabbani, Xiaoyu Liu, Brian Gravelle, Teresa Ranadive, Tai-Ching Tuan, and Furong Huang",
           "authors_inferred": [
@@ -2834,6 +3066,10 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2503.21720"
+        },
+        {
+          "label": "Project page",
+          "url": "https://furong-huang.com/publications/collab-controlled-decoding-using-mixture-of-agents-for-llm-alignment/"
         }
       ],
       "appearances": [
@@ -2861,6 +3097,10 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2503.21720"
+            },
+            {
+              "label": "Project page",
+              "url": "https://furong-huang.com/publications/collab-controlled-decoding-using-mixture-of-agents-for-llm-alignment/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -2986,31 +3226,40 @@
       ]
     },
     {
-      "id": "compliance2lora-on-demand-safety-alignment-on-arbitr-8c74feaf",
-      "title": "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
-      "normalized_title": "compliance2loraondemandsafetyalignmentonarbitrarypolicysubsetsviahypernetworkgeneratedloraadapters",
+      "id": "compliance2lora-personalizable-on-demand-safety-alig-74ba30f3",
+      "title": "Compliance2LoRA: Personalizable On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
+      "normalized_title": "compliance2lorapersonalizableondemandsafetyalignmentonarbitrarypolicysubsetsviahypernetworkgeneratedloraadapters",
       "authors": [
         "Pankayaraj Pathmanathan",
         "Furong Huang"
       ],
       "authors_source": "inferred-from-tex",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "workshop",
+      "venue": "BiAlign Workshop, poster, NeurIPS 2026",
       "identifiers": {
-        "arxiv": "2607.27594"
+        "arxiv": "2607.27594",
+        "openreview": "BODD5PjfFb"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2607.27594"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=BODD5PjfFb"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=ivYOEK3Elr"
         }
       ],
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P29",
-          "title": "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
+          "cv_label": "P25",
+          "title": "Compliance2LoRA: Personalizable On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
           "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
           "authors_inferred": [
             "Pankayaraj Pathmanathan",
@@ -3026,10 +3275,58 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W98",
+          "title": "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
+          "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
+          "authors_inferred": [
+            "Pankayaraj Pathmanathan",
+            "Furong Huang"
+          ],
+          "venue": "BiAlign Workshop, poster, NeurIPS 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=BODD5PjfFb"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2607.27594"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W94",
+          "title": "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
+          "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
+          "authors_inferred": [
+            "Pankayaraj Pathmanathan",
+            "Furong Huang"
+          ],
+          "venue": "TAE (Trust-AI-Eval): Can We Trust AI Evaluation?, poster, non-archival, NeurIPS 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=ivYOEK3Elr"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2607.27594"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 3,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -3038,6 +3335,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
@@ -3070,7 +3368,7 @@
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W81",
+          "cv_label": "W88",
           "title": "Compositional Adversarial Training for Robust Visual Watermarking",
           "authors_display": "Satheesh, Anirudh, Michael-Andrei Panaitescu-Liess, Andrew Ye Xu, Georgios Milis, Heng Huang, Zikui Cai, and Furong Huang",
           "authors_inferred": [
@@ -3147,6 +3445,70 @@
       "flags": [
         "missing-from-orcid",
         "missing-persistent-link"
+      ]
+    },
+    {
+      "id": "conv-einsum-a-framework-for-representation-and-fast-2b3b64ba",
+      "title": "conv_einsum: A Framework for Representation and Fast Evaluation of Multilinear Operations in Convolutional Tensorial Neural Networks",
+      "normalized_title": "conveinsumaframeworkforrepresentationandfastevaluationofmultilinearoperationsinconvolutionaltensorialneuralnetworks",
+      "authors": [
+        "Tahseen Rabbani",
+        "Jiahao Su",
+        "Xiaoyu Liu",
+        "David Chan",
+        "Geoffrey Sangston",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2024,
+      "category": "preprint",
+      "venue": ", 2024",
+      "identifiers": {
+        "arxiv": "2401.03384"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2401.03384"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P2",
+          "title": "conv_einsum: A Framework for Representation and Fast Evaluation of Multilinear Operations in Convolutional Tensorial Neural Networks",
+          "authors_display": "Rabbani, Tahseen, Jiahao Su, Xiaoyu Liu, David Chan, Geoffrey Sangston, and Furong Huang",
+          "authors_inferred": [
+            "Tahseen Rabbani",
+            "Jiahao Su",
+            "Xiaoyu Liu",
+            "David Chan",
+            "Geoffrey Sangston",
+            "Furong Huang"
+          ],
+          "venue": ", 2024",
+          "year": 2024,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2401.03384"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
       ]
     },
     {
@@ -3666,7 +4028,7 @@
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W84",
+          "cv_label": "W91",
           "title": "Deliberative Alignment is Deep, but Uncertainty Remains: Inference time safety improvement in reasoning via attribution of unsafe behavior to base model",
           "authors_display": "Pathmanathan,Pankayaraj, and Furong Huang",
           "authors_inferred": [
@@ -3717,7 +4079,8 @@
       "category": "conference",
       "venue": "The 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP), 2025",
       "identifiers": {
-        "arxiv": "2505.15074"
+        "arxiv": "2505.15074",
+        "openreview": "VFSGgwIwIG"
       },
       "links": [
         {
@@ -3727,6 +4090,10 @@
         {
           "label": "Code",
           "url": "https://github.com/Tonyzhou98/disco_grpo"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=VFSGgwIwIG"
         }
       ],
       "appearances": [
@@ -3761,16 +4128,49 @@
             }
           ],
           "source_file": "sections/publications-conf.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W79",
+          "title": "DISCO Balances the Scales: Adaptive Domain- and Difficulty-Aware Reinforcement Learning on Imbalanced Data",
+          "authors_display": "Zhou, Yuhang, Jing Zhu, Shengyi Qian, Zhuokai Zhao, Xiyao Wang, Xiaoyu Liu, Ming Li, Paiheng Xu, Wei Ai, and Furong Huang",
+          "authors_inferred": [
+            "Yuhang Zhou",
+            "Jing Zhu",
+            "Shengyi Qian",
+            "Zhuokai Zhao",
+            "Xiyao Wang",
+            "Xiaoyu Liu",
+            "Ming Li",
+            "Paiheng Xu",
+            "Wei Ai",
+            "Furong Huang"
+          ],
+          "venue": "Efficient Reasoning Workshop, NeurIPS 2025",
+          "year": 2025,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=VFSGgwIwIG"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2505.15074"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 1,
         "my_ncbi": 1,
         "orcid": 0
       },
       "flags": [
-        "missing-from-orcid"
+        "missing-from-orcid",
+        "multiple-cv-appearances"
       ]
     },
     {
@@ -3784,8 +4184,15 @@
       "year": 2016,
       "category": "other",
       "venue": "",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "1606.03212"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/1606.03212"
+        }
+      ],
       "appearances": [],
       "source_counts": {
         "full_cv": 0,
@@ -3900,8 +4307,8 @@
       ],
       "authors_source": "inferred-from-tex",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "conference",
+      "venue": "Findings of the Association for Computational Linguistics: EMNLP, 2026",
       "identifiers": {
         "arxiv": "2606.11046"
       },
@@ -3913,8 +4320,8 @@
       ],
       "appearances": [
         {
-          "category": "preprint",
-          "cv_label": "P24",
+          "category": "conference",
+          "cv_label": "C133",
           "title": "Does Reasoning Preserve Alignment? On the Trustworthiness of Large Reasoning Models",
           "authors_display": "Kini, Prajakta, Avinash Reddy, Souradip Chakraborty, Satya Sai Srinath Namburi GNVV, Furong Huang, Amrit Singh Bedi, and Alvaro Velasquez",
           "authors_inferred": [
@@ -3926,7 +4333,7 @@
             "Amrit Singh Bedi",
             "Alvaro Velasquez"
           ],
-          "venue": ", 2026",
+          "venue": "Findings of the Association for Computational Linguistics: EMNLP, 2026",
           "year": 2026,
           "first_or_last_author": false,
           "links": [
@@ -3935,7 +4342,7 @@
               "url": "https://arxiv.org/abs/2606.11046"
             }
           ],
-          "source_file": "sections/publications-preprints.tex"
+          "source_file": "sections/publications-conf.tex"
         }
       ],
       "source_counts": {
@@ -4212,21 +4619,26 @@
       ],
       "authors_source": "inferred-from-tex",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "conference",
+      "venue": "Conference on Neural Information Processing Systems (NeurIPS), Main Track, Poster, 2026",
       "identifiers": {
-        "arxiv": "2605.30350"
+        "arxiv": "2605.30350",
+        "openreview": "fYSiPsILYt"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2605.30350"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=fYSiPsILYt"
         }
       ],
       "appearances": [
         {
-          "category": "preprint",
-          "cv_label": "P21",
+          "category": "conference",
+          "cv_label": "C136",
           "title": "DynaFLIP: Rethinking Robotics Perception via Tri-Modal-Dynamics Guided Representation",
           "authors_display": "Lee, Jusuk, Seungjae Lee, Jonghun Shin, Hoseong Jung, Sungha Kim, Daesol Cho, H. Jin Kim, Jia-Bin Huang, and Furong Huang",
           "authors_inferred": [
@@ -4240,7 +4652,7 @@
             "Jia-Bin Huang",
             "Furong Huang"
           ],
-          "venue": ", 2026",
+          "venue": "Conference on Neural Information Processing Systems (NeurIPS), Main Track, Poster, 2026",
           "year": 2026,
           "first_or_last_author": true,
           "links": [
@@ -4249,11 +4661,42 @@
               "url": "https://arxiv.org/abs/2605.30350"
             }
           ],
-          "source_file": "sections/publications-preprints.tex"
+          "source_file": "sections/publications-conf.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W97",
+          "title": "DynaFLIP: Rethinking Robotics Perception via Tri-Modal-Dynamics Guided Representation",
+          "authors_display": "Lee, Jusuk, Seungjae Lee, Jonghun Shin, Hoseong Jung, Sungha Kim, Daesol Cho, H. Jin Kim, Jia-Bin Huang, and Furong Huang",
+          "authors_inferred": [
+            "Jusuk Lee",
+            "Seungjae Lee",
+            "Jonghun Shin",
+            "Hoseong Jung",
+            "Sungha Kim",
+            "Daesol Cho",
+            "H. Jin Kim",
+            "Jia-Bin Huang",
+            "Furong Huang"
+          ],
+          "venue": "Robotics World Modeling Workshop, NeurIPS 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=fYSiPsILYt"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2605.30350"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -4262,6 +4705,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
@@ -4475,34 +4919,80 @@
       ]
     },
     {
-      "id": "effort-aware-fairness-measures-and-mitigations-in-ai-31832b01",
-      "title": "Effort-aware Fairness: Measures and Mitigations in AI-assisted Decision Making",
-      "normalized_title": "effortawarefairnessmeasuresandmitigationsinaiassisteddecisionmaking",
+      "id": "effort-aware-fairness-incorporating-a-philosophy-inf-e6ac4ac4",
+      "title": "Effort-aware Fairness: Incorporating a Philosophy-informed, Human-centered Notion of Effort into Algorithmic Fairness Metrics",
+      "normalized_title": "effortawarefairnessincorporatingaphilosophyinformedhumancenterednotionofeffortintoalgorithmicfairnessmetrics",
       "authors": [
+        "Tin Trung Nguyen",
+        "Jiannan Xu",
+        "Zora Che",
+        "Phuong-Anh Nguyen-Le",
+        "Rushil Dandamudi",
         "Donald Braman",
-        "Hal Daume III",
         "Furong Huang",
-        "Zubin Jelveh",
-        "Tin Nguyen"
+        "Hal Daume III",
+        "Zubin Jelveh"
       ],
-      "authors_source": "orcid",
-      "year": 2023,
-      "category": "journal",
-      "venue": "",
-      "identifiers": {},
-      "links": [],
-      "appearances": [],
+      "authors_source": "manual-override",
+      "year": 2025,
+      "category": "conference",
+      "venue": "Proceedings of the AAAI/ACM Conference on AI, Ethics, and Society (AIES), 8(2):1875-1887, 2025",
+      "identifiers": {
+        "arxiv": "2505.19317",
+        "doi": "10.1609/aies.v8i2.36681"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2505.19317"
+        },
+        {
+          "label": "doi",
+          "url": "https://doi.org/10.1609/aies.v8i2.36681"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "conference",
+          "cv_label": "C111",
+          "title": "Effort-aware Fairness: Incorporating a Philosophy-informed, Human-centered Notion of Effort into Algorithmic Fairness Metrics",
+          "authors_display": "Nguyen, Tin Trung, Jiannan Xu, Zora Che, Phuong-Anh Nguyen-Le, Rushil Dandamudi, Donald Braman, Furong Huang, Hal Daume III, and Zubin Jelveh",
+          "authors_inferred": [
+            "Tin Trung Nguyen",
+            "Jiannan Xu",
+            "Zora Che",
+            "Phuong-Anh Nguyen-Le",
+            "Rushil Dandamudi",
+            "Donald Braman",
+            "Furong Huang",
+            "Hal Daume III",
+            "Zubin Jelveh"
+          ],
+          "venue": "Proceedings of the AAAI/ACM Conference on AI, Ethics, and Society (AIES), 8(2):1875-1887, 2025",
+          "year": 2025,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2505.19317"
+            },
+            {
+              "label": "doi",
+              "url": "https://doi.org/10.1609/aies.v8i2.36681"
+            }
+          ],
+          "source_file": "sections/publications-conf.tex"
+        }
+      ],
       "source_counts": {
-        "full_cv": 0,
+        "full_cv": 1,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 1
       },
       "flags": [
-        "not-in-full-cv",
         "missing-from-wordpress-bibtex",
-        "missing-from-my-ncbi",
-        "missing-persistent-link"
+        "missing-from-my-ncbi"
       ]
     },
     {
@@ -4528,21 +5018,26 @@
       ],
       "authors_source": "inferred-from-tex",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "conference",
+      "venue": "Conference on Robot Learning (CoRL), 2026",
       "identifiers": {
-        "arxiv": "2602.16710"
+        "arxiv": "2602.16710",
+        "openreview": "WF4X17Al2r"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2602.16710"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=WF4X17Al2r"
         }
       ],
       "appearances": [
         {
-          "category": "preprint",
-          "cv_label": "P16",
+          "category": "conference",
+          "cv_label": "C134",
           "title": "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data",
           "authors_display": "Zheng, Ruijie, Dantong Niu, Yuqi Xie, Jing Wang, Mengda Xu, Yunfan Jiang, Fernando Castañeda, Fengyuan Hu, You Liang Tan, Letian Fu, Trevor Darrell, Furong Huang, Yuke Zhu, Danfei Xu, and Linxi Fan",
           "authors_inferred": [
@@ -4562,16 +5057,20 @@
             "Danfei Xu",
             "Linxi Fan"
           ],
-          "venue": ", 2026",
+          "venue": "Conference on Robot Learning (CoRL), 2026",
           "year": 2026,
           "first_or_last_author": false,
           "links": [
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2602.16710"
+            },
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=WF4X17Al2r"
             }
           ],
-          "source_file": "sections/publications-preprints.tex"
+          "source_file": "sections/publications-conf.tex"
         }
       ],
       "source_counts": {
@@ -4712,39 +5211,48 @@
         "Mucong Ding",
         "Chenghao Deng",
         "Zora Che",
-        "Anirudh Satheesh",
         "Arjun Rajaram",
+        "Anirudh Satheesh",
         "Bang An",
         "C. Bayan Bruss",
         "John Langford",
         "Furong Huang"
       ],
-      "authors_source": "bibtex",
+      "authors_source": "manual-override",
       "year": 2026,
       "category": "conference",
       "venue": "Findings, The 64th Annual Meeting of the Association for Computational Linguistics (ACL), 2026",
       "identifiers": {
-        "arxiv": "2410.04571"
+        "arxiv": "2410.04571",
+        "doi": "10.18653/v1/2026.findings-acl.2093"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2410.04571"
+        },
+        {
+          "label": "Proceedings",
+          "url": "https://aclanthology.org/2026.findings-acl.2093/"
+        },
+        {
+          "label": "DOI",
+          "url": "https://doi.org/10.18653/v1/2026.findings-acl.2093"
         }
       ],
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C120",
+          "cv_label": "C121",
           "title": "EnsemW2S: Enhancing Weak-to-Strong Generalization with Large Language Model Ensembles",
-          "authors_display": "Agrawal, Aakriti, Mucong Ding, Chenghao Deng, Zora Che, Anirudh Satheesh, Arjun Rajaram, Bang An, C. Bayan Bruss, John Langford, and Furong Huang",
+          "authors_display": "Agrawal, Aakriti, Mucong Ding, Chenghao Deng, Zora Che, Arjun Rajaram, Anirudh Satheesh, Bang An, C. Bayan Bruss, John Langford, and Furong Huang",
           "authors_inferred": [
             "Aakriti Agrawal",
             "Mucong Ding",
             "Chenghao Deng",
             "Zora Che",
-            "Anirudh Satheesh",
             "Arjun Rajaram",
+            "Anirudh Satheesh",
             "Bang An",
             "C. Bayan Bruss",
             "John Langford",
@@ -4757,6 +5265,14 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2410.04571"
+            },
+            {
+              "label": "Proceedings",
+              "url": "https://aclanthology.org/2026.findings-acl.2093/"
+            },
+            {
+              "label": "DOI",
+              "url": "https://doi.org/10.18653/v1/2026.findings-acl.2093"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -4770,94 +5286,6 @@
       },
       "flags": [
         "missing-from-orcid"
-      ]
-    },
-    {
-      "id": "ensuring-safety-and-trust-analyzing-the-risks-of-lar-522afd17",
-      "title": "Ensuring Safety and Trust: Analyzing the Risks of Large Language Models in Medicine",
-      "normalized_title": "ensuringsafetyandtrustanalyzingtherisksoflargelanguagemodelsinmedicine",
-      "authors": [
-        "Yifan Yang",
-        "Qiao Jin",
-        "Robert Leaman",
-        "Xiaoyu Liu",
-        "Guangzhi Xiong",
-        "Maame Sarfo-Gyamfi",
-        "Changlin Gong",
-        "Santiago Ferrière-Steinert",
-        "W. John Wilbur",
-        "Xiaojun Li",
-        "Jiaxin Yuan",
-        "Bang An",
-        "Kelvin S. Castro",
-        "Francisco Erramuspe Álvarez",
-        "Matías Stockle",
-        "Aidong Zhang",
-        "Furong Huang",
-        "Zhiyong Lu"
-      ],
-      "authors_source": "inferred-from-tex",
-      "year": 2024,
-      "category": "preprint",
-      "venue": ", 2024",
-      "identifiers": {
-        "arxiv": "2411.14487"
-      },
-      "links": [
-        {
-          "label": "arXiv",
-          "url": "https://arxiv.org/abs/2411.14487"
-        }
-      ],
-      "appearances": [
-        {
-          "category": "preprint",
-          "cv_label": "P4",
-          "title": "Ensuring Safety and Trust: Analyzing the Risks of Large Language Models in Medicine",
-          "authors_display": "Yang, Yifan, Qiao Jin, Robert Leaman, Xiaoyu Liu, Guangzhi Xiong, Maame Sarfo-Gyamfi, Changlin Gong, Santiago Ferrière-Steinert, W. John Wilbur, Xiaojun Li, Jiaxin Yuan, Bang An, Kelvin S. Castro, Francisco Erramuspe Álvarez, Matías Stockle, Aidong Zhang, Furong Huang, and Zhiyong Lu",
-          "authors_inferred": [
-            "Yifan Yang",
-            "Qiao Jin",
-            "Robert Leaman",
-            "Xiaoyu Liu",
-            "Guangzhi Xiong",
-            "Maame Sarfo-Gyamfi",
-            "Changlin Gong",
-            "Santiago Ferrière-Steinert",
-            "W. John Wilbur",
-            "Xiaojun Li",
-            "Jiaxin Yuan",
-            "Bang An",
-            "Kelvin S. Castro",
-            "Francisco Erramuspe Álvarez",
-            "Matías Stockle",
-            "Aidong Zhang",
-            "Furong Huang",
-            "Zhiyong Lu"
-          ],
-          "venue": ", 2024",
-          "year": 2024,
-          "first_or_last_author": false,
-          "links": [
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2411.14487"
-            }
-          ],
-          "source_file": "sections/publications-preprints.tex"
-        }
-      ],
-      "source_counts": {
-        "full_cv": 1,
-        "wordpress_bibtex": 0,
-        "my_ncbi": 0,
-        "orcid": 0
-      },
-      "flags": [
-        "missing-from-wordpress-bibtex",
-        "missing-from-my-ncbi",
-        "missing-from-orcid",
-        "authors-inferred-from-tex"
       ]
     },
     {
@@ -5669,8 +6097,8 @@
       ],
       "authors_source": "my-ncbi",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "conference",
+      "venue": "Conference on Neural Information Processing Systems (NeurIPS), Main Track, Poster, 2026",
       "identifiers": {
         "arxiv": "2606.11290"
       },
@@ -5682,8 +6110,8 @@
       ],
       "appearances": [
         {
-          "category": "preprint",
-          "cv_label": "P25",
+          "category": "conference",
+          "cv_label": "C137",
           "title": "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse",
           "authors_display": "Yuan, Lingzhi, Chenghao Deng, Fangxu Yu, Souradip Chakraborty, Mohammad Rostami, and Furong Huang",
           "authors_inferred": [
@@ -5694,7 +6122,7 @@
             "Mohammad Rostami",
             "Furong Huang"
           ],
-          "venue": ", 2026",
+          "venue": "Conference on Neural Information Processing Systems (NeurIPS), Main Track, Poster, 2026",
           "year": 2026,
           "first_or_last_author": true,
           "links": [
@@ -5703,7 +6131,7 @@
               "url": "https://arxiv.org/abs/2606.11290"
             }
           ],
-          "source_file": "sections/publications-preprints.tex"
+          "source_file": "sections/publications-conf.tex"
         }
       ],
       "source_counts": {
@@ -6259,9 +6687,9 @@
       ]
     },
     {
-      "id": "guava-an-effective-and-universal-harness-for-embodie-32dc464b",
-      "title": "Guava: An Effective and Universal Harness for Embodied Manipulation",
-      "normalized_title": "guavaaneffectiveanduniversalharnessforembodiedmanipulation",
+      "id": "guava-distilling-frontier-vlms-into-a-compact-agent-416a3e54",
+      "title": "Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness",
+      "normalized_title": "guavadistillingfrontiervlmsintoacompactagentthrougharoboticmanipulationharness",
       "authors": [
         "Haowen Liu",
         "Xirui Li",
@@ -6288,8 +6716,8 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P27",
-          "title": "Guava: An Effective and Universal Harness for Embodied Manipulation",
+          "cv_label": "P23",
+          "title": "Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness",
           "authors_display": "Liu, Haowen, Xirui Li, Shaoxiong Yao, Peng Shi, Tianyi Zhou, Jia-Bin Huang, Furong Huang, and Jiayuan Mao",
           "authors_inferred": [
             "Haowen Liu",
@@ -6474,7 +6902,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P6",
+          "cv_label": "P7",
           "title": "HashEvict: A Pre-Attention KV Cache Eviction Strategy using Locality-Sensitive Hashing",
           "authors_display": "Liu, Minghui, Tahseen Rabbani, Tony O'Halloran, Ananth Sankaralingam, Mary-Anne Hartley, Furong Huang, Cornelia Fermüller, and Yiannis Aloimonos",
           "authors_inferred": [
@@ -6747,21 +7175,26 @@
       ],
       "authors_source": "inferred-from-tex",
       "year": 2025,
-      "category": "preprint",
-      "venue": ", 2025",
+      "category": "workshop",
+      "venue": "Efficient Reasoning Workshop, NeurIPS 2025",
       "identifiers": {
-        "arxiv": "2512.12008"
+        "arxiv": "2512.12008",
+        "openreview": "OtZtLYAdQY"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2512.12008"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=OtZtLYAdQY"
         }
       ],
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P12",
+          "cv_label": "P13",
           "title": "Hold Onto That Thought: Assessing KV Cache Compression on Reasoning",
           "authors_display": "Liu, Minghui, Aadi Palnitkar, Tahseen Rabbani, Hyunwoo Jae, Kyle Rui Sang, Dixi Yao, Shayan Shabihi, Fuheng Zhao, Tian Li, Ce Zhang, Furong Huang, and Kunpeng Zhang",
           "authors_inferred": [
@@ -6788,10 +7221,44 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W80",
+          "title": "Hold Onto That Thought: Assessing KV Cache Compression on Reasoning",
+          "authors_display": "Liu, Minghui, Aadi Palnitkar, Tahseen Rabbani, Hyunwoo Jae, Kyle Rui Sang, Dixi Yao, Shayan Shabihi, Fuheng Zhao, Tian Li, Ce Zhang, Furong Huang, and Kunpeng Zhang",
+          "authors_inferred": [
+            "Minghui Liu",
+            "Aadi Palnitkar",
+            "Tahseen Rabbani",
+            "Hyunwoo Jae",
+            "Kyle Rui Sang",
+            "Dixi Yao",
+            "Shayan Shabihi",
+            "Fuheng Zhao",
+            "Tian Li",
+            "Ce Zhang",
+            "Furong Huang",
+            "Kunpeng Zhang"
+          ],
+          "venue": "Efficient Reasoning Workshop, NeurIPS 2025",
+          "year": 2025,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=OtZtLYAdQY"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2512.12008"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -6800,12 +7267,13 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
     {
-      "id": "humanego-zero-shot-robot-learning-from-minutes-of-hu-e62ba2a2",
-      "title": "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos",
+      "id": "humanego-a-zero-instrumentation-data-to-deployment-p-e62ba2a2",
+      "title": "HumanEgo: A Zero-Instrumentation Data-to-Deployment Pipeline for Robot Learning from Human Egocentric Video",
       "normalized_title": "humanegozeroshotrobotlearningfromminutesofhumanegocentricvideos",
       "authors": [
         "Zhi Wang",
@@ -6819,13 +7287,54 @@
       "authors_source": "inferred-from-tex",
       "year": 2026,
       "category": "workshop",
-      "venue": "Workshop on Data-Centric Robotics: What Data Do Robots Really Need, RSS 2026",
-      "identifiers": {},
-      "links": [],
+      "venue": "ScaleInfra Workshop, oral, IROS 2026",
+      "identifiers": {
+        "openreview": "y8NCjfHKL7",
+        "arxiv": "2605.24934"
+      },
+      "links": [
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=y8NCjfHKL7"
+        },
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2605.24934"
+        }
+      ],
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W82",
+          "cv_label": "W93",
+          "title": "HumanEgo: A Zero-Instrumentation Data-to-Deployment Pipeline for Robot Learning from Human Egocentric Video",
+          "authors_display": "Wang, Zhi, Botao He, Kelin Yu, Seungjae Lee, Ruohan Gao, Furong Huang, and Yiannis Aloimonos",
+          "authors_inferred": [
+            "Zhi Wang",
+            "Botao He",
+            "Kelin Yu",
+            "Seungjae Lee",
+            "Ruohan Gao",
+            "Furong Huang",
+            "Yiannis Aloimonos"
+          ],
+          "venue": "ScaleInfra Workshop, oral, IROS 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=y8NCjfHKL7"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2605.24934"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W89",
           "title": "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos",
           "authors_display": "Wang, Zhi, Botao He, Kelin Yu, Seungjae Lee, Ruohan Gao, Furong Huang, and Yiannis Aloimonos",
           "authors_inferred": [
@@ -6840,12 +7349,17 @@
           "venue": "Workshop on Data-Centric Robotics: What Data Do Robots Really Need, RSS 2026",
           "year": 2026,
           "first_or_last_author": false,
-          "links": [],
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2605.24934"
+            }
+          ],
           "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -6854,8 +7368,8 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
-        "authors-inferred-from-tex",
-        "missing-persistent-link"
+        "multiple-cv-appearances",
+        "authors-inferred-from-tex"
       ]
     },
     {
@@ -7226,7 +7740,7 @@
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W83",
+          "cv_label": "W90",
           "title": "Interaction-Centric Tokens: A Representation for Cross-Embodiment Manipulation",
           "authors_display": "Wang, Zhi, Botao He, Kelin Yu, Seungjae Lee, Ruohan Gao, Furong Huang, Yiannis Aloimonos",
           "authors_inferred": [
@@ -7490,7 +8004,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C112",
+          "cv_label": "C113",
           "title": "Jailbreaks as Inference-Time Alignment: A Framework for Understanding Safety Failures in LLMs",
           "authors_display": "Beetham, James, Souradip Chakraborty, Mengdi Wang, Furong Huang, Amrit Singh Bedi and Mubarak Shah",
           "authors_inferred": [
@@ -7582,6 +8096,68 @@
       },
       "flags": [
         "missing-from-my-ncbi"
+      ]
+    },
+    {
+      "id": "ladders-of-thought-a-self-evolving-curriculum-of-pro-06757bbb",
+      "title": "Ladders of Thought: A Self-Evolving Curriculum of Progressively Simplified Reasoning Traces",
+      "normalized_title": "laddersofthoughtaselfevolvingcurriculumofprogressivelysimplifiedreasoningtraces",
+      "authors": [
+        "Minghui Liu",
+        "Thomas Magelinski",
+        "Dehao Yuan",
+        "Qi Yu",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2609.25643"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.25643"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P30",
+          "title": "Ladders of Thought: A Self-Evolving Curriculum of Progressively Simplified Reasoning Traces",
+          "authors_display": "Liu, Minghui, Thomas Magelinski, Dehao Yuan, Qi Yu, and Furong Huang",
+          "authors_inferred": [
+            "Minghui Liu",
+            "Thomas Magelinski",
+            "Dehao Yuan",
+            "Qi Yu",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.25643"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
       ]
     },
     {
@@ -8165,7 +8741,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P9",
+          "cv_label": "P10",
           "title": "LLaVA-Critic-R1: Your Critic Model Is Secretly a Strong Policy Model",
           "authors_display": "Wang, Xiyao, Chunyuan Li, Jianwei Yang, Kai Zhang, Bo Liu, Tianyi Xiong, and Furong Huang",
           "authors_inferred": [
@@ -8283,7 +8859,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C127",
+          "cv_label": "C128",
           "title": "MAFE: Enabling Equitable Algorithm Design in Multi-Agent Multi-Stage Decision-Making Systems",
           "authors_display": "Lazri, Zachary McBride, Anirudh Nakra, Ivan Brugere, Danial Dervovic, Antigoni Polychroniadou, Furong Huang, Dana Dachman-Soled, and Min Wu",
           "authors_inferred": [
@@ -8406,6 +8982,94 @@
         "missing-from-my-ncbi",
         "missing-from-orcid",
         "multiple-cv-appearances"
+      ]
+    },
+    {
+      "id": "mathadv-what-theorem-provers-know-reason-formalize-a-b1ec9c74",
+      "title": "MathAdv: What Theorem Provers Know, Reason, Formalize, and Generalize",
+      "normalized_title": "mathadvwhattheoremproversknowreasonformalizeandgeneralize",
+      "authors": [
+        "Jiaxin Yuan",
+        "Connor Martinez Lockhart",
+        "Xiaoyu Liu",
+        "Jiaqi Wang",
+        "Chenghao Deng",
+        "Xiayimei Han",
+        "Vlassis Mastrantonis",
+        "Dmitrii Gudin",
+        "Shaopeng Zhu",
+        "Abdirisak Mohamed",
+        "Bilal Aytekin",
+        "Jiewen Lang",
+        "Zezheng Song",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2608.25449"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2608.25449"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/margotyjx/MathAdv"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P28",
+          "title": "MathAdv: What Theorem Provers Know, Reason, Formalize, and Generalize",
+          "authors_display": "Yuan, Jiaxin, Connor Martinez Lockhart, Xiaoyu Liu, Jiaqi Wang, Chenghao Deng, Xiayimei Han, Vlassis Mastrantonis, Dmitrii Gudin, Shaopeng Zhu, Abdirisak Mohamed, Bilal Aytekin, Jiewen Lang, Zezheng Song, and Furong Huang",
+          "authors_inferred": [
+            "Jiaxin Yuan",
+            "Connor Martinez Lockhart",
+            "Xiaoyu Liu",
+            "Jiaqi Wang",
+            "Chenghao Deng",
+            "Xiayimei Han",
+            "Vlassis Mastrantonis",
+            "Dmitrii Gudin",
+            "Shaopeng Zhu",
+            "Abdirisak Mohamed",
+            "Bilal Aytekin",
+            "Jiewen Lang",
+            "Zezheng Song",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2608.25449"
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/margotyjx/MathAdv"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
       ]
     },
     {
@@ -8746,6 +9410,10 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2502.00997"
+        },
+        {
+          "label": "Project page",
+          "url": "https://furong-huang.com/publications/mergeme-model-merging-techniques-for-homogeneous-and-heterogeneous-moes/"
         }
       ],
       "appearances": [
@@ -8771,6 +9439,10 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2502.00997"
+            },
+            {
+              "label": "Project page",
+              "url": "https://furong-huang.com/publications/mergeme-model-merging-techniques-for-homogeneous-and-heterogeneous-moes/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -8816,7 +9488,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P10",
+          "cv_label": "P11",
           "title": "MIRA: Towards Mitigating Reward Hacking in Inference-Time Alignment of T2I Diffusion Models",
           "authors_display": "Zhai, Kevin, Utsav Singh, Anirudh Thatipelli, Souradip Chakraborty, Anit Kumar Sahu, Furong Huang, Amrit Singh Bedi, and Mubarak Shah",
           "authors_inferred": [
@@ -8998,7 +9670,7 @@
       "appearances": [
         {
           "category": "journal",
-          "cv_label": "J9",
+          "cv_label": "J10",
           "title": "Model Tampering Attacks Enable More Rigorous Evaluations of LLM Capabilities",
           "authors_display": "Che, Zora, Stephen Casper, Robert Kirk, Anirudh Satheesh, Stewart Slocum, Lev E McKinney, Rohit Gandikota, Aidan Ewart, Domenic Rosati, Zichu Wu, Zikui Cai, Bilal Chughtai, Yarin Gal, Furong Huang, and Dylan Hadfield-Menell",
           "authors_inferred": [
@@ -9080,7 +9752,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C118",
+          "cv_label": "C119",
           "title": "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning",
           "authors_display": "Ju, Yuanchen, Yongyuan Liang, Yen-Jen Wang, Nandiraju Gireesh, Yuanliang Ju, Seungjae Lee, Qiao Gu, Elvis Hsieh, Furong Huang*, and Koushil Sreenath*",
           "authors_inferred": [
@@ -9258,7 +9930,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P8",
+          "cv_label": "P9",
           "title": "MORSE-500: A Programmatically Controllable Video Benchmark to Stress-Test Multimodal Reasoning",
           "authors_display": "Cai, Zikui, Andrew Wang, Anirudh Satheesh, Ankit Nakhawa, Hyunwoo Jae, Keenan Powell, Minghui Liu, Neel Jay, Sungbin Oh, Xiyao Wang, Yongyuan Liang, Tom Goldstein, and Furong Huang",
           "authors_inferred": [
@@ -9482,7 +10154,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P7",
+          "cv_label": "P8",
           "title": "On the Role of Feedback in Test-Time Scaling of Agentic AI Workflows",
           "authors_display": "Chakraborty, Souradip, Mohammadreza Pourreza, Ruoxi Sun, Yiwen Song, Nino Scherrer, Furong Huang, Amrit Singh Bedi, Ahmad Beirami, Jindong Gu, Hamid Palangi, and Tomas Pfister",
           "authors_inferred": [
@@ -9550,7 +10222,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P30",
+          "cv_label": "P26",
           "title": "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation",
           "authors_display": "Xu, Jiawei, Minghui Liu, Juzheng Zhang, Tom Goldstein, and Furong Huang",
           "authors_inferred": [
@@ -9619,7 +10291,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C129",
+          "cv_label": "C130",
           "title": "Parallel-Probe: Towards Efficient Parallel Thinking via 2D Probing",
           "authors_display": "Zheng, Tong, Chengsong Huang, Runpeng Dai, Yun He, Rui Liu, Xin Ni, Huiwen Bao, Kaishen Wang, Hongtu Zhu, Jiaxin Huang, Furong Huang, and Heng Huang",
           "authors_inferred": [
@@ -9807,7 +10479,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P14",
+          "cv_label": "P15",
           "title": "PersonaLedger: Generating Realistic Financial Transactions with Persona Conditioned LLMs and Rule Grounded Feedback",
           "authors_display": "Yuan, Dehao, Tyler Farnan, Stefan Tesliuc, Doron L. Bergman, Yulun Wu, Xiaoyu Liu, Minghui Liu, James Montgomery, Nam H. Nguyen, C. Bayan Bruss, and Furong Huang",
           "authors_inferred": [
@@ -10049,7 +10721,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P5",
+          "cv_label": "P6",
           "title": "Political-LLM: Large Language Models in Political Science",
           "authors_display": "Li, Lincan, Jiaqi Li, Catherine Chen, Fred Gui, Hongjia Yang, Chenxiao Yu, Zhengguang Wang, Jianing Cai, Junlong Aaron Zhou, Bolin Shen, Alex Qian, Weixin Chen, Zhongkai Xue, Lichao Sun, Lifang He, Hanjie Chen, Kaize Ding, Zijian Du, Fangzhou Mu, Jiaxin Pei, Jieyu Zhao, Swabha Swayamdipta, Willie Neiswanger, Hua Wei, Xiyang Hu, Shixiang Zhu, Tianlong Chen, Yingzhou Lu, Yang Shi, Lianhui Qin, Tianfan Fu, Zhengzhong Tu, Yuzhe Yang, Jaemin Yoo, Jiaheng Zhang, Ryan Rossi, Liang Zhan, Liang Zhao, Emilio Ferrara, Yan Liu, Furong Huang, Xiangliang Zhang, Lawrence Rothenberg, Shuiwang Ji, Philip S. Yu, Yue Zhao, and Yushun Dong",
           "authors_inferred": [
@@ -10550,7 +11222,7 @@
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W79",
+          "cv_label": "W86",
           "title": "Practical Memorization Tests for Detecting Copyrighted Data in Large Language Models",
           "authors_display": "Panaitescu-Liess, Michael-Andrei, Aadi Palnitkar, Archit Kambhamettu, Yigitcan Kaya, Daniel Brown, Sungbin Oh, Sean Michael McLeish, Marco Bornstein, Furong Huang, and Tom Goldstein",
           "authors_inferred": [
@@ -11012,7 +11684,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C116",
+          "cv_label": "C117",
           "title": "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach",
           "authors_display": "Sehwag, Udari Madhushani, Shayan Shabihi, Alex McAvoy, Vikash Sehwag, Yuancheng Xu, Dalton Towers, and Furong Huang",
           "authors_inferred": [
@@ -11076,7 +11748,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P15",
+          "cv_label": "P16",
           "title": "Provably Efficient Algorithms for S- and Non-Rectangular Robust MDPs with General Parameterization",
           "authors_display": "Satheesh, Anirudh, Ziyi Chen, Furong Huang, and Heng Huang",
           "authors_inferred": [
@@ -11121,22 +11793,27 @@
         "Furong Huang"
       ],
       "authors_source": "inferred-from-tex",
-      "year": 2025,
-      "category": "preprint",
-      "venue": ", 2025",
+      "year": 2026,
+      "category": "workshop",
+      "venue": "FrontierIR Workshop, oral, non-archival, AAAI 2026",
       "identifiers": {
-        "arxiv": "2512.24268"
+        "arxiv": "2512.24268",
+        "openreview": "9MMul67uMr"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2512.24268"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=9MMul67uMr"
         }
       ],
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P13",
+          "cv_label": "P14",
           "title": "RAGPart & RAGMask: Retrieval-Stage Defenses Against Corpus Poisoning in Retrieval-Augmented Generation",
           "authors_display": "Pathmanathan, Pankayaraj, Michael-Andrei Panaitescu-Liess, Cho-Yu Jason Chiang, and Furong Huang",
           "authors_inferred": [
@@ -11155,10 +11832,36 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W84",
+          "title": "RAGPart & RAGMask: Retrieval-Stage Defenses Against Corpus Poisoning in Retrieval-Augmented Generation",
+          "authors_display": "Pathmanathan, Pankayaraj, Michael-Andrei Panaitescu-Liess, Cho-Yu Jason Chiang, and Furong Huang",
+          "authors_inferred": [
+            "Pankayaraj Pathmanathan",
+            "Michael-Andrei Panaitescu-Liess",
+            "Cho-Yu Jason Chiang",
+            "Furong Huang"
+          ],
+          "venue": "FrontierIR Workshop, oral, non-archival, AAAI 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=9MMul67uMr"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2512.24268"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -11167,6 +11870,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
@@ -11539,7 +12243,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C117",
+          "cv_label": "C118",
           "title": "ROVER: Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation",
           "authors_display": "Liang, Yongyuan, Wei Chow, Feng Li, Ziqiao Ma, Xiyao Wang, Jiageng Mao, Jiuhai Chen, Jiatao Gu, Yue Wang, and Furong Huang",
           "authors_inferred": [
@@ -11608,6 +12312,10 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2309.11057"
+        },
+        {
+          "label": "Project page",
+          "url": "https://furong-huang.com/publications/safety-guaranteed-robust-multi-agent-reinforcement-learning-with-hierarchical-control-for-connected-and-automated-vehicles/"
         }
       ],
       "appearances": [
@@ -11632,6 +12340,10 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2309.11057"
+            },
+            {
+              "label": "Project page",
+              "url": "https://furong-huang.com/publications/safety-guaranteed-robust-multi-agent-reinforcement-learning-with-hierarchical-control-for-connected-and-automated-vehicles/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -11673,7 +12385,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C126",
+          "cv_label": "C127",
           "title": "Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away",
           "authors_display": "Ghosal, Soumya Suvra, Souradip Chakraborty, Vaibhav Singh, Furong Huang, Dinesh Manocha, and Amrit Singh Bedi",
           "authors_inferred": [
@@ -11783,8 +12495,15 @@
       "year": 2024,
       "category": "workshop",
       "venue": "ICML 2024 Workshop on Theoretical Foundations of Foundation Models, ICML 2024",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "2406.15567"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2406.15567"
+        }
+      ],
       "appearances": [
         {
           "category": "workshop",
@@ -11804,7 +12523,12 @@
           "venue": "ICML 2024 Workshop on Theoretical Foundations of Foundation Models, ICML 2024",
           "year": 2024,
           "first_or_last_author": true,
-          "links": [],
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2406.15567"
+            }
+          ],
           "source_file": "sections/publications-ws.tex"
         }
       ],
@@ -11816,8 +12540,7 @@
       },
       "flags": [
         "missing-from-my-ncbi",
-        "missing-from-orcid",
-        "missing-persistent-link"
+        "missing-from-orcid"
       ]
     },
     {
@@ -11979,7 +12702,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C130",
+          "cv_label": "C131",
           "title": "Scheduling Thoughts: Learning the Order of Thought in Diffusion Language Models",
           "authors_display": "Xu, Jiawei, Minghui Liu, Aakriti Agrawal, Yifan Chen, and Furong Huang",
           "authors_inferred": [
@@ -12058,7 +12781,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C124",
+          "cv_label": "C125",
           "title": "SciPredict: Can LLMs Predict the Outcomes of Scientific Experiments in Natural Sciences?",
           "authors_display": "Sehwag, Udari Madhushani, Elaine Lau, Haniyeh Ehsani Oskouie, Shayan Shabihi, Erich Liang, Andrea Sarai Echeverria Toledo, Guillermo A. Mangialardi, Sergio Fonrouge, Ed-Yeremai Hernandez-Cardona, Paula Vergara, Utkarsh Tyagi, Chen Bo Calvin Zhang, Pavi Bhatter, Nicholas E. Johnson, Furong Huang, Ernesto Gabriel Hernández Montoya, and Bing Liu",
           "authors_inferred": [
@@ -12591,7 +13314,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C111",
+          "cv_label": "C112",
           "title": "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement",
           "authors_display": "Wang, Xiyao, Zhengyuan Yang, Chao Feng, Hongjin Lu, Linjie Li, Chung-Ching Lin, Kevin Lin, Furong Huang*, and Lijuan Wang*",
           "authors_inferred": [
@@ -12692,6 +13415,72 @@
       ]
     },
     {
+      "id": "spectralcanary-embarrassingly-simple-low-frequency-t-18af4752",
+      "title": "SpectralCanary: Embarrassingly Simple Low-Frequency Traces for T2I Dataset-Use Auditing",
+      "normalized_title": "spectralcanaryembarrassinglysimplelowfrequencytracesfort2idatasetuseauditing",
+      "authors": [
+        "Sy-Tuyen Ho",
+        "Anirudh Satheesh",
+        "Soham Chawathe",
+        "Huy Nghiem",
+        "Yongkyun Lee",
+        "Andrew Adams Schoen",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "workshop",
+      "venue": "ATTRIB Workshop, NeurIPS 2026",
+      "identifiers": {
+        "openreview": "zARHUv0nwu"
+      },
+      "links": [
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=zARHUv0nwu"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "workshop",
+          "cv_label": "W96",
+          "title": "SpectralCanary: Embarrassingly Simple Low-Frequency Traces for T2I Dataset-Use Auditing",
+          "authors_display": "Ho, Sy-Tuyen, Anirudh Satheesh, Soham Chawathe, Huy Nghiem, Yongkyun Lee, Andrew Adams Schoen, and Furong Huang",
+          "authors_inferred": [
+            "Sy-Tuyen Ho",
+            "Anirudh Satheesh",
+            "Soham Chawathe",
+            "Huy Nghiem",
+            "Yongkyun Lee",
+            "Andrew Adams Schoen",
+            "Furong Huang"
+          ],
+          "venue": "ATTRIB Workshop, NeurIPS 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=zARHUv0nwu"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
       "id": "spectral-greedy-coresets-for-graph-neural-networks-1301ae70",
       "title": "Spectral Greedy Coresets for Graph Neural Networks",
       "normalized_title": "spectralgreedycoresetsforgraphneuralnetworks",
@@ -12717,7 +13506,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P1",
+          "cv_label": "P3",
           "title": "Spectral Greedy Coresets for Graph Neural Networks",
           "authors_display": "Ding, Mucong, Yinhan He, Jundong Li, and Furong Huang",
           "authors_inferred": [
@@ -12778,6 +13567,10 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2411.00401"
+        },
+        {
+          "label": "Project page",
+          "url": "https://furong-huang.com/publications/statistical-guarantees-for-lifelong-reinforcement-learning-using-pac-bayesian-theory/"
         }
       ],
       "appearances": [
@@ -12805,6 +13598,10 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2411.00401"
+            },
+            {
+              "label": "Project page",
+              "url": "https://furong-huang.com/publications/statistical-guarantees-for-lifelong-reinforcement-learning-using-pac-bayesian-theory/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -13094,7 +13891,8 @@
       "category": "conference",
       "venue": "Main Conference, The 64th Annual Meeting of the Association for Computational Linguistics (ACL), Oral, 2026",
       "identifiers": {
-        "arxiv": "2507.06419"
+        "arxiv": "2507.06419",
+        "openreview": "kSmA3hvo2J"
       },
       "links": [
         {
@@ -13104,12 +13902,16 @@
         {
           "label": "Code",
           "url": "https://github.com/pankayaraj/ACL_2026_REFORM"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=kSmA3hvo2J"
         }
       ],
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C122",
+          "cv_label": "C123",
           "title": "Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling",
           "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
           "authors_inferred": [
@@ -13130,16 +13932,41 @@
             }
           ],
           "source_file": "sections/publications-conf.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W83",
+          "title": "Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling",
+          "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
+          "authors_inferred": [
+            "Pankayaraj Pathmanathan",
+            "Furong Huang"
+          ],
+          "venue": "Workshop on Trust and Control in Agentic AI (TrustAgent), AAAI 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=kSmA3hvo2J"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2507.06419"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 1,
         "my_ncbi": 1,
         "orcid": 0
       },
       "flags": [
-        "missing-from-orcid"
+        "missing-from-orcid",
+        "multiple-cv-appearances"
       ]
     },
     {
@@ -13273,8 +14100,15 @@
       "year": 2019,
       "category": "workshop",
       "venue": "13th Annual Machine Learning Symposium, 2019",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "1805.10352"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/1805.10352"
+        }
+      ],
       "appearances": [
         {
           "category": "workshop",
@@ -13290,7 +14124,12 @@
           "venue": "13th Annual Machine Learning Symposium, 2019",
           "year": 2019,
           "first_or_last_author": true,
-          "links": [],
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/1805.10352"
+            }
+          ],
           "source_file": "sections/publications-ws.tex"
         },
         {
@@ -13307,7 +14146,12 @@
           "venue": "Women in Machine Learning Workshop, NeurIPS 2018",
           "year": 2018,
           "first_or_last_author": true,
-          "links": [],
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/1805.10352"
+            }
+          ],
           "source_file": "sections/publications-ws.tex"
         }
       ],
@@ -13320,8 +14164,7 @@
       "flags": [
         "missing-from-my-ncbi",
         "missing-from-orcid",
-        "multiple-cv-appearances",
-        "missing-persistent-link"
+        "multiple-cv-appearances"
       ]
     },
     {
@@ -13355,7 +14198,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P23",
+          "cv_label": "P22",
           "title": "The Hidden Bias of Process Reward Models: PRISM for Rewarding the Right Reasoning",
           "authors_display": "Agrawal, Aakriti, Souradip Chakraborty, Armin Saghafian, Nihal Sharma, Rizal Fathony, Nam H. Nguyen, C. Bayan Bruss, Amrit Singh Bedi, and Furong Huang",
           "authors_inferred": [
@@ -13395,6 +14238,74 @@
       ]
     },
     {
+      "id": "the-low-frequency-trap-video-language-models-fail-at-06a49018",
+      "title": "The Low Frequency Trap: Video Language Models Fail at Simple Event Bookkeeping",
+      "normalized_title": "thelowfrequencytrapvideolanguagemodelsfailatsimpleeventbookkeeping",
+      "authors": [
+        "Sarvesh Baskar",
+        "Zikui Cai",
+        "Shayan Shabihi",
+        "Anirudh Satheesh",
+        "Muhammad R. Islam",
+        "Udari Madhushani Sehwag",
+        "Tom Goldstein",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2608.06361"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2608.06361"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P27",
+          "title": "The Low Frequency Trap: Video Language Models Fail at Simple Event Bookkeeping",
+          "authors_display": "Baskar, Sarvesh, Zikui Cai, Shayan Shabihi, Anirudh Satheesh, Muhammad R. Islam, Udari Madhushani Sehwag, Tom Goldstein, and Furong Huang",
+          "authors_inferred": [
+            "Sarvesh Baskar",
+            "Zikui Cai",
+            "Shayan Shabihi",
+            "Anirudh Satheesh",
+            "Muhammad R. Islam",
+            "Udari Madhushani Sehwag",
+            "Tom Goldstein",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2608.06361"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
       "id": "timesqueeze-dynamic-patching-for-efficient-time-seri-05c94786",
       "title": "TimeSqueeze: Dynamic Patching for Efficient Time Series Forecasting",
       "normalized_title": "timesqueezedynamicpatchingforefficienttimeseriesforecasting",
@@ -13408,16 +14319,21 @@
         "C. Bayan Bruss"
       ],
       "authors_source": "inferred-from-tex",
-      "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "year": 2025,
+      "category": "workshop",
+      "venue": "BERT^2S Workshop, NeurIPS 2025",
       "identifiers": {
-        "arxiv": "2603.11352"
+        "arxiv": "2603.11352",
+        "openreview": "eBrZLICc6S"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2603.11352"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=eBrZLICc6S"
         }
       ],
       "appearances": [
@@ -13445,10 +14361,39 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W81",
+          "title": "TimeSqueeze: Dynamic Patching for Efficient Time Series Forecasting",
+          "authors_display": "Ankireddy, Sravan Kumar, Nikita Seleznev, Nam H. Nguyen, Yulun Wu, Senthil Kumar, Furong Huang, and C. Bayan Bruss",
+          "authors_inferred": [
+            "Sravan Kumar Ankireddy",
+            "Nikita Seleznev",
+            "Nam H. Nguyen",
+            "Yulun Wu",
+            "Senthil Kumar",
+            "Furong Huang",
+            "C. Bayan Bruss"
+          ],
+          "venue": "BERT^2S Workshop, NeurIPS 2025",
+          "year": 2025,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=eBrZLICc6S"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2603.11352"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -13457,6 +14402,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
@@ -13490,7 +14436,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C125",
+          "cv_label": "C126",
           "title": "Token-Level LLM Collaboration via FusionRoute",
           "authors_display": "Xiong, Nuoya, Yuhang Zhou, Hanqing Zeng, Zhaorun Chen, Furong Huang, Shuchao Bi, Lizhu Zhang, and Zhuokai Zhao",
           "authors_inferred": [
@@ -13556,7 +14502,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C121",
+          "cv_label": "C122",
           "title": "Towards Mitigating Hallucinations in Large Vision-Language Models by Refining Textual Embeddings",
           "authors_display": "Agrawal, Aakriti, Gouthaman KV, Rohith Aralikatti, Gauri Jagatap, Jiaxin Yuan, Sarvesh Baskar, Vijay Kamarshi, Andrea Fanelli, and Furong Huang",
           "authors_inferred": [
@@ -13623,7 +14569,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P3",
+          "cv_label": "P5",
           "title": "Towards Self-Improvement of LLMs via MCTS: Leveraging Stepwise Knowledge with Curriculum Preference Learning",
           "authors_display": "Wang, Xiyao, Linfeng Song, Ye Tian, Dian Yu, Baolin Peng, Haitao Mi, Furong Huang, and Dong Yu",
           "authors_inferred": [
@@ -13702,7 +14648,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C119",
+          "cv_label": "C120",
           "title": "TraceGen: World Modeling in 3D Trace Space Enables Learning from Cross-Embodiment Videos",
           "authors_display": "Lee, Seungjae, Yoonkyo Jung, Inkook Chun, Yao-Chih Lee, Zikui Cai, Hongjia Huang, Aayush Talreja, Tan Dat Dao, Yongyuan Liang, Jia-Bin Huang and Furong Huang",
           "authors_inferred": [
@@ -13777,6 +14723,10 @@
         {
           "label": "Code",
           "url": "https://github.com/umd-huang-lab/tracevla"
+        },
+        {
+          "label": "Project page",
+          "url": "https://furong-huang.com/publications/tracevla-visual-trace-prompting-enhances-spatial-temporal-awareness-for-generalist-robotic-policies/"
         }
       ],
       "appearances": [
@@ -13806,6 +14756,10 @@
             {
               "label": "Code",
               "url": "https://github.com/umd-huang-lab/tracevla"
+            },
+            {
+              "label": "Project page",
+              "url": "https://furong-huang.com/publications/tracevla-visual-trace-prompting-enhances-spatial-temporal-awareness-for-generalist-robotic-policies/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -14128,7 +15082,7 @@
         "Haomin Zhuang",
         "Dongping Chen",
         "Kehan Guo",
-        "y Zou",
+        "Andy Zou",
         "Bryan Hooi",
         "Caiming Xiong",
         "Elias Stengel-Eskin",
@@ -14175,7 +15129,7 @@
         "Dawn Song",
         "Xiangliang Zhang"
       ],
-      "authors_source": "bibtex",
+      "authors_source": "manual-override",
       "year": 2026,
       "category": "conference",
       "venue": "The Fourteenth International Conference on Learning Representations (ICLR), 2026",
@@ -14191,9 +15145,9 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C114",
+          "cv_label": "C115",
           "title": "TrustGen: A Platform of Dynamic Benchmarking on the Trustworthiness of Generative Foundation Models",
-          "authors_display": "Huang, Yue, Chujie Gao, Siyuan Wu, Haoran Wang, Xiangqi Wang, Jiayi Ye, Yujun Zhou, Yanbo Wang, Jiawen Shi, Qihui Zhang, Han Bao, Zhaoyi Liu, Yuan Li, Tianrui Guan, Peiran Wang, Haomin Zhuang, Dongping Chen, Kehan Guo,,y Zou, Bryan Hooi, Caiming Xiong, Elias Stengel-Eskin, Hongyang Zhang, Hongzhi Yin, Huan Zhang, Huaxiu Yao, Jieyu Zhang, Jaehong Yoon, Kai Shu, Ranjay Krishna, Swabha Swayamdipta, Weijia Shi, Xiang Li, Yuexing Hao, Zhihao Jia, Zhize Li, Xiuying Chen, Zhengzhong Tu, Xiyang Hu, Tianyi Zhou, Jieyu Zhao, Lichao Sun, Furong Huang, Or Cohen-Sasson, Prasanna Sattigeri, Anka Reuel, Max Lamparth, Yue Zhao, Nouha Dziri, Yu Su, Huan Sun, Heng Ji, Chaowei Xiao, Mohit Bansal, Nitesh V Chawla, Jian Pei, Jianfeng Gao, Michael Backes, Philip S. Yu, Neil Zhenqiang Gong, Pin-Yu Chen, Bo Li, Dawn Song, Xiangliang Zhang",
+          "authors_display": "Huang, Yue, Chujie Gao, Siyuan Wu, Haoran Wang, Xiangqi Wang, Jiayi Ye, Yujun Zhou, Yanbo Wang, Jiawen Shi, Qihui Zhang, Han Bao, Zhaoyi Liu, Yuan Li, Tianrui Guan, Peiran Wang, Haomin Zhuang, Dongping Chen, Kehan Guo, Andy Zou, Bryan Hooi, Caiming Xiong, Elias Stengel-Eskin, Hongyang Zhang, Hongzhi Yin, Huan Zhang, Huaxiu Yao, Jieyu Zhang, Jaehong Yoon, Kai Shu, Ranjay Krishna, Swabha Swayamdipta, Weijia Shi, Xiang Li, Yuexing Hao, Zhihao Jia, Zhize Li, Xiuying Chen, Zhengzhong Tu, Xiyang Hu, Tianyi Zhou, Jieyu Zhao, Lichao Sun, Furong Huang, Or Cohen-Sasson, Prasanna Sattigeri, Anka Reuel, Max Lamparth, Yue Zhao, Nouha Dziri, Yu Su, Huan Sun, Heng Ji, Chaowei Xiao, Mohit Bansal, Nitesh V Chawla, Jian Pei, Jianfeng Gao, Michael Backes, Philip S. Yu, Neil Zhenqiang Gong, Pin-Yu Chen, Bo Li, Dawn Song, Xiangliang Zhang",
           "authors_inferred": [
             "Yue Huang",
             "Chujie Gao",
@@ -14213,7 +15167,7 @@
             "Haomin Zhuang",
             "Dongping Chen",
             "Kehan Guo",
-            "y Zou",
+            "Andy Zou",
             "Bryan Hooi",
             "Caiming Xiong",
             "Elias Stengel-Eskin",
@@ -14317,7 +15271,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C128",
+          "cv_label": "C129",
           "title": "TSRBench: A Comprehensive Multi-task Multi-modal Time Series Reasoning Benchmark for Generalist Models",
           "authors_display": "Yu, Fangxu, Xingang Guo, Lingzhi Yuan, Haoqiang Kang, Hongyu Zhao, Lianhui Qin, Furong Huang, Bin Hu, and Tianyi Zhou",
           "authors_inferred": [
@@ -14574,8 +15528,15 @@
       "year": 2020,
       "category": "journal",
       "venue": "",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "1906.03291"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/1906.03291"
+        }
+      ],
       "appearances": [],
       "source_counts": {
         "full_cv": 0,
@@ -14646,6 +15607,139 @@
       ]
     },
     {
+      "id": "unmasking-and-quantifying-racial-bias-of-large-langu-95af846c",
+      "title": "Unmasking and quantifying racial bias of large language models in medical report generation",
+      "normalized_title": "unmaskingandquantifyingracialbiasoflargelanguagemodelsinmedicalreportgeneration",
+      "authors": [
+        "Yifan Yang",
+        "Xiaoyu Liu",
+        "Qiao Jin",
+        "Furong Huang",
+        "Zhiyong Lu"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2024,
+      "category": "journal",
+      "venue": "Communications Medicine, 4:176, 2024",
+      "identifiers": {
+        "doi": "10.1038/s43856-024-00601-z",
+        "arxiv": "2401.13867"
+      },
+      "links": [
+        {
+          "label": "DOI",
+          "url": "https://doi.org/10.1038/s43856-024-00601-z"
+        },
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2401.13867"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "journal",
+          "cv_label": "J9",
+          "title": "Unmasking and quantifying racial bias of large language models in medical report generation",
+          "authors_display": "Yang, Yifan, Xiaoyu Liu, Qiao Jin, Furong Huang, and Zhiyong Lu",
+          "authors_inferred": [
+            "Yifan Yang",
+            "Xiaoyu Liu",
+            "Qiao Jin",
+            "Furong Huang",
+            "Zhiyong Lu"
+          ],
+          "venue": "Communications Medicine, 4:176, 2024",
+          "year": 2024,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "DOI",
+              "url": "https://doi.org/10.1038/s43856-024-00601-z"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2401.13867"
+            }
+          ],
+          "source_file": "sections/publications-jour.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
+      "id": "unsupervised-learning-of-transcriptional-regulatory-ffd4ea24",
+      "title": "Unsupervised learning of transcriptional regulatory networks via latent tree graphical models",
+      "normalized_title": "unsupervisedlearningoftranscriptionalregulatorynetworksvialatenttreegraphicalmodels",
+      "authors": [
+        "Anthony Gitter",
+        "Furong Huang",
+        "Ragupathyraj Valluvan",
+        "Ernest Fraenkel",
+        "Animashree Anandkumar"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2016,
+      "category": "preprint",
+      "venue": ", 2016",
+      "identifiers": {
+        "arxiv": "1609.06335"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/1609.06335"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P1",
+          "title": "Unsupervised learning of transcriptional regulatory networks via latent tree graphical models",
+          "authors_display": "Gitter, Anthony, Furong Huang, Ragupathyraj Valluvan, Ernest Fraenkel, and Animashree Anandkumar",
+          "authors_inferred": [
+            "Anthony Gitter",
+            "Furong Huang",
+            "Ragupathyraj Valluvan",
+            "Ernest Fraenkel",
+            "Animashree Anandkumar"
+          ],
+          "venue": ", 2016",
+          "year": 2016,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/1609.06335"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
       "id": "unsupervised-learning-of-word-sequence-representatio-f499fe7c",
       "title": "Unsupervised learning of word-sequence representations from scratch via convolutional tensor decomposition",
       "normalized_title": "unsupervisedlearningofwordsequencerepresentationsfromscratchviaconvolutionaltensordecomposition",
@@ -14657,8 +15751,15 @@
       "year": 2016,
       "category": "journal",
       "venue": "",
-      "identifiers": {},
-      "links": [],
+      "identifiers": {
+        "arxiv": "1606.03153"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/1606.03153"
+        }
+      ],
       "appearances": [],
       "source_counts": {
         "full_cv": 0,
@@ -14732,7 +15833,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P22",
+          "cv_label": "P21",
           "title": "VeriGate: Verifier-Gated Step-Level Supervision for GRPO",
           "authors_display": "Agrawal, Aakriti, Minghui Liu, and Furong Huang",
           "authors_inferred": [
@@ -14877,7 +15978,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P28",
+          "cv_label": "P24",
           "title": "Visual Contrastive Self-Distillation",
           "authors_display": "Liang, Yijun, Yunjie Tian, Yijiang Li, Yuqi Jia, Furong Huang, Tianyi Zhou, and Di Fu",
           "authors_inferred": [
@@ -15311,6 +16412,198 @@
       ]
     },
     {
+      "id": "what-to-attend-what-to-keep-skill-conditioned-visuot-fec8bdc7",
+      "title": "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory",
+      "normalized_title": "whattoattendwhattokeepskillconditionedvisuotactilerepresentationwithprogressguidedeventmemory",
+      "authors": [
+        "Amir-Hossein Shahidzadeh",
+        "Seungjae Lee",
+        "Eadom Dessalene",
+        "Shanthosh Raaj Mohanram Mageswari",
+        "Soroush Etemad",
+        "Furong Huang",
+        "Cornelia Fermüller",
+        "Yiannis Aloimonos"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "workshop",
+      "venue": "Touch2Action Workshop, IROS 2026. Best Paper Award",
+      "identifiers": {
+        "arxiv": "2609.38494"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.38494"
+        },
+        {
+          "label": "Project page",
+          "url": "https://what-to-attend-what-to-keep.github.io/"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P31",
+          "title": "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory",
+          "authors_display": "Shahidzadeh, Amir-Hossein, Seungjae Lee, Eadom Dessalene, Shanthosh Raaj Mohanram Mageswari, Soroush Etemad, Furong Huang, Cornelia Fermüller, and Yiannis Aloimonos",
+          "authors_inferred": [
+            "Amir-Hossein Shahidzadeh",
+            "Seungjae Lee",
+            "Eadom Dessalene",
+            "Shanthosh Raaj Mohanram Mageswari",
+            "Soroush Etemad",
+            "Furong Huang",
+            "Cornelia Fermüller",
+            "Yiannis Aloimonos"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.38494"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W99",
+          "title": "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory",
+          "authors_display": "Shahidzadeh, Amir-Hossein, Seungjae Lee, Eadom Dessalene, Shanthosh Raaj Mohanram Mageswari, Soroush Etemad, Furong Huang, Cornelia Fermüller, and Yiannis Aloimonos",
+          "authors_inferred": [
+            "Amir-Hossein Shahidzadeh",
+            "Seungjae Lee",
+            "Eadom Dessalene",
+            "Shanthosh Raaj Mohanram Mageswari",
+            "Soroush Etemad",
+            "Furong Huang",
+            "Cornelia Fermüller",
+            "Yiannis Aloimonos"
+          ],
+          "venue": "Touch2Action Workshop, IROS 2026. Best Paper Award",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.38494"
+            },
+            {
+              "label": "Project page",
+              "url": "https://what-to-attend-what-to-keep.github.io/"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 2,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "multiple-cv-appearances",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
+      "id": "when-ai-reviews-train-ai-reviewers-scientific-judgme-ee5147f5",
+      "title": "When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation",
+      "normalized_title": "whenaireviewstrainaireviewersscientificjudgmentcollapseandmitigation",
+      "authors": [
+        "Sy-Tuyen Ho",
+        "Minghui Liu",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "workshop",
+      "venue": "FLLMPT Workshop, poster, NeurIPS 2026",
+      "identifiers": {
+        "arxiv": "2609.20942",
+        "openreview": "koY6jRVeOy"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.20942"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=koY6jRVeOy"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P29",
+          "title": "When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation",
+          "authors_display": "Ho, Sy-Tuyen, Minghui Liu, and Furong Huang",
+          "authors_inferred": [
+            "Sy-Tuyen Ho",
+            "Minghui Liu",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.20942"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W95",
+          "title": "Recursive Training and Scientific Judgment in AI Peer Review",
+          "authors_display": "Ho, Sy-Tuyen, Minghui Liu, and Furong Huang",
+          "authors_inferred": [
+            "Sy-Tuyen Ho",
+            "Minghui Liu",
+            "Furong Huang"
+          ],
+          "venue": "FLLMPT Workshop, poster, NeurIPS 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=koY6jRVeOy"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.20942"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 2,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "multiple-cv-appearances",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
       "id": "when-detection-tools-collide-on-the-impact-of-waterm-d6497555",
       "title": "When Detection Tools Collide: On the Impact of Watermarking on AI-Generated Text Detectors",
       "normalized_title": "whendetectiontoolscollideontheimpactofwatermarkingonaigeneratedtextdetectors",
@@ -15330,7 +16623,7 @@
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W80",
+          "cv_label": "W87",
           "title": "When Detection Tools Collide: On the Impact of Watermarking on AI-Generated Text Detectors",
           "authors_display": "Panaitescu-Liess, Michael-Andrei, Yigitcan Kaya, Fiza Mulla, Anirudh Satheesh, and Furong Huang",
           "authors_inferred": [
@@ -15586,6 +16879,10 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2406.07381"
+        },
+        {
+          "label": "Project page",
+          "url": "https://furong-huang.com/publications/world-models-with-hints-of-large-language-models-for-goal-achieving/"
         }
       ],
       "appearances": [
@@ -15611,6 +16908,10 @@
             {
               "label": "arXiv",
               "url": "https://arxiv.org/abs/2406.07381"
+            },
+            {
+              "label": "Project page",
+              "url": "https://furong-huang.com/publications/world-models-with-hints-of-large-language-models-for-goal-achieving/"
             }
           ],
           "source_file": "sections/publications-conf.tex"
@@ -15657,9 +16958,10 @@
           "category": "workshop",
           "cv_label": "W78",
           "title": "You Only Train Once: Efficient Tokenizer Selection for Arithmetic in Language Models",
-          "authors_display": "Ding, Mucong Sean Michael McLeish, Kazem Meidani, Igor Melnyk, Nam H Nguyen, C. Bayan Bruss, and Furong Huang",
+          "authors_display": "Ding, Mucong, Sean Michael McLeish, Kazem Meidani, Igor Melnyk, Nam H Nguyen, C. Bayan Bruss, and Furong Huang",
           "authors_inferred": [
-            "Mucong Sean Michael McLeish Ding",
+            "Mucong Ding",
+            "Sean Michael McLeish",
             "Kazem Meidani",
             "Igor Melnyk",
             "Nam H Nguyen",
@@ -15722,7 +17024,7 @@
       "appearances": [
         {
           "category": "conference",
-          "cv_label": "C115",
+          "cv_label": "C116",
           "title": "Zebra-CoT: A Dataset for Interleaved Vision-Language Reasoning",
           "authors_display": "Li, Ang, Charles L. Wang, Deqing Fu, Kaiyu Yue, Zikui Cai, Wang Bill Zhu, Ollie Liu, Peng Guo, Willie Neiswanger, Furong Huang, Tom Goldstein and Micah Goldblum",
           "authors_inferred": [

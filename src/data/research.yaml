@@ -505,6 +505,8 @@ areas:
             href: https://arxiv.org/abs/2606.11290
           - label: Code
             href: https://github.com/lingzhiyxp/FlowBank
+          - label: X thread
+            href: https://x.com/furongh/status/2106948808781263275
           - label: LinkedIn vision
             href: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
       - id: act-workflows
@@ -1063,6 +1065,8 @@ publication_overrides:
     pillar: reasoning-control
     thumbnail: /assets/projects/flowbank.png
     social_links:
+      - label: X thread
+        url: https://x.com/furongh/status/2106948808781263275
       - label: LinkedIn vision
         url: https://www.linkedin.com/feed/update/urn:li:activity:7488680522446188544/
   - title: Token-Level LLM Collaboration via FusionRoute

@@ -130,11 +130,14 @@ const isPrimaryActive = (href: string) => {
     <a class="skip-link" href="#main">Skip to content</a>
     <header class:list={["site-header", { "has-research-subnav": showResearchSubnav }]}>
       <a class="wordmark" href="/" aria-label="Furong Lab home">
-        <span class="wordmark-mark">FH</span>
-        <span>
-          <strong>{profile.name}</strong>
-          <small>Furong Lab · UMD</small>
-        </span>
+        <img
+          class="wordmark-logo"
+          src="/assets/brand/furong-lab-logo-jade.png"
+          alt="Furong Lab"
+          width="1086"
+          height="362"
+          loading="eager"
+        />
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
         {desktopLinks.map(([href, label]) => (
@@ -174,7 +177,14 @@ const isPrimaryActive = (href: string) => {
     </main>
     <footer>
       <div>
-        <strong>{profile.labName}</strong>
+        <img
+          class="footer-logo"
+          src="/assets/brand/furong-lab-logo-jade.png"
+          alt={profile.labName}
+          width="1086"
+          height="362"
+          loading="lazy"
+        />
         <p>Building foundation models that reason, act, recover, and improve.</p>
         <p>{hidePersonalContact ? profile.institution : `${profile.location} · ${profile.institution}`}</p>
       </div>

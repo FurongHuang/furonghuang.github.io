@@ -94,16 +94,15 @@ select {
   line-height: 1.1;
 }
 
-.wordmark-mark {
-  display: grid;
-  width: 2.65rem;
-  aspect-ratio: 1;
-  place-items: center;
-  border-radius: 13px;
-  color: var(--white);
-  background: var(--ink);
-  font-family: "Newsreader", serif;
-  font-size: 1.15rem;
+.wordmark-logo {
+  width: 198px;
+  height: auto;
+}
+
+.footer-logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 0.75rem;
 }
 
 .wordmark strong,

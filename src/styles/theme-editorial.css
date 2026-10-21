@@ -81,11 +81,7 @@ html[data-theme="editorial"] .hero .button { min-height: 42px; padding: .55rem 1
 html[data-theme="editorial"] .hero .button.secondary { border-color: var(--line); }
 html[data-theme="editorial"] .portrait-stage { width: 240px; padding-top: .35rem; }
 html[data-theme="editorial"] .portrait-frame { aspect-ratio: .85; border-radius: 2px; box-shadow: none; background: #deded4; }
-html[data-theme="editorial"] .portrait-frame img {
-  object-position: center top;
-  transform: scale(1.5);
-  transform-origin: center top;
-}
+html[data-theme="editorial"] .portrait-frame img { object-position: center 24%; }
 html[data-theme="editorial"] .portrait-caption { position: static; width: auto; margin-top: 1rem; padding: 1rem 0 0; border-top: 1px solid var(--line); border-radius: 0; color: var(--ink); background: transparent; box-shadow: none; }
 html[data-theme="editorial"] .portrait-caption span { color: var(--ink-soft); font-size: .62rem; }
 html[data-theme="editorial"] .portrait-caption strong { margin-top: .4rem; font-family: "Newsreader",serif; font-size: 1.35rem; font-weight: 500; line-height: 1.25; }

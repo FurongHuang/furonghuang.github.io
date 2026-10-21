@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/theme-editorial.css";
 import { profile, blogPosts } from "../data/site";
 import { blogSocialImages, defaultBlogSocialImage } from "../data/blog-social-images";
 import { getBlogCitation } from "../data/blog-citations";
@@ -94,14 +95,14 @@ const isPrimaryActive = (href: string) => {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="editorial">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="author" content={profile.name} />
     {noindex && <meta name="robots" content="noindex, follow" />}
-    <meta name="theme-color" content="#102a43" />
+    <meta name="theme-color" content="#faf9f5" />
     {!noindex && <link rel="canonical" href={canonicalUrl} />}
     {blogCitation && <link rel="alternate" type="application/x-bibtex" title="BibTeX citation" href={blogCitation.download} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -132,7 +133,7 @@ const isPrimaryActive = (href: string) => {
       <a class="wordmark" href="/" aria-label="Furong Lab home">
         <img
           class="wordmark-logo"
-          src="/assets/brand/furong-lab-logo-jade.png"
+          src="/assets/brand/furong-lab-logo-jade-refined.png"
           alt="Furong Lab"
           width="1086"
           height="362"
@@ -179,7 +180,7 @@ const isPrimaryActive = (href: string) => {
       <div>
         <img
           class="footer-logo"
-          src="/assets/brand/furong-lab-logo-jade.png"
+          src="/assets/brand/furong-lab-logo-jade-refined.png"
           alt={profile.labName}
           width="1086"
           height="362"

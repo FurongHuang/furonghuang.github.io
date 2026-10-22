@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-07",
+  "as_of": "2026-10-22",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [
@@ -15,8 +15,8 @@
     "overrides": "data/publications/publication-overrides.json"
   },
   "stats": {
-    "cv_appearances": 279,
-    "normalized_works": 251,
+    "cv_appearances": 282,
+    "normalized_works": 254,
     "my_ncbi_records": 74,
     "orcid_records": 109
   },
@@ -3258,7 +3258,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P25",
+          "cv_label": "P26",
           "title": "Compliance2LoRA: Personalizable On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
           "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
           "authors_inferred": [
@@ -4054,6 +4054,87 @@
         "orcid": 0
       },
       "flags": [
+        "missing-from-my-ncbi",
+        "missing-from-orcid"
+      ]
+    },
+    {
+      "id": "dex-one2many-learning-dexterous-manipulation-from-a-4e777eeb",
+      "title": "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration",
+      "normalized_title": "dexone2manylearningdexterousmanipulationfromasinglehumandemonstration",
+      "authors": [
+        "Jusuk Lee",
+        "Sungha Kim",
+        "Yeonsoo Park",
+        "Jonguk Cheon",
+        "Yoonkyo Jung",
+        "Yongjun You",
+        "H. Jin Kim",
+        "Jia-Bin Huang",
+        "Furong Huang",
+        "Youngseok Jang",
+        "Seungjae Lee"
+      ],
+      "authors_source": "manual-override",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2610.12470"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.12470"
+        },
+        {
+          "label": "Project page",
+          "url": "https://dex-one2many.github.io/"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P33",
+          "title": "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration",
+          "authors_display": "Lee, Jusuk, Sungha Kim, Yeonsoo Park, Jonguk Cheon, Yoonkyo Jung, Yongjun You, H. Jin Kim, Jia-Bin Huang, Furong Huang, Youngseok Jang, and Seungjae Lee",
+          "authors_inferred": [
+            "Jusuk Lee",
+            "Sungha Kim",
+            "Yeonsoo Park",
+            "Jonguk Cheon",
+            "Yoonkyo Jung",
+            "Yongjun You",
+            "H. Jin Kim",
+            "Jia-Bin Huang",
+            "Furong Huang",
+            "Youngseok Jang",
+            "Seungjae Lee"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2610.12470"
+            },
+            {
+              "label": "Project page",
+              "url": "https://dex-one2many.github.io/"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid"
       ]
@@ -6146,6 +6227,91 @@
       ]
     },
     {
+      "id": "fly-by-code-embodied-coding-agents-for-aerial-manipu-76430941",
+      "title": "Fly-by-Code: Embodied Coding Agents for Aerial Manipulation with Active Visual and Physical Feedback",
+      "normalized_title": "flybycodeembodiedcodingagentsforaerialmanipulationwithactivevisualandphysicalfeedback",
+      "authors": [
+        "Jaewoo Lee",
+        "Jeongyeon Seo",
+        "Sihyun Cho",
+        "Gyeongrak Choe",
+        "Yutong Wang",
+        "Bavin Saravanan",
+        "Jia-Bin Huang",
+        "Furong Huang",
+        "Sebastian Scherer",
+        "Guanya Shi",
+        "H. Jin Kim",
+        "Seungjae Lee",
+        "Dongjae Lee"
+      ],
+      "authors_source": "manual-override",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2610.12549"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.12549"
+        },
+        {
+          "label": "Project page",
+          "url": "https://fly-by-code.github.io/"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P34",
+          "title": "Fly-by-Code: Embodied Coding Agents for Aerial Manipulation with Active Visual and Physical Feedback",
+          "authors_display": "Lee, Jaewoo, Jeongyeon Seo, Sihyun Cho, Gyeongrak Choe, Yutong Wang, Bavin Saravanan, Jia-Bin Huang, Furong Huang, Sebastian Scherer, Guanya Shi, H. Jin Kim, Seungjae Lee, and Dongjae Lee",
+          "authors_inferred": [
+            "Jaewoo Lee",
+            "Jeongyeon Seo",
+            "Sihyun Cho",
+            "Gyeongrak Choe",
+            "Yutong Wang",
+            "Bavin Saravanan",
+            "Jia-Bin Huang",
+            "Furong Huang",
+            "Sebastian Scherer",
+            "Guanya Shi",
+            "H. Jin Kim",
+            "Seungjae Lee",
+            "Dongjae Lee"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2610.12549"
+            },
+            {
+              "label": "Project page",
+              "url": "https://fly-by-code.github.io/"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid"
+      ]
+    },
+    {
       "id": "game-theoretic-robust-reinforcement-learning-handles-30b8bd80",
       "title": "Game-Theoretic Robust Reinforcement Learning Handles Temporally-Coupled Perturbations",
       "normalized_title": "gametheoreticrobustreinforcementlearninghandlestemporallycoupledperturbations",
@@ -6716,7 +6882,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P23",
+          "cv_label": "P24",
           "title": "Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness",
           "authors_display": "Liu, Haowen, Xirui Li, Shaoxiong Yao, Peng Shi, Tianyi Zhou, Jia-Bin Huang, Furong Huang, and Jiayuan Mao",
           "authors_inferred": [
@@ -8125,7 +8291,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P30",
+          "cv_label": "P31",
           "title": "Ladders of Thought: A Self-Evolving Curriculum of Progressively Simplified Reasoning Traces",
           "authors_display": "Liu, Minghui, Thomas Magelinski, Dehao Yuan, Qi Yu, and Furong Huang",
           "authors_inferred": [
@@ -8990,8 +9156,10 @@
       "normalized_title": "mathadvwhattheoremproversknowreasonformalizeandgeneralize",
       "authors": [
         "Jiaxin Yuan",
+        "Udari Madhushani Sehwag",
         "Connor Martinez Lockhart",
         "Xiaoyu Liu",
+        "Shayan Shabihi",
         "Jiaqi Wang",
         "Chenghao Deng",
         "Xiayimei Han",
@@ -9004,7 +9172,7 @@
         "Zezheng Song",
         "Furong Huang"
       ],
-      "authors_source": "inferred-from-tex",
+      "authors_source": "manual-override",
       "year": 2026,
       "category": "preprint",
       "venue": ", 2026",
@@ -9024,13 +9192,15 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P28",
+          "cv_label": "P29",
           "title": "MathAdv: What Theorem Provers Know, Reason, Formalize, and Generalize",
-          "authors_display": "Yuan, Jiaxin, Connor Martinez Lockhart, Xiaoyu Liu, Jiaqi Wang, Chenghao Deng, Xiayimei Han, Vlassis Mastrantonis, Dmitrii Gudin, Shaopeng Zhu, Abdirisak Mohamed, Bilal Aytekin, Jiewen Lang, Zezheng Song, and Furong Huang",
+          "authors_display": "Yuan, Jiaxin, Udari Madhushani Sehwag, Connor Martinez Lockhart, Xiaoyu Liu, Shayan Shabihi, Jiaqi Wang, Chenghao Deng, Xiayimei Han, Vlassis Mastrantonis, Dmitrii Gudin, Shaopeng Zhu, Abdirisak Mohamed, Bilal Aytekin, Jiewen Lang, Zezheng Song, and Furong Huang",
           "authors_inferred": [
             "Jiaxin Yuan",
+            "Udari Madhushani Sehwag",
             "Connor Martinez Lockhart",
             "Xiaoyu Liu",
+            "Shayan Shabihi",
             "Jiaqi Wang",
             "Chenghao Deng",
             "Xiayimei Han",
@@ -9068,8 +9238,7 @@
       "flags": [
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
-        "missing-from-orcid",
-        "authors-inferred-from-tex"
+        "missing-from-orcid"
       ]
     },
     {
@@ -10040,6 +10209,81 @@
       ]
     },
     {
+      "id": "non-gaussianity-reveals-interpretable-directions-in-73606533",
+      "title": "Non-Gaussianity Reveals Interpretable Directions in Language Models",
+      "normalized_title": "nongaussianityrevealsinterpretabledirectionsinlanguagemodels",
+      "authors": [
+        "Sida Liu",
+        "Feijiang Han",
+        "Sarah Wiegreffe",
+        "Furong Huang"
+      ],
+      "authors_source": "manual-override",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2606.11722"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.11722"
+        },
+        {
+          "label": "Project page",
+          "url": "https://liusida.github.io/ica-lens-paper/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/liusida/ica-lens-paper"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P23",
+          "title": "Non-Gaussianity Reveals Interpretable Directions in Language Models",
+          "authors_display": "Liu, Sida, Feijiang Han, Sarah Wiegreffe, and Furong Huang",
+          "authors_inferred": [
+            "Sida Liu",
+            "Feijiang Han",
+            "Sarah Wiegreffe",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2606.11722"
+            },
+            {
+              "label": "Project page",
+              "url": "https://liusida.github.io/ica-lens-paper/"
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/liusida/ica-lens-paper"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid"
+      ]
+    },
+    {
       "id": "non-negative-factorization-of-the-occurrence-tensor-d1100ad5",
       "title": "Non-negative Factorization of the Occurrence Tensor from Financial Contracts",
       "normalized_title": "nonnegativefactorizationoftheoccurrencetensorfromfinancialcontracts",
@@ -10222,7 +10466,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P26",
+          "cv_label": "P27",
           "title": "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation",
           "authors_display": "Xu, Jiawei, Minghui Liu, Juzheng Zhang, Tom Goldstein, and Furong Huang",
           "authors_inferred": [
@@ -14267,7 +14511,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P27",
+          "cv_label": "P28",
           "title": "The Low Frequency Trap: Video Language Models Fail at Simple Event Bookkeeping",
           "authors_display": "Baskar, Sarvesh, Zikui Cai, Shayan Shabihi, Anirudh Satheesh, Muhammad R. Islam, Udari Madhushani Sehwag, Tom Goldstein, and Furong Huang",
           "authors_inferred": [
@@ -15978,7 +16222,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P24",
+          "cv_label": "P25",
           "title": "Visual Contrastive Self-Distillation",
           "authors_display": "Liang, Yijun, Yunjie Tian, Yijiang Li, Yuqi Jia, Furong Huang, Tianyi Zhou, and Di Fu",
           "authors_inferred": [
@@ -16445,7 +16689,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P31",
+          "cv_label": "P32",
           "title": "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory",
           "authors_display": "Shahidzadeh, Amir-Hossein, Seungjae Lee, Eadom Dessalene, Shanthosh Raaj Mohanram Mageswari, Soroush Etemad, Furong Huang, Cornelia Fermüller, and Yiannis Aloimonos",
           "authors_inferred": [
@@ -16521,9 +16765,10 @@
       "authors": [
         "Sy-Tuyen Ho",
         "Minghui Liu",
+        "Hieu Tran",
         "Furong Huang"
       ],
-      "authors_source": "inferred-from-tex",
+      "authors_source": "manual-override",
       "year": 2026,
       "category": "workshop",
       "venue": "FLLMPT Workshop, poster, NeurIPS 2026",
@@ -16544,12 +16789,13 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P29",
+          "cv_label": "P30",
           "title": "When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation",
-          "authors_display": "Ho, Sy-Tuyen, Minghui Liu, and Furong Huang",
+          "authors_display": "Ho, Sy-Tuyen, Minghui Liu, Hieu Tran, and Furong Huang",
           "authors_inferred": [
             "Sy-Tuyen Ho",
             "Minghui Liu",
+            "Hieu Tran",
             "Furong Huang"
           ],
           "venue": ", 2026",
@@ -16599,8 +16845,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
-        "multiple-cv-appearances",
-        "authors-inferred-from-tex"
+        "multiple-cv-appearances"
       ]
     },
     {

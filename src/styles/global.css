@@ -1471,6 +1471,11 @@ button.button { cursor: pointer; }
   background: #eaf0f2;
 }
 
+/* The aerial-manipulation teaser is taller than the other project diagrams. */
+#fly-by-code .project-image {
+  aspect-ratio: 1230 / 881;
+}
+
 .project-image img {
   box-sizing: border-box;
   width: 100%;

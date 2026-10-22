@@ -82,6 +82,42 @@ pillars:
       imageAlt: PropensityBench agentic safety evaluation overview
       featuredProjectId: propensitybench-safety
 featured_projects:
+  - id: fly-by-code
+    pillar: world-models
+    area: Embodied AI
+    title: Fly-by-Code
+    summary: Embodied coding agents refine aerial-manipulation programs through active visual inspection and targeted physical diagnostic probes in simulation, then execute the programs on a real flying robot.
+    image: /assets/projects/fly-by-code.png
+    imageFit: contain
+    year: 2026
+    relatedTitle: "Fly-by-Code: Embodied Coding Agents for Aerial Manipulation with Active Visual and Physical Feedback"
+    links:
+      - label: Project
+        href: https://fly-by-code.github.io/
+      - label: Paper
+        href: https://arxiv.org/abs/2610.12549
+      - label: Coauthor X thread
+        href: https://x.com/JayLEE_0301/status/2109476878381965752
+      - label: Figure credits
+        href: https://furong-huang.com/assets/projects/research-figure-credits.html#fly-by-code
+  - id: dex-one2many
+    pillar: world-models
+    area: Embodied AI
+    title: Dex-One2Many
+    summary: Learns dexterous manipulation from one human video by extracting stage-wise scene graphs that constrain diverse simulation training states and guide reinforcement learning, enabling zero-shot transfer to a real robot hand.
+    image: /assets/projects/dex-one2many.png
+    imageFit: contain
+    year: 2026
+    relatedTitle: "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration"
+    links:
+      - label: Project
+        href: https://dex-one2many.github.io/
+      - label: Paper
+        href: https://arxiv.org/abs/2610.12470
+      - label: X post
+        href: https://x.com/furongh/status/2108701642598355045
+      - label: Figure credits
+        href: https://furong-huang.com/assets/projects/research-figure-credits.html#dex-one2many
   - id: mu0
     pillar: world-models
     area: Embodied AI
@@ -190,12 +226,13 @@ impact_publication_titles:
   - "WAVES: Benchmarking the Robustness of Image Watermarks"
   - "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach"
 frontier_publication_titles:
+  - "Non-Gaussianity Reveals Interpretable Directions in Language Models"
+  - "Fly-by-Code: Embodied Coding Agents for Aerial Manipulation with Active Visual and Physical Feedback"
+  - "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration"
+  - "Ladders of Thought: A Self-Evolving Curriculum of Progressively Simplified Reasoning Traces"
+  - "When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation"
+  - "MathAdv: What Theorem Provers Know, Reason, Formalize, and Generalize"
   - "μ0: A Scalable 3D Interaction-Trace World Model"
-  - "HumanEgo: A Zero-Instrumentation Data-to-Deployment Pipeline for Robot Learning from Human Egocentric Video"
-  - "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data"
-  - "MomaGraph: State-Aware Unified Scene Graphs with Vision-Language Model for Embodied Task Planning"
-  - "SoTA with Less: MCTS-Guided Sample Selection for Data-Efficient Visual Reasoning Self-Improvement"
-  - Agentic Critical Training
   - "FlowBank: Query-Adaptive Agentic Workflows Optimization through Precompute-and-Reuse"
 areas:
   - slug: multimodal-learning
@@ -565,6 +602,27 @@ areas:
       - Backdoor evaluation
       - Safety benchmarking
     projects:
+      - id: ica-lens
+        area: Interpretability
+        title: ICA Lens
+        summary: A lightweight ICA workflow connects interpretable directions in language-model activations to inspection and model steering. First submitted in June 2026; substantially revised on October 19.
+        year: 2026
+        image: /assets/projects/ica-lens.png
+        imageFit: contain
+        relatedTitle: "Non-Gaussianity Reveals Interpretable Directions in Language Models"
+        links:
+          - label: Project
+            href: https://liusida.github.io/ica-lens-paper/
+          - label: Paper
+            href: https://arxiv.org/abs/2606.11722
+          - label: Code
+            href: https://github.com/liusida/ica-lens-paper
+          - label: Models
+            href: https://huggingface.co/collections/sida/ica-lens
+          - label: X post
+            href: https://x.com/furongh/status/2112884723663917240
+          - label: Figure credits
+            href: https://furong-huang.com/assets/projects/research-figure-credits.html#ica-lens
       - id: propensitybench-safety
         area: AI Safety
         title: PropensityBench
@@ -758,8 +816,66 @@ areas:
           - label: Code
             href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
+  - title: "Non-Gaussianity Reveals Interpretable Directions in Language Models"
+    pillar: self-improvement
+    thumbnail: /assets/projects/ica-lens.png
+    social_links:
+      - label: Project
+        url: https://liusida.github.io/ica-lens-paper/
+      - label: Code
+        url: https://github.com/liusida/ica-lens-paper
+      - label: Models
+        url: https://huggingface.co/collections/sida/ica-lens
+      - label: X post
+        url: https://x.com/furongh/status/2112884723663917240
+      - label: Figure credits
+        url: https://furong-huang.com/assets/projects/research-figure-credits.html#ica-lens
+  - title: "Fly-by-Code: Embodied Coding Agents for Aerial Manipulation with Active Visual and Physical Feedback"
+    pillar: world-models
+    thumbnail: /assets/projects/fly-by-code.png
+    social_links:
+      - label: Project
+        url: https://fly-by-code.github.io/
+      - label: Coauthor X thread
+        url: https://x.com/JayLEE_0301/status/2109476878381965752
+      - label: Figure credits
+        url: https://furong-huang.com/assets/projects/research-figure-credits.html#fly-by-code
+  - title: "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration"
+    pillar: world-models
+    thumbnail: /assets/projects/dex-one2many.png
+    social_links:
+      - label: Project
+        url: https://dex-one2many.github.io/
+      - label: X post
+        url: https://x.com/furongh/status/2108701642598355045
+      - label: Figure credits
+        url: https://furong-huang.com/assets/projects/research-figure-credits.html#dex-one2many
+  - title: "Ladders of Thought: A Self-Evolving Curriculum of Progressively Simplified Reasoning Traces"
+    pillar: reasoning-control
+    social_links:
+      - label: Project
+        url: https://minghui-liu.github.io/ladders_of_thought/
+  - title: "MathAdv: What Theorem Provers Know, Reason, Formalize, and Generalize"
+    pillar: reasoning-control
+    social_links:
+      - label: Code and data
+        url: https://github.com/margotyjx/MathAdv
+      - label: X post
+        url: https://x.com/furongh/status/2098840320007967112
+  - title: "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory"
+    pillar: world-models
+    social_links:
+      - label: Project
+        url: https://what-to-attend-what-to-keep.github.io/
   - title: "When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation"
     pillar: self-improvement
+    social_links:
+      - label: Project
+        url: https://hosytuyen.github.io/projects/TrustReviewer/index.html
+      - label: Code
+        url: https://github.com/hosytuyen/TrustReviewer
+      - label: Dataset and model
+        url: https://huggingface.co/collections/hosytuyen/trustreviewer
   - title: "SpectralCanary: Embarrassingly Simple Low-Frequency Traces for T2I Dataset-Use Auditing"
     pillar: self-improvement
   - title: "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation"

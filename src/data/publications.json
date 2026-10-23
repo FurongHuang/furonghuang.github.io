@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-22",
+  "as_of": "2026-10-23",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [
@@ -15,8 +15,8 @@
     "overrides": "data/publications/publication-overrides.json"
   },
   "stats": {
-    "cv_appearances": 282,
-    "normalized_works": 254,
+    "cv_appearances": 283,
+    "normalized_works": 255,
     "my_ncbi_records": 74,
     "orcid_records": 109
   },
@@ -9624,6 +9624,79 @@
         "orcid": 0
       },
       "flags": [
+        "missing-from-orcid"
+      ]
+    },
+    {
+      "id": "meta-precomputing-reusable-knowledge-for-online-harn-f92ee45c",
+      "title": "Meta²: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents",
+      "normalized_title": "meta2precomputingreusableknowledgeforonlineharnessevolutioninlonghorizonagents",
+      "authors": [
+        "Lingzhi Yuan",
+        "Yiguang Cai",
+        "Weize Liu",
+        "Siqi Yang",
+        "Feijiang Han",
+        "Yongkyun Lee",
+        "Udari Madhushani Sehwag",
+        "Furong Huang"
+      ],
+      "authors_source": "manual-override",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {},
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://meta-square.github.io/paper.pdf"
+        },
+        {
+          "label": "Project page",
+          "url": "https://meta-square.github.io/"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P35",
+          "title": "Meta²: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents",
+          "authors_display": "Yuan, Lingzhi, Yiguang Cai, Weize Liu, Siqi Yang, Feijiang Han, Yongkyun Lee, Udari Madhushani Sehwag, and Furong Huang",
+          "authors_inferred": [
+            "Lingzhi Yuan",
+            "Yiguang Cai",
+            "Weize Liu",
+            "Siqi Yang",
+            "Feijiang Han",
+            "Yongkyun Lee",
+            "Udari Madhushani Sehwag",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "Paper",
+              "url": "https://meta-square.github.io/paper.pdf"
+            },
+            {
+              "label": "Project page",
+              "url": "https://meta-square.github.io/"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
         "missing-from-orcid"
       ]
     },

@@ -816,6 +816,14 @@ areas:
           - label: Code
             href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
+  - title: "Meta²: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents"
+    pillar: reasoning-control
+    thumbnail: /assets/projects/meta2.png
+    social_links:
+      - label: X post
+        url: https://x.com/furongh/status/2113467695366554060
+      - label: Figure credits
+        url: https://furong-huang.com/assets/projects/research-figure-credits.html#meta2
   - title: "Non-Gaussianity Reveals Interpretable Directions in Language Models"
     pillar: self-improvement
     thumbnail: /assets/projects/ica-lens.png

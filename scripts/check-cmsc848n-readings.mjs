@@ -93,7 +93,7 @@ for (const [date, citations] of Object.entries(week5SlideCitations)) {
   }
 }
 
-for (const filename of ["W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf", "W4-L1-2026-Planning-and-State.pdf", "W5-L1-2026-Memory-and-Context-Engineering.pdf", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf"]) {
+for (const filename of ["W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf", "W4-L1-2026-Planning-and-State.pdf", "W5-L1-2026-Memory-and-Context-Engineering.pdf", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf", "W9-L1-2026-Deep-Research-Agents.pdf"]) {
   assert.ok(schedule.includes(`/courses/cmsc848n/fall-2026/slides/${filename}`), `Keep the published slide link: ${filename}`);
 }
 const pageSource = readFileSync(new URL("../src/pages/cmsc848n-fall-2026.astro", import.meta.url), "utf8");
@@ -105,7 +105,7 @@ const revisedLectures = [
   ["2026-10-15", "Inside a Coding-Agent Harness", "W7-L1-2026-Inside-a-Coding-Agent-Harness.pdf"],
   ["2026-10-20", "Training Coding Agents", "W8-L1-2026-Training-Coding-Agents.pdf"],
   ["2026-10-22", "Optimizing Coding-Agent Harnesses", "W8-L2-2026-Optimizing-Coding-Agent-Harnesses.pdf"],
-  ["2026-10-27", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-Deep-Research-Agents-Search-Evidence-and-Reproducible-Synthesis.pptx"],
+  ["2026-10-27", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-2026-Deep-Research-Agents.pdf"],
   ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"],
   ["2026-11-03", "World Models and Vision-Language-Action Agents", "W10-L1-World-Models-and-Vision-Language-Action-Agents.pptx"],
   ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"],

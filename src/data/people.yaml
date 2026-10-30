@@ -102,6 +102,11 @@ current_phd_students:
     href: https://yoonkyojung.com/
     image: /assets/people/yoonkyo-jung.jpg
     imagePosition: 50% 30%
+  - name: Yucheng Pan
+    role: Ph.D. advisee · Computer Science
+    researchFocus: Large language models · AI agents
+    period: 2026–present
+    href: https://www.cs.umd.edu/people/ycpan
 
 alumni:
   - name: Aakriti Agrawal

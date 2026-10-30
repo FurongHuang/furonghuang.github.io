@@ -4,7 +4,6 @@ import ResearchMap from "../components/ResearchMap.astro";
 import PaperCard from "../components/PaperCard.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import EmailReveal from "../components/EmailReveal.astro";
-import PortraitImage from "../components/PortraitImage.astro";
 import publicationData from "../data/publications.json";
 import {
   affiliations,
@@ -49,11 +48,6 @@ const selectedWorkSignificance: Record<string, string> = {
   "WAVES: Benchmarking the Robustness of Image Watermarks": "Created a standardized stress-testing benchmark for comparing image-watermark robustness under diverse attacks.",
   "PropensityBench: Evaluating Latent Safety Risks in Large Language Models via an Agentic Approach": "Reveals latent safety risks through agentic evaluations that go beyond single-turn model testing."
 };
-const featuredAlumniNames = ["Bang An", "Sicheng Zhu", "Souradip Chakraborty", "Xiaoyu Liu", "Yuhang Zhou", "Yuancheng Xu"];
-const featuredAlumni = featuredAlumniNames
-  .map((name) => alumni.find((person) => person.name === name))
-  .filter(Boolean);
-const placementDestinations = ["OpenAI", "MIT CSAIL", "Google", "Meta", "Apple", "Netflix", "Yale", "Amazon", "Capital One", "APQX"];
 const alumniDestinationCount = new Set(alumni.map((person) => person.destination?.split(" · ")[0]).filter(Boolean)).size;
 ---
 
@@ -86,7 +80,7 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
   <section class="shell metrics-strip homepage-metrics" aria-label="Furong Lab at a glance">
     <div class="metric"><strong>{distinctWorkCount}</strong><span>Distinct scholarly works</span></div>
     <div class="metric"><strong>{currentPhdStudents.length}</strong><span>Current Ph.D. students</span></div>
-    <div class="metric"><strong>{alumni.length}</strong><span>Doctoral alumni</span></div>
+    <div class="metric"><strong>{alumni.length}</strong><span>Lab alumni</span></div>
     <div class="metric"><strong>{alumniDestinationCount}</strong><span>Alumni destinations</span></div>
   </section>
 
@@ -133,32 +127,6 @@ const alumniDestinationCount = new Set(alumni.map((person) => person.destination
     </div>
     <div class="button-row" style="margin-top: 2rem">
       <a class="button secondary" href="/publications/">View all {distinctWorkCount} distinct works <span>→</span></a>
-    </div>
-  </section>
-
-  <section class="placement-band">
-    <div class="shell placement-inner">
-      <div class="placement-heading">
-        <div>
-          <p class="eyebrow">Where talent goes</p>
-          <h2>The lab’s strongest record is its people.</h2>
-        </div>
-        <p>
-          Furong Lab alumni carry their research into leading AI organizations, technology companies, and academic institutions. Their trajectories are part of the lab’s impact—not a footnote to it.
-        </p>
-      </div>
-      <div class="destination-cloud" aria-label="Selected alumni destinations">
-        {placementDestinations.map((destination) => <span>{destination}</span>)}
-      </div>
-      <div class="placement-people">
-        {featuredAlumni.map((person) => person && (
-          <a class="placement-person" href={person.href || "/people/"}>
-            {person.image ? <PortraitImage src={person.image} alt={`Portrait of ${person.name}`} position={person.imagePosition} scale={person.imageScale} className="placement-photo" /> : <span class="placement-initials" aria-hidden="true">{person.name.split(" ").map((part) => part[0]).join("").slice(0, 2)}</span>}
-            <span><strong>{person.name}</strong><small>{person.destination}</small></span>
-          </a>
-        ))}
-      </div>
-      <a class="placement-link" href="/people/#alumni">Meet the extended Furong Lab community <span>→</span></a>
     </div>
   </section>
 

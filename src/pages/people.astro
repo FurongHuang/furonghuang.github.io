@@ -2,7 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LabMomentsCarousel from "../components/LabMomentsCarousel.astro";
 import PersonCard from "../components/PersonCard.astro";
+import PortraitImage from "../components/PortraitImage.astro";
 import { alumni, currentPhdStudents, postdocs } from "../data/people";
+
+const featuredAlumniNames = ["Bang An", "Sicheng Zhu", "Souradip Chakraborty", "Xiaoyu Liu", "Yuhang Zhou", "Yuancheng Xu"];
+const featuredAlumni = featuredAlumniNames
+  .map((name) => alumni.find((person) => person.name === name))
+  .filter(Boolean);
+const featuredDestinations = ["OpenAI", "MIT CSAIL", "Google", "Meta", "Apple", "Netflix", "Yale", "Amazon", "Capital One", "APQX"];
 
 const placementDestinations = Array.from(
   new Set(
@@ -57,7 +64,7 @@ const roboticsPhotos = [
   <section class="shell section">
     <div class="section-heading">
       <div><p class="eyebrow">Current group</p><h2>Doctoral advisees.</h2></div>
-      <p>Students are grouped by starting cohort, with names ordered alphabetically within each cohort.</p>
+      <p>{currentPhdStudents.length} current Ph.D. students, grouped by starting cohort with names ordered alphabetically within each cohort.</p>
     </div>
     <div class="people-cohort-stack">
       {currentCohorts.map(({ year, members }) => (
@@ -86,6 +93,32 @@ const roboticsPhotos = [
   />
 
   <LabMomentsCarousel />
+
+  <section class="placement-band">
+    <div class="shell placement-inner">
+      <div class="placement-heading">
+        <div>
+          <p class="eyebrow">Where talent goes</p>
+          <h2>The lab’s strongest record is its people.</h2>
+        </div>
+        <p>
+          Furong Lab alumni carry their research into leading AI organizations, technology companies, and academic institutions. Their trajectories are part of the lab’s impact—not a footnote to it.
+        </p>
+      </div>
+      <div class="destination-cloud" aria-label="Selected alumni destinations">
+        {featuredDestinations.map((destination) => <span>{destination}</span>)}
+      </div>
+      <div class="placement-people">
+        {featuredAlumni.map((person) => person && (
+          <a class="placement-person" href={person.href || "/people/"}>
+            {person.image ? <PortraitImage src={person.image} alt={`Portrait of ${person.name}`} position={person.imagePosition} scale={person.imageScale} className="placement-photo" /> : <span class="placement-initials" aria-hidden="true">{person.name.split(" ").map((part) => part[0]).join("").slice(0, 2)}</span>}
+            <span><strong>{person.name}</strong><small>{person.destination}</small></span>
+          </a>
+        ))}
+      </div>
+      <a class="placement-link" href="#alumni">Meet the extended Furong Lab community <span>→</span></a>
+    </div>
+  </section>
 
   <section class="alumni-band" id="alumni">
     <div class="shell section">

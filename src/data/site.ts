@@ -146,6 +146,17 @@ export {
 
 export const news = [
   {
+    date: "November 2, 2026",
+    type: "Paper award",
+    title: "HumanEgo receives Best Paper Award at WORLDS and Best Demo Paper Award at ScaleInfra, both IROS 2026 workshops",
+    detail: "HumanEgo learns robot manipulation policies from minutes of human egocentric video, without robot demonstrations. Congratulations to all coauthors!",
+    href: "https://humanego-ai.github.io/",
+    links: [
+      { label: "Project & awards", href: "https://humanego-ai.github.io/" },
+      { label: "Paper", href: "https://arxiv.org/abs/2605.24934" }
+    ]
+  },
+  {
     date: "October 7, 2026",
     type: "Paper award",
     title: "μ₀ receives second-place Best Paper Award at the IROS 2026 RoBoWoMo Workshop",

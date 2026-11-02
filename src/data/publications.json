@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-23",
+  "as_of": "2026-11-02",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [
@@ -15,8 +15,8 @@
     "overrides": "data/publications/publication-overrides.json"
   },
   "stats": {
-    "cv_appearances": 283,
-    "normalized_works": 255,
+    "cv_appearances": 290,
+    "normalized_works": 256,
     "my_ncbi_records": 74,
     "orcid_records": 109
   },
@@ -39,7 +39,7 @@
       "authors_source": "inferred-from-tex",
       "year": 2026,
       "category": "conference",
-      "venue": "Conference on Robot Learning (CoRL), 2026",
+      "venue": "Conference on Robot Learning (CoRL), Poster, 2026",
       "identifiers": {
         "arxiv": "2606.13769",
         "openreview": "ShBMWDRPVu"
@@ -87,7 +87,7 @@
             "Jia-Bin Huang",
             "Furong Huang"
           ],
-          "venue": "Conference on Robot Learning (CoRL), 2026",
+          "venue": "Conference on Robot Learning (CoRL), Poster, 2026",
           "year": 2026,
           "first_or_last_author": true,
           "links": [
@@ -905,7 +905,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P18",
+          "cv_label": "P17",
           "title": "Agentic Critical Training",
           "authors_display": "Liu, Weize, Minghui Liu, Sy-Tuyen Ho, Souradip Chakraborty, Xiyao Wang, and Furong Huang",
           "authors_inferred": [
@@ -2254,110 +2254,6 @@
       ]
     },
     {
-      "id": "bridging-the-divide-end-to-end-sequence-graph-learni-1586e7fe",
-      "title": "Bridging the Divide: End-to-End Sequence-Graph Learning",
-      "normalized_title": "bridgingthedivideendtoendsequencegraphlearning",
-      "authors": [
-        "Yuen Chen",
-        "Yulun Wu",
-        "Samuel Sharpe",
-        "Igor Melnyk",
-        "Nam H. Nguyen",
-        "Furong Huang",
-        "C. Bayan Bruss",
-        "Rizal Fathony"
-      ],
-      "authors_source": "inferred-from-tex",
-      "year": 2025,
-      "category": "workshop",
-      "venue": "Workshop on New Perspective in Graph Machine Learning (NPGML), NeurIPS 2025",
-      "identifiers": {
-        "arxiv": "2510.25126",
-        "openreview": "xa7WxSc08h"
-      },
-      "links": [
-        {
-          "label": "arXiv",
-          "url": "https://arxiv.org/abs/2510.25126"
-        },
-        {
-          "label": "OpenReview",
-          "url": "https://openreview.net/forum?id=xa7WxSc08h"
-        }
-      ],
-      "appearances": [
-        {
-          "category": "preprint",
-          "cv_label": "P12",
-          "title": "Bridging the Divide: End-to-End Sequence-Graph Learning",
-          "authors_display": "Chen, Yuen, Yulun Wu, Samuel Sharpe, Igor Melnyk, Nam H. Nguyen, Furong Huang, C. Bayan Bruss, and Rizal Fathony",
-          "authors_inferred": [
-            "Yuen Chen",
-            "Yulun Wu",
-            "Samuel Sharpe",
-            "Igor Melnyk",
-            "Nam H. Nguyen",
-            "Furong Huang",
-            "C. Bayan Bruss",
-            "Rizal Fathony"
-          ],
-          "venue": ", 2025",
-          "year": 2025,
-          "first_or_last_author": false,
-          "links": [
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2510.25126"
-            }
-          ],
-          "source_file": "sections/publications-preprints.tex"
-        },
-        {
-          "category": "workshop",
-          "cv_label": "W82",
-          "title": "Bridging the Divide: End-to-End Sequence-Graph Learning",
-          "authors_display": "Chen, Yuen, Yulun Wu, Samuel Sharpe, Igor Melnyk, Nam H. Nguyen, Furong Huang, C. Bayan Bruss, and Rizal Fathony",
-          "authors_inferred": [
-            "Yuen Chen",
-            "Yulun Wu",
-            "Samuel Sharpe",
-            "Igor Melnyk",
-            "Nam H. Nguyen",
-            "Furong Huang",
-            "C. Bayan Bruss",
-            "Rizal Fathony"
-          ],
-          "venue": "Workshop on New Perspective in Graph Machine Learning (NPGML), NeurIPS 2025",
-          "year": 2025,
-          "first_or_last_author": false,
-          "links": [
-            {
-              "label": "OpenReview",
-              "url": "https://openreview.net/forum?id=xa7WxSc08h"
-            },
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2510.25126"
-            }
-          ],
-          "source_file": "sections/publications-ws.tex"
-        }
-      ],
-      "source_counts": {
-        "full_cv": 2,
-        "wordpress_bibtex": 0,
-        "my_ncbi": 0,
-        "orcid": 0
-      },
-      "flags": [
-        "missing-from-wordpress-bibtex",
-        "missing-from-my-ncbi",
-        "missing-from-orcid",
-        "multiple-cv-appearances",
-        "authors-inferred-from-tex"
-      ]
-    },
-    {
       "id": "calibrated-dataset-condensation-for-faster-hyperpara-9b2cdaed",
       "title": "Calibrated Dataset Condensation for Faster Hyperparameter Search",
       "normalized_title": "calibrateddatasetcondensationforfasterhyperparametersearch",
@@ -2659,6 +2555,75 @@
       },
       "flags": [
         "missing-from-my-ncbi"
+      ]
+    },
+    {
+      "id": "carve-caption-anchored-rubric-verified-extraction-fo-b98849c6",
+      "title": "CARVE: Caption-Anchored, Rubric-Verified Extraction for Training-Scale Figure-Required Scientific VQA",
+      "normalized_title": "carvecaptionanchoredrubricverifiedextractionfortrainingscalefigurerequiredscientificvqa",
+      "authors": [
+        "Jie S. Li",
+        "Kwesi Adu Cobbina",
+        "Udari Madhushani Sehwag",
+        "David Yu Miller",
+        "Hirunima Jayasekara",
+        "Shayan Shabihi",
+        "Zikui Cai",
+        "Furong Huang",
+        "Tom Goldstein"
+      ],
+      "authors_source": "manual-override",
+      "year": 2026,
+      "category": "workshop",
+      "venue": "VLM4RWD Workshop: Grounded and Faithful Vision-Language Models for Real-World Deployment, poster, NeurIPS 2026",
+      "identifiers": {
+        "openreview": "mnRPZt3u2q"
+      },
+      "links": [
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=mnRPZt3u2q"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "workshop",
+          "cv_label": "W106",
+          "title": "CARVE: Caption-Anchored, Rubric-Verified Extraction for Training-Scale Figure-Required Scientific VQA",
+          "authors_display": "Li, Jie S., Kwesi Adu Cobbina, Udari Madhushani Sehwag, David Yu Miller, Hirunima Jayasekara, Shayan Shabihi, Zikui Cai, Furong Huang, and Tom Goldstein",
+          "authors_inferred": [
+            "Jie S. Li",
+            "Kwesi Adu Cobbina",
+            "Udari Madhushani Sehwag",
+            "David Yu Miller",
+            "Hirunima Jayasekara",
+            "Shayan Shabihi",
+            "Zikui Cai",
+            "Furong Huang",
+            "Tom Goldstein"
+          ],
+          "venue": "VLM4RWD Workshop: Grounded and Faithful Vision-Language Models for Real-World Deployment, poster, NeurIPS 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=mnRPZt3u2q"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid"
       ]
     },
     {
@@ -3258,7 +3223,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P26",
+          "cv_label": "P25",
           "title": "Compliance2LoRA: Personalizable On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
           "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
           "authors_inferred": [
@@ -3278,7 +3243,7 @@
         },
         {
           "category": "workshop",
-          "cv_label": "W98",
+          "cv_label": "W100",
           "title": "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
           "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
           "authors_inferred": [
@@ -3302,7 +3267,7 @@
         },
         {
           "category": "workshop",
-          "cv_label": "W94",
+          "cv_label": "W96",
           "title": "Compliance2LoRA: On-Demand Safety Alignment on Arbitrary Policy Subsets via Hypernetwork-Generated LoRA Adapters",
           "authors_display": "Pathmanathan, Pankayaraj, and Furong Huang",
           "authors_inferred": [
@@ -4077,10 +4042,11 @@
       ],
       "authors_source": "manual-override",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "workshop",
+      "venue": "Scaling H2R Workshop, poster and oral, CoRL 2026",
       "identifiers": {
-        "arxiv": "2610.12470"
+        "arxiv": "2610.12470",
+        "openreview": "NS0EhtLz04"
       },
       "links": [
         {
@@ -4090,12 +4056,16 @@
         {
           "label": "Project page",
           "url": "https://dex-one2many.github.io/"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=NS0EhtLz04"
         }
       ],
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P33",
+          "cv_label": "P32",
           "title": "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration",
           "authors_display": "Lee, Jusuk, Sungha Kim, Yeonsoo Park, Jonguk Cheon, Yoonkyo Jung, Yongjun You, H. Jin Kim, Jia-Bin Huang, Furong Huang, Youngseok Jang, and Seungjae Lee",
           "authors_inferred": [
@@ -4125,10 +4095,43 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W103",
+          "title": "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration",
+          "authors_display": "Lee, Jusuk, Sungha Kim, Yeonsoo Park, Jonguk Cheon, Yoonkyo Jung, Yongjun You, H. Jin Kim, Jia-Bin Huang, Furong Huang, Youngseok Jang, and Seungjae Lee",
+          "authors_inferred": [
+            "Jusuk Lee",
+            "Sungha Kim",
+            "Yeonsoo Park",
+            "Jonguk Cheon",
+            "Yoonkyo Jung",
+            "Yongjun You",
+            "H. Jin Kim",
+            "Jia-Bin Huang",
+            "Furong Huang",
+            "Youngseok Jang",
+            "Seungjae Lee"
+          ],
+          "venue": "Scaling H2R Workshop, poster and oral, CoRL 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=NS0EhtLz04"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2610.12470"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 2,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -4136,7 +4139,8 @@
       "flags": [
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
-        "missing-from-orcid"
+        "missing-from-orcid",
+        "multiple-cv-appearances"
       ]
     },
     {
@@ -4746,7 +4750,7 @@
         },
         {
           "category": "workshop",
-          "cv_label": "W97",
+          "cv_label": "W99",
           "title": "DynaFLIP: Rethinking Robotics Perception via Tri-Modal-Dynamics Guided Representation",
           "authors_display": "Lee, Jusuk, Seungjae Lee, Jonghun Shin, Hoseong Jung, Sungha Kim, Daesol Cho, H. Jin Kim, Jia-Bin Huang, and Furong Huang",
           "authors_inferred": [
@@ -5100,7 +5104,7 @@
       "authors_source": "inferred-from-tex",
       "year": 2026,
       "category": "conference",
-      "venue": "Conference on Robot Learning (CoRL), 2026",
+      "venue": "Conference on Robot Learning (CoRL), Oral, 2026",
       "identifiers": {
         "arxiv": "2602.16710",
         "openreview": "WF4X17Al2r"
@@ -5138,7 +5142,7 @@
             "Danfei Xu",
             "Linxi Fan"
           ],
-          "venue": "Conference on Robot Learning (CoRL), 2026",
+          "venue": "Conference on Robot Learning (CoRL), Oral, 2026",
           "year": 2026,
           "first_or_last_author": false,
           "links": [
@@ -6265,7 +6269,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P34",
+          "cv_label": "P33",
           "title": "Fly-by-Code: Embodied Coding Agents for Aerial Manipulation with Active Visual and Physical Feedback",
           "authors_display": "Lee, Jaewoo, Jeongyeon Seo, Sihyun Cho, Gyeongrak Choe, Yutong Wang, Bavin Saravanan, Jia-Bin Huang, Furong Huang, Sebastian Scherer, Guanya Shi, H. Jin Kim, Seungjae Lee, and Dongjae Lee",
           "authors_inferred": [
@@ -6401,7 +6405,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P17",
+          "cv_label": "P16",
           "title": "GATES: Self-Distillation under Privileged Context with Consensus Gating",
           "authors_display": "Stein, Alex, Furong Huang, and Tom Goldstein",
           "authors_inferred": [
@@ -6868,21 +6872,30 @@
       ],
       "authors_source": "inferred-from-tex",
       "year": 2026,
-      "category": "preprint",
-      "venue": ", 2026",
+      "category": "workshop",
+      "venue": "4th Workshop on Learning Effective Abstractions for Planning (LEAP), CoRL 2026",
       "identifiers": {
-        "arxiv": "2606.18363"
+        "arxiv": "2606.18363",
+        "openreview": "NpgQtQTORa"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2606.18363"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=NpgQtQTORa"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=02FSMHg6ii"
         }
       ],
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P24",
+          "cv_label": "P23",
           "title": "Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness",
           "authors_display": "Liu, Haowen, Xirui Li, Shaoxiong Yao, Peng Shi, Tianyi Zhou, Jia-Bin Huang, Furong Huang, and Jiayuan Mao",
           "authors_inferred": [
@@ -6905,10 +6918,70 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W105",
+          "title": "Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness",
+          "authors_display": "Liu, Haowen, Xirui Li, Shaoxiong Yao, Peng Shi, Tianyi Zhou, Jia-Bin Huang, Furong Huang, and Jiayuan Mao",
+          "authors_inferred": [
+            "Haowen Liu",
+            "Xirui Li",
+            "Shaoxiong Yao",
+            "Peng Shi",
+            "Tianyi Zhou",
+            "Jia-Bin Huang",
+            "Furong Huang",
+            "Jiayuan Mao"
+          ],
+          "venue": "4th Workshop on Learning Effective Abstractions for Planning (LEAP), CoRL 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=NpgQtQTORa"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2606.18363"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W104",
+          "title": "Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness",
+          "authors_display": "Liu, Haowen, Xirui Li, Shaoxiong Yao, Peng Shi, Tianyi Zhou, Jia-Bin Huang, Furong Huang, and Jiayuan Mao",
+          "authors_inferred": [
+            "Haowen Liu",
+            "Xirui Li",
+            "Shaoxiong Yao",
+            "Peng Shi",
+            "Tianyi Zhou",
+            "Jia-Bin Huang",
+            "Furong Huang",
+            "Jiayuan Mao"
+          ],
+          "venue": "Workshop on Agentic Robotics, poster, CoRL 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=02FSMHg6ii"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2606.18363"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         }
       ],
       "source_counts": {
-        "full_cv": 1,
+        "full_cv": 3,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -6917,6 +6990,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
+        "multiple-cv-appearances",
         "authors-inferred-from-tex"
       ]
     },
@@ -7360,7 +7434,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P13",
+          "cv_label": "P12",
           "title": "Hold Onto That Thought: Assessing KV Cache Compression on Reasoning",
           "authors_display": "Liu, Minghui, Aadi Palnitkar, Tahseen Rabbani, Hyunwoo Jae, Kyle Rui Sang, Dixi Yao, Shayan Shabihi, Fuheng Zhao, Tian Li, Ce Zhang, Furong Huang, and Kunpeng Zhang",
           "authors_inferred": [
@@ -7450,10 +7524,10 @@
         "Furong Huang",
         "Yiannis Aloimonos"
       ],
-      "authors_source": "inferred-from-tex",
+      "authors_source": "manual-override",
       "year": 2026,
       "category": "workshop",
-      "venue": "ScaleInfra Workshop, oral, IROS 2026",
+      "venue": "ScaleInfra Workshop, oral, IROS 2026. Best Demo Paper Award",
       "identifiers": {
         "openreview": "y8NCjfHKL7",
         "arxiv": "2605.24934"
@@ -7466,12 +7540,20 @@
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2605.24934"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=NWOkFESqXB"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=Tx0lTdezWP"
         }
       ],
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W93",
+          "cv_label": "W95",
           "title": "HumanEgo: A Zero-Instrumentation Data-to-Deployment Pipeline for Robot Learning from Human Egocentric Video",
           "authors_display": "Wang, Zhi, Botao He, Kelin Yu, Seungjae Lee, Ruohan Gao, Furong Huang, and Yiannis Aloimonos",
           "authors_inferred": [
@@ -7483,13 +7565,71 @@
             "Furong Huang",
             "Yiannis Aloimonos"
           ],
-          "venue": "ScaleInfra Workshop, oral, IROS 2026",
+          "venue": "ScaleInfra Workshop, oral, IROS 2026. Best Demo Paper Award",
           "year": 2026,
           "first_or_last_author": false,
           "links": [
             {
               "label": "OpenReview",
               "url": "https://openreview.net/forum?id=y8NCjfHKL7"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2605.24934"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W94",
+          "title": "Spatial Intelligence and Predictive Objectives for Zero-Shot Manipulation from Minutes of Egocentric Video",
+          "authors_display": "Wang, Zhi, Botao He, Kelin Yu, Seungjae Lee, Ruohan Gao, Furong Huang, and Yiannis Aloimonos",
+          "authors_inferred": [
+            "Zhi Wang",
+            "Botao He",
+            "Kelin Yu",
+            "Seungjae Lee",
+            "Ruohan Gao",
+            "Furong Huang",
+            "Yiannis Aloimonos"
+          ],
+          "venue": "WORLDS: World Models and Spatial Intelligence for Physical AI, poster and spotlight, IROS 2026. Best Paper Award",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=NWOkFESqXB"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2605.24934"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W93",
+          "title": "HumanEgo: Zero-Shot Robot Learning from Minutes of Human Egocentric Videos",
+          "authors_display": "Wang, Zhi, Botao He, Kelin Yu, Seungjae Lee, Ruohan Gao, Furong Huang, and Yiannis Aloimonos",
+          "authors_inferred": [
+            "Zhi Wang",
+            "Botao He",
+            "Kelin Yu",
+            "Seungjae Lee",
+            "Ruohan Gao",
+            "Furong Huang",
+            "Yiannis Aloimonos"
+          ],
+          "venue": "Scaling H2R Workshop, poster, CoRL 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=Tx0lTdezWP"
             },
             {
               "label": "arXiv",
@@ -7525,7 +7665,7 @@
         }
       ],
       "source_counts": {
-        "full_cv": 2,
+        "full_cv": 4,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -7534,8 +7674,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
-        "multiple-cv-appearances",
-        "authors-inferred-from-tex"
+        "multiple-cv-appearances"
       ]
     },
     {
@@ -8291,7 +8430,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P31",
+          "cv_label": "P30",
           "title": "Ladders of Thought: A Self-Evolving Curriculum of Progressively Simplified Reasoning Traces",
           "authors_display": "Liu, Minghui, Thomas Magelinski, Dehao Yuan, Qi Yu, and Furong Huang",
           "authors_inferred": [
@@ -9192,7 +9331,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P29",
+          "cv_label": "P28",
           "title": "MathAdv: What Theorem Provers Know, Reason, Formalize, and Generalize",
           "authors_display": "Yuan, Jiaxin, Udari Madhushani Sehwag, Connor Martinez Lockhart, Xiaoyu Liu, Shayan Shabihi, Jiaqi Wang, Chenghao Deng, Xiayimei Han, Vlassis Mastrantonis, Dmitrii Gudin, Shaopeng Zhu, Abdirisak Mohamed, Bilal Aytekin, Jiewen Lang, Zezheng Song, and Furong Huang",
           "authors_inferred": [
@@ -9659,7 +9798,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P35",
+          "cv_label": "P34",
           "title": "Meta²: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents",
           "authors_display": "Yuan, Lingzhi, Yiguang Cai, Weize Liu, Siqi Yang, Feijiang Han, Yongkyun Lee, Udari Madhushani Sehwag, and Furong Huang",
           "authors_inferred": [
@@ -10315,7 +10454,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P23",
+          "cv_label": "P22",
           "title": "Non-Gaussianity Reveals Interpretable Directions in Language Models",
           "authors_display": "Liu, Sida, Feijiang Han, Sarah Wiegreffe, and Furong Huang",
           "authors_inferred": [
@@ -10539,7 +10678,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P27",
+          "cv_label": "P26",
           "title": "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation",
           "authors_display": "Xu, Jiawei, Minghui Liu, Juzheng Zhang, Tom Goldstein, and Furong Huang",
           "authors_inferred": [
@@ -10796,7 +10935,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P15",
+          "cv_label": "P14",
           "title": "PersonaLedger: Generating Realistic Financial Transactions with Persona Conditioned LLMs and Rule Grounded Feedback",
           "authors_display": "Yuan, Dehao, Tyler Farnan, Stefan Tesliuc, Doron L. Bergman, Yulun Wu, Xiaoyu Liu, Minghui Liu, James Montgomery, Nam H. Nguyen, C. Bayan Bruss, and Furong Huang",
           "authors_inferred": [
@@ -12065,7 +12204,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P16",
+          "cv_label": "P15",
           "title": "Provably Efficient Algorithms for S- and Non-Rectangular Robust MDPs with General Parameterization",
           "authors_display": "Satheesh, Anirudh, Ziyi Chen, Furong Huang, and Heng Huang",
           "authors_inferred": [
@@ -12130,7 +12269,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P14",
+          "cv_label": "P13",
           "title": "RAGPart & RAGMask: Retrieval-Stage Defenses Against Corpus Poisoning in Retrieval-Augmented Generation",
           "authors_display": "Pathmanathan, Pankayaraj, Michael-Andrei Panaitescu-Liess, Cho-Yu Jason Chiang, and Furong Huang",
           "authors_inferred": [
@@ -13697,7 +13836,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P20",
+          "cv_label": "P19",
           "title": "SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?",
           "authors_display": "Ho, Sy-Tuyen, Minghui Liu, Huy Nghiem, and Furong Huang",
           "authors_inferred": [
@@ -13760,7 +13899,7 @@
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W96",
+          "cv_label": "W98",
           "title": "SpectralCanary: Embarrassingly Simple Low-Frequency Traces for T2I Dataset-Use Auditing",
           "authors_display": "Ho, Sy-Tuyen, Anirudh Satheesh, Soham Chawathe, Huy Nghiem, Yongkyun Lee, Andrew Adams Schoen, and Furong Huang",
           "authors_inferred": [
@@ -14515,7 +14654,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P22",
+          "cv_label": "P21",
           "title": "The Hidden Bias of Process Reward Models: PRISM for Rewarding the Right Reasoning",
           "authors_display": "Agrawal, Aakriti, Souradip Chakraborty, Armin Saghafian, Nihal Sharma, Rizal Fathony, Nam H. Nguyen, C. Bayan Bruss, Amrit Singh Bedi, and Furong Huang",
           "authors_inferred": [
@@ -14584,7 +14723,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P28",
+          "cv_label": "P27",
           "title": "The Low Frequency Trap: Video Language Models Fail at Simple Event Bookkeeping",
           "authors_display": "Baskar, Sarvesh, Zikui Cai, Shayan Shabihi, Anirudh Satheesh, Muhammad R. Islam, Udari Madhushani Sehwag, Tom Goldstein, and Furong Huang",
           "authors_inferred": [
@@ -14656,7 +14795,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P19",
+          "cv_label": "P18",
           "title": "TimeSqueeze: Dynamic Patching for Efficient Time Series Forecasting",
           "authors_display": "Ankireddy, Sravan Kumar, Nikita Seleznev, Nam H. Nguyen, Yulun Wu, Senthil Kumar, Furong Huang, and C. Bayan Bruss",
           "authors_inferred": [
@@ -16150,7 +16289,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P21",
+          "cv_label": "P20",
           "title": "VeriGate: Verifier-Gated Step-Level Supervision for GRPO",
           "authors_display": "Agrawal, Aakriti, Minghui Liu, and Furong Huang",
           "authors_inferred": [
@@ -16295,7 +16434,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P25",
+          "cv_label": "P24",
           "title": "Visual Contrastive Self-Distillation",
           "authors_display": "Liang, Yijun, Yunjie Tian, Yijiang Li, Yuqi Jia, Furong Huang, Tianyi Zhou, and Di Fu",
           "authors_inferred": [
@@ -16735,24 +16874,29 @@
       "authors": [
         "Amir-Hossein Shahidzadeh",
         "Seungjae Lee",
-        "Eadom Dessalene",
+        "Eadom T. Dessalene",
         "Shanthosh Raaj Mohanram Mageswari",
         "Soroush Etemad",
         "Furong Huang",
         "Cornelia Fermüller",
         "Yiannis Aloimonos"
       ],
-      "authors_source": "inferred-from-tex",
+      "authors_source": "manual-override",
       "year": 2026,
       "category": "workshop",
-      "venue": "Touch2Action Workshop, IROS 2026. Best Paper Award",
+      "venue": "Scaling H2R Workshop, poster, CoRL 2026",
       "identifiers": {
-        "arxiv": "2609.38494"
+        "arxiv": "2609.38494",
+        "openreview": "3iivL28g3j"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2609.38494"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=3iivL28g3j"
         },
         {
           "label": "Project page",
@@ -16762,7 +16906,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P32",
+          "cv_label": "P31",
           "title": "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory",
           "authors_display": "Shahidzadeh, Amir-Hossein, Seungjae Lee, Eadom Dessalene, Shanthosh Raaj Mohanram Mageswari, Soroush Etemad, Furong Huang, Cornelia Fermüller, and Yiannis Aloimonos",
           "authors_inferred": [
@@ -16788,7 +16932,37 @@
         },
         {
           "category": "workshop",
-          "cv_label": "W99",
+          "cv_label": "W102",
+          "title": "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory",
+          "authors_display": "Shahidzadeh, Amir-Hossein, Seungjae Lee, Eadom T. Dessalene, Shanthosh Raaj Mohanram Mageswari, Soroush Etemad, Furong Huang, Cornelia Fermüller, and Yiannis Aloimonos",
+          "authors_inferred": [
+            "Amir-Hossein Shahidzadeh",
+            "Seungjae Lee",
+            "Eadom T. Dessalene",
+            "Shanthosh Raaj Mohanram Mageswari",
+            "Soroush Etemad",
+            "Furong Huang",
+            "Cornelia Fermüller",
+            "Yiannis Aloimonos"
+          ],
+          "venue": "Scaling H2R Workshop, poster, CoRL 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=3iivL28g3j"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.38494"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W101",
           "title": "What to Attend, What to Keep: Skill-Conditioned Visuotactile Representation with Progress-Guided Event Memory",
           "authors_display": "Shahidzadeh, Amir-Hossein, Seungjae Lee, Eadom Dessalene, Shanthosh Raaj Mohanram Mageswari, Soroush Etemad, Furong Huang, Cornelia Fermüller, and Yiannis Aloimonos",
           "authors_inferred": [
@@ -16818,7 +16992,7 @@
         }
       ],
       "source_counts": {
-        "full_cv": 2,
+        "full_cv": 3,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -16827,8 +17001,7 @@
         "missing-from-wordpress-bibtex",
         "missing-from-my-ncbi",
         "missing-from-orcid",
-        "multiple-cv-appearances",
-        "authors-inferred-from-tex"
+        "multiple-cv-appearances"
       ]
     },
     {
@@ -16862,7 +17035,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P30",
+          "cv_label": "P29",
           "title": "When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation",
           "authors_display": "Ho, Sy-Tuyen, Minghui Liu, Hieu Tran, and Furong Huang",
           "authors_inferred": [
@@ -16884,7 +17057,7 @@
         },
         {
           "category": "workshop",
-          "cv_label": "W95",
+          "cv_label": "W97",
           "title": "Recursive Training and Scientific Judgment in AI Peer Review",
           "authors_display": "Ho, Sy-Tuyen, Minghui Liu, and Furong Huang",
           "authors_inferred": [
@@ -17170,6 +17343,117 @@
       "flags": [
         "missing-from-my-ncbi",
         "missing-from-orcid"
+      ]
+    },
+    {
+      "id": "why-freeze-the-encoder-a-controlled-study-of-end-to-71300b3c",
+      "title": "Why Freeze the Encoder? A Controlled Study of End-to-End Sequence–Graph Learning for User Behavior",
+      "normalized_title": "whyfreezetheencoderacontrolledstudyofendtoendsequencegraphlearningforuserbehavior",
+      "authors": [
+        "Yuen Chen",
+        "Yulun Wu",
+        "Samuel Sharpe",
+        "Igor Melnyk",
+        "Nam H. Nguyen",
+        "Furong Huang",
+        "C. Bayan Bruss",
+        "Rizal Fathony"
+      ],
+      "authors_source": "manual-override",
+      "year": 2026,
+      "category": "conference",
+      "venue": "Learning on Graphs Conference (LoG), Poster, 2026",
+      "identifiers": {
+        "arxiv": "2510.25126",
+        "openreview": "zbH5BBAyYW"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2510.25126"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=zbH5BBAyYW"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=xa7WxSc08h"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "conference",
+          "cv_label": "C138",
+          "title": "Why Freeze the Encoder? A Controlled Study of End-to-End Sequence–Graph Learning for User Behavior",
+          "authors_display": "Chen, Yuen, Yulun Wu, Samuel Sharpe, Igor Melnyk, Nam H. Nguyen, Furong Huang, C. Bayan Bruss, and Rizal Fathony",
+          "authors_inferred": [
+            "Yuen Chen",
+            "Yulun Wu",
+            "Samuel Sharpe",
+            "Igor Melnyk",
+            "Nam H. Nguyen",
+            "Furong Huang",
+            "C. Bayan Bruss",
+            "Rizal Fathony"
+          ],
+          "venue": "Learning on Graphs Conference (LoG), Poster, 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2510.25126"
+            },
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=zbH5BBAyYW"
+            }
+          ],
+          "source_file": "sections/publications-conf.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W82",
+          "title": "Bridging the Divide: End-to-End Sequence-Graph Learning",
+          "authors_display": "Chen, Yuen, Yulun Wu, Samuel Sharpe, Igor Melnyk, Nam H. Nguyen, Furong Huang, C. Bayan Bruss, and Rizal Fathony",
+          "authors_inferred": [
+            "Yuen Chen",
+            "Yulun Wu",
+            "Samuel Sharpe",
+            "Igor Melnyk",
+            "Nam H. Nguyen",
+            "Furong Huang",
+            "C. Bayan Bruss",
+            "Rizal Fathony"
+          ],
+          "venue": "Workshop on New Perspective in Graph Machine Learning (NPGML), NeurIPS 2025",
+          "year": 2025,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=xa7WxSc08h"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2510.25126"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 2,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "multiple-cv-appearances"
       ]
     },
     {

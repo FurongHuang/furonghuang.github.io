@@ -816,6 +816,13 @@ areas:
           - label: Code
             href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
+  - title: "CARVE: Caption-Anchored, Rubric-Verified Extraction for Training-Scale Figure-Required Scientific VQA"
+    thumbnail: /assets/projects/carve-method-panel.png
+    social_links:
+      - label: Figure credits
+        url: https://furong-huang.com/assets/projects/research-figure-credits.html#carve
+  - title: "Why Freeze the Encoder? A Controlled Study of End-to-End Sequence–Graph Learning for User Behavior"
+    thumbnail: /assets/projects/auto-arxiv-2510-25126.webp
   - title: "Meta²: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents"
     pillar: reasoning-control
     thumbnail: /assets/projects/meta2.png

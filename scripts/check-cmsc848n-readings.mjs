@@ -110,7 +110,7 @@ const revisedLectures = [
   ["2026-11-03", "World Models and Vision-Language-Action Agents", "W10-L1-2026-Foundation-Models-for-Robotics.pdf"],
   ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"],
   ["2026-11-10", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pdf"],
-  ["2026-11-12", "Defense in Depth, Monitoring, and Incident Response", "W11-L2-Defense-in-Depth-Monitoring-and-Incident-Response.pptx"],
+  ["2026-11-12", "Defense in Depth, Monitoring, and Incident Response", "W11-L2-2026-Defense-in-Depth-Paper-Figures-v6.pdf"],
   ["2026-11-17", "Learning from Experience: Prompts, Skills, Policies, and Continual Adaptation", "W12-L1-Learning-from-Experience-Prompts-Skills-Policies-and-Continual-Adaptation.pptx"],
   ["2026-11-19", "Self-Modifying and Evolutionary Agents", "W12-L2-Self-Modifying-and-Evolutionary-Agents.pptx"],
   ["2026-11-24", "Agent Evaluation and Deployment Evidence", "W13-L1-Agent-Evaluation-and-Deployment-Evidence.pptx"],

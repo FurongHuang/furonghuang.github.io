@@ -93,7 +93,7 @@ for (const [date, citations] of Object.entries(week5SlideCitations)) {
   }
 }
 
-for (const filename of ["W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf", "W4-L1-2026-Planning-and-State.pdf", "W5-L1-2026-Memory-and-Context-Engineering.pdf", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf", "W9-L1-2026-Deep-Research-Agents.pdf", "W10-L1-2026-Foundation-Models-for-Robotics.pdf"]) {
+for (const filename of ["W3-L2-2026-Alignment-DPO-to-Controlled-Decoding.pdf", "W4-L1-2026-Planning-and-State.pdf", "W5-L1-2026-Memory-and-Context-Engineering.pdf", "W5-L2-2026-Tool-Use-and-Action-Interfaces.pdf", "W9-L1-2026-Deep-Research-Agents.pdf", "W10-L1-2026-Foundation-Models-for-Robotics.pdf", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pdf"]) {
   assert.ok(schedule.includes(`/courses/cmsc848n/fall-2026/slides/${filename}`), `Keep the published slide link: ${filename}`);
 }
 const pageSource = readFileSync(new URL("../src/pages/cmsc848n-fall-2026.astro", import.meta.url), "utf8");
@@ -109,7 +109,7 @@ const revisedLectures = [
   ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"],
   ["2026-11-03", "World Models and Vision-Language-Action Agents", "W10-L1-2026-Foundation-Models-for-Robotics.pdf"],
   ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"],
-  ["2026-11-10", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pptx"],
+  ["2026-11-10", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pdf"],
   ["2026-11-12", "Defense in Depth, Monitoring, and Incident Response", "W11-L2-Defense-in-Depth-Monitoring-and-Incident-Response.pptx"],
   ["2026-11-17", "Learning from Experience: Prompts, Skills, Policies, and Continual Adaptation", "W12-L1-Learning-from-Experience-Prompts-Skills-Policies-and-Continual-Adaptation.pptx"],
   ["2026-11-19", "Self-Modifying and Evolutionary Agents", "W12-L2-Self-Modifying-and-Evolutionary-Agents.pptx"],

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-23",
   "grain": "one work per normalized title plus reviewed title aliases; CV appearances are nested",
   "sources": {
     "full_cv_sections": [
@@ -15,8 +15,8 @@
     "overrides": "data/publications/publication-overrides.json"
   },
   "stats": {
-    "cv_appearances": 290,
-    "normalized_works": 256,
+    "cv_appearances": 294,
+    "normalized_works": 259,
     "my_ncbi_records": 74,
     "orcid_records": 109
   },
@@ -1558,6 +1558,90 @@
       ]
     },
     {
+      "id": "aura-from-atoms-to-bits-through-autonomous-robot-int-4ea3f747",
+      "title": "AuRA: From Atoms to Bits through Autonomous Robot Interaction",
+      "normalized_title": "aurafromatomstobitsthroughautonomousrobotinteraction",
+      "authors": [
+        "Xinchen Yu",
+        "Yoonkyo Jung",
+        "Haoran Chen",
+        "Zikui Cai",
+        "Aayush Talreja",
+        "Seungjae Lee",
+        "Hyunjin Kim",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2610.34452"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.34452"
+        },
+        {
+          "label": "Project page",
+          "url": "https://aura-robot.github.io/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/Yoonkyo/AuRA"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P35",
+          "title": "AuRA: From Atoms to Bits through Autonomous Robot Interaction",
+          "authors_display": "Yu, Xinchen, Yoonkyo Jung, Haoran Chen, Zikui Cai, Aayush Talreja, Seungjae Lee, Hyunjin Kim, and Furong Huang",
+          "authors_inferred": [
+            "Xinchen Yu",
+            "Yoonkyo Jung",
+            "Haoran Chen",
+            "Zikui Cai",
+            "Aayush Talreja",
+            "Seungjae Lee",
+            "Hyunjin Kim",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2610.34452"
+            },
+            {
+              "label": "Project page",
+              "url": "https://aura-robot.github.io/"
+            },
+            {
+              "label": "Code",
+              "url": "https://github.com/Yoonkyo/AuRA"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
+      ]
+    },
+    {
       "id": "autodan-interpretable-gradient-based-adversarial-att-39808585",
       "title": "AutoDAN: Interpretable Gradient-Based Adversarial Attacks on Large Language Models",
       "normalized_title": "autodaninterpretablegradientbasedadversarialattacksonlargelanguagemodels",
@@ -2588,7 +2672,7 @@
       "appearances": [
         {
           "category": "workshop",
-          "cv_label": "W106",
+          "cv_label": "W107",
           "title": "CARVE: Caption-Anchored, Rubric-Verified Extraction for Training-Scale Figure-Required Scientific VQA",
           "authors_display": "Li, Jie S., Kwesi Adu Cobbina, Udari Madhushani Sehwag, David Yu Miller, Hirunima Jayasekara, Shayan Shabihi, Zikui Cai, Furong Huang, and Tom Goldstein",
           "authors_inferred": [
@@ -6873,15 +6957,19 @@
       "authors_source": "inferred-from-tex",
       "year": 2026,
       "category": "workshop",
-      "venue": "4th Workshop on Learning Effective Abstractions for Planning (LEAP), CoRL 2026",
+      "venue": "The Action Gap (TAG) Workshop, poster, CoRL 2026",
       "identifiers": {
         "arxiv": "2606.18363",
-        "openreview": "NpgQtQTORa"
+        "openreview": "1sc4tQWDgY"
       },
       "links": [
         {
           "label": "arXiv",
           "url": "https://arxiv.org/abs/2606.18363"
+        },
+        {
+          "label": "OpenReview",
+          "url": "https://openreview.net/forum?id=1sc4tQWDgY"
         },
         {
           "label": "OpenReview",
@@ -6918,6 +7006,36 @@
             }
           ],
           "source_file": "sections/publications-preprints.tex"
+        },
+        {
+          "category": "workshop",
+          "cv_label": "W106",
+          "title": "Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness",
+          "authors_display": "Liu, Haowen, Xirui Li, Shaoxiong Yao, Peng Shi, Tianyi Zhou, Jia-Bin Huang, Furong Huang, and Jiayuan Mao",
+          "authors_inferred": [
+            "Haowen Liu",
+            "Xirui Li",
+            "Shaoxiong Yao",
+            "Peng Shi",
+            "Tianyi Zhou",
+            "Jia-Bin Huang",
+            "Furong Huang",
+            "Jiayuan Mao"
+          ],
+          "venue": "The Action Gap (TAG) Workshop, poster, CoRL 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "OpenReview",
+              "url": "https://openreview.net/forum?id=1sc4tQWDgY"
+            },
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2606.18363"
+            }
+          ],
+          "source_file": "sections/publications-ws.tex"
         },
         {
           "category": "workshop",
@@ -6981,7 +7099,7 @@
         }
       ],
       "source_counts": {
-        "full_cv": 3,
+        "full_cv": 4,
         "wordpress_bibtex": 0,
         "my_ncbi": 0,
         "orcid": 0
@@ -9784,8 +9902,14 @@
       "year": 2026,
       "category": "preprint",
       "venue": ", 2026",
-      "identifiers": {},
+      "identifiers": {
+        "arxiv": "2611.05139"
+      },
       "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2611.05139"
+        },
         {
           "label": "Paper",
           "url": "https://meta-square.github.io/paper.pdf"
@@ -9798,7 +9922,7 @@
       "appearances": [
         {
           "category": "preprint",
-          "cv_label": "P34",
+          "cv_label": "P36",
           "title": "Meta²: Precomputing Reusable Knowledge for Online Harness Evolution in Long-Horizon Agents",
           "authors_display": "Yuan, Lingzhi, Yiguang Cai, Weize Liu, Siqi Yang, Feijiang Han, Yongkyun Lee, Udari Madhushani Sehwag, and Furong Huang",
           "authors_inferred": [
@@ -9815,6 +9939,10 @@
           "year": 2026,
           "first_or_last_author": true,
           "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2611.05139"
+            },
             {
               "label": "Paper",
               "url": "https://meta-square.github.io/paper.pdf"
@@ -12657,6 +12785,72 @@
       },
       "flags": [
         "missing-from-my-ncbi"
+      ]
+    },
+    {
+      "id": "roleflow-self-evolving-multi-role-agentic-collaborat-aa9fb0f7",
+      "title": "RoleFlow: Self-Evolving Multi-Role Agentic Collaboration via Structural Adaptation",
+      "normalized_title": "roleflowselfevolvingmultiroleagenticcollaborationviastructuraladaptation",
+      "authors": [
+        "Yi Ge",
+        "Pan Wang",
+        "Xuehao Cui",
+        "Zian Zeng",
+        "Xu Hu",
+        "Heng Huang",
+        "Furong Huang"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2610.30429"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2610.30429"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P34",
+          "title": "RoleFlow: Self-Evolving Multi-Role Agentic Collaboration via Structural Adaptation",
+          "authors_display": "Ge, Yi, Pan Wang, Xuehao Cui, Zian Zeng, Xu Hu, Heng Huang, and Furong Huang",
+          "authors_inferred": [
+            "Yi Ge",
+            "Pan Wang",
+            "Xuehao Cui",
+            "Zian Zeng",
+            "Xu Hu",
+            "Heng Huang",
+            "Furong Huang"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": true,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2610.30429"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
       ]
     },
     {
@@ -17284,6 +17478,78 @@
       },
       "flags": [
         "multiple-cv-appearances"
+      ]
+    },
+    {
+      "id": "who-should-know-what-empirical-information-design-fo-778b8268",
+      "title": "Who Should Know What? Empirical Information Design for Multi-Agent LLM Economies",
+      "normalized_title": "whoshouldknowwhatempiricalinformationdesignformultiagentllmeconomies",
+      "authors": [
+        "Mete Erdogan",
+        "Mirac Suzgun",
+        "Aneesh Pappu",
+        "Guowei Xu",
+        "Batu El",
+        "Andrew A. Schoen",
+        "Furong Huang",
+        "John P. Dickerson",
+        "Mert Pilanci",
+        "James Zou"
+      ],
+      "authors_source": "inferred-from-tex",
+      "year": 2026,
+      "category": "preprint",
+      "venue": ", 2026",
+      "identifiers": {
+        "arxiv": "2611.07667"
+      },
+      "links": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2611.07667"
+        }
+      ],
+      "appearances": [
+        {
+          "category": "preprint",
+          "cv_label": "P37",
+          "title": "Who Should Know What? Empirical Information Design for Multi-Agent LLM Economies",
+          "authors_display": "Erdogan, Mete, Mirac Suzgun, Aneesh Pappu, Guowei Xu, Batu El, Andrew A. Schoen, Furong Huang, John P. Dickerson, Mert Pilanci, and James Zou",
+          "authors_inferred": [
+            "Mete Erdogan",
+            "Mirac Suzgun",
+            "Aneesh Pappu",
+            "Guowei Xu",
+            "Batu El",
+            "Andrew A. Schoen",
+            "Furong Huang",
+            "John P. Dickerson",
+            "Mert Pilanci",
+            "James Zou"
+          ],
+          "venue": ", 2026",
+          "year": 2026,
+          "first_or_last_author": false,
+          "links": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2611.07667"
+            }
+          ],
+          "source_file": "sections/publications-preprints.tex"
+        }
+      ],
+      "source_counts": {
+        "full_cv": 1,
+        "wordpress_bibtex": 0,
+        "my_ncbi": 0,
+        "orcid": 0
+      },
+      "flags": [
+        "missing-from-wordpress-bibtex",
+        "missing-from-my-ncbi",
+        "missing-from-orcid",
+        "authors-inferred-from-tex"
       ]
     },
     {

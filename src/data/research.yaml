@@ -816,6 +816,12 @@ areas:
           - label: Code
             href: https://github.com/umd-huang-lab/PROTECTED
 publication_overrides:
+  - title: "Who Should Know What? Empirical Information Design for Multi-Agent LLM Economies"
+    thumbnail: /assets/projects/who-should-know-what.webp
+  - title: "AuRA: From Atoms to Bits through Autonomous Robot Interaction"
+    thumbnail: /assets/projects/aura.webp
+  - title: "RoleFlow: Self-Evolving Multi-Role Agentic Collaboration via Structural Adaptation"
+    thumbnail: /assets/projects/roleflow.webp
   - title: "CARVE: Caption-Anchored, Rubric-Verified Extraction for Training-Scale Figure-Required Scientific VQA"
     thumbnail: /assets/projects/carve-method-panel.png
     social_links:

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-11-23",
   "sources": {
     "survey": {
       "title": "A Survey on Large Language Model based Autonomous Agents",
@@ -1017,8 +1017,8 @@
       ]
     },
     "2026-12-03": {
-      "status": "pending",
-      "focus": "The topic and reading assignment will be confirmed. No pre-class reading is assigned yet.",
+      "status": "none",
+      "focus": "Open Q&A session. No pre-class reading is assigned.",
       "core": [],
       "further": []
     }

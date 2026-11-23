@@ -154,10 +154,10 @@ const modules: CourseModule[] = [
   },
   {
     number: null,
-    module: "December 3 lecture",
-    outcome: "The topic and reading assignment will be confirmed.",
+    module: "December 3 Q&A session",
+    outcome: "Open question-and-answer session. Bring your questions.",
     lectures: [
-      ["2026-12-03", "Topic to be confirmed", null]
+      ["2026-12-03", "Open Q&A session", null]
     ]
   }
 ];
@@ -420,15 +420,15 @@ const prerequisiteReadings = [
                 <div class="lecture-session">
                   {releasedSlides.has(getPublishedSlideFilename(file)) ? (
                     <a class="lecture-item" href={`${slideRoot}/${getPublishedSlideFilename(file)}`} download>
-                      <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Pending"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
+                      <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Q&A"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
                       <small>PDF ↓</small>
                     </a>
                   ) : (
                     <div class="lecture-item is-pending">
-                      <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Pending"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
+                      <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Q&A"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
-                      <small>{file ? `PDF release: ${formatReleaseDate(date)} · 11 AM` : number ? "Continued from prior lecture" : "Topic and readings pending"}</small>
+                      <small>{file ? `PDF release: ${formatReleaseDate(date)} · 11 AM` : number ? "Continued from prior lecture" : "No slides or pre-class reading"}</small>
                     </div>
                   )}
                   <a class="lecture-reading-link" href={`#reading-${date}`} aria-label={`Pre-class reading for ${formatCourseDate(date)}: ${title}`}>Pre-class reading →</a>

@@ -38,8 +38,8 @@ if (scheduledDates.size !== lectures.length ||
 }
 for (const { date } of lectures) {
   const reading = readings[date];
-  if (!reading || !["current", "planned", "pending"].includes(reading.status) ||
-      (reading.status === "pending" ? reading.core.length + reading.further.length > 0 : !reading.core.length)) {
+  if (!reading || !["current", "planned", "pending", "none"].includes(reading.status) ||
+      (["pending", "none"].includes(reading.status) ? reading.core.length + reading.further.length > 0 : !reading.core.length)) {
     throw new Error(`Missing or invalid CMSC 848N reading assignment for ${date}.`);
   }
   for (const item of [...reading.core, ...reading.further]) {
@@ -74,10 +74,11 @@ for (const { date } of lectures) {
             {module && <span>Module {module} · L{lecture}</span>}
             {reading.status === "planned" && <span class="reading-status">Planned</span>}
             {reading.status === "pending" && <span class="reading-status">Readings pending</span>}
+            {reading.status === "none" && <span class="reading-status">No pre-class reading</span>}
           </div>
           <div class="reading-content">
             <h3 id={`reading-title-${date}`}>{title}</h3>
-            {reading.status === "pending" ? (
+            {["pending", "none"].includes(reading.status) ? (
               <p class="reading-focus">{reading.focus}</p>
             ) : (
               <p class="reading-focus"><strong>Reading focus:</strong> {reading.focus}</p>

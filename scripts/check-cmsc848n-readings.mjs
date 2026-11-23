@@ -19,12 +19,16 @@ assert.ok(html.includes('href="#readings"'), "The reading section must be discov
 const usedSources = new Set();
 for (const [date, reading] of Object.entries(data.lectures)) {
   assert.ok(reading.focus.trim(), `${date}: missing reading focus.`);
-  assert.ok(["current", "planned", "pending"].includes(reading.status), `${date}: invalid status.`);
+  assert.ok(["current", "planned", "pending", "none"].includes(reading.status), `${date}: invalid status.`);
   const entry = html.match(new RegExp(`<article\\b[^>]*id="reading-${date}"[^>]*>([\\s\\S]*?)<\\/article>`))?.[1];
   assert.ok(entry, `${date}: missing reading anchor.`);
   if (reading.status === "pending") {
     assert.equal(reading.core.length + reading.further.length, 0, `${date}: do not assign readings to an unconfirmed topic.`);
     assert.ok(entry.includes("Readings pending"), `${date}: pending assignment must be visible.`);
+    assert.ok(!entry.includes("Read first"), `${date}: do not show an empty reading list.`);
+  } else if (reading.status === "none") {
+    assert.equal(reading.core.length + reading.further.length, 0, `${date}: a session without reading must not list readings.`);
+    assert.ok(entry.includes("No pre-class reading"), `${date}: the absence of a reading must be visible.`);
     assert.ok(!entry.includes("Read first"), `${date}: do not show an empty reading list.`);
   } else {
     assert.ok(reading.core.length > 0, `${date}: missing Read first selection.`);
@@ -52,7 +56,7 @@ assert.deepEqual(data.lectures["2026-10-01"].core.map((item) => item.source), ["
 assert.deepEqual(data.lectures["2026-10-15"].core.map((item) => item.source), ["sweAgentV3", "miniSweAgentControlFlow"]);
 assert.deepEqual(data.lectures["2026-10-20"].core.map((item) => item.source), ["sweSmith", "sweSmithTraining"]);
 assert.deepEqual(data.lectures["2026-10-22"].core.map((item) => item.source), ["selfHarness", "harnessEvaluation"]);
-assert.equal(data.lectures["2026-12-03"].status, "pending", "Keep the December 3 class with its topic and readings unconfirmed.");
+assert.equal(data.lectures["2026-12-03"].status, "none", "December 3 is an open Q&A session with no assigned reading.");
 const codingPaperVersions = {
   sweAgentV3: "2405.15793v3",
   sweSmith: "2504.21798v2",
@@ -115,7 +119,7 @@ const revisedLectures = [
   ["2026-11-19", "Self-Modifying and Evolutionary Agents", "W12-L2-Self-Modifying-and-Evolutionary-Agents.pptx"],
   ["2026-11-24", "Agent Evaluation and Deployment Evidence", "W13-L1-2026-Agent-Evaluation-and-Deployment-Evidence.pdf"],
   ["2026-12-01", "Provenance, Watermarking, and Frontier Challenges", "W13-L2-2026-Provenance-Watermarking-and-Frontier-Challenges.pdf"],
-  ["2026-12-03", "Topic to be confirmed", null]
+  ["2026-12-03", "Open Q&A session", null]
 ];
 for (const lecture of revisedLectures) {
   assert.ok(pageSource.includes(`[${lecture.map((value) => JSON.stringify(value)).join(", ")}]`), `Incorrect date/topic/deck mapping: ${lecture[0]}`);

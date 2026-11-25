@@ -113,7 +113,7 @@ const modules: CourseModule[] = [
     outcome: "Connect sources, claims, hypotheses, experiments, and qualified conclusions.",
     lectures: [
       ["2026-10-27", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-2026-Deep-Research-Agents.pdf"],
-      ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"]
+      ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-2026-Scientific-Discovery-Agents.pdf"]
     ]
   },
   {
@@ -412,6 +412,7 @@ const prerequisiteReadings = [
             <div class="week-topic">
               <h3>{module}</h3><p>{outcome}</p>
               {number === "08" && <a class="lecture-reading-link" href={`${slideRoot}/coding-agents-sources-and-reuse.md`}>Sources and reuse notices for the three coding-agent lectures</a>}
+              {number === "09" && <a class="lecture-reading-link" href={`${slideRoot}/reuse-notices/W9-L2-sources-and-reuse.md`}>Sources and figure reuse for the scientific discovery slides</a>}
               {number === "13" && <a class="lecture-reading-link" href={`${slideRoot}/reuse-notices/W13-L1-reused-figures.md`}>Reused figures in the agent evaluation lecture</a>}
               {number === "13" && <a class="lecture-reading-link" href={`${slideRoot}/reuse-notices/W13-L2-reused-figures.md`}>Reused figures in the provenance and watermarking lecture</a>}
             </div>
@@ -422,7 +423,7 @@ const prerequisiteReadings = [
                     <a class="lecture-item" href={`${slideRoot}/${getPublishedSlideFilename(file)}`} download>
                       <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Q&A"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
-                      <small>PDF ↓</small>
+                      <small>{date === "2026-10-29" ? "Canceled · PDF ↓" : "PDF ↓"}</small>
                     </a>
                   ) : (
                     <div class="lecture-item is-pending">

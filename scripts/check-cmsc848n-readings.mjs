@@ -110,7 +110,7 @@ const revisedLectures = [
   ["2026-10-20", "Training Coding Agents", "W8-L1-2026-Training-Coding-Agents.pdf"],
   ["2026-10-22", "Optimizing Coding-Agent Harnesses", "W8-L2-2026-Optimizing-Coding-Agent-Harnesses.pdf"],
   ["2026-10-27", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-2026-Deep-Research-Agents.pdf"],
-  ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-Scientific-Discovery-Agents-Hypotheses-Experiments-and-Valid-Claims.pptx"],
+  ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-2026-Scientific-Discovery-Agents.pdf"],
   ["2026-11-03", "World Models and Vision-Language-Action Agents", "W10-L1-2026-Foundation-Models-for-Robotics.pdf"],
   ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"],
   ["2026-11-10", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pdf"],

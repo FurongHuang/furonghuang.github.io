@@ -112,7 +112,7 @@ const revisedLectures = [
   ["2026-10-27", "Deep Research Agents: Search, Evidence, and Reproducible Synthesis", "W9-L1-2026-Deep-Research-Agents.pdf"],
   ["2026-10-29", "Scientific Discovery Agents: Hypotheses, Experiments, and Valid Claims", "W9-L2-2026-Scientific-Discovery-Agents.pdf"],
   ["2026-11-03", "World Models and Vision-Language-Action Agents", "W10-L1-2026-Foundation-Models-for-Robotics.pdf"],
-  ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-Data-Efficient-Embodied-Learning-and-Evaluation.pptx"],
+  ["2026-11-05", "Data-Efficient Embodied Learning and Evaluation", "W10-L2-2026-Data-Efficient-Embodied-Learning-and-Evaluation.pdf"],
   ["2026-11-10", "Adversarial Threats Across the Agent Lifecycle", "W11-L1-Adversarial-Threats-Across-the-Agent-Lifecycle.pdf"],
   ["2026-11-12", "Defense in Depth, Monitoring, and Incident Response", "W11-L2-2026-Defense-in-Depth-Paper-Figures-v6.pdf"],
   ["2026-11-17", "Learning from Experience: Prompts, Skills, Policies, and Continual Adaptation", "W12-L1-Learning-from-Experience-Prompts-Skills-Policies-and-Continual-Adaptation.pptx"],

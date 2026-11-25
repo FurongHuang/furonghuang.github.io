@@ -11,11 +11,12 @@ const scheduledDates = [...schedule.matchAll(/<time\b[^>]*datetime="(\d{4}-\d{2}
 const readingDates = [...html.matchAll(/data-reading-date="(\d{4}-\d{2}-\d{2})"/g)].map((match) => match[1]);
 const readingLinks = [...schedule.matchAll(/href="#reading-(\d{4}-\d{2}-\d{2})"/g)].map((match) => match[1]);
 assert.deepEqual(readingDates, scheduledDates, "Every lecture must render its own reading entry in schedule order.");
-assert.deepEqual(readingLinks, scheduledDates, "Every lecture must link to its reading entry, including unreleased slides and continuations.");
+assert.deepEqual(readingLinks, scheduledDates.filter(date => data.lectures[date].status !== "none"), "Every session with readings must link to its reading entry; Q&A must not imply a reading assignment.");
 assert.equal(new Set(scheduledDates).size, scheduledDates.length, "Lecture dates must be unique.");
 assert.deepEqual(Object.keys(data.lectures).sort(), [...scheduledDates].sort(), "The reading data must match the schedule exactly.");
 assert.ok(html.includes('href="#readings"'), "The reading section must be discoverable from the page.");
 
+const todayEastern = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
 const usedSources = new Set();
 for (const [date, reading] of Object.entries(data.lectures)) {
   assert.ok(reading.focus.trim(), `${date}: missing reading focus.`);
@@ -32,9 +33,11 @@ for (const [date, reading] of Object.entries(data.lectures)) {
     assert.ok(!entry.includes("Read first"), `${date}: do not show an empty reading list.`);
   } else {
     assert.ok(reading.core.length > 0, `${date}: missing Read first selection.`);
-    assert.ok(entry.includes("Read first"), `${date}: missing visible priority.`);
+    assert.ok(entry.includes(date === "2026-10-29" ? "Start here (optional)" : "Read first"), `${date}: missing visible priority.`);
   }
-  if (reading.status === "planned") assert.ok(entry.includes("Planned"), `${date}: planned status must be visible.`);
+  if (reading.status === "planned" && date > todayEastern) assert.ok(entry.includes("Planned"), `${date}: future planned status must be visible.`);
+  if (date <= todayEastern) assert.ok(!entry.includes('class="reading-status">Planned'), `${date}: past readings must not be labeled Planned.`);
+  if (date === "2026-10-29") assert.ok(entry.includes("Canceled · independent study"), "Identify the canceled lecture's readings as independent study.");
   for (const item of [...reading.core, ...reading.further]) {
     const source = data.sources[item.source];
     assert.ok(source?.title && source.citation && source.kind, `${date}: incomplete source ${item.source}.`);
@@ -127,6 +130,6 @@ for (const lecture of revisedLectures) {
 for (const date of ["2026-10-13", "2026-11-26"]) assert.ok(!data.lectures[date], "Do not assign lecture readings on a university break.");
 assert.ok(schedule.includes("No class Tuesday, October 13 (Fall Break). W7-L1 meets Thursday, October 15."), "Clarify the Fall Break and W7-L1 meeting dates.");
 assert.ok(!scheduledDates.includes("2026-10-13"), "Do not schedule a lecture during Fall Break.");
-assert.ok(pageSource.includes("PDF release: ${formatReleaseDate(date)} · 11 AM"), "Distinguish the PDF release date from the lecture date.");
+assert.ok(pageSource.includes("Planned PDF release: ${formatReleaseDate(date)} · 11 AM"), "Distinguish the PDF release date from the lecture date.");
 
 console.log(`CMSC 848N readings check passed: ${scheduledDates.length} lectures, ${usedSources.size} sources, all schedule links present.`);

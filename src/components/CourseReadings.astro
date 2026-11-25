@@ -15,10 +15,11 @@ interface LectureReading {
   further: ReadingItem[];
 }
 interface Props {
-  lectures: { date: string; title: string; module: string | null; lecture: number }[];
+  lectures: { date: string; title: string; module: string | null; lecture: number; canceled?: boolean }[];
 }
 
 const { lectures } = Astro.props;
+const todayEastern = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
 const readings: Record<string, LectureReading> = readingData.lectures;
 const sources: Record<string, ReadingSource> = readingData.sources;
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -58,21 +59,21 @@ for (const { date } of lectures) {
     </div>
     <div>
       <p>Start with <strong>Read first</strong>. Optional readings provide more detail or a different approach. Use the reading focus to guide your preparation.</p>
-      <p>These links are available ahead of the slide PDFs. Upcoming lecture readings are marked <strong>Planned</strong> and may be revised as the course develops.</p>
+      <p>These links are available ahead of the slide PDFs. Future lecture readings marked <strong>Planned</strong> may be revised. The canceled October 29 lecture has optional independent-study readings; the December 3 Q&A has no assigned reading.</p>
       <p><a href="#resources">Mathematical prerequisites</a> · <a href="#schedule">Lecture schedule</a></p>
     </div>
   </div>
   <p class="reading-revision">Updated <time datetime={readingData.updated}>{revisionDate}</time>. Titles identify the linked versions; arXiv years are initial posting years. Textbooks, engineering articles, and official specifications are labeled separately.</p>
 
   <div class="lecture-readings">
-    {lectures.map(({ date, title, module, lecture }) => {
+    {lectures.map(({ date, title, module, lecture, canceled }) => {
       const reading = readings[date];
       return (
         <article id={`reading-${date}`} class="reading-entry" data-reading-date={date} aria-labelledby={`reading-title-${date}`}>
           <div class="reading-date">
             <time datetime={date}>{formatDate(date)}</time>
             {module && <span>Module {module} · L{lecture}</span>}
-            {reading.status === "planned" && <span class="reading-status">Planned</span>}
+            {canceled ? <span class="reading-status">Canceled · independent study</span> : reading.status === "planned" && date > todayEastern && <span class="reading-status">Planned</span>}
             {reading.status === "pending" && <span class="reading-status">Readings pending</span>}
             {reading.status === "none" && <span class="reading-status">No pre-class reading</span>}
           </div>
@@ -81,11 +82,11 @@ for (const { date } of lectures) {
             {["pending", "none"].includes(reading.status) ? (
               <p class="reading-focus">{reading.focus}</p>
             ) : (
-              <p class="reading-focus"><strong>Reading focus:</strong> {reading.focus}</p>
+              <p class="reading-focus"><strong>{canceled ? "Independent-study focus:" : "Reading focus:"}</strong> {reading.focus}</p>
             )}
             {reading.core.length > 0 && (
               <>
-                <h4>Read first</h4>
+                <h4>{canceled ? "Start here (optional)" : "Read first"}</h4>
                 <ul class="reading-papers core-readings">
                   {reading.core.map(({ source, guide }) => (
                     <li>

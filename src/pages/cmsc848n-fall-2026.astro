@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CourseReadings from "../components/CourseReadings.astro";
+import CourseProjects from "../components/CourseProjects.astro";
+import projectCatalogue from "../data/cmsc848n-projects.json";
 import { existsSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 
@@ -22,6 +24,8 @@ const courseDateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 const formatCourseDate = (date: string) => courseDateFormatter.format(new Date(`${date}T12:00:00Z`));
+const canceledDates = new Set(["2026-10-29"]);
+const todayEastern = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
 const formatReleaseDate = (date: string) => {
   const releaseDate = new Date(`${date}T12:00:00Z`);
   releaseDate.setUTCDate(releaseDate.getUTCDate() - 2);
@@ -278,13 +282,12 @@ const projectRubrics = [
 ];
 
 const milestones = [
-  ["Weeks 1–2", "Rank projects and form teams", "Submit project preferences, propose one personalization, and establish a shared workspace with a team of up to three students."],
-  ["Week 4", "Proposal", "Submit the task contract, benchmark or environment, and one-page plan."],
-  ["Week 6", "Baseline", "Deliver a runnable baseline and the first reproducible evidence bundle."],
-  ["Week 8", "Midterm report", "Report preliminary results and a concrete failure taxonomy."],
-  ["Week 10", "Freeze evaluation", "Lock held-out tasks, metrics, budgets, and contamination controls."],
-  ["Week 12", "Artifact audit", "Peer review, regression check, security test, and release rehearsal."],
-  ["Dec 8 & 10", "Present and submit", "Deliver the final presentation, paper-style report, runnable code, and supporting evidence."]
+  ["Initial planning", "Project scope and baseline", "Agree on the research question, team, benchmark or environment, and a runnable baseline."],
+  ["Oct 15", "Midterm report", "Report preliminary results, related work, failure cases, and a plan for the remaining work."],
+  ["Before final evaluation", "Freeze evaluation", "Lock held-out tasks, metrics, budgets, and contamination controls."],
+  ["Before submission", "Artifact audit", "Check reproducibility, regressions, security, and the evidence supporting each claim."],
+  ["Dec 8 & 10", "Final presentations", "Present the problem, approach, results, limitations, and individual contributions."],
+  ["Dec 11", "Final report and artifacts", "Submit the paper-style report, runnable code, and supporting evidence."]
 ];
 
 const projectBriefFields = [
@@ -332,8 +335,8 @@ const prerequisiteReadings = [
     <aside class="course-at-a-glance" aria-label="Course at a glance">
       <p class="eyebrow">At a glance</p>
       <div><strong>15</strong><span>semester weeks</span></div>
-      <div><strong>{modules.reduce((total, module) => total + module.lectures.length, 0)}</strong><span>lectures</span></div>
-      <div><strong>27</strong><span>personalized research projects</span></div>
+      <div><strong>{modules.filter(module => module.number).length}</strong><span>teaching modules</span></div>
+      <div><strong>{projectCatalogue.projects.length}</strong><span>personalized research projects</span></div>
       <p>Tuesdays & Thursdays · 11:00 a.m.–12:15 p.m. · CSI 3117</p>
     </aside>
   </section>
@@ -400,15 +403,16 @@ const prerequisiteReadings = [
     <div class="shell section">
       <div class="course-section-heading compact">
         <div><p class="eyebrow">Schedule & slides</p><h2>Thirteen modules.</h2></div>
-        <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10; new lecture slide decks appear exactly two days before each 11:00 a.m. lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
+        <p>Fall classes run August 31–December 11. CMSC 848N meets September 1–December 10. Available slide PDFs are linked below; the scheduled release is two days before each lecture. Dates follow the <a href="https://academiccatalog.umd.edu/about-university/academic-calendar/semester-calendar/semester-calendar.pdf">official UMD semester calendar</a>.</p>
       </div>
 
       <p>No class Tuesday, October 13 (Fall Break). W7-L1 meets Thursday, October 15.</p>
+      <p>The October 29 lecture was canceled; its PDF and readings are available for independent study. End-of-semester meetings: November 24 and December 1 lectures, December 3 open Q&A, and December 8 & 10 project presentations. No class November 26 (Thanksgiving Recess).</p>
 
       <ol class="course-schedule">
         {modules.map(({ number, module, outcome, lectures }) => (
           <li>
-            <div class="week-number"><span>{number ? "Module" : "Upcoming"}</span><strong>{number ?? "—"}</strong></div>
+            <div class="week-number"><span>{number ? "Module" : "Q&A"}</span><strong>{number ?? "—"}</strong></div>
             <div class="week-topic">
               <h3>{module}</h3><p>{outcome}</p>
               {number === "08" && <a class="lecture-reading-link" href={`${slideRoot}/coding-agents-sources-and-reuse.md`}>Sources and reuse notices for the three coding-agent lectures</a>}
@@ -429,10 +433,10 @@ const prerequisiteReadings = [
                     <div class="lecture-item is-pending">
                       <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Q&A"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
-                      <small>{file ? `PDF release: ${formatReleaseDate(date)} · 11 AM` : number ? "Continued from prior lecture" : "No slides or pre-class reading"}</small>
+                      <small>{file ? (date < todayEastern ? "PDF not yet posted" : `Planned PDF release: ${formatReleaseDate(date)} · 11 AM`) : number ? "Continued from prior lecture" : "No slides or pre-class reading"}</small>
                     </div>
                   )}
-                  <a class="lecture-reading-link" href={`#reading-${date}`} aria-label={`Pre-class reading for ${formatCourseDate(date)}: ${title}`}>Pre-class reading →</a>
+                  {number ? <a class="lecture-reading-link" href={`#reading-${date}`} aria-label={`${canceledDates.has(date) ? "Independent" : "Pre-class"} reading for ${formatCourseDate(date)}: ${title}`}>{canceledDates.has(date) ? "Independent reading →" : "Pre-class reading →"}</a> : <span class="lecture-reading-link">No pre-class reading assigned</span>}
                 </div>
               ))}
             </div>
@@ -449,64 +453,20 @@ const prerequisiteReadings = [
   </section>
 
   <CourseReadings lectures={modules.flatMap(({ number, lectures }) =>
-    lectures.map(([date, title], index) => ({ date, title, module: number, lecture: index + 1 }))
+    lectures.map(([date, title], index) => ({ date, title, module: number, lecture: index + 1, canceled: canceledDates.has(date) }))
   )} />
 
   <section id="projects" class="shell section projects-section">
     <div class="course-section-heading">
-      <div><p class="eyebrow">Personalized research project</p><h2>Choose one project. Make it your own.</h2></div>
+      <div><p class="eyebrow">Personalized research project</p><h2>Research projects.</h2></div>
       <div>
-        <p>Professor Huang is designing a new catalogue of ambitious research candidates for the class. Each begins with a real open problem and a credible path toward a publishable contribution. Detailed briefs are available to enrolled students with the course password.</p>
+        <p>Explore the 27 instructor-designed research projects, with motivations, technical questions, first experiments, and starting references. The full catalogue is now public; signup labels show what is recorded in the course signup sheet.</p>
       </div>
     </div>
 
-    <div
-      class="project-signup-callout"
-      data-catalog-lock
-      data-catalog-url="/courses/cmsc848n/fall-2026/project-catalog.v1.json"
-    >
-      <div>
-        <p class="eyebrow">Protected project catalogue</p>
-        <h3>Unlock the research projects.</h3>
-        <p>The detailed catalogue is encrypted. Enter the password shared by Professor Huang to review the candidate questions, technical hypotheses, evidence requirements, and starting papers.</p>
-      </div>
-      <form class="project-unlock-form" data-catalog-form>
-        <label for="project-catalog-password">Course password</label>
-        <div>
-          <input
-            id="project-catalog-password"
-            name="password"
-            type="password"
-            autocomplete="current-password"
-            spellcheck="false"
-            required
-            data-catalog-password
-          />
-          <button class="button course-button-light" type="submit" data-catalog-submit>Unlock</button>
-        </div>
-        <p role="status" aria-live="polite" data-catalog-status>Password is checked in this browser and is never submitted.</p>
-      </form>
-    </div>
+    <p class="project-progress-note">Project work is underway. Use your agreed scope and the <a href="#project-rubrics">grading rubrics</a> to prepare for final presentations on December 8 & 10 and the final report on December 11. Discuss material changes with the instructors through ELMS or course Slack.</p>
 
-    <noscript><p class="catalog-noscript">JavaScript is required to decrypt the protected project catalogue.</p></noscript>
-
-    <div class="project-selection-section">
-      <p class="eyebrow">How project selection works</p>
-      <div class="project-directions selection-steps">
-        <article><span>01</span><h3>Review</h3><p>Read the protected catalogue and identify several projects that fit your preparation and interests.</p></article>
-        <article><span>02</span><h3>Rank</h3><p>Rank three choices and propose one way to personalize your preferred direction. The planned deadline is Friday, September 11 at 5:00 p.m.</p></article>
-        <article><span>03</span><h3>Form a team</h3><p>Projects are completed in teams of up to three students. You may indicate preferred teammates when submitting your rankings.</p></article>
-        <article><span>04</span><h3>Confirm</h3><p>Final assignments will balance preparation, project demand, and available compute. Submission instructions will be posted in ELMS.</p></article>
-      </div>
-    </div>
-
-    <div class="protected-catalog" hidden data-catalog-shell>
-      <div class="catalog-heading">
-        <div><p class="eyebrow">Fall 2026 candidate catalogue</p><h3>Open a brief. Find the question you want to sharpen.</h3></div>
-        <div><p>Rank several candidates and propose one personalization. Final scopes will reflect team preparation, available compute, and overlap across the class.</p><button type="button" data-catalog-relock>Lock catalogue</button></div>
-      </div>
-      <div class="project-catalog" data-project-catalog aria-label="Fall 2026 research project candidates"></div>
-    </div>
+    <CourseProjects />
 
     <p class="eyebrow">What each research project description includes</p>
     <div class="project-directions" aria-label="Information included in each project candidate">
@@ -516,7 +476,7 @@ const prerequisiteReadings = [
     </div>
 
     <div class="milestone-section">
-      <p class="eyebrow">Milestones</p>
+      <p class="eyebrow">Project workflow and deadlines</p>
       <ol class="milestone-list">
         {milestones.map(([when, title, detail]) => (
           <li><span>{when}</span><strong>{title}</strong><p>{detail}</p></li>
@@ -529,7 +489,7 @@ const prerequisiteReadings = [
     <div class="shell section">
       <div class="course-section-heading compact">
         <div><p class="eyebrow">Assessment</p><h2>How your work will be assessed.</h2></div>
-        <p>The assessment structure follows the <a href="https://umd-huang-lab.github.io/cmsc848n-fall2025/syllabus.html">Fall 2025 syllabus</a>. Dates below are planned; the final Fall 2026 syllabus will confirm them, grade thresholds, and whether plus/minus grading is used.</p>
+        <p>The listed assessment weights and deadlines are shown below. Check ELMS for the official Fall 2026 syllabus, assignment instructions, and any announced changes.</p>
       </div>
       <div class="assessment-grid">
         {assessments.map(([weight, title, detail, due]) => (
@@ -543,7 +503,7 @@ const prerequisiteReadings = [
   <section id="project-rubrics" class="shell section">
     <div class="course-section-heading compact">
       <div><p class="eyebrow">Project assessment</p><h2>Project grading rubrics.</h2></div>
-      <p>Proposed Fall 2026 rubrics, subject to confirmation in the final syllabus. Research and engineering tracks share expectations for technical depth, sound evaluation, and reproducibility.</p>
+      <p>Research and engineering tracks share expectations for technical depth, sound evaluation, and reproducibility. Follow the official syllabus and assignment instructions in ELMS if they differ from this page.</p>
     </div>
     <p>Teams select a track and agree on scope with the instructor at the proposal milestone. Hybrid projects use one agreed rubric. The midterm package corresponds to the midterm report; final artifacts include the final report and supporting materials.</p>
     <p>Each table totals 100 points within its component. The two final-artifact rubrics are alternatives. In-class quizzes (10%) and homework (20%) remain separate assessments.</p>
@@ -590,7 +550,7 @@ const prerequisiteReadings = [
       <p>Use these reviews throughout the semester. For the papers assigned to individual lectures, see the <a href="#readings">pre-class reading list</a>.</p>
     </div>
     <div class="resource-group-heading">
-      <div><p class="eyebrow">Week 1 · September 1 & 3</p><h3>Refresh the mathematics behind this week’s lectures.</h3></div>
+      <div><p class="eyebrow">Mathematical background</p><h3>Revisit the mathematics throughout the course.</h3></div>
       <p>Review the topics you need before working through the reinforcement-learning definitions, Bellman equations, and policy-improvement derivations.</p>
     </div>
     <div class="reference-list prerequisite-list">
@@ -608,7 +568,7 @@ const prerequisiteReadings = [
   <section id="policies" class="shell section policies-section">
     <div class="course-section-heading compact">
       <div><p class="eyebrow">Course policies</p><h2>Expectations and support.</h2></div>
-      <p>These are planning guidelines. The official Fall 2026 syllabus will supersede this page where they differ. Students are responsible for reviewing <a href="https://www.ugst.umd.edu/courserelatedpolicies.html">UMD’s course-related policies and resources</a>.</p>
+      <p>The official Fall 2026 syllabus and announcements in ELMS take precedence where they differ from this page. Students are responsible for reviewing <a href="https://www.ugst.umd.edu/courserelatedpolicies.html">UMD’s course-related policies and resources</a>.</p>
     </div>
     <div class="policy-grid">
       <article><h3>Teams & collaboration</h3><p>Projects use teams of up to three students. Record individual contributions in the midterm and final reports. A self-proposed topic requires written instructor approval; individual quizzes and other designated individual work must be completed independently.</p></article>
@@ -620,7 +580,7 @@ const prerequisiteReadings = [
       <article><h3>Accessibility & support</h3><p>Students who need accommodations should contact the University’s accessibility service and the instructor early. Please raise barriers to course materials, assessments, or participation as soon as possible so arrangements can be made.</p></article>
       <article><h3>Communication & continuity</h3><p>ELMS is the official source for announcements, assignments, grades, and urgent changes; course Slack supports discussion and help. If campus operations are interrupted, the continuation plan and any deadline changes will be announced through ELMS.</p></article>
     </div>
-    <p class="course-revision">Planning page last updated October 6, 2026. Material changes after the first class will be dated and announced through ELMS.</p>
+    <p class="course-revision">Course page updated November 24, 2026: schedule notes, reading labels, final-project deadlines, and public project catalogue. Check ELMS for official course announcements.</p>
   </section>
 
   <section class="shell course-final-cta">
@@ -634,265 +594,7 @@ const prerequisiteReadings = [
   </section>
 </BaseLayout>
 
-<script>
-  type ProjectCandidate = {
-    number: string;
-    orientation: "Research-oriented" | "Engineering-oriented";
-    track: string;
-    title: string;
-    challenge: string;
-    motivation?: string;
-    question: string;
-    hypothesis: string;
-    example?: string;
-    firstSteps?: string;
-    pitfalls?: string;
-    evidence: string;
-    personalize: string;
-    skills: string[];
-    startingPoints: [string, string, string?][];
-  };
 
-  type EncryptedCatalog = {
-    version: number;
-    kdf: "PBKDF2";
-    hash: "SHA-256";
-    iterations: number;
-    cipher: "AES-GCM";
-    salt: string;
-    iv: string;
-    aad: string;
-    ciphertext: string;
-  };
-
-  const lock = document.querySelector<HTMLElement>("[data-catalog-lock]");
-  const form = document.querySelector<HTMLFormElement>("[data-catalog-form]");
-  const passwordInput = document.querySelector<HTMLInputElement>("[data-catalog-password]");
-  const submitButton = document.querySelector<HTMLButtonElement>("[data-catalog-submit]");
-  const status = document.querySelector<HTMLElement>("[data-catalog-status]");
-  const catalogShell = document.querySelector<HTMLElement>("[data-catalog-shell]");
-  const catalog = document.querySelector<HTMLElement>("[data-project-catalog]");
-  const relockButton = document.querySelector<HTMLButtonElement>("[data-catalog-relock]");
-
-  if (lock && form && passwordInput && submitButton && status && catalogShell && catalog && relockButton) {
-    const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
-    let encryptedCatalog: Promise<EncryptedCatalog> | null = null;
-
-    const fromBase64 = (value: string) => {
-      const decoded = atob(value);
-      return Uint8Array.from(decoded, (character) => character.charCodeAt(0));
-    };
-
-    const loadEncryptedCatalog = () => {
-      if (!encryptedCatalog) {
-        const url = lock.dataset.catalogUrl;
-        if (!url) throw new Error("Missing catalogue URL");
-        encryptedCatalog = fetch(url, { cache: "no-store" }).then(async (response) => {
-          if (!response.ok) throw new Error("Catalogue unavailable");
-          return response.json() as Promise<EncryptedCatalog>;
-        });
-      }
-      return encryptedCatalog;
-    };
-
-    const textElement = <K extends keyof HTMLElementTagNameMap>(tag: K, text: string, className?: string) => {
-      const element = document.createElement(tag);
-      element.textContent = text;
-      if (className) element.className = className;
-      return element;
-    };
-
-    const addBriefField = (list: HTMLDListElement, label: string, value: string) => {
-      const row = document.createElement("div");
-      row.append(textElement("dt", label), textElement("dd", value));
-      list.append(row);
-    };
-
-    type ProjectGroup = { id: string; title: string; description: string; projects: string[] };
-
-    const renderCatalog = (projects: ProjectCandidate[], guidance?: string, groups: ProjectGroup[] = [], researchGuidance?: string) => {
-      const fragment = document.createDocumentFragment();
-      if (guidance) fragment.append(textElement("p", guidance, "catalog-guidance"));
-      if (researchGuidance) {
-        const advice = document.createElement("details");
-        advice.className = "catalog-guidance";
-        advice.append(textElement("summary", "Planning a sound experiment"), textElement("p", researchGuidance));
-        fragment.append(advice);
-      }
-      const byNumber = new Map(projects.map(project => [project.number, project]));
-      const ordered: ProjectCandidate[] = [];
-      const seen = new Set<string>();
-      const headings = new Map<string, ProjectGroup>();
-      const navigation = document.createElement("nav");
-      navigation.className = "catalog-guidance catalog-theme-links";
-      navigation.setAttribute("aria-label", "Project themes");
-      groups.forEach((group, index) => {
-        const members = group.projects.filter(number => byNumber.has(number) && !seen.has(number));
-        if (!members.length) return;
-        const safeGroup = { ...group, id: `catalog-theme-${index + 1}` };
-        headings.set(members[0], safeGroup);
-        const link = textElement("a", `${group.title} (${members.length})`);
-        link.href = `#${safeGroup.id}`;
-        navigation.append(link);
-        members.forEach(number => { seen.add(number); ordered.push(byNumber.get(number)!); });
-      });
-      if (navigation.childElementCount) fragment.append(navigation);
-      ordered.push(...projects.filter(project => !seen.has(project.number)));
-
-      ordered.forEach((project) => {
-        const group = headings.get(project.number);
-        if (group) {
-          const heading = document.createElement("div");
-          heading.className = "catalog-theme-heading";
-          heading.id = group.id;
-          heading.append(textElement("h3", group.title), textElement("p", group.description));
-          fragment.append(heading);
-        }
-        const card = document.createElement("details");
-        card.className = "project-card";
-
-        const summary = document.createElement("summary");
-        const meta = document.createElement("div");
-        meta.className = "project-card-meta";
-        meta.append(textElement("span", project.number), textElement("small", project.track));
-        summary.append(
-          meta,
-          textElement("p", project.orientation, "project-orientation"),
-          textElement("h4", project.title),
-          textElement("p", project.challenge),
-          textElement("span", "Open project brief", "project-open-label")
-        );
-
-        const body = document.createElement("div");
-        body.className = "project-card-body";
-        const fields = document.createElement("dl");
-        if (project.example) addBriefField(fields, "Consider this example", project.example);
-        if (project.motivation) addBriefField(fields, "What you will investigate", project.motivation);
-        addBriefField(fields, "The central question", project.question);
-        addBriefField(fields, "An idea to test", project.hypothesis);
-        if (project.firstSteps) addBriefField(fields, "Your first experiment", project.firstSteps);
-        addBriefField(fields, "What would count as convincing evidence?", project.evidence);
-        if (project.pitfalls) addBriefField(fields, "Where to be careful", project.pitfalls);
-        addBriefField(fields, "Choosing your scope", project.personalize);
-
-        const skills = document.createElement("div");
-        skills.className = "project-skills";
-        skills.setAttribute("aria-label", "Useful preparation");
-        project.skills.forEach((skill) => skills.append(textElement("span", skill)));
-
-        const reading = document.createElement("div");
-        reading.className = "project-reading";
-        reading.append(textElement("strong", "Readings and resources"));
-        const readingList = document.createElement("ol");
-        project.startingPoints.forEach(([label, url, note]) => {
-          const parsedUrl = new URL(url);
-          if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") return;
-          const link = textElement("a", `${label} ↗`);
-          link.href = parsedUrl.href;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          const item = document.createElement("li");
-          item.append(link);
-          if (note) item.append(textElement("p", note));
-          readingList.append(item);
-        });
-        reading.append(readingList);
-
-        body.append(fields, skills, reading);
-        card.append(summary, body);
-        fragment.append(card);
-      });
-
-      catalog.replaceChildren(fragment);
-    };
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const password = passwordInput.value;
-      if (!password || !window.crypto?.subtle) {
-        status.textContent = window.crypto?.subtle
-          ? "Enter the course password."
-          : "This browser cannot decrypt the catalogue. Please use a current browser.";
-        return;
-      }
-
-      submitButton.disabled = true;
-      submitButton.textContent = "Unlocking…";
-      status.textContent = "Checking password…";
-      let loaded = false;
-
-      try {
-        const payload = await loadEncryptedCatalog();
-        loaded = true;
-        if (
-          payload.version !== 1 ||
-          payload.kdf !== "PBKDF2" ||
-          payload.hash !== "SHA-256" ||
-          payload.cipher !== "AES-GCM" ||
-          payload.iterations < 100000 ||
-          payload.iterations > 1000000
-        ) throw new Error("Unsupported catalogue format");
-
-        const keyMaterial = await crypto.subtle.importKey(
-          "raw",
-          encoder.encode(password),
-          "PBKDF2",
-          false,
-          ["deriveKey"]
-        );
-        const key = await crypto.subtle.deriveKey(
-          {
-            name: "PBKDF2",
-            salt: fromBase64(payload.salt),
-            iterations: payload.iterations,
-            hash: payload.hash
-          },
-          keyMaterial,
-          { name: "AES-GCM", length: 256 },
-          false,
-          ["decrypt"]
-        );
-        const plaintext = await crypto.subtle.decrypt(
-          {
-            name: "AES-GCM",
-            iv: fromBase64(payload.iv),
-            additionalData: encoder.encode(payload.aad)
-          },
-          key,
-          fromBase64(payload.ciphertext)
-        );
-        const decrypted = JSON.parse(decoder.decode(plaintext)) as { projects?: ProjectCandidate[]; guidance?: string; groups?: ProjectGroup[]; researchGuidance?: string };
-        if (!Array.isArray(decrypted.projects) || decrypted.projects.length === 0) {
-          throw new Error("Invalid catalogue");
-        }
-
-        renderCatalog(decrypted.projects, decrypted.guidance, decrypted.groups, decrypted.researchGuidance);
-        passwordInput.value = "";
-        lock.hidden = true;
-        catalogShell.hidden = false;
-        status.textContent = "Catalogue unlocked.";
-        requestAnimationFrame(() => catalog.querySelector("summary")?.focus());
-      } catch {
-        status.textContent = loaded
-          ? "That password did not unlock the catalogue. Please try again."
-          : "The encrypted catalogue is temporarily unavailable. Please try again.";
-        passwordInput.select();
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Unlock";
-      }
-    });
-
-    relockButton.addEventListener("click", () => {
-      catalog.replaceChildren();
-      catalogShell.hidden = true;
-      lock.hidden = false;
-      status.textContent = "Password is checked in this browser and is never submitted.";
-      requestAnimationFrame(() => passwordInput.focus());
-    });
-  }
-</script>
 
 <style>
   .project-rubric { margin-top: 2.5rem; }
@@ -1085,59 +787,6 @@ const prerequisiteReadings = [
   .calendar-markers strong { display: block; font-family: "Newsreader", serif; font-size: 1.25rem; }
   .calendar-markers p { margin: 0.35rem 0 0; color: var(--ink-soft); font-size: 0.78rem; }
 
-  .project-signup-callout {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: center;
-    margin-bottom: 4rem;
-    padding: clamp(2rem, 5vw, 4rem);
-    overflow: hidden;
-    border-radius: var(--radius);
-    color: var(--white);
-    background: var(--ink);
-    box-shadow: var(--shadow);
-  }
-  .project-signup-callout h3 { margin: 0; font-family: "Newsreader", serif; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 0.98; }
-  .project-signup-callout p:not(.eyebrow) { max-width: 700px; color: #c6d5df; }
-  .project-signup-actions { display: grid; gap: 1rem; justify-items: center; min-width: 220px; }
-  .project-signup-actions > span:last-child { color: #8dded8; font-size: 0.75rem; font-weight: 800; }
-  .course-button-light { border-color: white; color: var(--ink); background: white; }
-  .course-button-light.is-disabled { cursor: default; opacity: 0.92; }
-
-  .project-unlock-form { display: grid; gap: 0.6rem; min-width: min(100%, 390px); }
-  .project-unlock-form label { color: #8dded8; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-  .project-unlock-form > div { display: grid; grid-template-columns: minmax(180px, 1fr) auto; gap: 0.55rem; }
-  .project-unlock-form input {
-    width: 100%;
-    min-width: 0;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 999px;
-    padding: 0.78rem 1rem;
-    color: var(--white);
-    background: rgba(255, 255, 255, 0.08);
-    font: inherit;
-  }
-  .project-unlock-form input:focus { border-color: #8dded8; outline: 3px solid rgba(141, 222, 216, 0.22); }
-  .project-unlock-form button { min-width: 110px; }
-  .project-unlock-form button:disabled { cursor: wait; opacity: 0.72; }
-  .project-unlock-form > p { min-height: 1.2em; margin: 0; color: #8dded8; font-size: 0.68rem; }
-  .catalog-noscript { margin: -2rem 0 3rem; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; color: var(--ink-soft); background: var(--white); }
-
-  .protected-catalog { margin-bottom: 5rem; }
-  .catalog-heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
-    gap: 4rem;
-    align-items: end;
-    margin-bottom: 1.5rem;
-  }
-  .catalog-heading h3 { margin: 0; font-family: "Newsreader", serif; font-size: clamp(2.2rem, 4vw, 3.7rem); line-height: 1; }
-  .catalog-heading > div:last-child { display: grid; gap: 0.75rem; justify-items: start; }
-  .catalog-heading > div:last-child p { margin: 0; color: var(--ink-soft); font-size: 0.86rem; }
-  .catalog-heading button { padding: 0; border: 0; color: var(--teal); background: transparent; font: inherit; font-size: 0.72rem; font-weight: 800; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; }
-  .project-catalog { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; align-items: start; }
-
   :global(.project-card) { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--white); }
   :global(.project-card[open]) { border-color: rgba(24, 139, 133, 0.42); box-shadow: 0 20px 50px rgba(16, 42, 67, 0.08); }
   :global(.project-card summary) { position: relative; display: flex; flex-direction: column; min-height: 255px; padding: 1.6rem; cursor: pointer; list-style: none; }
@@ -1272,9 +921,7 @@ const prerequisiteReadings = [
     .course-quick-links a:not(:last-child) { border-bottom: 1px solid var(--line); }
     .course-schedule > li { grid-template-columns: 55px 1fr; }
     .week-lectures { grid-column: 2; }
-    .project-signup-callout { grid-template-columns: 1fr; }
     .project-signup-actions { justify-items: start; }
-    .catalog-heading { grid-template-columns: 1fr; gap: 1rem; }
     .project-directions { grid-template-columns: repeat(2, 1fr); }
     .milestone-list li { grid-template-columns: 110px 1fr; gap: 0.6rem 1rem; }
     .milestone-list p { grid-column: 2; }
@@ -1289,7 +936,6 @@ const prerequisiteReadings = [
     .course-quick-links,
     .course-facts,
     .calendar-markers,
-    .project-catalog,
     .project-directions,
     .assessment-grid,
     .assessment-rubrics,
@@ -1302,8 +948,6 @@ const prerequisiteReadings = [
     .week-lectures { grid-column: 1; }
     .lecture-item { grid-template-columns: 90px 1fr; }
     .week-lectures small { grid-column: 2; }
-    .project-unlock-form > div { grid-template-columns: 1fr; }
-    .project-unlock-form button { width: 100%; }
     :global(.project-card dl > div) { grid-template-columns: 1fr; gap: 0.4rem; }
     .project-directions article:last-child { display: block; min-height: 210px; }
     .project-directions article:last-child h3 { margin: 3rem 0 0.6rem; }

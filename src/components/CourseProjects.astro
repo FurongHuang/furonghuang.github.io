@@ -1,0 +1,106 @@
+---
+import catalogue from "../data/cmsc848n-projects.json";
+
+const noSignup = catalogue.projects.filter(({ signup }) => !signup.confirmedTeams && !signup.tentativeTeams);
+const confirmedProjects = catalogue.projects.filter(({ signup }) => signup.confirmedTeams).length;
+const tentativeProjects = catalogue.projects.filter(({ signup }) => !signup.confirmedTeams && signup.tentativeTeams).length;
+const formatDate = (date: string) => new Intl.DateTimeFormat("en-US", {
+  timeZone: "UTC", month: "long", day: "numeric", year: "numeric"
+}).format(new Date(`${date}T12:00:00Z`));
+const sections = catalogue.groups.map(group => ({
+  ...group,
+  projects: group.projects.map(number => catalogue.projects.find(project => project.number === number)!)
+}));
+const briefFields = [
+  ["example", "Consider this example"],
+  ["motivation", "What you will investigate"],
+  ["question", "The central question"],
+  ["hypothesis", "An idea to test"],
+  ["firstSteps", "Your first experiment"],
+  ["evidence", "What would count as convincing evidence?"],
+  ["pitfalls", "Where to be careful"],
+  ["personalize", "Choosing your scope"]
+] as const;
+---
+
+<div class="public-catalog" id="candidate-list">
+  <div class="catalog-heading">
+    <div><p class="eyebrow">Public project catalogue</p><h3>{catalogue.projects.length} questions to investigate.</h3></div>
+    <p>The briefs, experiments, and starting references are open to everyone. Teams develop their own scope with the course instructors.</p>
+  </div>
+
+  <aside class="signup-snapshot" aria-labelledby="signup-snapshot-title">
+    <h3 id="signup-snapshot-title">Project signups</h3>
+    <p><strong>{confirmedProjects}</strong> projects have recorded signups; <strong>{tentativeProjects}</strong> has a tentative signup; <strong>{noSignup.length}</strong> have no signup recorded.</p>
+    <p>Checked {formatDate(catalogue.signupSnapshot.checkedOn)} against the course signup sheet, last edited {formatDate(catalogue.signupSnapshot.sourceLastEdited)}. Later changes to team assignments may not be reflected. One custom project title and one team entry without a project title remain unmatched. Student names are not published here.</p>
+    <details>
+      <summary>Projects with no signup recorded ({noSignup.length})</summary>
+      <ul>{noSignup.map(project => <li><a href={`#project-${project.number}`}>{project.number} · {project.title}</a></li>)}</ul>
+    </details>
+  </aside>
+
+  <p class="catalog-guidance">{catalogue.guidance}</p>
+  <details class="catalog-guidance">
+    <summary>Planning a sound experiment</summary>
+    <p>{catalogue.researchGuidance}</p>
+  </details>
+  <nav class="catalog-theme-links" aria-label="Project themes">
+    {sections.map(group => <a href={`#catalog-theme-${group.id}`}>{group.title} ({group.projects.length})</a>)}
+  </nav>
+
+  <div class="project-catalog" aria-label="Fall 2026 research project candidates">
+    {sections.map(group => (
+      <>
+        <div class="catalog-theme-heading" id={`catalog-theme-${group.id}`}>
+          <h3>{group.title}</h3><p>{group.description}</p>
+        </div>
+        {group.projects.map(project => {
+          const { confirmedTeams, tentativeTeams } = project.signup;
+          const status = confirmedTeams ? `${confirmedTeams} team${confirmedTeams === 1 ? "" : "s"} signed up`
+            : tentativeTeams ? "Tentative signup" : "No signup recorded";
+          return (
+            <details class="project-card" id={`project-${project.number}`} data-project-number={project.number} data-signup-status={confirmedTeams ? "signed-up" : tentativeTeams ? "tentative" : "no-signup"}>
+              <summary>
+                <div class="project-card-meta"><span>{project.number}</span><small>{project.track}</small></div>
+                <span class:list={["signup-badge", { "no-signup": !confirmedTeams && !tentativeTeams, tentative: !confirmedTeams && tentativeTeams > 0 }]}>{status}</span>
+                <p class="project-orientation">{project.orientation}</p>
+                <h4>{project.title}</h4>
+                <p>{project.challenge}</p>
+                <span class="project-open-label">Open project brief</span>
+              </summary>
+              <div class="project-card-body">
+                <dl>{briefFields.map(([field, label]) => project[field] && <div><dt>{label}</dt><dd>{project[field]}</dd></div>)}</dl>
+                <div class="project-skills" aria-label="Useful preparation">{project.skills.map(skill => <span>{skill}</span>)}</div>
+                <div class="project-reading">
+                  <strong>Readings and resources</strong>
+                  <ol>{project.startingPoints.map(([label, url, note]) => (
+                    <li><a href={url} target="_blank" rel="noopener noreferrer">{label} ↗</a>{note && <p>{note}</p>}</li>
+                  ))}</ol>
+                </div>
+              </div>
+            </details>
+          );
+        })}
+      </>
+    ))}
+  </div>
+</div>
+
+<style>
+  .public-catalog { margin-bottom: 5rem; scroll-margin-top: 7rem; }
+  .catalog-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 1.5rem; }
+  .catalog-heading h3 { margin: 0; font-family: "Newsreader", serif; font-size: clamp(2.2rem, 4vw, 3.7rem); line-height: 1.05; }
+  .catalog-heading > p { color: var(--ink-soft); }
+  .signup-snapshot { margin: 2rem 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: var(--white); }
+  .signup-snapshot h3 { margin-top: 0; }
+  .signup-snapshot p { max-width: 90ch; color: var(--ink-soft); line-height: 1.65; }
+  .signup-snapshot summary, .catalog-guidance summary { cursor: pointer; color: var(--teal); font-weight: 700; }
+  .signup-snapshot li + li { margin-top: 0.5rem; }
+  .catalog-theme-links { display: flex; flex-direction: column; gap: 0.5rem; margin: 1.5rem 0; }
+  .project-catalog { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; align-items: start; }
+  .project-card { scroll-margin-top: 7rem; }
+  .signup-badge { align-self: start; margin-top: 1rem; padding: 0.35rem 0.65rem; border: 1px solid #b8d8d1; border-radius: 999px; color: #17554c; background: #eaf4ef; font-size: 0.75rem; font-weight: 700; }
+  .signup-badge.no-signup { border-color: #d4b681; color: #694300; background: #fff4dc; }
+  .signup-badge.tentative { border-color: #b9bdd3; color: #41486c; background: #f0f0f8; }
+  @media (max-width: 800px) { .catalog-heading, .project-catalog { grid-template-columns: 1fr; } .catalog-heading { gap: 1rem; } }
+</style>

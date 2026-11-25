@@ -1,0 +1,1277 @@
+{
+  "version": 1,
+  "course": "CMSC 848N",
+  "term": "Fall 2026",
+  "updated": "2026-11-24",
+  "guidance": "Choose a problem you would enjoy understanding in depth. You do not need to build every component described in a brief: we will agree on one question and a manageable scope at the proposal stage. Read the example first, then ask what evidence would convince you that your method helps. Start with a working baseline and a few failures you can explain. Once that comparison is reliable, expand the evaluation. A careful negative result can be a strong project. The groups below are themes, not rankings; project numbers stay fixed so you can refer to them when discussing your choice.",
+  "researchGuidance": "For the final evaluation, use held-out tasks, multiple seeds where relevant, and matched total budgets, including retrieval, verification, and maintenance. Check the central outcome independently of the agent you are improving. The hypotheses are starting points to test, not promised results. Read the first listed paper and the closest comparison before committing to a method; you do not need to read every reference at once. Dates labeled arXiv refer to the initial posting of that version, which may differ from the conference year. Software and documentation are labeled separately.",
+  "groups": [
+    {
+      "id": "memory",
+      "title": "Memory: what to keep, connect, and revisit",
+      "description": "Choose this theme if you are interested in how agents use experience over time. Start with one difficulty—outdated facts, missing relationships, compression, sharing, visual evidence, or scale—so you can explain what your design improves.",
+      "projects": [
+        "02",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27"
+      ]
+    },
+    {
+      "id": "reliability",
+      "title": "Reliable decisions, permissions, and human oversight",
+      "description": "These projects ask when an agent has enough evidence or authority to proceed. Choose a setting with observable outcomes, then study a specific decision: checking a result, choosing a model, requesting help, or involving a reviewer.",
+      "projects": [
+        "04",
+        "05",
+        "06",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "id": "reasoning",
+      "title": "Coding, scientific reasoning, and evaluation",
+      "description": "These projects focus on testing an agent's conclusions. You might revise a data analysis, expose a faulty patch, locate a consequential decision, choose a scientific experiment, or build an evaluation that tests transfer.",
+      "projects": [
+        "01",
+        "09",
+        "12",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "id": "coordination",
+      "title": "Communication and coordination between agents",
+      "description": "Start with a small group and a task whose outcome you can check. Study what needs to be communicated, how commitments change, or how shared information can amplify an error.",
+      "projects": [
+        "03",
+        "07",
+        "08"
+      ]
+    },
+    {
+      "id": "robotics",
+      "title": "Robot agents that learn from experiments",
+      "description": "Begin in simulation with a small task family. Each project isolates a different part of improvement: detecting surprises, repairing tools, checking success, resetting the scene, reusing skills, choosing experiments, or scheduling trials.",
+      "projects": [
+        "13",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21"
+      ]
+    }
+  ],
+  "signupSnapshot": {
+    "checkedOn": "2026-11-24",
+    "sourceLastEdited": "2026-09-19",
+    "sourceTitle": "848N-F26 Project Sign-up Sheet",
+    "unmatchedTeams": 2
+  },
+  "projects": [
+    {
+      "number": "01",
+      "orientation": "Research-oriented",
+      "track": "Evidence · data science",
+      "title": "Claims That Survive Evidence Interventions",
+      "challenge": "Help an analysis agent revise a report when its supporting data changes.",
+      "motivation": "Suppose an agent has written a report and one of its input datasets is corrected. You would like it to explain which conclusions need to change, with enough evidence for a reader to check the revision. In this project, you will connect statements in a report to the calculations and data behind them, then test whether those connections help the agent make accurate, targeted updates.",
+      "question": "Can an agent trace a conclusion back to the data and computations it depends on, then revise only the affected conclusions?",
+      "hypothesis": "Linking claims to executed analyses and source data may make revisions more accurate than asking the agent to reread its report and correct itself.",
+      "evidence": "Compare full reruns, retrieval-assisted revision, self-critique, and the proposed dependency graph. Measure correctly revised claims, unnecessary revisions, unsupported claims, and total cost. Remove dependency links to test whether they explain the gain. Evaluate on a second dataset or model after the first result is reproducible.",
+      "personalize": "Choose one analysis domain or one difficult intervention type. Aim to deliver an intervention suite, a working revision method, and a clear account of its remaining failures.",
+      "skills": [
+        "Python",
+        "causal evaluation",
+        "LLM agents"
+      ],
+      "startingPoints": [
+        [
+          "DataSciBench: An LLM Agent Benchmark for Data Science — Zhang et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2502.13897",
+          "Start here: executable data-science tasks and evaluation rules for the first intervention suite."
+        ],
+        [
+          "ReAct: Synergizing Reasoning and Acting in Language Models — Yao et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2210.03629",
+          "Baseline: an agent that alternates reasoning and tool use."
+        ],
+        [
+          "Reflexion: Language Agents with Verbal Reinforcement Learning — Shinn et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2303.11366",
+          "Comparison: learning from textual feedback; adapt it as a revision baseline and document the adaptation."
+        ]
+      ],
+      "example": "An agent reports that a treatment improved an outcome. Later, a data correction removes the apparent improvement. Which sentences, plots, and confidence estimates should change—and which should stay?",
+      "firstSteps": "Start with a small set of reproducible DataSciBench analyses. Record each claim, its supporting calculation, and its input data. Introduce one controlled change at a time: remove records, correct a value, or replace evidence. Write expected revisions before running the agent.",
+      "pitfalls": "A citation does not establish that evidence supports a claim. Use executable checks where possible and independently review conclusions that need judgment.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "02",
+      "orientation": "Research-oriented",
+      "track": "Memory · temporal reasoning",
+      "title": "Memory That Knows What Changed",
+      "challenge": "Keep an agent's decisions current when new events make old memories unreliable.",
+      "motivation": "An agent can remember a new fact and still act on an old assumption. A change in someone's role, for example, may affect several responsibilities that were never explicitly mentioned in the update. You will study how an agent can recognize these consequences, keep useful history, and ask for clarification when the effect of a change is uncertain.",
+      "question": "Can an agent detect indirect changes, update dependent beliefs, and decide when it needs more evidence before acting?",
+      "hypothesis": "Tracking when facts are valid and which decisions depend on them may reduce stale actions without discarding useful older knowledge.",
+      "evidence": "Compare append-only retrieval, latest-fact replacement, CUPMem, and dependency-aware updates. Measure stale decisions, correct retained facts, update delay, and unnecessary requests for clarification. Hold out types of change and evaluate multi-step consequences rather than only whether the new fact can be retrieved.",
+      "personalize": "Focus on uncertain updates, selective refresh, or deciding when to ask. Project 22 addresses memory structure; this project asks whether behavior changes appropriately.",
+      "skills": [
+        "retrieval",
+        "temporal state",
+        "calibration"
+      ],
+      "startingPoints": [
+        [
+          "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid? — Chao et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2605.06527",
+          "Start here: implicit memory conflicts and CUPMem. Reproduce these cases before proposing a new update rule."
+        ],
+        [
+          "Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory — Wei et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2511.20857",
+          "Evaluation design: sequential task streams and evolving memory."
+        ],
+        [
+          "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory — Wu et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2410.10813",
+          "Benchmark: temporal reasoning, knowledge updates, and abstention."
+        ]
+      ],
+      "example": "A collaborator changes teams. The agent remembers the new team but still routes requests according to the collaborator's old responsibilities.",
+      "firstSteps": "Reproduce a small STALE evaluation, including its CUPMem baseline where available. Add short sequences in which one change affects several later decisions. Store observations separately from inferred beliefs, with source and time information. Begin with one domain, such as changing project responsibilities.",
+      "pitfalls": "STALE already studies implicit conflicts and propagation-aware revision. The contribution must improve a specific unresolved case, such as uncertain changes or long dependency chains.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "03",
+      "orientation": "Research-oriented",
+      "track": "Communication · efficiency",
+      "title": "What Must Survive an Agent Handoff?",
+      "challenge": "Pass a task to another agent without losing the details needed to finish it.",
+      "motivation": "When one agent hands work to another, the receiving agent needs to understand what has been tried, what constraints still apply, and what remains uncertain. A fluent summary can leave out precisely the detail that matters next. You will investigate which information a handoff must retain and how much context is enough to continue the task reliably.",
+      "question": "What information must a short handoff preserve for a downstream agent to make good decisions?",
+      "hypothesis": "Selecting information by its effect on downstream task success may produce better handoffs than generic summaries at the same token budget.",
+      "evidence": "Sweep handoff token budgets while keeping both agents fixed. Compare task success, repeated mistakes, recovery cost, and total tokens. Test the method on new tasks and a different receiving model. Include the cost of producing the handoff, not only its length.",
+      "personalize": "Study constraint retention, failed-attempt memory, or a formal notion of decision-relevant information. Deliver a reproducible handoff benchmark and an accuracy-versus-budget curve.",
+      "skills": [
+        "information theory",
+        "multi-agent evaluation",
+        "NLP"
+      ],
+      "startingPoints": [
+        [
+          "When Do Multi-Agent Systems Help? An Information Bottleneck Perspective — Yu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2607.16133",
+          "Start here: the tradeoff between bounded relay messages and retained task information."
+        ],
+        [
+          "The information bottleneck method — Tishby et al. (arXiv 2000)",
+          "https://arxiv.org/abs/physics/0004057",
+          "Foundation: compressing a representation while retaining information relevant to a target."
+        ],
+        [
+          "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation — Wu et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2308.08155",
+          "Implementation background: configurable multi-agent conversations."
+        ],
+        [
+          "Reflexion: Language Agents with Verbal Reinforcement Learning — Shinn et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2303.11366",
+          "Background: retaining failed attempts and feedback in text memory."
+        ]
+      ],
+      "example": "A coding agent hands off a partially repaired repository. Its summary describes the bug but omits a failed approach and a compatibility constraint, so the next agent repeats the mistake.",
+      "firstSteps": "Choose a two-stage coding or analysis workflow. Save the full state at the handoff point, then construct full-context, truncated, and summarized handoffs. Remove individual facts to identify consequential omissions. Build a structured handoff containing constraints, evidence, attempted actions, and unresolved questions.",
+      "pitfalls": "Do not give the compressor the held-out answer or future execution trace. A shorter message can help by removing distractions, so compare against selective retrieval as well as summaries.",
+      "signup": {
+        "confirmedTeams": 2,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "04",
+      "orientation": "Research-oriented",
+      "track": "Evaluation · computer agents",
+      "title": "Verifiers That Know When They Are Unsure",
+      "challenge": "Check whether a computer agent completed a task, and recognize when the checker is uncertain.",
+      "motivation": "How would you check that an agent really completed a task? A screenshot may look right even when the underlying file is unchanged, and a successful edit may come with an unintended deletion. You will build a checker that looks for evidence of the requested outcome, checks for side effects, and identifies cases that need human review.",
+      "question": "Can a verifier distinguish success, failure, and side effects using the action trace and resulting application state?",
+      "hypothesis": "Checking explicit task requirements and reporting uncertainty may be more reliable than asking a model for one overall success judgment.",
+      "evidence": "Compare a single LLM judge, checklist-based judging, and rule-based checks. Measure false success reports, missed side effects, and error rates at different review rates. Calibrate on separate tasks, then test new websites or applications. Ablate the checklist and uncertainty mechanism separately.",
+      "personalize": "Choose browser tasks, desktop files, or multimodal state. Deliver a verifier and a practical account of which failures still require human review.",
+      "skills": [
+        "multimodal models",
+        "selective prediction",
+        "agent evaluation"
+      ],
+      "startingPoints": [
+        [
+          "AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories — Lù et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2504.08942",
+          "Start here: labeled web trajectories, including success and side-effect judgments."
+        ],
+        [
+          "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments — Xie et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2404.07972",
+          "Environment: executable desktop tasks for an extension beyond web trajectories."
+        ],
+        [
+          "Conformal Risk Control — Angelopoulos et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2208.02814",
+          "Method: calibrating risk thresholds. Check the loss and sampling assumptions before using its guarantees."
+        ]
+      ],
+      "example": "An agent appears to save an edited spreadsheet, but the file is unchanged—or the intended change succeeds while another sheet is accidentally deleted.",
+      "firstSteps": "Start with labeled AgentRewardBench trajectories. For one task family, write a short checklist of required changes and prohibited side effects. Build a verifier that reports evidence for each item and can request review. Add executable state checks where the environment supports them.",
+      "pitfalls": "A plausible explanation is not a correctness label. Keep the final audit labels independent of the verifier and distinguish uncertainty from simply refusing difficult cases.",
+      "signup": {
+        "confirmedTeams": 2,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "05",
+      "orientation": "Engineering-oriented",
+      "track": "Security · web agents",
+      "title": "Capability-Constrained Web Agents",
+      "challenge": "Limit a web agent to the actions the user actually authorized.",
+      "motivation": "A web agent reads material written by people who may want it to depart from the user's request. The practical question is how to let the agent use that material while keeping its actions within the user's authorization. You will place a permission check between the agent and its tools, then study both the attacks it blocks and the legitimate work it accidentally prevents.",
+      "question": "Can a small, explicit description of allowed actions stop prompt injection while permitting legitimate task completion?",
+      "hypothesis": "Checking tool calls against user-derived permissions and tracking untrusted inputs may reduce unauthorized actions with fewer unnecessary blocks than blanket restrictions.",
+      "evidence": "Compare no defense, instruction-only defenses, fixed allowlists, and task-specific policies. Report attack success alongside benign task completion and false blocks. Test attacks developed against the defense and unseen task families. Include actions that are legitimate only after a particular user confirmation.",
+      "personalize": "Study policy inference, tracking untrusted data, or useful explanations for blocked actions. A focused defense with an explicit threat model is a sufficient course scope.",
+      "skills": [
+        "agent security",
+        "browser environments",
+        "red teaming"
+      ],
+      "startingPoints": [
+        [
+          "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents — Debenedetti et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2406.13352",
+          "Start here: a sandbox for prompt-injection attacks and defenses."
+        ],
+        [
+          "WebArena: A Realistic Web Environment for Building Autonomous Agents — Zhou et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2307.13854",
+          "Environment: realistic browser workflows for a later transfer test."
+        ],
+        [
+          "ReAct: Synergizing Reasoning and Acting in Language Models — Yao et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2210.03629",
+          "Background: the reasoning-and-tool-use loop in which the policy check will operate."
+        ]
+      ],
+      "example": "While comparing products, an agent encounters a page telling it to email private account details. The page is task data, but the agent treats it as an instruction.",
+      "firstSteps": "Use an isolated AgentDojo task suite. Define allowed resources, action types, and conditions for each task. Place a policy check between the agent and its tools. Start with a hand-written policy language before attempting to learn policies from user requests.",
+      "pitfalls": "The policy generator can itself be manipulated. Keep the authorization source separate from retrieved content and test overbroad policies. Run all attacks in a sandbox.",
+      "signup": {
+        "confirmedTeams": 2,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "06",
+      "orientation": "Research-oriented",
+      "track": "Inference · resource efficiency",
+      "title": "Risk-Aware Model Routing",
+      "challenge": "Choose when an agent should use a cheaper model, a stronger model, or an additional check.",
+      "motivation": "An agent does not need the most expensive model for every step. However, a cheap decision can become costly if it leads to repeated failures or a difficult recovery. You will study when to use a cheaper model, when to escalate, and how to measure whether the savings come at the expense of particular kinds of tasks.",
+      "question": "Can model routing reduce cost while keeping failure rates acceptable for predefined task groups?",
+      "hypothesis": "A router calibrated for group-specific error may offer a better reliability-cost tradeoff than one trained only on average preferences.",
+      "evidence": "Compare always-cheap, always-strong, random routing, preference routing, and risk-aware routing. Plot quality against total cost and latency. Report the worst-group error and constraint violations under domain and model changes. Include calibration data and verification calls in the budget.",
+      "personalize": "Choose coding, reasoning, or tool-use requests. Deliver a router, calibration procedure, and reproducible cost-quality curves for clearly defined groups.",
+      "skills": [
+        "bandits",
+        "uncertainty",
+        "systems evaluation"
+      ],
+      "startingPoints": [
+        [
+          "RouteLLM: Learning to Route LLMs with Preference Data — Ong et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2406.18665",
+          "Start here: preference-trained routing between stronger and weaker models."
+        ],
+        [
+          "RouterBench: A Benchmark for Multi-LLM Routing System — Hu et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2403.12031",
+          "Benchmark: compare routing policies using model outcomes and cost."
+        ],
+        [
+          "Conformal Risk Control — Angelopoulos et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2208.02814",
+          "Method: risk calibration; justify any extension to groups or shifted data."
+        ]
+      ],
+      "example": "A cheap model handles most requests well but repeatedly fails on a small class of difficult tasks. Average accuracy hides this pattern.",
+      "firstSteps": "Begin with two models and a task set with independently checkable answers. Reproduce a RouteLLM-style router and a simple confidence cascade. Define task groups before examining test results. Add a rule that escalates requests when estimated risk exceeds a calibrated threshold.",
+      "pitfalls": "Calibration guarantees depend on assumptions about data and loss. State those assumptions and test their failure under shift; do not promise arbitrary worst-case protection.",
+      "signup": {
+        "confirmedTeams": 2,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "07",
+      "orientation": "Engineering-oriented",
+      "track": "Language · long-horizon state",
+      "title": "Commitments Hidden in Conversation",
+      "challenge": "Track promises and responsibilities across a conversation as plans change.",
+      "motivation": "Conversations contain suggestions, tentative plans, conditional promises, and firm commitments. These distinctions matter when an agent later decides who should do what. You will build a record of commitments that stays connected to the original conversation and changes when people revise their plans.",
+      "question": "Can an agent maintain an accurate record of who agreed to do what, under which conditions, and whether the agreement remains active?",
+      "hypothesis": "Explicit records of owners, conditions, revisions, and supporting utterances may outperform free-form meeting summaries on commitment tracking.",
+      "evidence": "Compare direct prompting, ordinary summaries, and structured dialogue-state tracking. Measure owner and condition accuracy, correct revisions, unsupported commitments, and agreement between annotators. Test on a held-out conversation domain. Add forecasting only if the underlying records are reliable.",
+      "personalize": "Focus on conditional promises, reassignment, completion evidence, or multilingual dialogue. Deliver a documented dataset and a tracker whose mistakes can be inspected.",
+      "skills": [
+        "information extraction",
+        "temporal graphs",
+        "NLP evaluation"
+      ],
+      "startingPoints": [
+        [
+          "MeetingBank: A Benchmark Dataset for Meeting Summarization — Hu et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2305.17529",
+          "Data: public meeting transcripts and summaries. Commitment labels must be added and checked."
+        ],
+        [
+          "ChatGPT for Zero-shot Dialogue State Tracking: A Solution or an Opportunity? — Heck et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2306.01386",
+          "Baseline background: dialogue-state tracking with a general-purpose language model."
+        ],
+        [
+          "Collaborative Memory: Multi-User Memory Sharing in LLM Agents with Dynamic Access Control — Rezazadeh et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2505.18279",
+          "Background: provenance and permissions when records are shared. It does not provide commitment annotations."
+        ]
+      ],
+      "example": "Someone says, 'I can run the experiment if the dataset arrives by Friday.' A later message changes the delivery date. A useful record must preserve the condition instead of reporting an unconditional commitment.",
+      "firstSteps": "Write an annotation guide distinguishing suggestions, intentions, and commitments. Label a small public-dialogue sample and create checked synthetic conversations with controlled revisions. Build a tracker that links every proposed commitment to evidence and records uncertainty.",
+      "pitfalls": "MeetingBank supplies meeting data, not ready-made commitment labels. Ambiguous speech often has no single certain interpretation; preserve uncertainty and avoid using private conversations without permission.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "08",
+      "orientation": "Research-oriented",
+      "track": "Multi-agent science · robustness",
+      "title": "When Errors Become Contagious",
+      "challenge": "Understand when agents correct one another and when they spread the same error.",
+      "motivation": "Several agents agreeing on a claim can look reassuring. But if they all copied the same mistaken source, their agreement provides little additional evidence. You will trace how a known error moves through a group of agents and test communication rules that help the group catch it.",
+      "question": "How do communication patterns, source attribution, and model diversity affect the spread and correction of factual errors?",
+      "hypothesis": "Keeping track of original evidence and distinguishing independent support from repetition may reduce error propagation without suppressing useful collaboration.",
+      "evidence": "Compare ordinary communication with source-linked messages and targeted correction. Measure retained true facts, surviving false claims, task success, and cost. Vary the location of the injected error and test natural errors too. Repeat with different model mixtures and random seeds.",
+      "personalize": "Study correction protocols, repeated-source detection, or a simple model of propagation. Deliver controlled experiments that explain when the proposed intervention helps.",
+      "skills": [
+        "simulation",
+        "causal inference",
+        "multi-agent systems"
+      ],
+      "startingPoints": [
+        [
+          "Hallucination Cascade: Analyzing Error Propagation in Multi-Agent LLM Systems — Jamshidi et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.07937",
+          "Start here: claim-level error propagation and loss of factual content across agent chains."
+        ],
+        [
+          "MultiAgentBench: Evaluating the Collaboration and Competition of LLM agents — Zhu et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2503.01935",
+          "Benchmark design: collaborative tasks and alternative communication structures."
+        ],
+        [
+          "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation — Wu et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2308.08155",
+          "Implementation: create controlled communication protocols and log exchanged messages."
+        ]
+      ],
+      "example": "One agent introduces an incorrect assumption. Several others repeat it, making the claim look independently supported even though every version has the same source.",
+      "firstSteps": "Build a small agent network on tasks with checkable facts. Inject one known error at a controlled point. Compare chain, star, and sparse graph communication while holding the message and token budgets fixed. Record each claim's source and subsequent changes.",
+      "pitfalls": "Error rates can fall because agents omit difficult facts. Measure factual coverage alongside accuracy, and do not treat simulated agent behavior as evidence about human populations.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "09",
+      "orientation": "Research-oriented",
+      "track": "Coding agents · falsification",
+      "title": "Tests That Break Plausible Patches",
+      "challenge": "Write tests that expose a plausible but incorrect code repair.",
+      "motivation": "A code repair can pass the existing tests while still being wrong. Your task is to find a new test that reveals the difference between a genuinely correct repair and one that only handles the familiar cases. The difficult part is establishing the expected behavior independently of the patches you are evaluating.",
+      "question": "Can disagreement among candidate patches guide the generation of a small, effective test set?",
+      "hypothesis": "Searching for inputs on which plausible repairs behave differently may reveal more hidden bugs per test than coverage alone or unguided test generation.",
+      "evidence": "Compare existing tests, coverage-driven tests, direct LLM-generated tests, and disagreement-guided tests. Measure incorrect patches rejected, correct patches rejected, test validity, and generation cost. Hold out repositories and include both seeded and naturally occurring faults.",
+      "personalize": "Focus on input generation, selecting tests, or inferring specifications. Deliver a runnable test generator and a curated set of cases explaining its successes and failures.",
+      "skills": [
+        "software testing",
+        "program analysis",
+        "coding agents"
+      ],
+      "startingPoints": [
+        [
+          "SWE-bench: Can Language Models Resolve Real-World GitHub Issues? — Jimenez et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2310.06770",
+          "Start here: real repository issues and repairs; keep hidden reference fixes out of generation prompts."
+        ],
+        [
+          "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering — Yang et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2405.15793",
+          "Baseline: a coding agent with file-editing and test-execution tools."
+        ],
+        [
+          "LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code — Jain et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2403.07974",
+          "Evaluation background: self-repair and test-output tasks with attention to contamination."
+        ]
+      ],
+      "example": "Two patches pass the existing tests. One handles the reported bug but breaks an uncommon input case. Which new test best distinguishes them?",
+      "firstSteps": "Choose a small Python repair benchmark and collect multiple candidate patches per issue. Run them in isolated environments. Generate inputs that separate their behavior, then validate expected outputs against the specification, trusted implementation, or independent review.",
+      "pitfalls": "Patch disagreement reveals uncertainty, not the correct answer. Keep reference fixes and hidden tests away from the generator; audit any test oracle derived from a model.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 1
+      }
+    },
+    {
+      "number": "10",
+      "orientation": "Research-oriented",
+      "track": "Human–AI systems · oversight",
+      "title": "Where Should a Human Look?",
+      "challenge": "Direct limited human review toward the decisions where it can prevent an agent failure.",
+      "motivation": "A person reviewing a long agent run cannot inspect every step equally carefully. Where would a minute of attention make the greatest difference? You will study how to select review points before consequential actions and account for both the benefit and the time required for review.",
+      "question": "Which checkpoints should an agent send for review when human attention has a fixed cost?",
+      "hypothesis": "Estimating how much a review could change the outcome may select better checkpoints than uncertainty alone.",
+      "evidence": "Compare uniform review, confidence thresholds, and benefit-based selection at equal review budgets. Measure prevented failures, missed critical events, false alarms, and review time. Vary reviewer noise and test unfamiliar tasks. A small human study is an optional extension after the replay experiment works.",
+      "personalize": "Study checkpoint selection, evidence presentation, or imperfect reviewers. Deliver a policy and a curve showing failure reduction per minute of review.",
+      "skills": [
+        "human–AI interaction",
+        "active learning",
+        "decision theory"
+      ],
+      "startingPoints": [
+        [
+          "AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories — Lù et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2504.08942",
+          "Start here: labeled failures and side effects that can support checkpoint selection."
+        ],
+        [
+          "Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners — Ren et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2307.01928",
+          "Related method: calibrated help-seeking for planning."
+        ],
+        [
+          "Conformal Risk Control — Angelopoulos et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2208.02814",
+          "Method: calibrating review thresholds under stated assumptions."
+        ],
+        [
+          "Scalable AI Safety via Doubly-Efficient Debate — Brown-Cohen et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2311.14125",
+          "Optional theory: reducing difficult oversight to smaller checks. This is not a ready-made checkpoint-selection baseline."
+        ]
+      ],
+      "example": "A reviewer has two minutes to inspect a long workflow. Most steps are routine, but one ambiguous file replacement could undo the entire task.",
+      "firstSteps": "Choose one environment with replayable trajectories and known failure outcomes. Mark candidate checkpoints before consequential actions. Start with simulated reviewers of controlled accuracy and delay. Build a selector using the estimated benefit and time cost of review.",
+      "pitfalls": "An oracle reviewer is an upper bound, not a realistic baseline. A human study requires appropriate consent and institutional review where applicable. Avoid assuming reviewers always identify the right fix.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "11",
+      "orientation": "Research-oriented",
+      "track": "Uncertainty · information seeking",
+      "title": "Ask, Act, or Abstain?",
+      "challenge": "Help an agent decide when to ask a question, inspect more evidence, act, or stop.",
+      "motivation": "An agent facing ambiguity has several reasonable options: ask the user, inspect another source, proceed, or decline to act. Each option has a cost. You will build a controlled setting in which those choices can be compared, then investigate when an agent should seek more information before taking action.",
+      "question": "Can an agent identify the missing information that would change its next action and obtain it at reasonable cost?",
+      "hypothesis": "Comparing the expected benefit of clarification with its cost may reduce both premature actions and unnecessary questions.",
+      "evidence": "Compare always-act, always-ask, confidence thresholds, and the proposed policy. Measure correct task completion, premature actions, unnecessary questions, and total interaction cost. Evaluate both members of each task pair and hold out ambiguity types. Vary the relative cost of mistakes and clarification.",
+      "personalize": "Focus on question selection, ambiguous tools, or changing environment state. Deliver paired tasks and an analysis of when each option is appropriate.",
+      "skills": [
+        "calibration",
+        "decision theory",
+        "agent evaluation"
+      ],
+      "startingPoints": [
+        [
+          "AgentAbstain: Do LLM Agents Know When Not to Act? — Liu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2607.10059",
+          "Start here: paired should-act and should-abstain tasks."
+        ],
+        [
+          "Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners — Ren et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2307.01928",
+          "Method comparison: KnowNo's calibrated help-seeking for language-model planning."
+        ],
+        [
+          "Conformal Risk Control — Angelopoulos et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2208.02814",
+          "Foundation: risk calibration; distinguish empirical thresholds from guaranteed control."
+        ]
+      ],
+      "example": "A user asks the agent to replace 'the old file,' but two files fit that description. Acting immediately could destroy useful work; asking about every minor uncertainty would also be frustrating.",
+      "firstSteps": "Start from paired AgentAbstain tasks and KnowNo's approach to uncertainty. Choose one ambiguity type and define a sandbox where asking or inspecting returns a controlled answer. Implement a policy with four options: ask, inspect, act, and abstain.",
+      "pitfalls": "Refusing everything can appear safe. Report useful task completion as well as avoided errors, and do not expose the agent to evaluation labels through the clarification tool.",
+      "signup": {
+        "confirmedTeams": 2,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "12",
+      "orientation": "Research-oriented",
+      "track": "Learning · long-horizon agents",
+      "title": "Who Deserves Credit for the Outcome?",
+      "challenge": "Identify which decisions in a long agent run actually affected the outcome.",
+      "motivation": "When a long task fails, the last action may be only the symptom of an earlier mistake. To identify the consequential decision, you can return to the same intermediate state, try an alternative, and observe what follows. You will use these controlled comparisons to study credit assignment before attempting to improve a policy with the resulting feedback.",
+      "question": "Can replaying alternative actions from the same intermediate state provide useful step-level learning signals?",
+      "hypothesis": "Controlled alternative continuations may give more actionable credit than a post-hoc critique when their extra sampling cost is accounted for.",
+      "evidence": "Compare post-hoc credit such as HCAPO, uniform reward allocation, a reward-redistribution baseline, and replay-based credit. Measure agreement with high-budget intervention estimates, final success, and learning efficiency at equal total compute. Ablate state matching and vary the continuation policy.",
+      "personalize": "Study where to replay, how many alternatives to sample, or how to use the resulting signal. Deliver a validated estimator before attempting large-scale reinforcement learning.",
+      "skills": [
+        "reinforcement learning",
+        "causal estimation",
+        "tool-use agents"
+      ],
+      "startingPoints": [
+        [
+          "Hindsight Credit Assignment for Long-Horizon LLM Agents — Tan et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.08754",
+          "Start here: HCAPO uses hindsight-based credit; compare it with intervention-based estimates."
+        ],
+        [
+          "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents — Yao et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2207.01206",
+          "Environment: sequential shopping tasks with task rewards."
+        ],
+        [
+          "RUDDER: Return Decomposition for Delayed Rewards — Arjona-Medina et al. (arXiv 2018)",
+          "https://arxiv.org/abs/1806.07857",
+          "Foundation: redistributing delayed reward. Document the adaptation to a language-agent setting."
+        ]
+      ],
+      "example": "A shopping agent fails at the final step, but the consequential mistake was an earlier filter that excluded the right product. A final critique may blame the wrong action.",
+      "firstSteps": "Use a small WebShop task set with reproducible state snapshots or deterministic replay. Select a few intermediate decisions and run alternative actions from identical states. Estimate the change in final reward under a fixed continuation policy. Begin by evaluating these estimates before training a new policy.",
+      "pitfalls": "Replay estimates depend on the continuation policy and simulator fidelity. They are not automatically unbiased causal explanations. Count every alternative rollout and test sensitivity to unobserved state.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "13",
+      "orientation": "Research-oriented",
+      "track": "Embodied agents · recovery",
+      "title": "Detecting When the World Model Is Wrong",
+      "challenge": "Detect when a robot's action has a different effect from the one it expected.",
+      "motivation": "A robot's plan depends on assumptions about what its actions will accomplish. If an object slips or moves unexpectedly, later steps may no longer make sense. You will study how a robot can notice the mismatch between an expected effect and an observation, then decide whether to look again, replan, or stop.",
+      "question": "Can a monitor detect the mismatch early enough to choose a useful recovery action?",
+      "hypothesis": "Comparing predicted and observed changes may detect failures earlier than a checker that only asks whether the whole task succeeded.",
+      "evidence": "Compare final-task checking, a fixed mismatch threshold, and a calibrated monitor. Measure detection delay, false alarms, recovery success, and total task cost. Test unseen perturbations and naturally occurring failures. Keep the policy fixed when measuring the monitor's contribution.",
+      "personalize": "Choose an effect representation, uncertainty estimator, or recovery rule. A simulation study with a frozen policy is the core scope; hardware is an extension.",
+      "skills": [
+        "robot learning",
+        "vision-language-action models",
+        "uncertainty"
+      ],
+      "startingPoints": [
+        [
+          "OpenVLA: An Open-Source Vision-Language-Action Model — Kim et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2406.09246",
+          "Policy baseline: an open vision-language-action model."
+        ],
+        [
+          "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning — Liu et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2306.03310",
+          "Environment: manipulation tasks and transfer conditions."
+        ],
+        [
+          "Guava: An Effective and Universal Harness for Embodied Manipulation — Liu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.18363",
+          "Related system: iterative perception, reasoning, and action in embodied tool use."
+        ],
+        [
+          "Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners — Ren et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2307.01928",
+          "Related method: uncertainty-guided help-seeking."
+        ]
+      ],
+      "example": "A robot plans to pick up a cup, but the cup slips while the gripper still appears closed. Continuing the plan makes later actions unreliable.",
+      "firstSteps": "Choose a few LIBERO tasks and a fixed policy, such as an available OpenVLA checkpoint. Define observable expected effects for selected actions. Introduce controlled occlusions, object shifts, or actuation errors. Add a monitor that can request a new observation, replan, or stop.",
+      "pitfalls": "A visual difference may be harmless, while an important failure may be visually subtle. Report task-relevant detection and recovery, and keep hardware safety limits outside the learned monitor.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "14",
+      "orientation": "Research-oriented",
+      "track": "Scientific agents · experimentation",
+      "title": "Experiments That Try to Prove the Agent Wrong",
+      "challenge": "Make a scientific agent choose experiments that could overturn its current explanation.",
+      "motivation": "A useful scientific experiment helps distinguish explanations that could otherwise fit the same observations. You will give an agent competing hypotheses and a limited experiment budget, then examine whether it chooses tests that could expose a mistake in its current explanation. Begin in a controlled environment where the consequences of each experiment can be checked.",
+      "question": "Can an agent design experiments that distinguish competing hypotheses and revise its beliefs when the result is unfavorable?",
+      "hypothesis": "Writing down competing predictions before an experiment may improve discovery efficiency and reduce unsupported conclusions.",
+      "evidence": "Measure correct explanations, experiments required, calibration, and invalid conclusions. Compare random exploration, direct agent planning, and an information-seeking baseline. Add observation noise and hold out parameter settings. Ablate the requirement to state predictions before seeing results.",
+      "personalize": "Focus on alternative generation, experiment selection, or belief revision. Deliver an executable experiment log connecting each conclusion to the evidence that changed it.",
+      "skills": [
+        "scientific reasoning",
+        "experimental design",
+        "sequential decision making"
+      ],
+      "startingPoints": [
+        [
+          "DISCOVERYWORLD: A Virtual Environment for Developing and Evaluating Automated Scientific Discovery Agents — Jansen et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2406.06769",
+          "Start here: simulated discovery tasks requiring hypotheses, experiments, and conclusions."
+        ],
+        [
+          "ScienceWorld: Is your Agent Smarter than a 5th Grader? — Wang et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2203.07540",
+          "Alternative environment: interactive science tasks with executable feedback."
+        ],
+        [
+          "A Tutorial on Bayesian Optimization — Frazier (arXiv 2018)",
+          "https://arxiv.org/abs/1807.02811",
+          "Method background: selecting expensive experiments using uncertainty and acquisition functions."
+        ]
+      ],
+      "example": "An agent thinks temperature causes a change, but its experiments also change humidity. A useful next experiment separates the two explanations.",
+      "firstSteps": "Choose one DiscoveryWorld or ScienceWorld task family. Give the agent a bounded experiment interface and require two plausible explanations with predicted outcomes. Compare experiment selection based on discriminating those predictions with the agent's usual exploration strategy.",
+      "pitfalls": "The alternative hypothesis must be genuinely plausible. Easy, deliberately weak alternatives make the method look effective. Simulator success does not establish real scientific discovery ability.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "15",
+      "orientation": "Engineering-oriented",
+      "track": "Evaluation · benchmark integrity",
+      "title": "Agent Evaluations That Stay Fresh",
+      "challenge": "Keep agent evaluations informative as models and developers repeatedly encounter the same tasks.",
+      "motivation": "Repeated use of a benchmark makes it difficult to tell whether an agent has learned a reusable capability or become familiar with a task pattern. You will construct new, executable evaluation tasks and check that their answers remain valid. The goal is to measure transfer across task families while keeping the evaluation reproducible.",
+      "question": "Can fresh task instances remain valid and comparable in difficulty while exposing overfitting to a benchmark or agent implementation?",
+      "hypothesis": "Task generators with checked transformations and held-out families may distinguish reusable improvements from template-specific gains.",
+      "evidence": "Compare static instances, newly sampled instances, and held-out families. Measure solver ranking stability, difficulty, invalid-task rate, and sensitivity to deliberate training exposure. Use independent validity checks and report uncertainty across seeds. LiveBench and LiveCodeBench provide useful evaluation designs, not proofs that a new suite is contamination-free.",
+      "personalize": "Study coding, web tasks, or scientific experiments. Deliver a documented generator, a validity audit, and evidence that refreshed tasks measure the intended capability.",
+      "skills": [
+        "benchmark design",
+        "programmatic generation",
+        "statistical evaluation"
+      ],
+      "startingPoints": [
+        [
+          "LiveBench: A Challenging, Contamination-Limited LLM Benchmark — White et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2406.19314",
+          "Start here: refreshed tasks and objective evaluation to limit contamination."
+        ],
+        [
+          "LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code — Jain et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2403.07974",
+          "Coding example: time-based collection and multiple code-evaluation scenarios."
+        ],
+        [
+          "AgentAbstain: Do LLM Agents Know When Not to Act? — Liu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2607.10059",
+          "Generator comparison: paired tasks and validation through AbstainGen."
+        ]
+      ],
+      "example": "An agent improves on familiar benchmark templates but fails when names, dependencies, or action sequences change. The reported gain may reflect familiarity rather than a reusable capability.",
+      "firstSteps": "Choose one domain and implement a small generator whose solutions can be checked by execution. Define transformations that should preserve or predictably change the answer. Split by task family as well as random seed, and keep final instances unavailable during development.",
+      "pitfalls": "New wording does not ensure a new problem. Secret tests also need reproducible generation and a release plan after evaluation. Separate contamination evidence from ordinary distribution shift.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "16",
+      "orientation": "Research-oriented",
+      "track": "Coding agents · robot tool repair",
+      "title": "Robot Tool Repair",
+      "challenge": "Use robot failures to repair the software component responsible for the mistake.",
+      "motivation": "When a robot fails, the cause may be a small software error in a tool adapter rather than the overall plan. You will let a coding agent inspect the failure and repair one narrowly defined component, such as a coordinate conversion. The key test is whether the repair fixes the cause and continues to work on cases the agent did not use while editing.",
+      "question": "Can a coding agent diagnose a failed tool and produce a repair that works on new objects and tasks?",
+      "hypothesis": "Small diagnostic interventions with explicit tool inputs and expected effects may produce more transferable repairs than logs alone.",
+      "evidence": "Compare retries, replanning, trace-based code repair, and diagnostic repair, with an oracle fault-location baseline as an upper bound. Measure trials to repair, held-out task success, regressions on clean tasks, and total cost. Test unseen fault combinations and natural failures. Include ASPIRE as a close method comparison.",
+      "personalize": "Choose one component and one transfer axis. Deliver a repair method and a set of independently verified failures and fixes; add hardware only after simulation validation.",
+      "skills": [
+        "robotics software",
+        "causal diagnosis",
+        "coding agents"
+      ],
+      "startingPoints": [
+        [
+          "ASPIRE: Agentic /Skills Discovery for Robotics — Lu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2607.00272",
+          "Close comparison: diagnosis, code repair, validation, and reusable skills."
+        ],
+        [
+          "Guava: An Effective and Universal Harness for Embodied Manipulation — Liu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.18363",
+          "Harness baseline: iterative tool use with multimodal observations."
+        ],
+        [
+          "CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation — Fu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.22435",
+          "Benchmark: coding agents for manipulation under different abstractions."
+        ],
+        [
+          "Code as Policies: Language Model Programs for Embodied Control — Liang et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2209.07753",
+          "Foundation: composing perception and control APIs into executable robot policies."
+        ],
+        [
+          "CaP-X — official code and environments",
+          "https://github.com/capgym/cap-x",
+          "Implementation: examine installation and evaluation support before selecting tasks; pin the tested revision."
+        ]
+      ],
+      "example": "A robot repeatedly reaches beside an object because a coordinate conversion is wrong. Retrying the same plan will not fix the conversion.",
+      "firstSteps": "Choose two or three simulated manipulation tasks in CaP-X or a comparable environment. Limit editable code to one adapter, such as frame conversion or grasp ranking. Seed a few known faults, expose execution traces, and let the agent propose a test before editing.",
+      "pitfalls": "Avoid letting the agent modify the evaluator or safety limits. Seeded faults alone can favor the proposed diagnosis scheme; natural failures are needed to test generality.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "17",
+      "orientation": "Research-oriented",
+      "track": "Robot learning · evaluator improvement",
+      "title": "Learning Reliable Success Verifiers",
+      "challenge": "Improve a robot's success detector without rewarding policies that exploit its mistakes.",
+      "motivation": "A robot learning from a success detector may discover ways to satisfy the detector without completing the intended task. You will study how to improve the detector while checking progress against a separate, hidden source of ground truth. This separation lets you ask whether the robot is genuinely improving or becoming better at exploiting the feedback.",
+      "question": "Can a robot improve its evaluator while keeping policy selection grounded in independent evidence of success?",
+      "hypothesis": "Updating the detector on disputed cases and auditing each update may reduce false successes across repeated policy-improvement rounds.",
+      "evidence": "Compare frozen, ensemble, freely updated, and audited detectors with equal rollout and labeling budgets. Measure actual task success, false-success reports, calibration, and incorrectly accepted updates. Test multiple improvement rounds and new failure types. Ablate case selection and update auditing separately.",
+      "personalize": "Study geometry, temporal evidence, multiple views, or abstention. Project 04 checks completed trajectories; this project studies the feedback loop between a changing detector and policy search.",
+      "skills": [
+        "robot perception",
+        "calibration",
+        "sequential evaluation"
+      ],
+      "startingPoints": [
+        [
+          "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World — Xiao et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.19980",
+          "Start here: the reset, rollout, verification, and policy-improvement loop."
+        ],
+        [
+          "Guava: An Effective and Universal Harness for Embodied Manipulation — Liu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.18363",
+          "Harness comparison: embodied tool-use workflows and observations."
+        ],
+        [
+          "AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories — Lù et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2504.08942",
+          "Evaluation background: checking automatic success judgments; adapt the methodology rather than web labels."
+        ],
+        [
+          "Conformal Risk Control — Angelopoulos et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2208.02814",
+          "Method: calibration for selective acceptance under explicit assumptions."
+        ],
+        [
+          "Self-Improving Agents: Learning How to Work — Furong Huang",
+          "https://furong-huang.com/blog/self-improving-agents-learning-how-to-work/",
+          "Perspective: motivation for improving an agent's working process. This essay is not empirical validation of the proposed project."
+        ]
+      ],
+      "example": "A detector declares success when an object looks close to a container. Policy search learns to stop just outside the container because that fools the detector.",
+      "firstSteps": "Start with one placement or closure task and a deliberately imperfect detector. Use privileged simulator state for a hidden audit, never as input to the improving agent. Collect detector disagreements and propose bounded updates. Keep a fixed set of independent acceptance criteria.",
+      "pitfalls": "The evolving detector cannot be its own final judge. Preserve a separate audit set and account for the labels and trials used to improve the evaluator.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "18",
+      "orientation": "Research-oriented",
+      "track": "Physical learning · reset and recovery",
+      "title": "Reset-Aware Self-Improvement",
+      "challenge": "Improve robot learning when failed attempts make the next trial expensive or difficult to start.",
+      "motivation": "Every robot trial starts somewhere, and a failed attempt can leave the scene difficult to recover. Learning speed therefore depends on what happens between trials as well as during them. You will study task execution and reset procedures together, measuring useful improvement per unit of total time.",
+      "question": "Can an agent improve task and recovery procedures together while accounting for reset cost and difficult starting states?",
+      "hypothesis": "Optimizing both procedures against a fixed evaluation distribution may increase verified progress per robot-hour.",
+      "evidence": "Compare fixed resets, reset-cost-aware action selection, and joint improvement. Measure success on identical held-out initial states, robot-hours, human resets, reset failures, and state coverage. Count unsuccessful trials and resets. Compare with learned-reset ideas from Leave no Trace and the reset loop in ENPIRE.",
+      "personalize": "Study reset verification, recovery-code generation, or correcting the training-state distribution. A well-controlled simulation result is sufficient; one physical task is an optional extension.",
+      "skills": [
+        "robot learning",
+        "constrained optimization",
+        "experimental design"
+      ],
+      "startingPoints": [
+        [
+          "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World — Xiao et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.19980",
+          "Start here: automatic resets and repeated physical policy evaluation."
+        ],
+        [
+          "Leave no Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning — Eysenbach et al. (arXiv 2017)",
+          "https://arxiv.org/abs/1711.06782",
+          "Essential comparison: joint learning of forward and reset policies."
+        ],
+        [
+          "Gym Push-T — environment repository",
+          "https://github.com/huggingface/gym-pusht",
+          "Implementation: a compact pushing environment for initial reset experiments. Check its dependencies and license."
+        ]
+      ],
+      "example": "A failed push leaves an object out of reach. The task policy improves only slowly because a person must reset the scene after each mistake.",
+      "firstSteps": "Use a simulated pushing task with persistent failure states and explicit reset actions. Measure reset time and failure separately from task execution. Start with a fixed reset routine, then allow bounded edits to the recovery procedure and task policy.",
+      "pitfalls": "An easier reset distribution can create apparent progress. Freeze the target evaluation distribution and report whether the method avoids difficult states rather than learning to handle them.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "19",
+      "orientation": "Research-oriented",
+      "track": "Continual learning · robot skills",
+      "title": "Reusable Robot Skills with Applicability Conditions",
+      "challenge": "Help a robot decide when an old skill is suitable for a new situation.",
+      "motivation": "A successful robot procedure is valuable only when its assumptions still hold. A change in object geometry, camera calibration, or tool behavior may make an old skill unsuitable. You will attach evidence and applicability checks to a small skill library, then test whether the robot can choose when to reuse, adapt, or reject a procedure.",
+      "question": "Can learned applicability tests predict when a stored skill should be reused, adapted, checked, or retired?",
+      "hypothesis": "Testing a skill's preconditions against current evidence may prevent negative transfer more effectively than retrieving skills by semantic similarity alone.",
+      "evidence": "Compare raw experience retrieval, ordinary skill retrieval, a fixed best procedure, and a library with applicability checks. Include ASPIRE as a close comparison. Measure forward transfer, negative transfer, forgetting, stale-skill use, and total cost across different task orders. Remove the checks while keeping identical skill code.",
+      "personalize": "Choose spatial preconditions, tool compatibility, or skill retirement. Deliver a conditional skill library and held-out tests showing when its conditions help.",
+      "skills": [
+        "continual learning",
+        "program synthesis",
+        "robot manipulation"
+      ],
+      "startingPoints": [
+        [
+          "ASPIRE: Agentic /Skills Discovery for Robotics — Lu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2607.00272",
+          "Start here and close baseline: accumulating and transferring a library of validated robot skills."
+        ],
+        [
+          "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning — Liu et al. (arXiv 2023)",
+          "https://arxiv.org/abs/2306.03310",
+          "Evaluation: transfer and forgetting across task sequences."
+        ],
+        [
+          "Code as Policies: Language Model Programs for Embodied Control — Liang et al. (arXiv 2022)",
+          "https://arxiv.org/abs/2209.07753",
+          "Representation: robot procedures expressed as executable code."
+        ],
+        [
+          "Guava: An Effective and Universal Harness for Embodied Manipulation — Liu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.18363",
+          "Harness context: semantic actions and observation choices."
+        ],
+        [
+          "Self-Improving Agents: Learning How to Work — Furong Huang",
+          "https://furong-huang.com/blog/self-improving-agents-learning-how-to-work/",
+          "Perspective: motivation for improving an agent's working process. This essay is not empirical validation of the proposed project."
+        ]
+      ],
+      "example": "A grasping routine worked with one camera calibration and object shape. Reusing it after either changes can be worse than starting from a simpler procedure.",
+      "firstSteps": "Build a small library of successful procedures in two or three simulated task families. Record their inputs, tool versions, and execution evidence. Change geometry or tool behavior and learn a check that predicts whether a procedure remains suitable.",
+      "pitfalls": "ASPIRE already accumulates reusable repairs. The contribution must establish that applicability conditions predict transfer failures beyond the existing library and retrieval mechanism.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "20",
+      "orientation": "Research-oriented",
+      "track": "Robotics · autonomous experimentation",
+      "title": "Choosing the Next Robot Experiment",
+      "challenge": "Choose robot experiments that resolve the uncertainty blocking useful improvement.",
+      "motivation": "After a robot fails, another full trial may tell you less than a small diagnostic experiment. For example, a calibration test could distinguish a perception problem from a poor grasp choice. You will study how an agent chooses the next experiment when several possible causes remain and each test consumes time.",
+      "question": "Can an agent select diagnostic experiments that reduce the total cost of finding repairs that transfer?",
+      "hypothesis": "Considering competing explanations, experiment cost, and expected transfer may find useful repairs faster than choosing only the most uncertain or immediately promising trial.",
+      "evidence": "Compare random selection, uncertainty sampling, immediate-improvement selection, and a Bayesian optimization baseline where applicable. Measure trials and total cost to verified repair, cause identification, and later-task success. Hold out causes or combinations. Ablate hypothesis tracking and the estimate of transfer value.",
+      "personalize": "Focus on diagnostic selection, stopping criteria, or experiment synthesis. Unlike project 16, this project studies which trial to run; use a fixed repair procedure initially.",
+      "skills": [
+        "active learning",
+        "Bayesian experimental design",
+        "coding agents"
+      ],
+      "startingPoints": [
+        [
+          "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World — Xiao et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.19980",
+          "Start here: a repeatable physical policy-improvement workflow."
+        ],
+        [
+          "ASPIRE: Agentic /Skills Discovery for Robotics — Lu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2607.00272",
+          "Related method: exploration, diagnosis, and program repair."
+        ],
+        [
+          "A Tutorial on Bayesian Optimization — Frazier (arXiv 2018)",
+          "https://arxiv.org/abs/1807.02811",
+          "Baseline: Bayesian experiment selection for a bounded numerical search space."
+        ],
+        [
+          "CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation — Fu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.22435",
+          "Environment: manipulation tasks with executable agent feedback."
+        ]
+      ],
+      "example": "A grasp fails because of either calibration error or poor grasp selection. Another full trial may tell little; a targeted calibration test could distinguish the causes cheaply.",
+      "firstSteps": "Use two simulated task families with hidden failure causes. Define a small experiment API for calibration, perception, and control tests. Require the agent to record what each experiment could distinguish before running it. Begin with experiment selection from a fixed menu.",
+      "pitfalls": "Generic numerical optimization is a strong baseline when the search space is only a few parameters. Code generation should be added only if choosing or creating experiments is the actual contribution.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "21",
+      "orientation": "Research-oriented",
+      "track": "Robot systems · resource allocation",
+      "title": "Scheduling Robot Autoresearch",
+      "challenge": "Allocate limited robot time across competing improvement attempts.",
+      "motivation": "Imagine several improvement ideas competing for access to a small number of robots. Trials take different amounts of time, failures require resets, and promising results need confirmation. You will build a scheduler that allocates this limited capacity and evaluate it by independently verified progress over a fixed period.",
+      "question": "Can a scheduler reduce the time to verified policy improvement by deciding which trials to run, stop, or repeat?",
+      "hypothesis": "Combining uncertainty, expected trial value, and reset compatibility may improve verified progress over fixed scheduling rules.",
+      "evidence": "Compare against one-agent-per-robot allocation and a Hyperband-style resource baseline. Measure time to confirmed improvement, final policy quality, total robot time, tokens, and reset overhead. Ablate scheduling components and vary delays and worker counts. Validate important timing assumptions on hardware if available.",
+      "personalize": "Study delayed feedback, heterogeneous workers, or cancellation. Deliver a scheduling algorithm and a reproducible workload rather than a general robot-fleet platform.",
+      "skills": [
+        "distributed systems",
+        "bandits",
+        "robot experiment infrastructure"
+      ],
+      "startingPoints": [
+        [
+          "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World — Xiao et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2606.19980",
+          "Start here: policy-improvement rounds and parallel robot evaluation."
+        ],
+        [
+          "Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization — Li et al. (arXiv 2016)",
+          "https://arxiv.org/abs/1603.06560",
+          "Baseline: adaptive resource allocation and early stopping; adapt it to the trial budget."
+        ],
+        [
+          "A Tutorial on Bayesian Optimization — Frazier (arXiv 2018)",
+          "https://arxiv.org/abs/1807.02811",
+          "Background: parallel and multi-fidelity expensive evaluations."
+        ],
+        [
+          "CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation — Fu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.22435",
+          "Environment: a controlled source of candidate evaluations."
+        ],
+        [
+          "CaP-X — official code and environments",
+          "https://github.com/capgym/cap-x",
+          "Implementation: examine installation and evaluation support before selecting tasks; pin the tested revision."
+        ]
+      ],
+      "example": "Several coding agents propose policy changes. Some trials are quick, others require a long reset, and every promising result needs an independent confirmation run.",
+      "firstSteps": "Create a simulator with a few robot workers and measured or controlled delays for execution, reset, and model calls. Keep the candidate-generation method fixed. Implement FIFO and round-robin scheduling before adding early stopping, compatible-reset batching, and reserved confirmation trials.",
+      "pitfalls": "Higher utilization does not necessarily improve learning. Count wasted trials and false selections, and keep confirmation evidence independent of the scheduler's selection data.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "22",
+      "orientation": "Research-oriented",
+      "track": "Memory · graph structure",
+      "title": "Which Memory Structure Helps an Agent Reason?",
+      "challenge": "Find out which tags and links make a Markdown memory collection more useful.",
+      "motivation": "Start with a folder of Markdown notes and ask what a reader needs to follow the relationships between them. Tags can group topics; links can show that one statement corrects another or rests on particular evidence. You will compare these structures under the same retrieval budget and identify the tasks for which the added structure earns its maintenance cost.",
+      "question": "When does adding, removing, or changing memory structure improve an agent's answers and actions at a fixed budget?",
+      "hypothesis": "Choosing structural edits by their measured usefulness may outperform fixed schemas or unrestricted linking on some task families.",
+      "evidence": "Use histories with changing plans, similar entities, and evidence spread across sessions. Hold the model, writing budget, and retrieved tokens fixed. Measure task success, evidence recall, false associations, and graph growth. Remove individual fields and edge types; test new query families to identify where structure pays off.",
+      "personalize": "Choose edge selection, note splitting, or pruning. Project 02 studies stale decisions; project 27 studies scale. Deliver an interpretable comparison of memory design choices.",
+      "skills": [
+        "information retrieval",
+        "knowledge graphs",
+        "agent evaluation"
+      ],
+      "startingPoints": [
+        [
+          "A-MEM: Agentic Memory for LLM Agents — Xu et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2502.12110",
+          "Start here: structured notes, keywords, tags, links, and memory evolution."
+        ],
+        [
+          "All-Mem: Agentic Lifelong Memory via Dynamic Topology Evolution — Lv et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.19595",
+          "Close comparison: topology edits and bounded access to archived evidence."
+        ],
+        [
+          "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory — Wu et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2410.10813",
+          "Evaluation: test retrieval and reasoning separately."
+        ],
+        [
+          "Graphiti — official documentation",
+          "https://help.getzep.com/graphiti/getting-started/welcome",
+          "Implementation: incremental temporal graphs and hybrid retrieval. Documentation, not a research-paper citation."
+        ]
+      ],
+      "example": "A memory contains a plan, a later correction, and the evidence behind both. A topic tag groups them together; a 'supersedes' link identifies which plan is current.",
+      "firstSteps": "Start with Markdown notes containing stable IDs, sources, entities, and separate recorded and validity times. Compare a flat index with tags and a small set of typed links. Reproduce relevant A-MEM or All-Mem behavior before adding a policy for deciding which structural edits are worth their cost.",
+      "pitfalls": "A-MEM already uses structured notes and links; All-Mem already studies topology edits. A graph implementation alone is insufficient. Demonstrate a cost-matched benefit or a useful explanation of when graphs fail.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "23",
+      "orientation": "Research-oriented",
+      "track": "Memory · consolidation",
+      "title": "Memory Consolidation That Preserves Future Decisions",
+      "challenge": "Compact an agent's memory without losing the rare details that affect future decisions.",
+      "motivation": "Summarizing a memory collection means deciding which details future tasks can still recover. A rare exception may occupy only one sentence yet determine the correct action later. You will study how to check a proposed consolidation before accepting it, and how repeated consolidation affects decisions made from the resulting memory.",
+      "question": "Can consolidation preserve consequential exceptions and disagreements over repeated compression cycles?",
+      "hypothesis": "Checking proposed consolidations against independent preservation probes may improve the tradeoff between memory cost and future decision errors.",
+      "evidence": "Sweep memory budgets and consolidation cycles. Compare no consolidation, summarization, Auto-Dreamer, and All-Mem where reproducible. Measure downstream errors, exception retention, unsupported conclusions, and total storage and recovery cost. Test unfamiliar future tasks. Compare actual Anthropic Dreams only if access is available; identify any approximation.",
+      "personalize": "Study probe design, selective recovery, or uncertain facts. Keep originals recoverable when retention policies permit. Project 03 concerns a single handoff; this project concerns persistent memory.",
+      "skills": [
+        "information theory",
+        "continual learning",
+        "evaluation design"
+      ],
+      "startingPoints": [
+        [
+          "Auto-Dreamer: Learning Offline Memory Consolidation for Language Agents — Ye et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2605.20616",
+          "Start here: learned offline consolidation with provenance-linked source inspection."
+        ],
+        [
+          "All-Mem: Agentic Lifelong Memory via Dynamic Topology Evolution — Lv et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.19595",
+          "Close comparison: non-destructive restructuring and evidence recovery."
+        ],
+        [
+          "The information bottleneck method — Tishby et al. (arXiv 2000)",
+          "https://arxiv.org/abs/physics/0004057",
+          "Foundation: retaining target-relevant information under compression."
+        ],
+        [
+          "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory — Wu et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2410.10813",
+          "Evaluation: updates, temporal reasoning, and abstention."
+        ],
+        [
+          "Dreams — Anthropic documentation",
+          "https://platform.claude.com/docs/en/managed-agents/dreams",
+          "System comparison: the documented consolidation workflow. Access may be restricted; an imitation is not an evaluation of Dreams."
+        ]
+      ],
+      "example": "Many notes say a procedure works. One records a condition under which it fails. A short summary can preserve the routine advice while accidentally deleting the exception.",
+      "firstSteps": "Construct histories with routine facts and a few important exceptions. Compare summaries and deduplicated notes with an evidence-linked consolidation method. Before accepting an edit, test whether it preserves selected constraints and unresolved claims. Keep future evaluation questions separate from these probes.",
+      "pitfalls": "Source links and offline consolidation already exist in prior work. The proposed contribution is preserving decision-relevant information under repeated updates. Count archived originals in storage and avoid claims about all possible future queries.",
+      "signup": {
+        "confirmedTeams": 2,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "24",
+      "orientation": "Engineering-oriented",
+      "track": "Shared memory · concurrent writers",
+      "title": "Shared Memory with Semantic Reconciliation",
+      "challenge": "Reconcile shared memories when several users or agents write at the same time.",
+      "motivation": "Two users can edit a shared memory without producing an obvious text conflict, yet leave behind statements that disagree in meaning. You will study how to combine their contributions while preserving who said what, what evidence supports it, and which disagreements remain unresolved. First separate reliable synchronization from the harder question of interpreting the claims.",
+      "question": "Can a merge procedure distinguish additions, corrections, context-dependent claims, and disagreements that still need resolution?",
+      "hypothesis": "Merging attributed claims with evidence and explicit uncertainty may preserve more useful information than last-write-wins or unrestricted LLM arbitration.",
+      "evidence": "Compare last-write-wins, serialized writes, a text-level merge, and an LLM shown both revisions. Measure lost updates, unsupported resolutions, downstream errors, and review burden as writer count and delay increase. Hold out conflict types and remove attribution or abstention to test their roles.",
+      "personalize": "Study claim-level merging, context disambiguation, or selective escalation. Deliver a conflict test suite and a merge procedure with inspectable decisions.",
+      "skills": [
+        "distributed systems",
+        "temporal reasoning",
+        "LLM evaluation"
+      ],
+      "startingPoints": [
+        [
+          "Conflict-free Replicated Data Types — Shapiro, Preguiça, Baquero, and Zawirski (SSS 2011)",
+          "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
+          "Foundation: conditions for replica convergence. Use it to separate synchronization guarantees from factual conflict resolution."
+        ],
+        [
+          "Collaborative Memory: Multi-User Memory Sharing in LLM Agents with Dynamic Access Control — Rezazadeh et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2505.18279",
+          "Start here for shared-agent memory: attribution and changing access rights."
+        ],
+        [
+          "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid? — Chao et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2605.06527",
+          "Related evaluation: implicit conflicts between remembered and new information."
+        ],
+        [
+          "Graphiti — official documentation",
+          "https://help.getzep.com/graphiti/getting-started/welcome",
+          "Implementation: incremental temporal graphs and hybrid retrieval. Documentation, not a research-paper citation."
+        ]
+      ],
+      "example": "One writer records 'the experiment is approved.' Another records 'approval covers simulation only.' A text merge can retain both sentences while leaving the agent with the wrong permission.",
+      "firstSteps": "Build a small shared store with versioned notes and append-only changes. Use synthetic users and explicit permissions. Create concurrent updates with known relationships, including delayed corrections and retractions. Separate the mechanism that synchronizes revisions from the procedure that interprets conflicting claims.",
+      "pitfalls": "CRDT convergence does not establish factual correctness. The latest or most repeated claim may be wrong. Preserve unresolved disagreement and use a fixed policy interface for authorization.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "25",
+      "orientation": "Engineering-oriented",
+      "track": "Shared memory · permissions and provenance",
+      "title": "Permission-Safe Retrieval and Consolidation",
+      "challenge": "Keep shared memories within their permissions even after summaries and other derivatives have been created.",
+      "motivation": "Access permissions become harder to enforce when information is copied into summaries and other derived records. If a user's access changes, which of those records must also change? You will trace the sources behind derived memories and test whether the system can honor grants and revocations while still answering authorized questions usefully.",
+      "question": "Can the system identify and repair affected derivatives when access changes without disabling useful sharing?",
+      "hypothesis": "Tracking source dependencies and checking permissions before retrieval may reduce leakage and revocation delay while preserving authorized task performance.",
+      "evidence": "Compare isolated user stores, shared retrieval with post-filtering, and a provenance-aware baseline such as Collaborative Memory. Measure unauthorized disclosure, authorized task success, revocation delay, and recomputation cost. Include adversarial queries and mixed-source summaries. Ablate dependency tracking and test changing policies.",
+      "personalize": "Choose summary lineage, incremental revocation, or permission-aware graph traversal. Deliver an explicit threat model and a reproducible security-and-utility evaluation.",
+      "skills": [
+        "security",
+        "data provenance",
+        "retrieval systems"
+      ],
+      "startingPoints": [
+        [
+          "Collaborative Memory: Multi-User Memory Sharing in LLM Agents with Dynamic Access Control — Rezazadeh et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2505.18279",
+          "Start here and close baseline: private/shared memory, provenance, and dynamic permissions."
+        ],
+        [
+          "Conflict-free Replicated Data Types — Shapiro, Preguiça, Baquero, and Zawirski (SSS 2011)",
+          "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
+          "Foundation: conditions for replica convergence. Use it to separate synchronization guarantees from factual conflict resolution."
+        ],
+        [
+          "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents — Debenedetti et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2406.13352",
+          "Adversarial evaluation background: untrusted inputs in tool-using agents."
+        ],
+        [
+          "Dreams — Anthropic documentation",
+          "https://platform.claude.com/docs/en/managed-agents/dreams",
+          "System comparison: the documented consolidation workflow. Access may be restricted; an imitation is not an evaluation of Dreams."
+        ]
+      ],
+      "example": "A summary combines public notes with a restricted document. Later, a user's access to that document is revoked, but the summary still reveals its contents.",
+      "firstSteps": "Use synthetic workspaces with overlapping user permissions. Create notes and summaries with explicit source dependencies. Implement grants and revocations in a trusted policy service, then invalidate or recompute affected derivatives. Begin with text summaries before extending to caches, embeddings, or media annotations.",
+      "pitfalls": "Collaborative Memory already addresses dynamic access control. Focus on a specific derivative or update failure. Editable notes cannot grant authority; the system cannot make users forget information they already learned.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "26",
+      "orientation": "Research-oriented",
+      "track": "Multimodal memory · evidence retrieval",
+      "title": "Multimodal Memory with Recoverable Evidence",
+      "challenge": "Remember visual experience efficiently while retaining access to the original evidence.",
+      "motivation": "A caption makes an image or video searchable, but it cannot anticipate every future question. Sometimes an agent will need to return to a particular frame, region, or moment to check a detail. You will study when that extra inspection is worthwhile and how to connect compact text memories to the original visual evidence.",
+      "question": "When should an agent use a text annotation, and when should it retrieve an image region or video segment?",
+      "hypothesis": "Retrieving original media when it could change the answer may improve accuracy per unit of visual processing compared with captions alone or retrieving everything.",
+      "evidence": "Compare caption-only retrieval, multimodal embedding retrieval, M3-Agent, VideoAgent, and selective source inspection where feasible. Measure task accuracy, evidence localization, visual tokens, and errors caused by incomplete annotations. Include questions across episodes and corrections to earlier interpretations. Hold out scenes and tasks.",
+      "personalize": "Study temporal evidence, region selection, or uncertainty calibration. Deliver source-linked memory and an evaluation showing when revisiting the original media is worth its cost.",
+      "skills": [
+        "vision-language models",
+        "video retrieval",
+        "robotics evaluation"
+      ],
+      "startingPoints": [
+        [
+          "Seeing, Listening, Remembering, and Reasoning: A Multimodal Agent with Long-Term Memory — Long et al. (arXiv 2025)",
+          "https://arxiv.org/abs/2508.09736",
+          "Start here: M3-Agent and M3-Bench for persistent multimodal memory."
+        ],
+        [
+          "VideoAgent: A Memory-augmented Multimodal Agent for Video Understanding — Fan et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2403.11481",
+          "Close comparison: temporal event and object memory with source-segment tools."
+        ],
+        [
+          "All-Mem: Agentic Lifelong Memory via Dynamic Topology Evolution — Lv et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.19595",
+          "Related design: selective expansion from compact memory to retained evidence."
+        ]
+      ],
+      "example": "A caption says a robot placed a cup on a shelf. A later question asks whether the handle faced outward—a detail that the caption omitted but the video still contains.",
+      "firstSteps": "Choose public instructional or robot videos with object and state changes. Store original assets separately; use Markdown notes and graph links to reference time intervals or image regions. Build caption retrieval first, then add a decision rule for returning to the source media.",
+      "pitfalls": "Existing multimodal agents already combine structured memory and source retrieval. Establish the value of the inspection decision under a budget. Captions are fallible annotations, and media must be public or used with permission.",
+      "signup": {
+        "confirmedTeams": 0,
+        "tentativeTeams": 0
+      }
+    },
+    {
+      "number": "27",
+      "orientation": "Engineering-oriented",
+      "track": "Large-scale memory · retrieval systems",
+      "title": "Large Memory with Bounded Retrieval and Maintenance Cost",
+      "challenge": "Keep retrieval fast and memories current as a collection grows.",
+      "motivation": "A memory system that works with a few hundred notes may become slow or difficult to keep current as the collection grows. You will hold the memory representation fixed and study how to search and maintain it efficiently. The central question is how retrieval quality changes when you also account for updates, storage, latency, and the work needed to keep the index current.",
+      "question": "Can a query planner choose the right level of detail while limiting retrieval and maintenance costs?",
+      "hypothesis": "Adapting retrieval depth and refresh work to the query and update pattern may improve the accuracy-latency tradeoff over fixed plans.",
+      "evidence": "Compare hybrid search, fixed-depth traversal, hierarchical summaries, Graphiti, and relevant All-Mem behavior. Measure task quality against p95 latency, retrieved tokens, storage, freshness, and work per update. Report real-history reasoning tests separately from synthetic indexing stress tests. Ablate planning and incremental maintenance.",
+      "personalize": "Study tier selection, bounded traversal, or update-aware caching. Project 22 changes representation; hold that representation fixed here. Deliver reproducible scaling curves and a clear failure analysis.",
+      "skills": [
+        "database systems",
+        "information retrieval",
+        "performance evaluation"
+      ],
+      "startingPoints": [
+        [
+          "All-Mem: Agentic Lifelong Memory via Dynamic Topology Evolution — Lv et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2603.19595",
+          "Start here and close comparison: bounded retrieval and periodic topology maintenance."
+        ],
+        [
+          "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues — Wu et al. (arXiv 2026)",
+          "https://arxiv.org/abs/2605.12493",
+          "Evaluation: long histories of web-agent experience and compact evidence retrieval."
+        ],
+        [
+          "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory — Wu et al. (arXiv 2024)",
+          "https://arxiv.org/abs/2410.10813",
+          "Complementary benchmark: conversational memory and knowledge updates."
+        ],
+        [
+          "Graphiti — official documentation",
+          "https://help.getzep.com/graphiti/getting-started/welcome",
+          "Implementation: incremental temporal graphs and hybrid retrieval. Documentation, not a research-paper citation."
+        ]
+      ],
+      "example": "A small memory can be searched in full. With a million notes, frequent updates, and many users, the same approach may become slow or return stale evidence.",
+      "firstSteps": "Fix the note schema and build keyword-plus-vector retrieval. Add summaries and bounded graph traversal. Scale from 10,000 to 1,000,000 items using a controlled workload, then introduce corrections and changing query patterns. Implement a planner that selects which indexes and detail levels to consult.",
+      "pitfalls": "Millions of easy distractors demonstrate scale but may say little about reasoning. Count indexing and refresh costs, and report hardware, concurrency, seeds, and cold versus warm caches.",
+      "signup": {
+        "confirmedTeams": 1,
+        "tentativeTeams": 0
+      }
+    }
+  ]
+}

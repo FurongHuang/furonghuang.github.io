@@ -423,7 +423,7 @@ const prerequisiteReadings = [
                     <a class="lecture-item" href={`${slideRoot}/${getPublishedSlideFilename(file)}`} download>
                       <div class="lecture-meta"><span>{number ? `L${index + 1}` : "Q&A"}</span><time datetime={date}>{formatCourseDate(date)}</time></div>
                       <strong>{title}</strong>
-                      <small>{date === "2026-10-29" ? "Canceled · PDF ↓" : "PDF ↓"}</small>
+                      <small>PDF ↓</small>
                     </a>
                   ) : (
                     <div class="lecture-item is-pending">
